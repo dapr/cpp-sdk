@@ -14,6 +14,8 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_dapr_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_GetSecretEnvelope_MetadataEntry_DoNotUse_dapr_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_dapr_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_GetSecretResponseEnvelope_DataEntry_DoNotUse_dapr_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_dapr_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_InvokeBindingEnvelope_MetadataEntry_DoNotUse_dapr_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_dapr_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_InvokeServiceEnvelope_MetadataEntry_DoNotUse_dapr_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_dapr_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_InvokeServiceResponseEnvelope_MetadataEntry_DoNotUse_dapr_2eproto;
@@ -51,6 +53,22 @@ class GetStateResponseEnvelopeDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<GetStateResponseEnvelope> _instance;
 } _GetStateResponseEnvelope_default_instance_;
+class GetSecretEnvelope_MetadataEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<GetSecretEnvelope_MetadataEntry_DoNotUse> _instance;
+} _GetSecretEnvelope_MetadataEntry_DoNotUse_default_instance_;
+class GetSecretEnvelopeDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<GetSecretEnvelope> _instance;
+} _GetSecretEnvelope_default_instance_;
+class GetSecretResponseEnvelope_DataEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<GetSecretResponseEnvelope_DataEntry_DoNotUse> _instance;
+} _GetSecretResponseEnvelope_DataEntry_DoNotUse_default_instance_;
+class GetSecretResponseEnvelopeDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<GetSecretResponseEnvelope> _instance;
+} _GetSecretResponseEnvelope_default_instance_;
 class InvokeBindingEnvelope_MetadataEntry_DoNotUseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<InvokeBindingEnvelope_MetadataEntry_DoNotUse> _instance;
@@ -118,6 +136,62 @@ static void InitDefaultsscc_info_DeleteStateEnvelope_dapr_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DeleteStateEnvelope_dapr_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DeleteStateEnvelope_dapr_2eproto}, {
       &scc_info_StateOptions_dapr_2eproto.base,}};
+
+static void InitDefaultsscc_info_GetSecretEnvelope_dapr_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::dapr::_GetSecretEnvelope_default_instance_;
+    new (ptr) ::dapr::GetSecretEnvelope();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::dapr::GetSecretEnvelope::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_GetSecretEnvelope_dapr_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_GetSecretEnvelope_dapr_2eproto}, {
+      &scc_info_GetSecretEnvelope_MetadataEntry_DoNotUse_dapr_2eproto.base,}};
+
+static void InitDefaultsscc_info_GetSecretEnvelope_MetadataEntry_DoNotUse_dapr_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::dapr::_GetSecretEnvelope_MetadataEntry_DoNotUse_default_instance_;
+    new (ptr) ::dapr::GetSecretEnvelope_MetadataEntry_DoNotUse();
+  }
+  ::dapr::GetSecretEnvelope_MetadataEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_GetSecretEnvelope_MetadataEntry_DoNotUse_dapr_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_GetSecretEnvelope_MetadataEntry_DoNotUse_dapr_2eproto}, {}};
+
+static void InitDefaultsscc_info_GetSecretResponseEnvelope_dapr_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::dapr::_GetSecretResponseEnvelope_default_instance_;
+    new (ptr) ::dapr::GetSecretResponseEnvelope();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::dapr::GetSecretResponseEnvelope::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_GetSecretResponseEnvelope_dapr_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_GetSecretResponseEnvelope_dapr_2eproto}, {
+      &scc_info_GetSecretResponseEnvelope_DataEntry_DoNotUse_dapr_2eproto.base,}};
+
+static void InitDefaultsscc_info_GetSecretResponseEnvelope_DataEntry_DoNotUse_dapr_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::dapr::_GetSecretResponseEnvelope_DataEntry_DoNotUse_default_instance_;
+    new (ptr) ::dapr::GetSecretResponseEnvelope_DataEntry_DoNotUse();
+  }
+  ::dapr::GetSecretResponseEnvelope_DataEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_GetSecretResponseEnvelope_DataEntry_DoNotUse_dapr_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_GetSecretResponseEnvelope_DataEntry_DoNotUse_dapr_2eproto}, {}};
 
 static void InitDefaultsscc_info_GetStateEnvelope_dapr_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -385,7 +459,7 @@ static void InitDefaultsscc_info_StateRetryPolicy_dapr_2eproto() {
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_StateRetryPolicy_dapr_2eproto}, {
       &scc_info_Duration_google_2fprotobuf_2fduration_2eproto.base,}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_dapr_2eproto[19];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_dapr_2eproto[23];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_dapr_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_dapr_2eproto = nullptr;
 
@@ -437,6 +511,38 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_dapr_2eproto::offsets[] PROTOB
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::dapr::GetStateResponseEnvelope, data_),
   PROTOBUF_FIELD_OFFSET(::dapr::GetStateResponseEnvelope, etag_),
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretEnvelope_MetadataEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretEnvelope_MetadataEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretEnvelope_MetadataEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretEnvelope_MetadataEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretEnvelope, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretEnvelope, storename_),
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretEnvelope, key_),
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretEnvelope, metadata_),
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretResponseEnvelope_DataEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretResponseEnvelope_DataEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretResponseEnvelope_DataEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretResponseEnvelope_DataEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretResponseEnvelope, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::dapr::GetSecretResponseEnvelope, data_),
   PROTOBUF_FIELD_OFFSET(::dapr::InvokeBindingEnvelope_MetadataEntry_DoNotUse, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::dapr::InvokeBindingEnvelope_MetadataEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -557,19 +663,23 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 25, -1, sizeof(::dapr::SaveStateEnvelope)},
   { 32, -1, sizeof(::dapr::GetStateEnvelope)},
   { 40, -1, sizeof(::dapr::GetStateResponseEnvelope)},
-  { 47, 54, sizeof(::dapr::InvokeBindingEnvelope_MetadataEntry_DoNotUse)},
-  { 56, -1, sizeof(::dapr::InvokeBindingEnvelope)},
-  { 64, 71, sizeof(::dapr::InvokeServiceEnvelope_MetadataEntry_DoNotUse)},
-  { 73, -1, sizeof(::dapr::InvokeServiceEnvelope)},
-  { 82, -1, sizeof(::dapr::PublishEventEnvelope)},
-  { 89, 96, sizeof(::dapr::State_MetadataEntry_DoNotUse)},
-  { 98, -1, sizeof(::dapr::State)},
-  { 108, -1, sizeof(::dapr::StateOptions)},
-  { 116, -1, sizeof(::dapr::RetryPolicy)},
-  { 124, 131, sizeof(::dapr::StateRequest_MetadataEntry_DoNotUse)},
-  { 133, -1, sizeof(::dapr::StateRequest)},
-  { 143, -1, sizeof(::dapr::StateRequestOptions)},
-  { 151, -1, sizeof(::dapr::StateRetryPolicy)},
+  { 47, 54, sizeof(::dapr::GetSecretEnvelope_MetadataEntry_DoNotUse)},
+  { 56, -1, sizeof(::dapr::GetSecretEnvelope)},
+  { 64, 71, sizeof(::dapr::GetSecretResponseEnvelope_DataEntry_DoNotUse)},
+  { 73, -1, sizeof(::dapr::GetSecretResponseEnvelope)},
+  { 79, 86, sizeof(::dapr::InvokeBindingEnvelope_MetadataEntry_DoNotUse)},
+  { 88, -1, sizeof(::dapr::InvokeBindingEnvelope)},
+  { 96, 103, sizeof(::dapr::InvokeServiceEnvelope_MetadataEntry_DoNotUse)},
+  { 105, -1, sizeof(::dapr::InvokeServiceEnvelope)},
+  { 114, -1, sizeof(::dapr::PublishEventEnvelope)},
+  { 121, 128, sizeof(::dapr::State_MetadataEntry_DoNotUse)},
+  { 130, -1, sizeof(::dapr::State)},
+  { 140, -1, sizeof(::dapr::StateOptions)},
+  { 148, -1, sizeof(::dapr::RetryPolicy)},
+  { 156, 163, sizeof(::dapr::StateRequest_MetadataEntry_DoNotUse)},
+  { 165, -1, sizeof(::dapr::StateRequest)},
+  { 175, -1, sizeof(::dapr::StateRequestOptions)},
+  { 183, -1, sizeof(::dapr::StateRetryPolicy)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -579,6 +689,10 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::dapr::_SaveStateEnvelope_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::dapr::_GetStateEnvelope_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::dapr::_GetStateResponseEnvelope_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::dapr::_GetSecretEnvelope_MetadataEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::dapr::_GetSecretEnvelope_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::dapr::_GetSecretResponseEnvelope_DataEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::dapr::_GetSecretResponseEnvelope_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::dapr::_InvokeBindingEnvelope_MetadataEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::dapr::_InvokeBindingEnvelope_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::dapr::_InvokeServiceEnvelope_MetadataEntry_DoNotUse_default_instance_),
@@ -610,60 +724,73 @@ const char descriptor_table_protodef_dapr_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "\n\020GetStateEnvelope\022\021\n\tstoreName\030\001 \001(\t\022\013\n"
   "\003key\030\002 \001(\t\022\023\n\013consistency\030\003 \001(\t\"L\n\030GetSt"
   "ateResponseEnvelope\022\"\n\004data\030\001 \001(\0132\024.goog"
-  "le.protobuf.Any\022\014\n\004etag\030\002 \001(\t\"\267\001\n\025Invoke"
-  "BindingEnvelope\022\014\n\004name\030\001 \001(\t\022\"\n\004data\030\002 "
-  "\001(\0132\024.google.protobuf.Any\022;\n\010metadata\030\003 "
-  "\003(\0132).dapr.InvokeBindingEnvelope.Metadat"
-  "aEntry\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005"
-  "value\030\002 \001(\t:\0028\001\"\305\001\n\025InvokeServiceEnvelop"
-  "e\022\n\n\002id\030\001 \001(\t\022\016\n\006method\030\002 \001(\t\022\"\n\004data\030\003 "
-  "\001(\0132\024.google.protobuf.Any\022;\n\010metadata\030\004 "
-  "\003(\0132).dapr.InvokeServiceEnvelope.Metadat"
-  "aEntry\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005"
-  "value\030\002 \001(\t:\0028\001\"I\n\024PublishEventEnvelope\022"
-  "\r\n\005topic\030\001 \001(\t\022\"\n\004data\030\002 \001(\0132\024.google.pr"
-  "otobuf.Any\"\312\001\n\005State\022\013\n\003key\030\001 \001(\t\022#\n\005val"
-  "ue\030\002 \001(\0132\024.google.protobuf.Any\022\014\n\004etag\030\003"
-  " \001(\t\022+\n\010metadata\030\004 \003(\0132\031.dapr.State.Meta"
-  "dataEntry\022#\n\007options\030\005 \001(\0132\022.dapr.StateO"
-  "ptions\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005"
-  "value\030\002 \001(\t:\0028\001\"`\n\014StateOptions\022\023\n\013concu"
-  "rrency\030\001 \001(\t\022\023\n\013consistency\030\002 \001(\t\022&\n\013ret"
-  "ryPolicy\030\003 \001(\0132\021.dapr.RetryPolicy\"^\n\013Ret"
-  "ryPolicy\022\021\n\tthreshold\030\001 \001(\005\022\017\n\007pattern\030\002"
-  " \001(\t\022+\n\010interval\030\003 \001(\0132\031.google.protobuf"
-  ".Duration\"\337\001\n\014StateRequest\022\013\n\003key\030\001 \001(\t\022"
-  "#\n\005value\030\002 \001(\0132\024.google.protobuf.Any\022\014\n\004"
-  "etag\030\003 \001(\t\0222\n\010metadata\030\004 \003(\0132 .dapr.Stat"
-  "eRequest.MetadataEntry\022*\n\007options\030\005 \001(\0132"
-  "\031.dapr.StateRequestOptions\032/\n\rMetadataEn"
-  "try\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"l\n\023S"
-  "tateRequestOptions\022\023\n\013concurrency\030\001 \001(\t\022"
-  "\023\n\013consistency\030\002 \001(\t\022+\n\013retryPolicy\030\003 \001("
-  "\0132\026.dapr.StateRetryPolicy\"c\n\020StateRetryP"
-  "olicy\022\021\n\tthreshold\030\001 \001(\005\022\017\n\007pattern\030\002 \001("
-  "\t\022+\n\010interval\030\003 \001(\0132\031.google.protobuf.Du"
-  "ration2\263\003\n\004Dapr\022D\n\014PublishEvent\022\032.dapr.P"
-  "ublishEventEnvelope\032\026.google.protobuf.Em"
-  "pty\"\000\022S\n\rInvokeService\022\033.dapr.InvokeServ"
-  "iceEnvelope\032#.dapr.InvokeServiceResponse"
-  "Envelope\"\000\022F\n\rInvokeBinding\022\033.dapr.Invok"
-  "eBindingEnvelope\032\026.google.protobuf.Empty"
-  "\"\000\022D\n\010GetState\022\026.dapr.GetStateEnvelope\032\036"
-  ".dapr.GetStateResponseEnvelope\"\000\022>\n\tSave"
-  "State\022\027.dapr.SaveStateEnvelope\032\026.google."
-  "protobuf.Empty\"\000\022B\n\013DeleteState\022\031.dapr.D"
-  "eleteStateEnvelope\032\026.google.protobuf.Emp"
-  "ty\"\000B(\n\007io.daprB\nDaprProtos\252\002\020Dapr.Clien"
-  "t.Grpcb\006proto3"
+  "le.protobuf.Any\022\014\n\004etag\030\002 \001(\t\"\235\001\n\021GetSec"
+  "retEnvelope\022\021\n\tstoreName\030\001 \001(\t\022\013\n\003key\030\002 "
+  "\001(\t\0227\n\010metadata\030\003 \003(\0132%.dapr.GetSecretEn"
+  "velope.MetadataEntry\032/\n\rMetadataEntry\022\013\n"
+  "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\201\001\n\031GetSec"
+  "retResponseEnvelope\0227\n\004data\030\001 \003(\0132).dapr"
+  ".GetSecretResponseEnvelope.DataEntry\032+\n\t"
+  "DataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028"
+  "\001\"\267\001\n\025InvokeBindingEnvelope\022\014\n\004name\030\001 \001("
+  "\t\022\"\n\004data\030\002 \001(\0132\024.google.protobuf.Any\022;\n"
+  "\010metadata\030\003 \003(\0132).dapr.InvokeBindingEnve"
+  "lope.MetadataEntry\032/\n\rMetadataEntry\022\013\n\003k"
+  "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\305\001\n\025InvokeSe"
+  "rviceEnvelope\022\n\n\002id\030\001 \001(\t\022\016\n\006method\030\002 \001("
+  "\t\022\"\n\004data\030\003 \001(\0132\024.google.protobuf.Any\022;\n"
+  "\010metadata\030\004 \003(\0132).dapr.InvokeServiceEnve"
+  "lope.MetadataEntry\032/\n\rMetadataEntry\022\013\n\003k"
+  "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"I\n\024PublishEv"
+  "entEnvelope\022\r\n\005topic\030\001 \001(\t\022\"\n\004data\030\002 \001(\013"
+  "2\024.google.protobuf.Any\"\312\001\n\005State\022\013\n\003key\030"
+  "\001 \001(\t\022#\n\005value\030\002 \001(\0132\024.google.protobuf.A"
+  "ny\022\014\n\004etag\030\003 \001(\t\022+\n\010metadata\030\004 \003(\0132\031.dap"
+  "r.State.MetadataEntry\022#\n\007options\030\005 \001(\0132\022"
+  ".dapr.StateOptions\032/\n\rMetadataEntry\022\013\n\003k"
+  "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"`\n\014StateOpti"
+  "ons\022\023\n\013concurrency\030\001 \001(\t\022\023\n\013consistency\030"
+  "\002 \001(\t\022&\n\013retryPolicy\030\003 \001(\0132\021.dapr.RetryP"
+  "olicy\"^\n\013RetryPolicy\022\021\n\tthreshold\030\001 \001(\005\022"
+  "\017\n\007pattern\030\002 \001(\t\022+\n\010interval\030\003 \001(\0132\031.goo"
+  "gle.protobuf.Duration\"\337\001\n\014StateRequest\022\013"
+  "\n\003key\030\001 \001(\t\022#\n\005value\030\002 \001(\0132\024.google.prot"
+  "obuf.Any\022\014\n\004etag\030\003 \001(\t\0222\n\010metadata\030\004 \003(\013"
+  "2 .dapr.StateRequest.MetadataEntry\022*\n\007op"
+  "tions\030\005 \001(\0132\031.dapr.StateRequestOptions\032/"
+  "\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 "
+  "\001(\t:\0028\001\"l\n\023StateRequestOptions\022\023\n\013concur"
+  "rency\030\001 \001(\t\022\023\n\013consistency\030\002 \001(\t\022+\n\013retr"
+  "yPolicy\030\003 \001(\0132\026.dapr.StateRetryPolicy\"c\n"
+  "\020StateRetryPolicy\022\021\n\tthreshold\030\001 \001(\005\022\017\n\007"
+  "pattern\030\002 \001(\t\022+\n\010interval\030\003 \001(\0132\031.google"
+  ".protobuf.Duration2\374\003\n\004Dapr\022D\n\014PublishEv"
+  "ent\022\032.dapr.PublishEventEnvelope\032\026.google"
+  ".protobuf.Empty\"\000\022S\n\rInvokeService\022\033.dap"
+  "r.InvokeServiceEnvelope\032#.dapr.InvokeSer"
+  "viceResponseEnvelope\"\000\022F\n\rInvokeBinding\022"
+  "\033.dapr.InvokeBindingEnvelope\032\026.google.pr"
+  "otobuf.Empty\"\000\022D\n\010GetState\022\026.dapr.GetSta"
+  "teEnvelope\032\036.dapr.GetStateResponseEnvelo"
+  "pe\"\000\022G\n\tGetSecret\022\027.dapr.GetSecretEnvelo"
+  "pe\032\037.dapr.GetSecretResponseEnvelope\"\000\022>\n"
+  "\tSaveState\022\027.dapr.SaveStateEnvelope\032\026.go"
+  "ogle.protobuf.Empty\"\000\022B\n\013DeleteState\022\031.d"
+  "apr.DeleteStateEnvelope\032\026.google.protobu"
+  "f.Empty\"\000B0\n\007io.daprB\nDaprProtos\252\002\030Dapr."
+  "Client.Autogen.Grpcb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_dapr_2eproto_deps[3] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
   &::descriptor_table_google_2fprotobuf_2fduration_2eproto,
   &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_dapr_2eproto_sccs[19] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_dapr_2eproto_sccs[23] = {
   &scc_info_DeleteStateEnvelope_dapr_2eproto.base,
+  &scc_info_GetSecretEnvelope_dapr_2eproto.base,
+  &scc_info_GetSecretEnvelope_MetadataEntry_DoNotUse_dapr_2eproto.base,
+  &scc_info_GetSecretResponseEnvelope_dapr_2eproto.base,
+  &scc_info_GetSecretResponseEnvelope_DataEntry_DoNotUse_dapr_2eproto.base,
   &scc_info_GetStateEnvelope_dapr_2eproto.base,
   &scc_info_GetStateResponseEnvelope_dapr_2eproto.base,
   &scc_info_InvokeBindingEnvelope_dapr_2eproto.base,
@@ -686,10 +813,10 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_dap
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_dapr_2eproto_once;
 static bool descriptor_table_dapr_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_dapr_2eproto = {
-  &descriptor_table_dapr_2eproto_initialized, descriptor_table_protodef_dapr_2eproto, "dapr.proto", 2414,
-  &descriptor_table_dapr_2eproto_once, descriptor_table_dapr_2eproto_sccs, descriptor_table_dapr_2eproto_deps, 19, 3,
+  &descriptor_table_dapr_2eproto_initialized, descriptor_table_protodef_dapr_2eproto, "dapr.proto", 2787,
+  &descriptor_table_dapr_2eproto_once, descriptor_table_dapr_2eproto_sccs, descriptor_table_dapr_2eproto_deps, 23, 3,
   schemas, file_default_instances, TableStruct_dapr_2eproto::offsets,
-  file_level_metadata_dapr_2eproto, 19, file_level_enum_descriptors_dapr_2eproto, file_level_service_descriptors_dapr_2eproto,
+  file_level_metadata_dapr_2eproto, 23, file_level_enum_descriptors_dapr_2eproto, file_level_service_descriptors_dapr_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -2066,6 +2193,578 @@ void GetStateResponseEnvelope::InternalSwap(GetStateResponseEnvelope* other) {
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GetStateResponseEnvelope::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+GetSecretEnvelope_MetadataEntry_DoNotUse::GetSecretEnvelope_MetadataEntry_DoNotUse() {}
+GetSecretEnvelope_MetadataEntry_DoNotUse::GetSecretEnvelope_MetadataEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void GetSecretEnvelope_MetadataEntry_DoNotUse::MergeFrom(const GetSecretEnvelope_MetadataEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata GetSecretEnvelope_MetadataEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+void GetSecretEnvelope_MetadataEntry_DoNotUse::MergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
+}
+
+
+// ===================================================================
+
+void GetSecretEnvelope::InitAsDefaultInstance() {
+}
+class GetSecretEnvelope::_Internal {
+ public:
+};
+
+GetSecretEnvelope::GetSecretEnvelope()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dapr.GetSecretEnvelope)
+}
+GetSecretEnvelope::GetSecretEnvelope(const GetSecretEnvelope& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  metadata_.MergeFrom(from.metadata_);
+  storename_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_storename().empty()) {
+    storename_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.storename_);
+  }
+  key_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_key().empty()) {
+    key_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.key_);
+  }
+  // @@protoc_insertion_point(copy_constructor:dapr.GetSecretEnvelope)
+}
+
+void GetSecretEnvelope::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_GetSecretEnvelope_dapr_2eproto.base);
+  storename_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  key_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+GetSecretEnvelope::~GetSecretEnvelope() {
+  // @@protoc_insertion_point(destructor:dapr.GetSecretEnvelope)
+  SharedDtor();
+}
+
+void GetSecretEnvelope::SharedDtor() {
+  storename_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  key_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void GetSecretEnvelope::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const GetSecretEnvelope& GetSecretEnvelope::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_GetSecretEnvelope_dapr_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void GetSecretEnvelope::Clear() {
+// @@protoc_insertion_point(message_clear_start:dapr.GetSecretEnvelope)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  metadata_.Clear();
+  storename_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  key_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+const char* GetSecretEnvelope::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string storeName = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_storename();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "dapr.GetSecretEnvelope.storeName"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string key = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_key();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "dapr.GetSecretEnvelope.key"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // map<string, string> metadata = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&metadata_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* GetSecretEnvelope::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dapr.GetSecretEnvelope)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string storeName = 1;
+  if (this->storename().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_storename().data(), static_cast<int>(this->_internal_storename().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "dapr.GetSecretEnvelope.storeName");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_storename(), target);
+  }
+
+  // string key = 2;
+  if (this->key().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_key().data(), static_cast<int>(this->_internal_key().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "dapr.GetSecretEnvelope.key");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_key(), target);
+  }
+
+  // map<string, string> metadata = 3;
+  if (!this->_internal_metadata().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+          "dapr.GetSecretEnvelope.MetadataEntry.key");
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+          p->second.data(), static_cast<int>(p->second.length()),
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+          "dapr.GetSecretEnvelope.MetadataEntry.value");
+      }
+    };
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_metadata().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_metadata().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+          it = this->_internal_metadata().begin();
+          it != this->_internal_metadata().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = GetSecretEnvelope_MetadataEntry_DoNotUse::Funcs::InternalSerialize(3, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+          it = this->_internal_metadata().begin();
+          it != this->_internal_metadata().end(); ++it) {
+        target = GetSecretEnvelope_MetadataEntry_DoNotUse::Funcs::InternalSerialize(3, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:dapr.GetSecretEnvelope)
+  return target;
+}
+
+size_t GetSecretEnvelope::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:dapr.GetSecretEnvelope)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<string, string> metadata = 3;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_metadata_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+      it = this->_internal_metadata().begin();
+      it != this->_internal_metadata().end(); ++it) {
+    total_size += GetSecretEnvelope_MetadataEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  // string storeName = 1;
+  if (this->storename().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_storename());
+  }
+
+  // string key = 2;
+  if (this->key().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_key());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void GetSecretEnvelope::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dapr.GetSecretEnvelope)
+  GOOGLE_DCHECK_NE(&from, this);
+  const GetSecretEnvelope* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<GetSecretEnvelope>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.GetSecretEnvelope)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.GetSecretEnvelope)
+    MergeFrom(*source);
+  }
+}
+
+void GetSecretEnvelope::MergeFrom(const GetSecretEnvelope& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dapr.GetSecretEnvelope)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  metadata_.MergeFrom(from.metadata_);
+  if (from.storename().size() > 0) {
+
+    storename_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.storename_);
+  }
+  if (from.key().size() > 0) {
+
+    key_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.key_);
+  }
+}
+
+void GetSecretEnvelope::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dapr.GetSecretEnvelope)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetSecretEnvelope::CopyFrom(const GetSecretEnvelope& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dapr.GetSecretEnvelope)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetSecretEnvelope::IsInitialized() const {
+  return true;
+}
+
+void GetSecretEnvelope::InternalSwap(GetSecretEnvelope* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  metadata_.Swap(&other->metadata_);
+  storename_.Swap(&other->storename_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  key_.Swap(&other->key_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GetSecretEnvelope::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+GetSecretResponseEnvelope_DataEntry_DoNotUse::GetSecretResponseEnvelope_DataEntry_DoNotUse() {}
+GetSecretResponseEnvelope_DataEntry_DoNotUse::GetSecretResponseEnvelope_DataEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void GetSecretResponseEnvelope_DataEntry_DoNotUse::MergeFrom(const GetSecretResponseEnvelope_DataEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata GetSecretResponseEnvelope_DataEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+void GetSecretResponseEnvelope_DataEntry_DoNotUse::MergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
+}
+
+
+// ===================================================================
+
+void GetSecretResponseEnvelope::InitAsDefaultInstance() {
+}
+class GetSecretResponseEnvelope::_Internal {
+ public:
+};
+
+GetSecretResponseEnvelope::GetSecretResponseEnvelope()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dapr.GetSecretResponseEnvelope)
+}
+GetSecretResponseEnvelope::GetSecretResponseEnvelope(const GetSecretResponseEnvelope& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  data_.MergeFrom(from.data_);
+  // @@protoc_insertion_point(copy_constructor:dapr.GetSecretResponseEnvelope)
+}
+
+void GetSecretResponseEnvelope::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_GetSecretResponseEnvelope_dapr_2eproto.base);
+}
+
+GetSecretResponseEnvelope::~GetSecretResponseEnvelope() {
+  // @@protoc_insertion_point(destructor:dapr.GetSecretResponseEnvelope)
+  SharedDtor();
+}
+
+void GetSecretResponseEnvelope::SharedDtor() {
+}
+
+void GetSecretResponseEnvelope::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const GetSecretResponseEnvelope& GetSecretResponseEnvelope::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_GetSecretResponseEnvelope_dapr_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void GetSecretResponseEnvelope::Clear() {
+// @@protoc_insertion_point(message_clear_start:dapr.GetSecretResponseEnvelope)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  data_.Clear();
+  _internal_metadata_.Clear();
+}
+
+const char* GetSecretResponseEnvelope::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // map<string, string> data = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&data_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* GetSecretResponseEnvelope::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:dapr.GetSecretResponseEnvelope)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // map<string, string> data = 1;
+  if (!this->_internal_data().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+          "dapr.GetSecretResponseEnvelope.DataEntry.key");
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+          p->second.data(), static_cast<int>(p->second.length()),
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+          "dapr.GetSecretResponseEnvelope.DataEntry.value");
+      }
+    };
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_data().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_data().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+          it = this->_internal_data().begin();
+          it != this->_internal_data().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = GetSecretResponseEnvelope_DataEntry_DoNotUse::Funcs::InternalSerialize(1, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+          it = this->_internal_data().begin();
+          it != this->_internal_data().end(); ++it) {
+        target = GetSecretResponseEnvelope_DataEntry_DoNotUse::Funcs::InternalSerialize(1, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:dapr.GetSecretResponseEnvelope)
+  return target;
+}
+
+size_t GetSecretResponseEnvelope::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:dapr.GetSecretResponseEnvelope)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<string, string> data = 1;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_data_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+      it = this->_internal_data().begin();
+      it != this->_internal_data().end(); ++it) {
+    total_size += GetSecretResponseEnvelope_DataEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void GetSecretResponseEnvelope::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dapr.GetSecretResponseEnvelope)
+  GOOGLE_DCHECK_NE(&from, this);
+  const GetSecretResponseEnvelope* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<GetSecretResponseEnvelope>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.GetSecretResponseEnvelope)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.GetSecretResponseEnvelope)
+    MergeFrom(*source);
+  }
+}
+
+void GetSecretResponseEnvelope::MergeFrom(const GetSecretResponseEnvelope& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dapr.GetSecretResponseEnvelope)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  data_.MergeFrom(from.data_);
+}
+
+void GetSecretResponseEnvelope::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dapr.GetSecretResponseEnvelope)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GetSecretResponseEnvelope::CopyFrom(const GetSecretResponseEnvelope& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dapr.GetSecretResponseEnvelope)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetSecretResponseEnvelope::IsInitialized() const {
+  return true;
+}
+
+void GetSecretResponseEnvelope::InternalSwap(GetSecretResponseEnvelope* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  data_.Swap(&other->data_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GetSecretResponseEnvelope::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -5008,6 +5707,18 @@ template<> PROTOBUF_NOINLINE ::dapr::GetStateEnvelope* Arena::CreateMaybeMessage
 }
 template<> PROTOBUF_NOINLINE ::dapr::GetStateResponseEnvelope* Arena::CreateMaybeMessage< ::dapr::GetStateResponseEnvelope >(Arena* arena) {
   return Arena::CreateInternal< ::dapr::GetStateResponseEnvelope >(arena);
+}
+template<> PROTOBUF_NOINLINE ::dapr::GetSecretEnvelope_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage< ::dapr::GetSecretEnvelope_MetadataEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::dapr::GetSecretEnvelope_MetadataEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::dapr::GetSecretEnvelope* Arena::CreateMaybeMessage< ::dapr::GetSecretEnvelope >(Arena* arena) {
+  return Arena::CreateInternal< ::dapr::GetSecretEnvelope >(arena);
+}
+template<> PROTOBUF_NOINLINE ::dapr::GetSecretResponseEnvelope_DataEntry_DoNotUse* Arena::CreateMaybeMessage< ::dapr::GetSecretResponseEnvelope_DataEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::dapr::GetSecretResponseEnvelope_DataEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::dapr::GetSecretResponseEnvelope* Arena::CreateMaybeMessage< ::dapr::GetSecretResponseEnvelope >(Arena* arena) {
+  return Arena::CreateInternal< ::dapr::GetSecretResponseEnvelope >(arena);
 }
 template<> PROTOBUF_NOINLINE ::dapr::InvokeBindingEnvelope_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage< ::dapr::InvokeBindingEnvelope_MetadataEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateInternal< ::dapr::InvokeBindingEnvelope_MetadataEntry_DoNotUse >(arena);
