@@ -11,6 +11,7 @@
 #include <grpcpp/impl/codegen/channel_interface.h>
 #include <grpcpp/impl/codegen/client_unary_call.h>
 #include <grpcpp/impl/codegen/client_callback.h>
+#include <grpcpp/impl/codegen/message_allocator.h>
 #include <grpcpp/impl/codegen/method_handler.h>
 #include <grpcpp/impl/codegen/rpc_service_method.h>
 #include <grpcpp/impl/codegen/server_callback.h>
@@ -25,6 +26,7 @@ static const char* Dapr_method_names[] = {
   "/dapr.Dapr/InvokeService",
   "/dapr.Dapr/InvokeBinding",
   "/dapr.Dapr/GetState",
+  "/dapr.Dapr/GetSecret",
   "/dapr.Dapr/SaveState",
   "/dapr.Dapr/DeleteState",
 };
@@ -40,8 +42,9 @@ Dapr::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   , rpcmethod_InvokeService_(Dapr_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_InvokeBinding_(Dapr_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetState_(Dapr_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SaveState_(Dapr_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DeleteState_(Dapr_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSecret_(Dapr_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SaveState_(Dapr_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeleteState_(Dapr_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Dapr::Stub::PublishEvent(::grpc::ClientContext* context, const ::dapr::PublishEventEnvelope& request, ::google::protobuf::Empty* response) {
@@ -156,6 +159,34 @@ void Dapr::Stub::experimental_async::GetState(::grpc::ClientContext* context, co
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::dapr::GetStateResponseEnvelope>::Create(channel_.get(), cq, rpcmethod_GetState_, context, request, false);
 }
 
+::grpc::Status Dapr::Stub::GetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::dapr::GetSecretResponseEnvelope* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetSecret_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::GetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetSecret_, context, request, response, std::move(f));
+}
+
+void Dapr::Stub::experimental_async::GetSecret(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::dapr::GetSecretResponseEnvelope* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetSecret_, context, request, response, std::move(f));
+}
+
+void Dapr::Stub::experimental_async::GetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetSecret_, context, request, response, reactor);
+}
+
+void Dapr::Stub::experimental_async::GetSecret(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::dapr::GetSecretResponseEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetSecret_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::GetSecretResponseEnvelope>* Dapr::Stub::AsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::dapr::GetSecretResponseEnvelope>::Create(channel_.get(), cq, rpcmethod_GetSecret_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::GetSecretResponseEnvelope>* Dapr::Stub::PrepareAsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::dapr::GetSecretResponseEnvelope>::Create(channel_.get(), cq, rpcmethod_GetSecret_, context, request, false);
+}
+
 ::grpc::Status Dapr::Stub::SaveState(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope& request, ::google::protobuf::Empty* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SaveState_, context, request, response);
 }
@@ -236,10 +267,15 @@ Dapr::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Dapr_method_names[4],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::GetSecretEnvelope, ::dapr::GetSecretResponseEnvelope>(
+          std::mem_fn(&Dapr::Service::GetSecret), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[5],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::SaveStateEnvelope, ::google::protobuf::Empty>(
           std::mem_fn(&Dapr::Service::SaveState), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[5],
+      Dapr_method_names[6],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::DeleteStateEnvelope, ::google::protobuf::Empty>(
           std::mem_fn(&Dapr::Service::DeleteState), this)));
@@ -270,6 +306,13 @@ Dapr::Service::~Service() {
 }
 
 ::grpc::Status Dapr::Service::GetState(::grpc::ServerContext* context, const ::dapr::GetStateEnvelope* request, ::dapr::GetStateResponseEnvelope* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::GetSecret(::grpc::ServerContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response) {
   (void) context;
   (void) request;
   (void) response;
