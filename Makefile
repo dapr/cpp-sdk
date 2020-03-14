@@ -1,5 +1,8 @@
-HOST_SYSTEM = $(shell uname | cut -f 1 -d_)
-SYSTEM ?= $(HOST_SYSTEM)
+# ------------------------------------------------------------
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+# ------------------------------------------------------------
+
 CXX = g++
 PROTOC = protoc
 GRPC_CPP_PLUGIN = grpc_cpp_plugin
