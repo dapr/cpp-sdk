@@ -22,7 +22,7 @@ RUN apt-get update \
     && apt-get -y install git iproute2 procps lsb-release \
     #
     # Install C++ tools
-    && apt-get -y install build-essential cmake cppcheck valgrind autoconf automake libtool curl make g++ unzip protobuf-compiler \
+    && apt-get -y install build-essential cmake cppcheck valgrind autoconf automake libtool curl make g++ unzip wget \
     #
     # [Optional] Update UID/GID if needed
     && if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
@@ -35,6 +35,13 @@ RUN apt-get update \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
+
+RUN cd /usr/local/src \
+    && wget https://github.com/protocolbuffers/protobuf/releases/download/v3.11.4/protobuf-cpp-3.11.4.tar.gz \
+    && tar xzf protobuf-cpp-3.11.4.tar.gz && cd protobuf-3.11.4 \
+    && ./configure \
+    && make && make check && make install \
+    && ldconfig 
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
