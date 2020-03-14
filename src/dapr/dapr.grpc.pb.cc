@@ -5,6 +5,7 @@
 #include "dapr.pb.h"
 #include "dapr.grpc.pb.h"
 
+<<<<<<< HEAD
 #include <grpc++/impl/codegen/async_stream.h>
 #include <grpc++/impl/codegen/async_unary_call.h>
 #include <grpc++/impl/codegen/channel_interface.h>
@@ -13,6 +14,22 @@
 #include <grpc++/impl/codegen/rpc_service_method.h>
 #include <grpc++/impl/codegen/service_type.h>
 #include <grpc++/impl/codegen/sync_stream.h>
+=======
+#include <functional>
+#include <grpcpp/impl/codegen/async_stream.h>
+#include <grpcpp/impl/codegen/async_unary_call.h>
+#include <grpcpp/impl/codegen/channel_interface.h>
+#include <grpcpp/impl/codegen/client_unary_call.h>
+#include <grpcpp/impl/codegen/client_callback.h>
+#include <grpcpp/impl/codegen/message_allocator.h>
+#include <grpcpp/impl/codegen/method_handler.h>
+#include <grpcpp/impl/codegen/rpc_service_method.h>
+#include <grpcpp/impl/codegen/server_callback.h>
+#include <grpcpp/impl/codegen/server_callback_handlers.h>
+#include <grpcpp/impl/codegen/server_context.h>
+#include <grpcpp/impl/codegen/service_type.h>
+#include <grpcpp/impl/codegen/sync_stream.h>
+>>>>>>> master
 namespace dapr {
 
 static const char* Dapr_method_names[] = {
@@ -31,6 +48,7 @@ std::unique_ptr< Dapr::Stub> Dapr::NewStub(const std::shared_ptr< ::grpc::Channe
 }
 
 Dapr::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
+<<<<<<< HEAD
   : channel_(channel), rpcmethod_PublishEvent_(Dapr_method_names[0], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_InvokeService_(Dapr_method_names[1], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_InvokeBinding_(Dapr_method_names[2], ::grpc::RpcMethod::NORMAL_RPC, channel)
@@ -38,6 +56,15 @@ Dapr::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   , rpcmethod_GetSecret_(Dapr_method_names[4], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SaveState_(Dapr_method_names[5], ::grpc::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_DeleteState_(Dapr_method_names[6], ::grpc::RpcMethod::NORMAL_RPC, channel)
+=======
+  : channel_(channel), rpcmethod_PublishEvent_(Dapr_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_InvokeService_(Dapr_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_InvokeBinding_(Dapr_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetState_(Dapr_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSecret_(Dapr_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SaveState_(Dapr_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeleteState_(Dapr_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+>>>>>>> master
   {}
 
 ::grpc::Status Dapr::Stub::PublishEvent(::grpc::ClientContext* context, const ::dapr::PublishEventEnvelope& request, ::google::protobuf::Empty* response) {
@@ -76,8 +103,45 @@ Dapr::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   return ::grpc::BlockingUnaryCall(channel_.get(), rpcmethod_GetSecret_, context, request, response);
 }
 
+<<<<<<< HEAD
 ::grpc::ClientAsyncResponseReader< ::dapr::GetSecretResponseEnvelope>* Dapr::Stub::AsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::grpc::CompletionQueue* cq) {
   return new ::grpc::ClientAsyncResponseReader< ::dapr::GetSecretResponseEnvelope>(channel_.get(), cq, rpcmethod_GetSecret_, context, request);
+=======
+::grpc::Status Dapr::Stub::GetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::dapr::GetSecretResponseEnvelope* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetSecret_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::GetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetSecret_, context, request, response, std::move(f));
+}
+
+void Dapr::Stub::experimental_async::GetSecret(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::dapr::GetSecretResponseEnvelope* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetSecret_, context, request, response, std::move(f));
+}
+
+void Dapr::Stub::experimental_async::GetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetSecret_, context, request, response, reactor);
+}
+
+void Dapr::Stub::experimental_async::GetSecret(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::dapr::GetSecretResponseEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_GetSecret_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::GetSecretResponseEnvelope>* Dapr::Stub::AsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::dapr::GetSecretResponseEnvelope>::Create(channel_.get(), cq, rpcmethod_GetSecret_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::GetSecretResponseEnvelope>* Dapr::Stub::PrepareAsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::dapr::GetSecretResponseEnvelope>::Create(channel_.get(), cq, rpcmethod_GetSecret_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::SaveState(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SaveState_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::SaveState(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SaveState_, context, request, response, std::move(f));
+>>>>>>> master
 }
 
 ::grpc::Status Dapr::Stub::SaveState(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope& request, ::google::protobuf::Empty* response) {
@@ -119,6 +183,7 @@ Dapr::Service::Service() {
           std::mem_fn(&Dapr::Service::GetState), this)));
   AddMethod(new ::grpc::RpcServiceMethod(
       Dapr_method_names[4],
+<<<<<<< HEAD
       ::grpc::RpcMethod::NORMAL_RPC,
       new ::grpc::RpcMethodHandler< Dapr::Service, ::dapr::GetSecretEnvelope, ::dapr::GetSecretResponseEnvelope>(
           std::mem_fn(&Dapr::Service::GetSecret), this)));
@@ -131,6 +196,20 @@ Dapr::Service::Service() {
       Dapr_method_names[6],
       ::grpc::RpcMethod::NORMAL_RPC,
       new ::grpc::RpcMethodHandler< Dapr::Service, ::dapr::DeleteStateEnvelope, ::google::protobuf::Empty>(
+=======
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::GetSecretEnvelope, ::dapr::GetSecretResponseEnvelope>(
+          std::mem_fn(&Dapr::Service::GetSecret), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[5],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::SaveStateEnvelope, ::google::protobuf::Empty>(
+          std::mem_fn(&Dapr::Service::SaveState), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[6],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::DeleteStateEnvelope, ::google::protobuf::Empty>(
+>>>>>>> master
           std::mem_fn(&Dapr::Service::DeleteState), this)));
 }
 
