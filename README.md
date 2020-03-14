@@ -1,14 +1,14 @@
-## C++ sdk for Dapr
+## C++ SDK for Dapr
 
 Alpha quality.
 
 ### Prerequisites
 
+> Note: C++ highly depends on the installed dependencies in the system. This project uses VSCode Remote Container environment to build and develop cpp-sdk in a consistent way.
+
 1. Install [Docker CLI](https://docs.docker.com/get-started/)
 2. Install [VSCode](https://code.visualstudio.com/download)
 3. Install [VSCode Remote - Container extension](https://code.visualstudio.com/docs/remote/containers)
-
-> Note: this project uses VSCode Remote Container environment to build and develop cpp-sdk
 
 ### Update gRPC client
 
@@ -22,11 +22,10 @@ Alpha quality.
     make daprclient.pb.cc
     ```
 
-### Build
+### Build library
 
 1. Make sure that you enable vscode remote container
 2. Build client
     ```bash
     make all
     ```
-
