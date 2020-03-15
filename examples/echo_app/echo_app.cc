@@ -2,9 +2,9 @@
 #include <memory>
 #include <string>
 
-#include <grpc++/grpc++.h>
-#include <grpc++/health_check_service_interface.h>
-#include <grpc++/ext/proto_server_reflection_plugin.h>
+#include <grpcpp/grpcpp.h>
+#include <grpcpp/health_check_service_interface.h>
+#include <grpcpp/ext/proto_server_reflection_plugin.h>
 
 #include "echo_app_server_impl.h"
 #include "../../src/dapr/dapr.grpc.pb.h"
