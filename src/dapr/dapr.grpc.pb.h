@@ -14,20 +14,21 @@
 
 #include "dapr.pb.h"
 
-#include <grpc++/impl/codegen/async_stream.h>
-#include <grpc++/impl/codegen/async_unary_call.h>
-#include <grpc++/impl/codegen/method_handler_impl.h>
-#include <grpc++/impl/codegen/proto_utils.h>
-#include <grpc++/impl/codegen/rpc_method.h>
-#include <grpc++/impl/codegen/service_type.h>
-#include <grpc++/impl/codegen/status.h>
-#include <grpc++/impl/codegen/stub_options.h>
-#include <grpc++/impl/codegen/sync_stream.h>
+#include <functional>
+#include <grpcpp/impl/codegen/async_generic_service.h>
+#include <grpcpp/impl/codegen/async_stream.h>
+#include <grpcpp/impl/codegen/async_unary_call.h>
+#include <grpcpp/impl/codegen/method_handler_impl.h>
+#include <grpcpp/impl/codegen/proto_utils.h>
+#include <grpcpp/impl/codegen/rpc_method.h>
+#include <grpcpp/impl/codegen/service_type.h>
+#include <grpcpp/impl/codegen/status.h>
+#include <grpcpp/impl/codegen/stub_options.h>
+#include <grpcpp/impl/codegen/sync_stream.h>
 
 namespace grpc {
 class CompletionQueue;
 class Channel;
-class RpcService;
 class ServerCompletionQueue;
 class ServerContext;
 }  // namespace grpc
@@ -37,6 +38,9 @@ namespace dapr {
 // Dapr definitions
 class Dapr final {
  public:
+  static constexpr char const* service_full_name() {
+    return "dapr.Dapr";
+  }
   class StubInterface {
    public:
     virtual ~StubInterface() {}
@@ -44,38 +48,78 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncPublishEvent(::grpc::ClientContext* context, const ::dapr::PublishEventEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncPublishEventRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncPublishEvent(::grpc::ClientContext* context, const ::dapr::PublishEventEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncPublishEventRaw(context, request, cq));
+    }
     virtual ::grpc::Status InvokeService(::grpc::ClientContext* context, const ::dapr::InvokeServiceEnvelope& request, ::dapr::InvokeServiceResponseEnvelope* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::InvokeServiceResponseEnvelope>> AsyncInvokeService(::grpc::ClientContext* context, const ::dapr::InvokeServiceEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::InvokeServiceResponseEnvelope>>(AsyncInvokeServiceRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::InvokeServiceResponseEnvelope>> PrepareAsyncInvokeService(::grpc::ClientContext* context, const ::dapr::InvokeServiceEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::InvokeServiceResponseEnvelope>>(PrepareAsyncInvokeServiceRaw(context, request, cq));
     }
     virtual ::grpc::Status InvokeBinding(::grpc::ClientContext* context, const ::dapr::InvokeBindingEnvelope& request, ::google::protobuf::Empty* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncInvokeBinding(::grpc::ClientContext* context, const ::dapr::InvokeBindingEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncInvokeBindingRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncInvokeBinding(::grpc::ClientContext* context, const ::dapr::InvokeBindingEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncInvokeBindingRaw(context, request, cq));
+    }
     virtual ::grpc::Status GetState(::grpc::ClientContext* context, const ::dapr::GetStateEnvelope& request, ::dapr::GetStateResponseEnvelope* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::GetStateResponseEnvelope>> AsyncGetState(::grpc::ClientContext* context, const ::dapr::GetStateEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::GetStateResponseEnvelope>>(AsyncGetStateRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::GetStateResponseEnvelope>> PrepareAsyncGetState(::grpc::ClientContext* context, const ::dapr::GetStateEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::GetStateResponseEnvelope>>(PrepareAsyncGetStateRaw(context, request, cq));
     }
     virtual ::grpc::Status GetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::dapr::GetSecretResponseEnvelope* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::GetSecretResponseEnvelope>> AsyncGetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::GetSecretResponseEnvelope>>(AsyncGetSecretRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::GetSecretResponseEnvelope>> PrepareAsyncGetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::GetSecretResponseEnvelope>>(PrepareAsyncGetSecretRaw(context, request, cq));
+    }
     virtual ::grpc::Status SaveState(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope& request, ::google::protobuf::Empty* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncSaveState(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncSaveStateRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncSaveState(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncSaveStateRaw(context, request, cq));
     }
     virtual ::grpc::Status DeleteState(::grpc::ClientContext* context, const ::dapr::DeleteStateEnvelope& request, ::google::protobuf::Empty* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncDeleteState(::grpc::ClientContext* context, const ::dapr::DeleteStateEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncDeleteStateRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncDeleteState(::grpc::ClientContext* context, const ::dapr::DeleteStateEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncDeleteStateRaw(context, request, cq));
+    }
+    class experimental_async_interface {
+     public:
+      virtual ~experimental_async_interface() {}
+      virtual void PublishEvent(::grpc::ClientContext* context, const ::dapr::PublishEventEnvelope* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void InvokeService(::grpc::ClientContext* context, const ::dapr::InvokeServiceEnvelope* request, ::dapr::InvokeServiceResponseEnvelope* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void InvokeBinding(::grpc::ClientContext* context, const ::dapr::InvokeBindingEnvelope* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetState(::grpc::ClientContext* context, const ::dapr::GetStateEnvelope* request, ::dapr::GetStateResponseEnvelope* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SaveState(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void DeleteState(::grpc::ClientContext* context, const ::dapr::DeleteStateEnvelope* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+    };
+    virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncPublishEventRaw(::grpc::ClientContext* context, const ::dapr::PublishEventEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncPublishEventRaw(::grpc::ClientContext* context, const ::dapr::PublishEventEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::InvokeServiceResponseEnvelope>* AsyncInvokeServiceRaw(::grpc::ClientContext* context, const ::dapr::InvokeServiceEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::InvokeServiceResponseEnvelope>* PrepareAsyncInvokeServiceRaw(::grpc::ClientContext* context, const ::dapr::InvokeServiceEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::InvokeBindingEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::InvokeBindingEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::GetStateResponseEnvelope>* AsyncGetStateRaw(::grpc::ClientContext* context, const ::dapr::GetStateEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::GetStateResponseEnvelope>* PrepareAsyncGetStateRaw(::grpc::ClientContext* context, const ::dapr::GetStateEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::GetSecretResponseEnvelope>* AsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::GetSecretResponseEnvelope>* PrepareAsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncSaveStateRaw(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncSaveStateRaw(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncDeleteStateRaw(::grpc::ClientContext* context, const ::dapr::DeleteStateEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncDeleteStateRaw(::grpc::ClientContext* context, const ::dapr::DeleteStateEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -84,47 +128,93 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncPublishEvent(::grpc::ClientContext* context, const ::dapr::PublishEventEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncPublishEventRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncPublishEvent(::grpc::ClientContext* context, const ::dapr::PublishEventEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncPublishEventRaw(context, request, cq));
+    }
     ::grpc::Status InvokeService(::grpc::ClientContext* context, const ::dapr::InvokeServiceEnvelope& request, ::dapr::InvokeServiceResponseEnvelope* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::InvokeServiceResponseEnvelope>> AsyncInvokeService(::grpc::ClientContext* context, const ::dapr::InvokeServiceEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::InvokeServiceResponseEnvelope>>(AsyncInvokeServiceRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::InvokeServiceResponseEnvelope>> PrepareAsyncInvokeService(::grpc::ClientContext* context, const ::dapr::InvokeServiceEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::InvokeServiceResponseEnvelope>>(PrepareAsyncInvokeServiceRaw(context, request, cq));
     }
     ::grpc::Status InvokeBinding(::grpc::ClientContext* context, const ::dapr::InvokeBindingEnvelope& request, ::google::protobuf::Empty* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncInvokeBinding(::grpc::ClientContext* context, const ::dapr::InvokeBindingEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncInvokeBindingRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncInvokeBinding(::grpc::ClientContext* context, const ::dapr::InvokeBindingEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncInvokeBindingRaw(context, request, cq));
+    }
     ::grpc::Status GetState(::grpc::ClientContext* context, const ::dapr::GetStateEnvelope& request, ::dapr::GetStateResponseEnvelope* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::GetStateResponseEnvelope>> AsyncGetState(::grpc::ClientContext* context, const ::dapr::GetStateEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::GetStateResponseEnvelope>>(AsyncGetStateRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::GetStateResponseEnvelope>> PrepareAsyncGetState(::grpc::ClientContext* context, const ::dapr::GetStateEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::GetStateResponseEnvelope>>(PrepareAsyncGetStateRaw(context, request, cq));
     }
     ::grpc::Status GetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::dapr::GetSecretResponseEnvelope* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::GetSecretResponseEnvelope>> AsyncGetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::GetSecretResponseEnvelope>>(AsyncGetSecretRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::GetSecretResponseEnvelope>> PrepareAsyncGetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::GetSecretResponseEnvelope>>(PrepareAsyncGetSecretRaw(context, request, cq));
+    }
     ::grpc::Status SaveState(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope& request, ::google::protobuf::Empty* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncSaveState(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncSaveStateRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncSaveState(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncSaveStateRaw(context, request, cq));
     }
     ::grpc::Status DeleteState(::grpc::ClientContext* context, const ::dapr::DeleteStateEnvelope& request, ::google::protobuf::Empty* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncDeleteState(::grpc::ClientContext* context, const ::dapr::DeleteStateEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncDeleteStateRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncDeleteState(::grpc::ClientContext* context, const ::dapr::DeleteStateEnvelope& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncDeleteStateRaw(context, request, cq));
+    }
+    class experimental_async final :
+      public StubInterface::experimental_async_interface {
+     public:
+      void PublishEvent(::grpc::ClientContext* context, const ::dapr::PublishEventEnvelope* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void InvokeService(::grpc::ClientContext* context, const ::dapr::InvokeServiceEnvelope* request, ::dapr::InvokeServiceResponseEnvelope* response, std::function<void(::grpc::Status)>) override;
+      void InvokeBinding(::grpc::ClientContext* context, const ::dapr::InvokeBindingEnvelope* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void GetState(::grpc::ClientContext* context, const ::dapr::GetStateEnvelope* request, ::dapr::GetStateResponseEnvelope* response, std::function<void(::grpc::Status)>) override;
+      void GetSecret(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response, std::function<void(::grpc::Status)>) override;
+      void SaveState(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void DeleteState(::grpc::ClientContext* context, const ::dapr::DeleteStateEnvelope* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+     private:
+      friend class Stub;
+      explicit experimental_async(Stub* stub): stub_(stub) { }
+      Stub* stub() { return stub_; }
+      Stub* stub_;
+    };
+    class experimental_async_interface* experimental_async() override { return &async_stub_; }
 
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
+    class experimental_async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncPublishEventRaw(::grpc::ClientContext* context, const ::dapr::PublishEventEnvelope& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncPublishEventRaw(::grpc::ClientContext* context, const ::dapr::PublishEventEnvelope& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::InvokeServiceResponseEnvelope>* AsyncInvokeServiceRaw(::grpc::ClientContext* context, const ::dapr::InvokeServiceEnvelope& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::InvokeServiceResponseEnvelope>* PrepareAsyncInvokeServiceRaw(::grpc::ClientContext* context, const ::dapr::InvokeServiceEnvelope& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::InvokeBindingEnvelope& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::InvokeBindingEnvelope& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::GetStateResponseEnvelope>* AsyncGetStateRaw(::grpc::ClientContext* context, const ::dapr::GetStateEnvelope& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::GetStateResponseEnvelope>* PrepareAsyncGetStateRaw(::grpc::ClientContext* context, const ::dapr::GetStateEnvelope& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::GetSecretResponseEnvelope>* AsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::GetSecretResponseEnvelope>* PrepareAsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::GetSecretEnvelope& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncSaveStateRaw(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncSaveStateRaw(::grpc::ClientContext* context, const ::dapr::SaveStateEnvelope& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncDeleteStateRaw(::grpc::ClientContext* context, const ::dapr::DeleteStateEnvelope& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::RpcMethod rpcmethod_PublishEvent_;
-    const ::grpc::RpcMethod rpcmethod_InvokeService_;
-    const ::grpc::RpcMethod rpcmethod_InvokeBinding_;
-    const ::grpc::RpcMethod rpcmethod_GetState_;
-    const ::grpc::RpcMethod rpcmethod_GetSecret_;
-    const ::grpc::RpcMethod rpcmethod_SaveState_;
-    const ::grpc::RpcMethod rpcmethod_DeleteState_;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncDeleteStateRaw(::grpc::ClientContext* context, const ::dapr::DeleteStateEnvelope& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_PublishEvent_;
+    const ::grpc::internal::RpcMethod rpcmethod_InvokeService_;
+    const ::grpc::internal::RpcMethod rpcmethod_InvokeBinding_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetState_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetSecret_;
+    const ::grpc::internal::RpcMethod rpcmethod_SaveState_;
+    const ::grpc::internal::RpcMethod rpcmethod_DeleteState_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -152,7 +242,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status PublishEvent(::grpc::ServerContext* context, const ::dapr::PublishEventEnvelope* request, ::google::protobuf::Empty* response) final override {
+    ::grpc::Status PublishEvent(::grpc::ServerContext* context, const ::dapr::PublishEventEnvelope* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -172,7 +262,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status InvokeService(::grpc::ServerContext* context, const ::dapr::InvokeServiceEnvelope* request, ::dapr::InvokeServiceResponseEnvelope* response) final override {
+    ::grpc::Status InvokeService(::grpc::ServerContext* context, const ::dapr::InvokeServiceEnvelope* request, ::dapr::InvokeServiceResponseEnvelope* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -192,7 +282,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::InvokeBindingEnvelope* request, ::google::protobuf::Empty* response) final override {
+    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::InvokeBindingEnvelope* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -212,7 +302,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetState(::grpc::ServerContext* context, const ::dapr::GetStateEnvelope* request, ::dapr::GetStateResponseEnvelope* response) final override {
+    ::grpc::Status GetState(::grpc::ServerContext* context, const ::dapr::GetStateEnvelope* request, ::dapr::GetStateResponseEnvelope* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -232,7 +322,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetSecret(::grpc::ServerContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response) final override {
+    ::grpc::Status GetSecret(::grpc::ServerContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -252,7 +342,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SaveState(::grpc::ServerContext* context, const ::dapr::SaveStateEnvelope* request, ::google::protobuf::Empty* response) final override {
+    ::grpc::Status SaveState(::grpc::ServerContext* context, const ::dapr::SaveStateEnvelope* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -272,7 +362,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status DeleteState(::grpc::ServerContext* context, const ::dapr::DeleteStateEnvelope* request, ::google::protobuf::Empty* response) final override {
+    ::grpc::Status DeleteState(::grpc::ServerContext* context, const ::dapr::DeleteStateEnvelope* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -293,7 +383,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status PublishEvent(::grpc::ServerContext* context, const ::dapr::PublishEventEnvelope* request, ::google::protobuf::Empty* response) final override {
+    ::grpc::Status PublishEvent(::grpc::ServerContext* context, const ::dapr::PublishEventEnvelope* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -310,7 +400,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status InvokeService(::grpc::ServerContext* context, const ::dapr::InvokeServiceEnvelope* request, ::dapr::InvokeServiceResponseEnvelope* response) final override {
+    ::grpc::Status InvokeService(::grpc::ServerContext* context, const ::dapr::InvokeServiceEnvelope* request, ::dapr::InvokeServiceResponseEnvelope* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -327,7 +417,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::InvokeBindingEnvelope* request, ::google::protobuf::Empty* response) final override {
+    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::InvokeBindingEnvelope* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -344,7 +434,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetState(::grpc::ServerContext* context, const ::dapr::GetStateEnvelope* request, ::dapr::GetStateResponseEnvelope* response) final override {
+    ::grpc::Status GetState(::grpc::ServerContext* context, const ::dapr::GetStateEnvelope* request, ::dapr::GetStateResponseEnvelope* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -361,7 +451,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetSecret(::grpc::ServerContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response) final override {
+    ::grpc::Status GetSecret(::grpc::ServerContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -378,7 +468,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SaveState(::grpc::ServerContext* context, const ::dapr::SaveStateEnvelope* request, ::google::protobuf::Empty* response) final override {
+    ::grpc::Status SaveState(::grpc::ServerContext* context, const ::dapr::SaveStateEnvelope* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -395,9 +485,149 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status DeleteState(::grpc::ServerContext* context, const ::dapr::DeleteStateEnvelope* request, ::google::protobuf::Empty* response) final override {
+    ::grpc::Status DeleteState(::grpc::ServerContext* context, const ::dapr::DeleteStateEnvelope* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_PublishEvent : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_PublishEvent() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_PublishEvent() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status PublishEvent(::grpc::ServerContext* context, const ::dapr::PublishEventEnvelope* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestPublishEvent(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_InvokeService : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_InvokeService() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_InvokeService() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status InvokeService(::grpc::ServerContext* context, const ::dapr::InvokeServiceEnvelope* request, ::dapr::InvokeServiceResponseEnvelope* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestInvokeService(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_InvokeBinding : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_InvokeBinding() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_InvokeBinding() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::InvokeBindingEnvelope* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestInvokeBinding(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetState : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_GetState() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_GetState() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetState(::grpc::ServerContext* context, const ::dapr::GetStateEnvelope* request, ::dapr::GetStateResponseEnvelope* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetState(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetSecret : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_GetSecret() {
+      ::grpc::Service::MarkMethodRaw(4);
+    }
+    ~WithRawMethod_GetSecret() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetSecret(::grpc::ServerContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetSecret(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SaveState : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_SaveState() {
+      ::grpc::Service::MarkMethodRaw(5);
+    }
+    ~WithRawMethod_SaveState() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SaveState(::grpc::ServerContext* context, const ::dapr::SaveStateEnvelope* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSaveState(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_DeleteState : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_DeleteState() {
+      ::grpc::Service::MarkMethodRaw(6);
+    }
+    ~WithRawMethod_DeleteState() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteState(::grpc::ServerContext* context, const ::dapr::DeleteStateEnvelope* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestDeleteState(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -407,13 +637,13 @@ class Dapr final {
    public:
     WithStreamedUnaryMethod_PublishEvent() {
       ::grpc::Service::MarkMethodStreamed(0,
-        new ::grpc::StreamedUnaryHandler< ::dapr::PublishEventEnvelope, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_PublishEvent<BaseClass>::StreamedPublishEvent, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::PublishEventEnvelope, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_PublishEvent<BaseClass>::StreamedPublishEvent, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_PublishEvent() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status PublishEvent(::grpc::ServerContext* context, const ::dapr::PublishEventEnvelope* request, ::google::protobuf::Empty* response) final override {
+    ::grpc::Status PublishEvent(::grpc::ServerContext* context, const ::dapr::PublishEventEnvelope* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -427,13 +657,13 @@ class Dapr final {
    public:
     WithStreamedUnaryMethod_InvokeService() {
       ::grpc::Service::MarkMethodStreamed(1,
-        new ::grpc::StreamedUnaryHandler< ::dapr::InvokeServiceEnvelope, ::dapr::InvokeServiceResponseEnvelope>(std::bind(&WithStreamedUnaryMethod_InvokeService<BaseClass>::StreamedInvokeService, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::InvokeServiceEnvelope, ::dapr::InvokeServiceResponseEnvelope>(std::bind(&WithStreamedUnaryMethod_InvokeService<BaseClass>::StreamedInvokeService, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_InvokeService() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status InvokeService(::grpc::ServerContext* context, const ::dapr::InvokeServiceEnvelope* request, ::dapr::InvokeServiceResponseEnvelope* response) final override {
+    ::grpc::Status InvokeService(::grpc::ServerContext* context, const ::dapr::InvokeServiceEnvelope* request, ::dapr::InvokeServiceResponseEnvelope* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -447,13 +677,13 @@ class Dapr final {
    public:
     WithStreamedUnaryMethod_InvokeBinding() {
       ::grpc::Service::MarkMethodStreamed(2,
-        new ::grpc::StreamedUnaryHandler< ::dapr::InvokeBindingEnvelope, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_InvokeBinding<BaseClass>::StreamedInvokeBinding, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::InvokeBindingEnvelope, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_InvokeBinding<BaseClass>::StreamedInvokeBinding, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_InvokeBinding() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::InvokeBindingEnvelope* request, ::google::protobuf::Empty* response) final override {
+    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::InvokeBindingEnvelope* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -467,13 +697,13 @@ class Dapr final {
    public:
     WithStreamedUnaryMethod_GetState() {
       ::grpc::Service::MarkMethodStreamed(3,
-        new ::grpc::StreamedUnaryHandler< ::dapr::GetStateEnvelope, ::dapr::GetStateResponseEnvelope>(std::bind(&WithStreamedUnaryMethod_GetState<BaseClass>::StreamedGetState, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::GetStateEnvelope, ::dapr::GetStateResponseEnvelope>(std::bind(&WithStreamedUnaryMethod_GetState<BaseClass>::StreamedGetState, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetState() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status GetState(::grpc::ServerContext* context, const ::dapr::GetStateEnvelope* request, ::dapr::GetStateResponseEnvelope* response) final override {
+    ::grpc::Status GetState(::grpc::ServerContext* context, const ::dapr::GetStateEnvelope* request, ::dapr::GetStateResponseEnvelope* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -487,13 +717,13 @@ class Dapr final {
    public:
     WithStreamedUnaryMethod_GetSecret() {
       ::grpc::Service::MarkMethodStreamed(4,
-        new ::grpc::StreamedUnaryHandler< ::dapr::GetSecretEnvelope, ::dapr::GetSecretResponseEnvelope>(std::bind(&WithStreamedUnaryMethod_GetSecret<BaseClass>::StreamedGetSecret, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::GetSecretEnvelope, ::dapr::GetSecretResponseEnvelope>(std::bind(&WithStreamedUnaryMethod_GetSecret<BaseClass>::StreamedGetSecret, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetSecret() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status GetSecret(::grpc::ServerContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response) final override {
+    ::grpc::Status GetSecret(::grpc::ServerContext* context, const ::dapr::GetSecretEnvelope* request, ::dapr::GetSecretResponseEnvelope* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -507,13 +737,13 @@ class Dapr final {
    public:
     WithStreamedUnaryMethod_SaveState() {
       ::grpc::Service::MarkMethodStreamed(5,
-        new ::grpc::StreamedUnaryHandler< ::dapr::SaveStateEnvelope, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_SaveState<BaseClass>::StreamedSaveState, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::SaveStateEnvelope, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_SaveState<BaseClass>::StreamedSaveState, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SaveState() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status SaveState(::grpc::ServerContext* context, const ::dapr::SaveStateEnvelope* request, ::google::protobuf::Empty* response) final override {
+    ::grpc::Status SaveState(::grpc::ServerContext* context, const ::dapr::SaveStateEnvelope* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -527,13 +757,13 @@ class Dapr final {
    public:
     WithStreamedUnaryMethod_DeleteState() {
       ::grpc::Service::MarkMethodStreamed(6,
-        new ::grpc::StreamedUnaryHandler< ::dapr::DeleteStateEnvelope, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_DeleteState<BaseClass>::StreamedDeleteState, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::DeleteStateEnvelope, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_DeleteState<BaseClass>::StreamedDeleteState, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_DeleteState() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status DeleteState(::grpc::ServerContext* context, const ::dapr::DeleteStateEnvelope* request, ::google::protobuf::Empty* response) final override {
+    ::grpc::Status DeleteState(::grpc::ServerContext* context, const ::dapr::DeleteStateEnvelope* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
