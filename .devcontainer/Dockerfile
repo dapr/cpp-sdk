@@ -23,7 +23,7 @@ RUN apt-get update \
     #
     # Install C++ tools
     && apt-get -y install build-essential cmake cppcheck valgrind autoconf automake libtool curl make g++ unzip wget \
-    && apt-get -y install libgrpc++-dev libgrpc-dev protobuf-compiler-grpc libgrpc3 libprotobuf-dev protobuf-compiler \
+    && apt-get -y install libgrpc++-dev libgrpc-dev protobuf-compiler-grpc libgrpc3 libprotobuf-dev protobuf-compiler pkg-config \
     #
     # [Optional] Update UID/GID if needed
     && if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
