@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
 #-------------------------------------------------------------------------------------------------------------
 
-FROM ubuntu:latest
+FROM debian:buster
 
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
@@ -23,7 +23,7 @@ RUN apt-get update \
     #
     # Install C++ tools
     && apt-get -y install build-essential cmake cppcheck valgrind autoconf automake libtool curl make g++ unzip wget \
-    && apt-get -y install libgrpc++-dev libgrpc-dev protobuf-compiler-grpc libgrpc3 libprotobuf-dev protobuf-compiler pkg-config \
+    && apt-get -y install libgrpc++-dev protobuf-compiler-grpc pkg-config \
     #
     # [Optional] Update UID/GID if needed
     && if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
