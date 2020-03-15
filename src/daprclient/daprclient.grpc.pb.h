@@ -14,34 +14,29 @@
 
 #include "daprclient.pb.h"
 
-#include <functional>
-#include <grpc/impl/codegen/port_platform.h>
-#include <grpcpp/impl/codegen/async_generic_service.h>
-#include <grpcpp/impl/codegen/async_stream.h>
-#include <grpcpp/impl/codegen/async_unary_call.h>
-#include <grpcpp/impl/codegen/client_callback.h>
-#include <grpcpp/impl/codegen/client_context.h>
-#include <grpcpp/impl/codegen/completion_queue.h>
-#include <grpcpp/impl/codegen/message_allocator.h>
-#include <grpcpp/impl/codegen/method_handler.h>
-#include <grpcpp/impl/codegen/proto_utils.h>
-#include <grpcpp/impl/codegen/rpc_method.h>
-#include <grpcpp/impl/codegen/server_callback.h>
-#include <grpcpp/impl/codegen/server_callback_handlers.h>
-#include <grpcpp/impl/codegen/server_context.h>
-#include <grpcpp/impl/codegen/service_type.h>
-#include <grpcpp/impl/codegen/status.h>
-#include <grpcpp/impl/codegen/stub_options.h>
-#include <grpcpp/impl/codegen/sync_stream.h>
+#include <grpc++/impl/codegen/async_stream.h>
+#include <grpc++/impl/codegen/async_unary_call.h>
+#include <grpc++/impl/codegen/method_handler_impl.h>
+#include <grpc++/impl/codegen/proto_utils.h>
+#include <grpc++/impl/codegen/rpc_method.h>
+#include <grpc++/impl/codegen/service_type.h>
+#include <grpc++/impl/codegen/status.h>
+#include <grpc++/impl/codegen/stub_options.h>
+#include <grpc++/impl/codegen/sync_stream.h>
+
+namespace grpc {
+class CompletionQueue;
+class Channel;
+class RpcService;
+class ServerCompletionQueue;
+class ServerContext;
+}  // namespace grpc
 
 namespace daprclient {
 
 // User Code definitions
 class DaprClient final {
  public:
-  static constexpr char const* service_full_name() {
-    return "daprclient.DaprClient";
-  }
   class StubInterface {
    public:
     virtual ~StubInterface() {}
@@ -49,119 +44,28 @@ class DaprClient final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Any>> AsyncOnInvoke(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Any>>(AsyncOnInvokeRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Any>> PrepareAsyncOnInvoke(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Any>>(PrepareAsyncOnInvokeRaw(context, request, cq));
-    }
     virtual ::grpc::Status GetTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::daprclient::GetTopicSubscriptionsEnvelope* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::GetTopicSubscriptionsEnvelope>> AsyncGetTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::GetTopicSubscriptionsEnvelope>>(AsyncGetTopicSubscriptionsRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::GetTopicSubscriptionsEnvelope>> PrepareAsyncGetTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::GetTopicSubscriptionsEnvelope>>(PrepareAsyncGetTopicSubscriptionsRaw(context, request, cq));
     }
     virtual ::grpc::Status GetBindingsSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::daprclient::GetBindingsSubscriptionsEnvelope* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::GetBindingsSubscriptionsEnvelope>> AsyncGetBindingsSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::GetBindingsSubscriptionsEnvelope>>(AsyncGetBindingsSubscriptionsRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::GetBindingsSubscriptionsEnvelope>> PrepareAsyncGetBindingsSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::GetBindingsSubscriptionsEnvelope>>(PrepareAsyncGetBindingsSubscriptionsRaw(context, request, cq));
-    }
     virtual ::grpc::Status OnBindingEvent(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope& request, ::daprclient::BindingResponseEnvelope* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::BindingResponseEnvelope>> AsyncOnBindingEvent(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::BindingResponseEnvelope>>(AsyncOnBindingEventRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::BindingResponseEnvelope>> PrepareAsyncOnBindingEvent(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::BindingResponseEnvelope>>(PrepareAsyncOnBindingEventRaw(context, request, cq));
     }
     virtual ::grpc::Status OnTopicEvent(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope& request, ::google::protobuf::Empty* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncOnTopicEvent(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncOnTopicEventRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncOnTopicEvent(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncOnTopicEventRaw(context, request, cq));
-    }
-    class experimental_async_interface {
-     public:
-      virtual ~experimental_async_interface() {}
-      virtual void OnInvoke(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope* request, ::google::protobuf::Any* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void OnInvoke(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Any* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void OnInvoke(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope* request, ::google::protobuf::Any* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void OnInvoke(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope* request, ::google::protobuf::Any* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void OnInvoke(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Any* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void OnInvoke(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Any* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      virtual void GetTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetTopicSubscriptionsEnvelope* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetTopicSubscriptions(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::GetTopicSubscriptionsEnvelope* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void GetTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetTopicSubscriptionsEnvelope* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void GetTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetTopicSubscriptionsEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void GetTopicSubscriptions(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::GetTopicSubscriptionsEnvelope* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void GetTopicSubscriptions(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::GetTopicSubscriptionsEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      virtual void GetBindingsSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetBindingsSubscriptions(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void GetBindingsSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void GetBindingsSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void GetBindingsSubscriptions(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void GetBindingsSubscriptions(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      virtual void OnBindingEvent(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope* request, ::daprclient::BindingResponseEnvelope* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void OnBindingEvent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::BindingResponseEnvelope* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void OnBindingEvent(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope* request, ::daprclient::BindingResponseEnvelope* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void OnBindingEvent(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope* request, ::daprclient::BindingResponseEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void OnBindingEvent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::BindingResponseEnvelope* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void OnBindingEvent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::BindingResponseEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      virtual void OnTopicEvent(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void OnTopicEvent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void OnTopicEvent(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void OnTopicEvent(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void OnTopicEvent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void OnTopicEvent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
-    };
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    typedef class experimental_async_interface async_interface;
-    #endif
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    async_interface* async() { return experimental_async(); }
-    #endif
-    virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Any>* AsyncOnInvokeRaw(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Any>* PrepareAsyncOnInvokeRaw(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::GetTopicSubscriptionsEnvelope>* AsyncGetTopicSubscriptionsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::GetTopicSubscriptionsEnvelope>* PrepareAsyncGetTopicSubscriptionsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::GetBindingsSubscriptionsEnvelope>* AsyncGetBindingsSubscriptionsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::GetBindingsSubscriptionsEnvelope>* PrepareAsyncGetBindingsSubscriptionsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::BindingResponseEnvelope>* AsyncOnBindingEventRaw(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::daprclient::BindingResponseEnvelope>* PrepareAsyncOnBindingEventRaw(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -170,126 +74,35 @@ class DaprClient final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Any>> AsyncOnInvoke(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Any>>(AsyncOnInvokeRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Any>> PrepareAsyncOnInvoke(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Any>>(PrepareAsyncOnInvokeRaw(context, request, cq));
-    }
     ::grpc::Status GetTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::daprclient::GetTopicSubscriptionsEnvelope* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::daprclient::GetTopicSubscriptionsEnvelope>> AsyncGetTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::daprclient::GetTopicSubscriptionsEnvelope>>(AsyncGetTopicSubscriptionsRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::daprclient::GetTopicSubscriptionsEnvelope>> PrepareAsyncGetTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::daprclient::GetTopicSubscriptionsEnvelope>>(PrepareAsyncGetTopicSubscriptionsRaw(context, request, cq));
     }
     ::grpc::Status GetBindingsSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::daprclient::GetBindingsSubscriptionsEnvelope* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::daprclient::GetBindingsSubscriptionsEnvelope>> AsyncGetBindingsSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::daprclient::GetBindingsSubscriptionsEnvelope>>(AsyncGetBindingsSubscriptionsRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::daprclient::GetBindingsSubscriptionsEnvelope>> PrepareAsyncGetBindingsSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::daprclient::GetBindingsSubscriptionsEnvelope>>(PrepareAsyncGetBindingsSubscriptionsRaw(context, request, cq));
-    }
     ::grpc::Status OnBindingEvent(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope& request, ::daprclient::BindingResponseEnvelope* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::daprclient::BindingResponseEnvelope>> AsyncOnBindingEvent(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::daprclient::BindingResponseEnvelope>>(AsyncOnBindingEventRaw(context, request, cq));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::daprclient::BindingResponseEnvelope>> PrepareAsyncOnBindingEvent(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::daprclient::BindingResponseEnvelope>>(PrepareAsyncOnBindingEventRaw(context, request, cq));
     }
     ::grpc::Status OnTopicEvent(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope& request, ::google::protobuf::Empty* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncOnTopicEvent(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncOnTopicEventRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncOnTopicEvent(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncOnTopicEventRaw(context, request, cq));
-    }
-    class experimental_async final :
-      public StubInterface::experimental_async_interface {
-     public:
-      void OnInvoke(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope* request, ::google::protobuf::Any* response, std::function<void(::grpc::Status)>) override;
-      void OnInvoke(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Any* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void OnInvoke(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope* request, ::google::protobuf::Any* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void OnInvoke(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope* request, ::google::protobuf::Any* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void OnInvoke(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Any* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void OnInvoke(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Any* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
-      void GetTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetTopicSubscriptionsEnvelope* response, std::function<void(::grpc::Status)>) override;
-      void GetTopicSubscriptions(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::GetTopicSubscriptionsEnvelope* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void GetTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetTopicSubscriptionsEnvelope* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void GetTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetTopicSubscriptionsEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void GetTopicSubscriptions(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::GetTopicSubscriptionsEnvelope* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void GetTopicSubscriptions(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::GetTopicSubscriptionsEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
-      void GetBindingsSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response, std::function<void(::grpc::Status)>) override;
-      void GetBindingsSubscriptions(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void GetBindingsSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void GetBindingsSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void GetBindingsSubscriptions(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void GetBindingsSubscriptions(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
-      void OnBindingEvent(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope* request, ::daprclient::BindingResponseEnvelope* response, std::function<void(::grpc::Status)>) override;
-      void OnBindingEvent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::BindingResponseEnvelope* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void OnBindingEvent(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope* request, ::daprclient::BindingResponseEnvelope* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void OnBindingEvent(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope* request, ::daprclient::BindingResponseEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void OnBindingEvent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::BindingResponseEnvelope* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void OnBindingEvent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::daprclient::BindingResponseEnvelope* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
-      void OnTopicEvent(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
-      void OnTopicEvent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void OnTopicEvent(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void OnTopicEvent(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void OnTopicEvent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void OnTopicEvent(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
-     private:
-      friend class Stub;
-      explicit experimental_async(Stub* stub): stub_(stub) { }
-      Stub* stub() { return stub_; }
-      Stub* stub_;
-    };
-    class experimental_async_interface* experimental_async() override { return &async_stub_; }
 
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
-    class experimental_async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Any>* AsyncOnInvokeRaw(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Any>* PrepareAsyncOnInvokeRaw(::grpc::ClientContext* context, const ::daprclient::InvokeEnvelope& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::daprclient::GetTopicSubscriptionsEnvelope>* AsyncGetTopicSubscriptionsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::daprclient::GetTopicSubscriptionsEnvelope>* PrepareAsyncGetTopicSubscriptionsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::daprclient::GetBindingsSubscriptionsEnvelope>* AsyncGetBindingsSubscriptionsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::daprclient::GetBindingsSubscriptionsEnvelope>* PrepareAsyncGetBindingsSubscriptionsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::daprclient::BindingResponseEnvelope>* AsyncOnBindingEventRaw(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::daprclient::BindingResponseEnvelope>* PrepareAsyncOnBindingEventRaw(::grpc::ClientContext* context, const ::daprclient::BindingEventEnvelope& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::daprclient::CloudEventEnvelope& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_OnInvoke_;
-    const ::grpc::internal::RpcMethod rpcmethod_GetTopicSubscriptions_;
-    const ::grpc::internal::RpcMethod rpcmethod_GetBindingsSubscriptions_;
-    const ::grpc::internal::RpcMethod rpcmethod_OnBindingEvent_;
-    const ::grpc::internal::RpcMethod rpcmethod_OnTopicEvent_;
+    const ::grpc::RpcMethod rpcmethod_OnInvoke_;
+    const ::grpc::RpcMethod rpcmethod_GetTopicSubscriptions_;
+    const ::grpc::RpcMethod rpcmethod_GetBindingsSubscriptions_;
+    const ::grpc::RpcMethod rpcmethod_OnBindingEvent_;
+    const ::grpc::RpcMethod rpcmethod_OnTopicEvent_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -306,7 +119,7 @@ class DaprClient final {
   template <class BaseClass>
   class WithAsyncMethod_OnInvoke : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_OnInvoke() {
       ::grpc::Service::MarkMethodAsync(0);
@@ -315,7 +128,7 @@ class DaprClient final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status OnInvoke(::grpc::ServerContext* /*context*/, const ::daprclient::InvokeEnvelope* /*request*/, ::google::protobuf::Any* /*response*/) override {
+    ::grpc::Status OnInvoke(::grpc::ServerContext* context, const ::daprclient::InvokeEnvelope* request, ::google::protobuf::Any* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -326,7 +139,7 @@ class DaprClient final {
   template <class BaseClass>
   class WithAsyncMethod_GetTopicSubscriptions : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_GetTopicSubscriptions() {
       ::grpc::Service::MarkMethodAsync(1);
@@ -335,7 +148,7 @@ class DaprClient final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetTopicSubscriptions(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetTopicSubscriptionsEnvelope* /*response*/) override {
+    ::grpc::Status GetTopicSubscriptions(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetTopicSubscriptionsEnvelope* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -346,7 +159,7 @@ class DaprClient final {
   template <class BaseClass>
   class WithAsyncMethod_GetBindingsSubscriptions : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_GetBindingsSubscriptions() {
       ::grpc::Service::MarkMethodAsync(2);
@@ -355,7 +168,7 @@ class DaprClient final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetBindingsSubscriptions(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetBindingsSubscriptionsEnvelope* /*response*/) override {
+    ::grpc::Status GetBindingsSubscriptions(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -366,7 +179,7 @@ class DaprClient final {
   template <class BaseClass>
   class WithAsyncMethod_OnBindingEvent : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_OnBindingEvent() {
       ::grpc::Service::MarkMethodAsync(3);
@@ -375,7 +188,7 @@ class DaprClient final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status OnBindingEvent(::grpc::ServerContext* /*context*/, const ::daprclient::BindingEventEnvelope* /*request*/, ::daprclient::BindingResponseEnvelope* /*response*/) override {
+    ::grpc::Status OnBindingEvent(::grpc::ServerContext* context, const ::daprclient::BindingEventEnvelope* request, ::daprclient::BindingResponseEnvelope* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -386,7 +199,7 @@ class DaprClient final {
   template <class BaseClass>
   class WithAsyncMethod_OnTopicEvent : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_OnTopicEvent() {
       ::grpc::Service::MarkMethodAsync(4);
@@ -395,7 +208,7 @@ class DaprClient final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status OnTopicEvent(::grpc::ServerContext* /*context*/, const ::daprclient::CloudEventEnvelope* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status OnTopicEvent(::grpc::ServerContext* context, const ::daprclient::CloudEventEnvelope* request, ::google::protobuf::Empty* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -405,249 +218,9 @@ class DaprClient final {
   };
   typedef WithAsyncMethod_OnInvoke<WithAsyncMethod_GetTopicSubscriptions<WithAsyncMethod_GetBindingsSubscriptions<WithAsyncMethod_OnBindingEvent<WithAsyncMethod_OnTopicEvent<Service > > > > > AsyncService;
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_OnInvoke : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithCallbackMethod_OnInvoke() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(0,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::daprclient::InvokeEnvelope, ::google::protobuf::Any>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::daprclient::InvokeEnvelope* request, ::google::protobuf::Any* response) { return this->OnInvoke(context, request, response); }));}
-    void SetMessageAllocatorFor_OnInvoke(
-        ::grpc::experimental::MessageAllocator< ::daprclient::InvokeEnvelope, ::google::protobuf::Any>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(0);
-    #endif
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::daprclient::InvokeEnvelope, ::google::protobuf::Any>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~ExperimentalWithCallbackMethod_OnInvoke() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status OnInvoke(::grpc::ServerContext* /*context*/, const ::daprclient::InvokeEnvelope* /*request*/, ::google::protobuf::Any* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* OnInvoke(
-      ::grpc::CallbackServerContext* /*context*/, const ::daprclient::InvokeEnvelope* /*request*/, ::google::protobuf::Any* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OnInvoke(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::daprclient::InvokeEnvelope* /*request*/, ::google::protobuf::Any* /*response*/)
-    #endif
-      { return nullptr; }
-  };
-  template <class BaseClass>
-  class ExperimentalWithCallbackMethod_GetTopicSubscriptions : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithCallbackMethod_GetTopicSubscriptions() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(1,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::daprclient::GetTopicSubscriptionsEnvelope>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::google::protobuf::Empty* request, ::daprclient::GetTopicSubscriptionsEnvelope* response) { return this->GetTopicSubscriptions(context, request, response); }));}
-    void SetMessageAllocatorFor_GetTopicSubscriptions(
-        ::grpc::experimental::MessageAllocator< ::google::protobuf::Empty, ::daprclient::GetTopicSubscriptionsEnvelope>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(1);
-    #endif
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::daprclient::GetTopicSubscriptionsEnvelope>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~ExperimentalWithCallbackMethod_GetTopicSubscriptions() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetTopicSubscriptions(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetTopicSubscriptionsEnvelope* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* GetTopicSubscriptions(
-      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetTopicSubscriptionsEnvelope* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* GetTopicSubscriptions(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetTopicSubscriptionsEnvelope* /*response*/)
-    #endif
-      { return nullptr; }
-  };
-  template <class BaseClass>
-  class ExperimentalWithCallbackMethod_GetBindingsSubscriptions : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithCallbackMethod_GetBindingsSubscriptions() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(2,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::daprclient::GetBindingsSubscriptionsEnvelope>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::google::protobuf::Empty* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response) { return this->GetBindingsSubscriptions(context, request, response); }));}
-    void SetMessageAllocatorFor_GetBindingsSubscriptions(
-        ::grpc::experimental::MessageAllocator< ::google::protobuf::Empty, ::daprclient::GetBindingsSubscriptionsEnvelope>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(2);
-    #endif
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::daprclient::GetBindingsSubscriptionsEnvelope>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~ExperimentalWithCallbackMethod_GetBindingsSubscriptions() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetBindingsSubscriptions(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetBindingsSubscriptionsEnvelope* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* GetBindingsSubscriptions(
-      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetBindingsSubscriptionsEnvelope* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* GetBindingsSubscriptions(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetBindingsSubscriptionsEnvelope* /*response*/)
-    #endif
-      { return nullptr; }
-  };
-  template <class BaseClass>
-  class ExperimentalWithCallbackMethod_OnBindingEvent : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithCallbackMethod_OnBindingEvent() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(3,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::daprclient::BindingEventEnvelope, ::daprclient::BindingResponseEnvelope>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::daprclient::BindingEventEnvelope* request, ::daprclient::BindingResponseEnvelope* response) { return this->OnBindingEvent(context, request, response); }));}
-    void SetMessageAllocatorFor_OnBindingEvent(
-        ::grpc::experimental::MessageAllocator< ::daprclient::BindingEventEnvelope, ::daprclient::BindingResponseEnvelope>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
-    #endif
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::daprclient::BindingEventEnvelope, ::daprclient::BindingResponseEnvelope>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~ExperimentalWithCallbackMethod_OnBindingEvent() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status OnBindingEvent(::grpc::ServerContext* /*context*/, const ::daprclient::BindingEventEnvelope* /*request*/, ::daprclient::BindingResponseEnvelope* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* OnBindingEvent(
-      ::grpc::CallbackServerContext* /*context*/, const ::daprclient::BindingEventEnvelope* /*request*/, ::daprclient::BindingResponseEnvelope* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OnBindingEvent(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::daprclient::BindingEventEnvelope* /*request*/, ::daprclient::BindingResponseEnvelope* /*response*/)
-    #endif
-      { return nullptr; }
-  };
-  template <class BaseClass>
-  class ExperimentalWithCallbackMethod_OnTopicEvent : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithCallbackMethod_OnTopicEvent() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(4,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::daprclient::CloudEventEnvelope, ::google::protobuf::Empty>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::daprclient::CloudEventEnvelope* request, ::google::protobuf::Empty* response) { return this->OnTopicEvent(context, request, response); }));}
-    void SetMessageAllocatorFor_OnTopicEvent(
-        ::grpc::experimental::MessageAllocator< ::daprclient::CloudEventEnvelope, ::google::protobuf::Empty>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(4);
-    #endif
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::daprclient::CloudEventEnvelope, ::google::protobuf::Empty>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~ExperimentalWithCallbackMethod_OnTopicEvent() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status OnTopicEvent(::grpc::ServerContext* /*context*/, const ::daprclient::CloudEventEnvelope* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* OnTopicEvent(
-      ::grpc::CallbackServerContext* /*context*/, const ::daprclient::CloudEventEnvelope* /*request*/, ::google::protobuf::Empty* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OnTopicEvent(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::daprclient::CloudEventEnvelope* /*request*/, ::google::protobuf::Empty* /*response*/)
-    #endif
-      { return nullptr; }
-  };
-  #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_OnInvoke<ExperimentalWithCallbackMethod_GetTopicSubscriptions<ExperimentalWithCallbackMethod_GetBindingsSubscriptions<ExperimentalWithCallbackMethod_OnBindingEvent<ExperimentalWithCallbackMethod_OnTopicEvent<Service > > > > > CallbackService;
-  #endif
-
-  typedef ExperimentalWithCallbackMethod_OnInvoke<ExperimentalWithCallbackMethod_GetTopicSubscriptions<ExperimentalWithCallbackMethod_GetBindingsSubscriptions<ExperimentalWithCallbackMethod_OnBindingEvent<ExperimentalWithCallbackMethod_OnTopicEvent<Service > > > > > ExperimentalCallbackService;
-  template <class BaseClass>
   class WithGenericMethod_OnInvoke : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_OnInvoke() {
       ::grpc::Service::MarkMethodGeneric(0);
@@ -656,7 +229,7 @@ class DaprClient final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status OnInvoke(::grpc::ServerContext* /*context*/, const ::daprclient::InvokeEnvelope* /*request*/, ::google::protobuf::Any* /*response*/) override {
+    ::grpc::Status OnInvoke(::grpc::ServerContext* context, const ::daprclient::InvokeEnvelope* request, ::google::protobuf::Any* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -664,7 +237,7 @@ class DaprClient final {
   template <class BaseClass>
   class WithGenericMethod_GetTopicSubscriptions : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_GetTopicSubscriptions() {
       ::grpc::Service::MarkMethodGeneric(1);
@@ -673,7 +246,7 @@ class DaprClient final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetTopicSubscriptions(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetTopicSubscriptionsEnvelope* /*response*/) override {
+    ::grpc::Status GetTopicSubscriptions(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetTopicSubscriptionsEnvelope* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -681,7 +254,7 @@ class DaprClient final {
   template <class BaseClass>
   class WithGenericMethod_GetBindingsSubscriptions : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_GetBindingsSubscriptions() {
       ::grpc::Service::MarkMethodGeneric(2);
@@ -690,7 +263,7 @@ class DaprClient final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetBindingsSubscriptions(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetBindingsSubscriptionsEnvelope* /*response*/) override {
+    ::grpc::Status GetBindingsSubscriptions(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -698,7 +271,7 @@ class DaprClient final {
   template <class BaseClass>
   class WithGenericMethod_OnBindingEvent : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_OnBindingEvent() {
       ::grpc::Service::MarkMethodGeneric(3);
@@ -707,7 +280,7 @@ class DaprClient final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status OnBindingEvent(::grpc::ServerContext* /*context*/, const ::daprclient::BindingEventEnvelope* /*request*/, ::daprclient::BindingResponseEnvelope* /*response*/) override {
+    ::grpc::Status OnBindingEvent(::grpc::ServerContext* context, const ::daprclient::BindingEventEnvelope* request, ::daprclient::BindingResponseEnvelope* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -715,7 +288,7 @@ class DaprClient final {
   template <class BaseClass>
   class WithGenericMethod_OnTopicEvent : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_OnTopicEvent() {
       ::grpc::Service::MarkMethodGeneric(4);
@@ -724,315 +297,25 @@ class DaprClient final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status OnTopicEvent(::grpc::ServerContext* /*context*/, const ::daprclient::CloudEventEnvelope* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status OnTopicEvent(::grpc::ServerContext* context, const ::daprclient::CloudEventEnvelope* request, ::google::protobuf::Empty* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-  };
-  template <class BaseClass>
-  class WithRawMethod_OnInvoke : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_OnInvoke() {
-      ::grpc::Service::MarkMethodRaw(0);
-    }
-    ~WithRawMethod_OnInvoke() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status OnInvoke(::grpc::ServerContext* /*context*/, const ::daprclient::InvokeEnvelope* /*request*/, ::google::protobuf::Any* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestOnInvoke(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_GetTopicSubscriptions : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_GetTopicSubscriptions() {
-      ::grpc::Service::MarkMethodRaw(1);
-    }
-    ~WithRawMethod_GetTopicSubscriptions() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetTopicSubscriptions(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetTopicSubscriptionsEnvelope* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetTopicSubscriptions(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_GetBindingsSubscriptions : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_GetBindingsSubscriptions() {
-      ::grpc::Service::MarkMethodRaw(2);
-    }
-    ~WithRawMethod_GetBindingsSubscriptions() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetBindingsSubscriptions(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetBindingsSubscriptionsEnvelope* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGetBindingsSubscriptions(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_OnBindingEvent : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_OnBindingEvent() {
-      ::grpc::Service::MarkMethodRaw(3);
-    }
-    ~WithRawMethod_OnBindingEvent() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status OnBindingEvent(::grpc::ServerContext* /*context*/, const ::daprclient::BindingEventEnvelope* /*request*/, ::daprclient::BindingResponseEnvelope* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestOnBindingEvent(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_OnTopicEvent : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_OnTopicEvent() {
-      ::grpc::Service::MarkMethodRaw(4);
-    }
-    ~WithRawMethod_OnTopicEvent() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status OnTopicEvent(::grpc::ServerContext* /*context*/, const ::daprclient::CloudEventEnvelope* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestOnTopicEvent(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_OnInvoke : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithRawCallbackMethod_OnInvoke() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(0,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->OnInvoke(context, request, response); }));
-    }
-    ~ExperimentalWithRawCallbackMethod_OnInvoke() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status OnInvoke(::grpc::ServerContext* /*context*/, const ::daprclient::InvokeEnvelope* /*request*/, ::google::protobuf::Any* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* OnInvoke(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OnInvoke(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
-  };
-  template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_GetTopicSubscriptions : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithRawCallbackMethod_GetTopicSubscriptions() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(1,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetTopicSubscriptions(context, request, response); }));
-    }
-    ~ExperimentalWithRawCallbackMethod_GetTopicSubscriptions() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetTopicSubscriptions(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetTopicSubscriptionsEnvelope* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* GetTopicSubscriptions(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* GetTopicSubscriptions(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
-  };
-  template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_GetBindingsSubscriptions : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithRawCallbackMethod_GetBindingsSubscriptions() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(2,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetBindingsSubscriptions(context, request, response); }));
-    }
-    ~ExperimentalWithRawCallbackMethod_GetBindingsSubscriptions() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GetBindingsSubscriptions(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetBindingsSubscriptionsEnvelope* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* GetBindingsSubscriptions(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* GetBindingsSubscriptions(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
-  };
-  template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_OnBindingEvent : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithRawCallbackMethod_OnBindingEvent() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(3,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->OnBindingEvent(context, request, response); }));
-    }
-    ~ExperimentalWithRawCallbackMethod_OnBindingEvent() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status OnBindingEvent(::grpc::ServerContext* /*context*/, const ::daprclient::BindingEventEnvelope* /*request*/, ::daprclient::BindingResponseEnvelope* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* OnBindingEvent(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OnBindingEvent(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
-  };
-  template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_OnTopicEvent : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    ExperimentalWithRawCallbackMethod_OnTopicEvent() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(4,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->OnTopicEvent(context, request, response); }));
-    }
-    ~ExperimentalWithRawCallbackMethod_OnTopicEvent() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status OnTopicEvent(::grpc::ServerContext* /*context*/, const ::daprclient::CloudEventEnvelope* /*request*/, ::google::protobuf::Empty* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    virtual ::grpc::ServerUnaryReactor* OnTopicEvent(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* OnTopicEvent(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_OnInvoke : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_OnInvoke() {
       ::grpc::Service::MarkMethodStreamed(0,
-        new ::grpc::internal::StreamedUnaryHandler< ::daprclient::InvokeEnvelope, ::google::protobuf::Any>(std::bind(&WithStreamedUnaryMethod_OnInvoke<BaseClass>::StreamedOnInvoke, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::StreamedUnaryHandler< ::daprclient::InvokeEnvelope, ::google::protobuf::Any>(std::bind(&WithStreamedUnaryMethod_OnInvoke<BaseClass>::StreamedOnInvoke, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_OnInvoke() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status OnInvoke(::grpc::ServerContext* /*context*/, const ::daprclient::InvokeEnvelope* /*request*/, ::google::protobuf::Any* /*response*/) override {
+    ::grpc::Status OnInvoke(::grpc::ServerContext* context, const ::daprclient::InvokeEnvelope* request, ::google::protobuf::Any* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1042,17 +325,17 @@ class DaprClient final {
   template <class BaseClass>
   class WithStreamedUnaryMethod_GetTopicSubscriptions : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_GetTopicSubscriptions() {
       ::grpc::Service::MarkMethodStreamed(1,
-        new ::grpc::internal::StreamedUnaryHandler< ::google::protobuf::Empty, ::daprclient::GetTopicSubscriptionsEnvelope>(std::bind(&WithStreamedUnaryMethod_GetTopicSubscriptions<BaseClass>::StreamedGetTopicSubscriptions, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::StreamedUnaryHandler< ::google::protobuf::Empty, ::daprclient::GetTopicSubscriptionsEnvelope>(std::bind(&WithStreamedUnaryMethod_GetTopicSubscriptions<BaseClass>::StreamedGetTopicSubscriptions, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetTopicSubscriptions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status GetTopicSubscriptions(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetTopicSubscriptionsEnvelope* /*response*/) override {
+    ::grpc::Status GetTopicSubscriptions(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetTopicSubscriptionsEnvelope* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1062,17 +345,17 @@ class DaprClient final {
   template <class BaseClass>
   class WithStreamedUnaryMethod_GetBindingsSubscriptions : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_GetBindingsSubscriptions() {
       ::grpc::Service::MarkMethodStreamed(2,
-        new ::grpc::internal::StreamedUnaryHandler< ::google::protobuf::Empty, ::daprclient::GetBindingsSubscriptionsEnvelope>(std::bind(&WithStreamedUnaryMethod_GetBindingsSubscriptions<BaseClass>::StreamedGetBindingsSubscriptions, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::StreamedUnaryHandler< ::google::protobuf::Empty, ::daprclient::GetBindingsSubscriptionsEnvelope>(std::bind(&WithStreamedUnaryMethod_GetBindingsSubscriptions<BaseClass>::StreamedGetBindingsSubscriptions, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetBindingsSubscriptions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status GetBindingsSubscriptions(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::daprclient::GetBindingsSubscriptionsEnvelope* /*response*/) override {
+    ::grpc::Status GetBindingsSubscriptions(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::daprclient::GetBindingsSubscriptionsEnvelope* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1082,17 +365,17 @@ class DaprClient final {
   template <class BaseClass>
   class WithStreamedUnaryMethod_OnBindingEvent : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_OnBindingEvent() {
       ::grpc::Service::MarkMethodStreamed(3,
-        new ::grpc::internal::StreamedUnaryHandler< ::daprclient::BindingEventEnvelope, ::daprclient::BindingResponseEnvelope>(std::bind(&WithStreamedUnaryMethod_OnBindingEvent<BaseClass>::StreamedOnBindingEvent, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::StreamedUnaryHandler< ::daprclient::BindingEventEnvelope, ::daprclient::BindingResponseEnvelope>(std::bind(&WithStreamedUnaryMethod_OnBindingEvent<BaseClass>::StreamedOnBindingEvent, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_OnBindingEvent() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status OnBindingEvent(::grpc::ServerContext* /*context*/, const ::daprclient::BindingEventEnvelope* /*request*/, ::daprclient::BindingResponseEnvelope* /*response*/) override {
+    ::grpc::Status OnBindingEvent(::grpc::ServerContext* context, const ::daprclient::BindingEventEnvelope* request, ::daprclient::BindingResponseEnvelope* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1102,17 +385,17 @@ class DaprClient final {
   template <class BaseClass>
   class WithStreamedUnaryMethod_OnTopicEvent : public BaseClass {
    private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_OnTopicEvent() {
       ::grpc::Service::MarkMethodStreamed(4,
-        new ::grpc::internal::StreamedUnaryHandler< ::daprclient::CloudEventEnvelope, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_OnTopicEvent<BaseClass>::StreamedOnTopicEvent, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::StreamedUnaryHandler< ::daprclient::CloudEventEnvelope, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_OnTopicEvent<BaseClass>::StreamedOnTopicEvent, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_OnTopicEvent() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status OnTopicEvent(::grpc::ServerContext* /*context*/, const ::daprclient::CloudEventEnvelope* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+    ::grpc::Status OnTopicEvent(::grpc::ServerContext* context, const ::daprclient::CloudEventEnvelope* request, ::google::protobuf::Empty* response) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
