@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -23,16 +24,18 @@ namespace dapr_cpp_echo_example {
 
 class EchoApp {
   public:
-    EchoApp() {}
+    EchoApp(std::string dapr_grpc_port, std::string app_port)
+      : dapr_grpc_port_(dapr_grpc_port), app_port_(app_port) {}
 
-    void Initialize() {
+    void ConnectToDapr() {
+      // Connect to dapr grpc server.
+      std::cout << "Connecting to " << dapr_grpc_endpoint() << "..." << std::endl;
       client_stub_ = Dapr::NewStub(grpc::CreateChannel(dapr_grpc_endpoint(), grpc::InsecureChannelCredentials()));
     }
 
-    std::string EchoMessage(
-      const std::string& app_id,
-      const std::string& method,
-      const std::string& message) {
+    std::string CallMethod(
+      const std::string app_id, const std::string method,
+      const std::string message) {
       ClientContext context;
       dapr::InvokeServiceEnvelope request;
       dapr::InvokeServiceResponseEnvelope response;
@@ -58,7 +61,7 @@ class EchoApp {
       return "RPC Error";
     }
 
-    bool SaveMessage(const std::string& message) {
+    bool SaveMessage(const std::string message) {
       ClientContext context;
 
       google::protobuf::Any value;
@@ -77,7 +80,7 @@ class EchoApp {
     }
 
     void StartAppServer() {
-      std::string endpoint = dapr_app_endpoint();
+      std::string endpoint = echo_app_endpoint();
       EchoAppServerImpl service;
 
       grpc::EnableDefaultHealthCheckService(true);
@@ -86,32 +89,81 @@ class EchoApp {
       ServerBuilder builder;
       builder.AddListeningPort(endpoint, grpc::InsecureServerCredentials());
       builder.RegisterService(&service);
-      std::unique_ptr<Server> server(builder.BuildAndStart());
+      
+      // Start synchronous gRPC server.
+      app_server_ = builder.BuildAndStart();
       std::cout << "Server listening on " << endpoint << std::endl;
-      server->Wait();
+    }
+
+    void Wait() {
+      // Wait until server is shutdown
+      app_server_->Wait();
     }
 
   private:
-    std::string dapr_app_endpoint() {
-      return std::string("localhost:50051");
+    std::string echo_app_endpoint() {
+      return std::string("127.0.0.1:") + app_port_;
     }
 
     std::string dapr_grpc_endpoint() {
-      return std::string("localhost:3500");
+      return std::string("127.0.0.1:") + dapr_grpc_port_;
     }
 
+    std::string app_port_;
+    std::string dapr_grpc_port_;
     std::unique_ptr<Dapr::Stub> client_stub_;
+    std::unique_ptr<Server> app_server_;
 };
 
 } // namepsace dapr_cpp_echo_example
 
+std::string GetEnvironmentVariable(const std::string& var) {
+  const char* val = std::getenv(var.c_str());
+  return (val == nullptr) ? "": val;
+}
 
 int main(int argc, char** argv) {
-  dapr_cpp_echo_example::EchoApp *app = new dapr_cpp_echo_example::EchoApp();
-  
-  app->StartAppServer();
+  std::string app_port;
+  std::string grpc_port = GetEnvironmentVariable("DAPR_GRPC_PORT");
+  std::string mode;
+  std::string target_app;
 
-  std::cout << "Start";
+  if (argc < 3) {
+    std::cout << "echo_app <mode> <app_port> <targetapp>" << std::endl;
+    return 0;
+  }
+
+  mode = std::string(argv[1]);
+  app_port = std::string(argv[2]);
+
+  if (mode == "client") {
+    if (argc < 4) {
+      std::cout << "<targetapp> is required" << std::endl;
+      return 0;
+    }
+    target_app = std::string(argv[3]);
+  }
+  
+  if (grpc_port == "") {
+    grpc_port = "50001";
+  }
+
+  std::cout 
+    << "Start echo app (" << mode << ") - target_app: " << target_app
+    << ", Dapr gRPC Port: " << grpc_port << ", Echo App Port: " << app_port << std::endl;
+
+  std::unique_ptr<dapr_cpp_echo_example::EchoApp> app(new dapr_cpp_echo_example::EchoApp(grpc_port, app_port));
+  app->StartAppServer();
+  std::cout << "Call echo method to " << target_app << std::endl;
+
+  if (mode == "client") {
+    app->ConnectToDapr();
+    std::string response = app->CallMethod("echoapp", "echo", "hello dapr");
+    std::cout << "Received \"" << response << "\" from " << target_app << std::endl;
+  }
+
+  std::cout << "Waiting for server" << std::endl;
+  app->Wait();
 
   return 0;
 }

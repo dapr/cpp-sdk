@@ -19,23 +19,48 @@ using daprclient::CloudEventEnvelope;
 
 namespace dapr_cpp_echo_example {
 
-Status EchoAppServerImpl::OnInvoke(ServerContext* context, const InvokeEnvelope* request, Any* response) {
+Status EchoAppServerImpl::OnInvoke(
+  ServerContext* context,
+  const InvokeEnvelope* request,
+  Any* response) {
+  
+  if (request->method() == "echo") {
+    std::string data;
+    if (request->data().SerializeToString(&data)) {
+      std::cout << "Got the message: " << data << std::endl;
+    } else {
+      std::cout << "Got the message, but I cannot parse message." << std::endl;
+    }
+  }
+
   return Status::OK;
 }
 
-Status EchoAppServerImpl::GetTopicSubscriptions(ServerContext* context, const Empty* request, GetTopicSubscriptionsEnvelope* response)  {
+Status EchoAppServerImpl::GetTopicSubscriptions(
+  ServerContext* context,
+  const Empty* request,
+  GetTopicSubscriptionsEnvelope* response)  {
   return Status::OK;
 }
 
-Status EchoAppServerImpl::GetBindingsSubscriptions(ServerContext* context, const Empty* request, GetBindingsSubscriptionsEnvelope* response)  {
+Status EchoAppServerImpl::GetBindingsSubscriptions(
+  ServerContext* context,
+  const Empty* request,
+  GetBindingsSubscriptionsEnvelope* response)  {
   return Status::OK;
 }
 
-Status EchoAppServerImpl::OnBindingEvent(ServerContext* context, const BindingEventEnvelope* request, BindingResponseEnvelope* response)  {
+Status EchoAppServerImpl::OnBindingEvent(
+  ServerContext* context,
+  const BindingEventEnvelope* request,
+  BindingResponseEnvelope* response)  {
   return Status::OK;
 }
 
-Status EchoAppServerImpl::OnTopicEvent(ServerContext* context, const CloudEventEnvelope* request, Empty* response)  {
+Status EchoAppServerImpl::OnTopicEvent(
+  ServerContext* context,
+  const CloudEventEnvelope* request,
+  Empty* response)  {
   return Status::OK;
 }
 

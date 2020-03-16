@@ -10,10 +10,10 @@ Alpha quality.
 2. Install [VSCode](https://code.visualstudio.com/download)
 3. Install [VSCode Remote - Container extension](https://code.visualstudio.com/docs/remote/containers)
 
-### Update gRPC client
+### Generate gRPC client
 
-1. Update dapr.proto from https://github.com/dapr/dapr/tree/master/pkg/proto/dapr
-2. Update daprclient.proto from https://github.com/dapr/dapr/tree/master/pkg/proto/daprclient
+1. Copy dapr.proto from https://github.com/dapr/dapr/tree/master/pkg/proto/dapr to [proto](./proto)
+2. Copy daprclient.proto from https://github.com/dapr/dapr/tree/master/pkg/proto/daprclient to [proto](./proto)
 3. Generate client
     ```bash
     make dapr.grpc.pb.cc
