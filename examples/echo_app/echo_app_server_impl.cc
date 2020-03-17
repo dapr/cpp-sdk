@@ -1,3 +1,8 @@
+// ------------------------------------------------------------
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+// ------------------------------------------------------------
+
 #include <iostream>
 #include <memory>
 #include <string>
@@ -24,13 +29,12 @@ Status EchoAppServerImpl::OnInvoke(
   const InvokeEnvelope* request,
   Any* response) {
   
+  std::cout << "OnInvoke() is called"  << std::endl;
+
   if (request->method() == "echo") {
-    std::string data;
-    if (request->data().SerializeToString(&data)) {
-      std::cout << "Got the message: " << data << std::endl;
-    } else {
-      std::cout << "Got the message, but I cannot parse message." << std::endl;
-    }
+    std::cout << "Got the message: " << request->data().value() << std::endl;
+    std::string resp_str = "ack : " + request->data().value();
+    response->mutable_value()->assign(resp_str);
   }
 
   return Status::OK;
@@ -40,6 +44,7 @@ Status EchoAppServerImpl::GetTopicSubscriptions(
   ServerContext* context,
   const Empty* request,
   GetTopicSubscriptionsEnvelope* response)  {
+  std::cout << "GetTopicSubscriptions() is called"  << std::endl;
   return Status::OK;
 }
 
@@ -47,6 +52,7 @@ Status EchoAppServerImpl::GetBindingsSubscriptions(
   ServerContext* context,
   const Empty* request,
   GetBindingsSubscriptionsEnvelope* response)  {
+  std::cout << "GetBindingsSubscriptions() is called" << std::endl;
   return Status::OK;
 }
 
@@ -54,6 +60,7 @@ Status EchoAppServerImpl::OnBindingEvent(
   ServerContext* context,
   const BindingEventEnvelope* request,
   BindingResponseEnvelope* response)  {
+  std::cout << "OnBindingEvent() is called"  << std::endl;
   return Status::OK;
 }
 
@@ -61,6 +68,7 @@ Status EchoAppServerImpl::OnTopicEvent(
   ServerContext* context,
   const CloudEventEnvelope* request,
   Empty* response)  {
+  std::cout << "OnBindingEvent() is called"  << std::endl;
   return Status::OK;
 }
 

@@ -1,3 +1,8 @@
+// ------------------------------------------------------------
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+// ------------------------------------------------------------
+
 #include <grpcpp/grpcpp.h>
 
 #include "../../src/daprclient/daprclient.grpc.pb.h"

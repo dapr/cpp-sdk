@@ -1,7 +1,13 @@
+// ------------------------------------------------------------
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+// ------------------------------------------------------------
+
 #include <cstdlib>
 #include <iostream>
 #include <memory>
 #include <string>
+#include <thread>
 
 #include <grpcpp/grpcpp.h>
 #include <grpcpp/health_check_service_interface.h>
@@ -40,25 +46,19 @@ class EchoApp {
       dapr::InvokeServiceEnvelope request;
       dapr::InvokeServiceResponseEnvelope response;
 
-      // Pack value into protobuf::Any
-      google::protobuf::Any value;
-      value.ParseFromString(message);
-
       // Construct service invocation request
       request.set_id(app_id);
       request.set_method(method);
-      request.set_allocated_data(&value);
+      request.mutable_data()->mutable_value()->assign(message);
 
       // Call InvokeService
       Status status = client_stub_->InvokeService(&context, request, &response);
 
       if (status.ok()) {
-        // Unpack the data to string value
-        std::string response_data;
-        response.SerializeToString(&response_data);
-        return response_data;
+        return response.data().value();
       }
-      return "RPC Error";
+
+      return "RPC Error : " + status.error_message() + ", " + status.error_details();
     }
 
     bool SaveMessage(const std::string message) {
@@ -81,22 +81,21 @@ class EchoApp {
 
     void StartAppServer() {
       std::string endpoint = echo_app_endpoint();
-      EchoAppServerImpl service;
+      service_ = std::shared_ptr<EchoAppServerImpl>(new EchoAppServerImpl());
 
       grpc::EnableDefaultHealthCheckService(true);
       grpc::reflection::InitProtoReflectionServerBuilderPlugin();
 
       ServerBuilder builder;
       builder.AddListeningPort(endpoint, grpc::InsecureServerCredentials());
-      builder.RegisterService(&service);
+      builder.RegisterService(service_.get());
       
       // Start synchronous gRPC server.
       app_server_ = builder.BuildAndStart();
       std::cout << "Server listening on " << endpoint << std::endl;
     }
 
-    void Wait() {
-      // Wait until server is shutdown
+    void WaitUntilServerIsDown() {
       app_server_->Wait();
     }
 
@@ -113,6 +112,7 @@ class EchoApp {
     std::string dapr_grpc_port_;
     std::unique_ptr<Dapr::Stub> client_stub_;
     std::unique_ptr<Server> app_server_;
+    std::shared_ptr<EchoAppServerImpl> service_;
 };
 
 } // namepsace dapr_cpp_echo_example
@@ -123,47 +123,50 @@ std::string GetEnvironmentVariable(const std::string& var) {
 }
 
 int main(int argc, char** argv) {
-  std::string app_port;
-  std::string grpc_port = GetEnvironmentVariable("DAPR_GRPC_PORT");
-  std::string mode;
-  std::string target_app;
-
   if (argc < 3) {
-    std::cout << "echo_app <mode> <app_port> <targetapp>" << std::endl;
+    std::cout << "echo_app <mode> <app_port> <callee>" << std::endl;
     return 0;
   }
 
-  mode = std::string(argv[1]);
-  app_port = std::string(argv[2]);
+  std::string grpc_port = GetEnvironmentVariable("DAPR_GRPC_PORT");
+  std::string mode = std::string(argv[1]);
+  std::string app_port = std::string(argv[2]);
+  std::string callee;
 
   if (mode == "client") {
     if (argc < 4) {
-      std::cout << "<targetapp> is required" << std::endl;
+      std::cout << "<callee> is required" << std::endl;
       return 0;
     }
-    target_app = std::string(argv[3]);
+    callee = std::string(argv[3]);
   }
   
-  if (grpc_port == "") {
-    grpc_port = "50001";
-  }
+  if (grpc_port == "") grpc_port = "50001";
 
   std::cout 
-    << "Start echo app (" << mode << ") - target_app: " << target_app
+    << "Start echo app (" << mode << ") - callee: " << callee
     << ", Dapr gRPC Port: " << grpc_port << ", Echo App Port: " << app_port << std::endl;
 
   std::unique_ptr<dapr_cpp_echo_example::EchoApp> app(new dapr_cpp_echo_example::EchoApp(grpc_port, app_port));
-  app->StartAppServer();
-  std::cout << "Call echo method to " << target_app << std::endl;
 
+  // Start App Server
+  app->StartAppServer();
+
+  // TODO: run the client as a separate thread.
   if (mode == "client") {
     app->ConnectToDapr();
-    std::string response = app->CallMethod("echoapp", "echo", "hello dapr");
-    std::cout << "Received \"" << response << "\" from " << target_app << std::endl;
+    std::cout << "Call echo method to " << callee << std::endl;
+
+    while (true) {
+      std::string response = app->CallMethod(callee, "echo", "hello dapr");
+      std::cout << "Received [" << response << "] from " << callee << std::endl;
+      // sleep 5 second
+      std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+    }
   }
 
-  std::cout << "Waiting for server" << std::endl;
-  app->Wait();
+  // Wait until server is down
+  app->WaitUntilServerIsDown();
 
   return 0;
 }
