@@ -23,6 +23,7 @@ RUN apt-get update \
     #
     # Install C++ tools
     && apt-get -y install build-essential cmake cppcheck valgrind autoconf automake libtool pkg-config curl make g++ unzip wget libssl-dev \
+    && apt-get -y install libgrpc++-dev libgrpc-dev protobuf-compiler-grpc libprotobuf-dev protobuf-compiler \
     # Install Docker CE CLI
     && apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common lsb-release \
     && curl -fsSL https://download.docker.com/linux/$(lsb_release -is | tr '[:upper:]' '[:lower:]')/gpg | (OUT=$(apt-key add - 2>&1) || echo $OUT) \
@@ -42,8 +43,7 @@ RUN apt-get update \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-#RUN cd /usr/local/src && git clone -b v1.26.0 https://github.com/grpc/grpc \
-#    && cd grpc && git submodule update --init && make && make install
-
+RUN wget -q https://raw.githubusercontent.com/dapr/cli/master/install/install.sh -O - | /bin/bash
+RUN dapr init
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog

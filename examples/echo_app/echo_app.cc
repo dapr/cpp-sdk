@@ -61,24 +61,6 @@ class EchoApp {
       return "RPC Error : " + status.error_message() + ", " + status.error_details();
     }
 
-    bool SaveMessage(const std::string message) {
-      ClientContext context;
-
-      google::protobuf::Any value;
-      value.ParseFromString(message);
-
-      dapr::SaveStateEnvelope request;
-      request.set_storename("statestore");
-      dapr::StateRequest *stateRequest = request.add_requests();
-      stateRequest->set_key("message");
-      stateRequest->set_allocated_value(&value);
-
-      google::protobuf::Empty response;
-      Status status = client_stub_->SaveState(&context, request, &response);
-
-      return status.ok();
-    }
-
     void StartAppServer() {
       std::string endpoint = echo_app_endpoint();
       service_ = std::shared_ptr<EchoAppServerImpl>(new EchoAppServerImpl());
@@ -133,7 +115,7 @@ int main(int argc, char** argv) {
   std::string app_port = std::string(argv[2]);
   std::string callee;
 
-  if (mode == "client") {
+  if (mode == "caller") {
     if (argc < 4) {
       std::cout << "<callee> is required" << std::endl;
       return 0;
@@ -152,8 +134,8 @@ int main(int argc, char** argv) {
   // Start App Server
   app->StartAppServer();
 
-  // TODO: run the client as a separate thread.
-  if (mode == "client") {
+  // TODO: run it as a separate thread.
+  if (mode == "caller") {
     app->ConnectToDapr();
     std::cout << "Call echo method to " << callee << std::endl;
 
