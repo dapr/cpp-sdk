@@ -16,10 +16,11 @@ Alpha quality.
 2. Copy daprclient.proto from https://github.com/dapr/dapr/tree/master/pkg/proto/daprclient to [proto](./proto)
 3. Generate client
     ```bash
-    make dapr.grpc.pb.cc
-    make dapr.pb.cc
-    make daprclient.grpc.pb.cc
-    make daprclient.pb.cc
+    make ./dapr/proto/common/v1/common.pb.cc
+    make ./dapr/proto/dapr/v1/dapr.grpc.pb.cc
+    make ./dapr/proto/dapr/v1/dapr.pb.cc
+    make ./dapr/proto/daprclient/v1/daprclient.grpc.pb.cc
+    make ./dapr/proto/daprclient/v1/daprclient.pb.cc
     ```
 
 ### Build library

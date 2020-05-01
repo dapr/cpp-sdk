@@ -7,7 +7,7 @@ HOST_SYSTEM = $(shell uname | cut -f 1 -d_)
 SYSTEM ?= $(HOST_SYSTEM)
 CXX = g++
 CPPFLAGS += `pkg-config --cflags protobuf grpc`
-CXXFLAGS += -std=c++11
+CXXFLAGS += -std=c++11 -I ../../src 
 ifeq ($(SYSTEM),Darwin)
 LDFLAGS += -L/usr/local/lib `pkg-config --libs protobuf grpc++`\
            -pthread\
@@ -20,11 +20,11 @@ LDFLAGS += -L/usr/local/lib `pkg-config --libs protobuf grpc++`\
            -ldl
 endif
 
-DAPR_SRC_ROOT = ../../src
+DAPR_SRC_ROOT = ../../src/dapr/proto
 
 all: echo_app
 
-echo_app: $(DAPR_SRC_ROOT)/dapr/dapr.pb.o $(DAPR_SRC_ROOT)/dapr/dapr.grpc.pb.o $(DAPR_SRC_ROOT)/daprclient/daprclient.pb.o $(DAPR_SRC_ROOT)/daprclient/daprclient.grpc.pb.o echo_app_server_impl.o echo_app.o
+echo_app: $(DAPR_SRC_ROOT)/common/v1/common.pb.o $(DAPR_SRC_ROOT)/dapr/v1/dapr.pb.o $(DAPR_SRC_ROOT)/dapr/v1/dapr.grpc.pb.o $(DAPR_SRC_ROOT)/daprclient/v1/daprclient.pb.o $(DAPR_SRC_ROOT)/daprclient/v1/daprclient.grpc.pb.o echo_app_server_impl.o echo_app.o
 	$(CXX) $^ $(LDFLAGS) -o $@
 
 clean:

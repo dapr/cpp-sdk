@@ -14,9 +14,12 @@
 #include <grpcpp/ext/proto_server_reflection_plugin.h>
 
 #include "echo_app_server_impl.h"
-#include "../../src/dapr/dapr.grpc.pb.h"
+#include "dapr/proto/dapr/v1/dapr.grpc.pb.h"
 
-using dapr::Dapr;
+using dapr::proto::dapr::v1::Dapr;
+using dapr::proto::dapr::v1::InvokeServiceRequest;
+using dapr::proto::common::v1::InvokeRequest;
+using dapr::proto::common::v1::InvokeResponse;
 
 using grpc::Channel;
 using grpc::ClientContext;
@@ -43,13 +46,13 @@ class EchoApp {
       const std::string app_id, const std::string method,
       const std::string message) {
       ClientContext context;
-      dapr::InvokeServiceEnvelope request;
-      dapr::InvokeServiceResponseEnvelope response;
+      InvokeServiceRequest request;
+      InvokeResponse response;
 
       // Construct service invocation request
       request.set_id(app_id);
-      request.set_method(method);
-      request.mutable_data()->mutable_value()->assign(message);
+      request.mutable_message()->set_method(method);
+      request.mutable_message()->mutable_data()->set_value(message.c_str());
 
       // Call InvokeService
       Status status = client_stub_->InvokeService(&context, request, &response);
@@ -133,7 +136,8 @@ int main(int argc, char** argv) {
 
   // Start App Server
   app->StartAppServer();
-
+      std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+  
   // TODO: run it as a separate thread.
   if (mode == "caller") {
     app->ConnectToDapr();

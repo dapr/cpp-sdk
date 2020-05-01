@@ -15,26 +15,27 @@ using grpc::Status;
 using google::protobuf::Any;
 using google::protobuf::Empty;
 
-using daprclient::InvokeEnvelope;
-using daprclient::GetTopicSubscriptionsEnvelope;
-using daprclient::GetBindingsSubscriptionsEnvelope;
-using daprclient::BindingEventEnvelope;
-using daprclient::BindingResponseEnvelope;
-using daprclient::CloudEventEnvelope;
+using dapr::proto::common::v1::InvokeRequest;
+using dapr::proto::common::v1::InvokeResponse;
+using dapr::proto::daprclient::v1::GetTopicSubscriptionsEnvelope;
+using dapr::proto::daprclient::v1::GetBindingsSubscriptionsEnvelope;
+using dapr::proto::daprclient::v1::BindingEventEnvelope;
+using dapr::proto::daprclient::v1::BindingResponseEnvelope;
+using dapr::proto::daprclient::v1::CloudEventEnvelope;
 
 namespace dapr_cpp_echo_example {
 
 Status EchoAppServerImpl::OnInvoke(
   ServerContext* context,
-  const InvokeEnvelope* request,
-  Any* response) {
+  const InvokeRequest* request,
+  InvokeResponse* response) {
   
   std::cout << "OnInvoke() is called"  << std::endl;
 
   if (request->method() == "echo") {
     std::cout << "Got the message: " << request->data().value() << std::endl;
     std::string resp_str = "ack : " + request->data().value();
-    response->mutable_value()->assign(resp_str);
+    response->mutable_data()->set_value(resp_str);
   }
 
   return Status::OK;
