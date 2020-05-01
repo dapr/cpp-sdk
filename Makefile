@@ -8,26 +8,26 @@ PROTOC = protoc
 GRPC_CPP_PLUGIN = grpc_cpp_plugin
 GRPC_CPP_PLUGIN_PATH ?= `which $(GRPC_CPP_PLUGIN)`
 
-PROTOS_PATH = ./proto
+PROTOS_PATH = .
 
 vpath %.proto $(PROTOS_PATH)
 
 all: system-check libdapr.so
 
-libdapr.so : ./src/dapr/dapr.pb.o ./src/dapr/dapr.grpc.pb.o ./src/daprclient/daprclient.pb.o ./src/daprclient/daprclient.grpc.pb.o
+libdapr.so : ./src/dapr/proto/common/v1/common.pb.o ./src/dapr/proto/dapr/v1/dapr.pb.o ./src/dapr/proto/dapr/v1/dapr.grpc.pb.o ./src/dapr/proto/daprclient/v1/daprclient.pb.o ./src/dapr/proto/daprclient/v1/daprclient.grpc.pb.o
 	-mkdir ./out
-	$(CXX) -shared -Wl,-soname,libdapr.so.0 -o ./out/libdapr.0.2.0.so ./src/dapr/*.o ./src/daprclient/*.o
+	$(CXX) -shared -Wl,-soname,libdapr.so.0 -o ./out/libdapr.0.2.0.so ./src/dapr/proto/dapr/v1/*.o ./src/dapr/proto/daprclient/v1/*.o ./src/dapr/proto/common/v1/*.o
 
 %.o : %.cc
-	$(CXX) -c -fPIC -I./ $< -o $@
+	$(CXX) -c -fPIC -I./src $< -o $@
 
 .PRECIOUS: %.grpc.pb.cc
 %.grpc.pb.cc: %.proto
-	$(PROTOC) -I $(PROTOS_PATH) --grpc_out=./src/$* --plugin=protoc-gen-grpc=$(GRPC_CPP_PLUGIN_PATH) $<
+	$(PROTOC) -I $(PROTOS_PATH) --grpc_out=./src/ --plugin=protoc-gen-grpc=$(GRPC_CPP_PLUGIN_PATH) $<
 
 .PRECIOUS: %.pb.cc
 %.pb.cc: %.proto
-	$(PROTOC) -I $(PROTOS_PATH) --cpp_out=./src/$* $<
+	$(PROTOC) -I $(PROTOS_PATH) --cpp_out=./src/ $<
 
 clean:
 	rm -f ./src/dapr/*.o ./src/daprclient/*.o
