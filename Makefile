@@ -14,9 +14,9 @@ vpath %.proto $(PROTOS_PATH)
 
 all: system-check libdapr.so
 
-libdapr.so : ./src/dapr/proto/common/v1/common.pb.o ./src/dapr/proto/dapr/v1/dapr.pb.o ./src/dapr/proto/dapr/v1/dapr.grpc.pb.o ./src/dapr/proto/daprclient/v1/daprclient.pb.o ./src/dapr/proto/daprclient/v1/daprclient.grpc.pb.o
+libdapr.so : ./src/dapr/proto/common/v1/common.pb.o ./src/dapr/proto/runtime/v1/dapr.pb.o ./src/dapr/proto/runtime/v1/dapr.grpc.pb.o ./src/dapr/proto/runtime/v1/appcallback.pb.o ./src/dapr/proto/runtime/v1/appcallback.grpc.pb.o
 	-mkdir ./out
-	$(CXX) -shared -Wl,-soname,libdapr.so.0 -o ./out/libdapr.0.2.0.so ./src/dapr/proto/dapr/v1/*.o ./src/dapr/proto/daprclient/v1/*.o ./src/dapr/proto/common/v1/*.o
+	$(CXX) -shared -Wl,-soname,libdapr.so.0 -o ./out/libdapr.0.2.0.so ./src/dapr/proto/runtime/v1/*.o ./src/dapr/proto/common/v1/*.o
 
 %.o : %.cc
 	$(CXX) -c -fPIC -I./src $< -o $@
@@ -30,7 +30,7 @@ libdapr.so : ./src/dapr/proto/common/v1/common.pb.o ./src/dapr/proto/dapr/v1/dap
 	$(PROTOC) -I $(PROTOS_PATH) --cpp_out=./src/ $<
 
 clean:
-	rm -f ./src/dapr/*.o ./src/daprclient/*.o
+	rm -f ./src/dapr/proto/common/v1/*.o ./src/dapr/proto/runtime/v1/*.o
 	rm -rf ./out
 
 # The following is to test your system and ensure a smoother experience.
