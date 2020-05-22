@@ -17,10 +17,10 @@ Alpha quality.
 3. Generate client
     ```bash
     make ./dapr/proto/common/v1/common.pb.cc
-    make ./dapr/proto/dapr/v1/dapr.grpc.pb.cc
-    make ./dapr/proto/dapr/v1/dapr.pb.cc
-    make ./dapr/proto/daprclient/v1/daprclient.grpc.pb.cc
-    make ./dapr/proto/daprclient/v1/daprclient.pb.cc
+    make ./dapr/proto/runtime/v1/dapr.grpc.pb.cc
+    make ./dapr/proto/runtime/v1/dapr.pb.cc
+    make ./dapr/proto/runtime/v1/appcallback.grpc.pb.cc
+    make ./dapr/proto/runtime/v1/appcallback.pb.cc
     ```
 
 ### Build library

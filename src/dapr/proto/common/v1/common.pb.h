@@ -35,6 +35,7 @@
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include <google/protobuf/any.pb.h>
+#include <google/protobuf/duration.pb.h>
 // @@protoc_insertion_point(includes)
 #define PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto 
 
@@ -43,7 +44,7 @@ namespace protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[4];
+  static const ::google::protobuf::internal::ParseTable schema[8];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -66,6 +67,18 @@ extern InvokeRequestDefaultTypeInternal _InvokeRequest_default_instance_;
 class InvokeResponse;
 class InvokeResponseDefaultTypeInternal;
 extern InvokeResponseDefaultTypeInternal _InvokeResponse_default_instance_;
+class StateOptions;
+class StateOptionsDefaultTypeInternal;
+extern StateOptionsDefaultTypeInternal _StateOptions_default_instance_;
+class StateRetryPolicy;
+class StateRetryPolicyDefaultTypeInternal;
+extern StateRetryPolicyDefaultTypeInternal _StateRetryPolicy_default_instance_;
+class StateSaveRequest;
+class StateSaveRequestDefaultTypeInternal;
+extern StateSaveRequestDefaultTypeInternal _StateSaveRequest_default_instance_;
+class StateSaveRequest_MetadataEntry_DoNotUse;
+class StateSaveRequest_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern StateSaveRequest_MetadataEntry_DoNotUseDefaultTypeInternal _StateSaveRequest_MetadataEntry_DoNotUse_default_instance_;
 }  // namespace v1
 }  // namespace common
 }  // namespace proto
@@ -76,6 +89,10 @@ template<> ::dapr::proto::common::v1::HTTPExtension* Arena::CreateMaybeMessage<:
 template<> ::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::common::v1::InvokeRequest* Arena::CreateMaybeMessage<::dapr::proto::common::v1::InvokeRequest>(Arena*);
 template<> ::dapr::proto::common::v1::InvokeResponse* Arena::CreateMaybeMessage<::dapr::proto::common::v1::InvokeResponse>(Arena*);
+template<> ::dapr::proto::common::v1::StateOptions* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StateOptions>(Arena*);
+template<> ::dapr::proto::common::v1::StateRetryPolicy* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StateRetryPolicy>(Arena*);
+template<> ::dapr::proto::common::v1::StateSaveRequest* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StateSaveRequest>(Arena*);
+template<> ::dapr::proto::common::v1::StateSaveRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StateSaveRequest_MetadataEntry_DoNotUse>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace dapr {
@@ -110,6 +127,72 @@ inline bool HTTPExtension_Verb_Parse(
     const ::std::string& name, HTTPExtension_Verb* value) {
   return ::google::protobuf::internal::ParseNamedEnum<HTTPExtension_Verb>(
     HTTPExtension_Verb_descriptor(), name, value);
+}
+enum StateOptions_StateConcurrency {
+  StateOptions_StateConcurrency_CONCURRENCY_UNSPECIFIED = 0,
+  StateOptions_StateConcurrency_CONCURRENCY_FIRST_WRITE = 1,
+  StateOptions_StateConcurrency_CONCURRENCY_LAST_WRITE = 2,
+  StateOptions_StateConcurrency_StateOptions_StateConcurrency_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  StateOptions_StateConcurrency_StateOptions_StateConcurrency_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool StateOptions_StateConcurrency_IsValid(int value);
+const StateOptions_StateConcurrency StateOptions_StateConcurrency_StateConcurrency_MIN = StateOptions_StateConcurrency_CONCURRENCY_UNSPECIFIED;
+const StateOptions_StateConcurrency StateOptions_StateConcurrency_StateConcurrency_MAX = StateOptions_StateConcurrency_CONCURRENCY_LAST_WRITE;
+const int StateOptions_StateConcurrency_StateConcurrency_ARRAYSIZE = StateOptions_StateConcurrency_StateConcurrency_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* StateOptions_StateConcurrency_descriptor();
+inline const ::std::string& StateOptions_StateConcurrency_Name(StateOptions_StateConcurrency value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    StateOptions_StateConcurrency_descriptor(), value);
+}
+inline bool StateOptions_StateConcurrency_Parse(
+    const ::std::string& name, StateOptions_StateConcurrency* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<StateOptions_StateConcurrency>(
+    StateOptions_StateConcurrency_descriptor(), name, value);
+}
+enum StateOptions_StateConsistency {
+  StateOptions_StateConsistency_CONSISTENCY_UNSPECIFIED = 0,
+  StateOptions_StateConsistency_CONSISTENCY_EVENTUAL = 1,
+  StateOptions_StateConsistency_CONSISTENCY_STRONG = 2,
+  StateOptions_StateConsistency_StateOptions_StateConsistency_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  StateOptions_StateConsistency_StateOptions_StateConsistency_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool StateOptions_StateConsistency_IsValid(int value);
+const StateOptions_StateConsistency StateOptions_StateConsistency_StateConsistency_MIN = StateOptions_StateConsistency_CONSISTENCY_UNSPECIFIED;
+const StateOptions_StateConsistency StateOptions_StateConsistency_StateConsistency_MAX = StateOptions_StateConsistency_CONSISTENCY_STRONG;
+const int StateOptions_StateConsistency_StateConsistency_ARRAYSIZE = StateOptions_StateConsistency_StateConsistency_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* StateOptions_StateConsistency_descriptor();
+inline const ::std::string& StateOptions_StateConsistency_Name(StateOptions_StateConsistency value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    StateOptions_StateConsistency_descriptor(), value);
+}
+inline bool StateOptions_StateConsistency_Parse(
+    const ::std::string& name, StateOptions_StateConsistency* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<StateOptions_StateConsistency>(
+    StateOptions_StateConsistency_descriptor(), name, value);
+}
+enum StateRetryPolicy_RetryPattern {
+  StateRetryPolicy_RetryPattern_RETRY_UNSPECIFIED = 0,
+  StateRetryPolicy_RetryPattern_RETRY_LINEAR = 1,
+  StateRetryPolicy_RetryPattern_RETRY_EXPONENTIAL = 2,
+  StateRetryPolicy_RetryPattern_StateRetryPolicy_RetryPattern_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  StateRetryPolicy_RetryPattern_StateRetryPolicy_RetryPattern_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool StateRetryPolicy_RetryPattern_IsValid(int value);
+const StateRetryPolicy_RetryPattern StateRetryPolicy_RetryPattern_RetryPattern_MIN = StateRetryPolicy_RetryPattern_RETRY_UNSPECIFIED;
+const StateRetryPolicy_RetryPattern StateRetryPolicy_RetryPattern_RetryPattern_MAX = StateRetryPolicy_RetryPattern_RETRY_EXPONENTIAL;
+const int StateRetryPolicy_RetryPattern_RetryPattern_ARRAYSIZE = StateRetryPolicy_RetryPattern_RetryPattern_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* StateRetryPolicy_RetryPattern_descriptor();
+inline const ::std::string& StateRetryPolicy_RetryPattern_Name(StateRetryPolicy_RetryPattern value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    StateRetryPolicy_RetryPattern_descriptor(), value);
+}
+inline bool StateRetryPolicy_RetryPattern_Parse(
+    const ::std::string& name, StateRetryPolicy_RetryPattern* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<StateRetryPolicy_RetryPattern>(
+    StateRetryPolicy_RetryPattern_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -567,6 +650,527 @@ class InvokeResponse : public ::google::protobuf::Message /* @@protoc_insertion_
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class StateSaveRequest_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<StateSaveRequest_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<StateSaveRequest_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  StateSaveRequest_MetadataEntry_DoNotUse();
+  StateSaveRequest_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const StateSaveRequest_MetadataEntry_DoNotUse& other);
+  static const StateSaveRequest_MetadataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const StateSaveRequest_MetadataEntry_DoNotUse*>(&_StateSaveRequest_MetadataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
+class StateSaveRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.common.v1.StateSaveRequest) */ {
+ public:
+  StateSaveRequest();
+  virtual ~StateSaveRequest();
+
+  StateSaveRequest(const StateSaveRequest& from);
+
+  inline StateSaveRequest& operator=(const StateSaveRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  StateSaveRequest(StateSaveRequest&& from) noexcept
+    : StateSaveRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline StateSaveRequest& operator=(StateSaveRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const StateSaveRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const StateSaveRequest* internal_default_instance() {
+    return reinterpret_cast<const StateSaveRequest*>(
+               &_StateSaveRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  void Swap(StateSaveRequest* other);
+  friend void swap(StateSaveRequest& a, StateSaveRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline StateSaveRequest* New() const final {
+    return CreateMaybeMessage<StateSaveRequest>(NULL);
+  }
+
+  StateSaveRequest* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<StateSaveRequest>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const StateSaveRequest& from);
+  void MergeFrom(const StateSaveRequest& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StateSaveRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  // map<string, string> metadata = 4;
+  int metadata_size() const;
+  void clear_metadata();
+  static const int kMetadataFieldNumber = 4;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      metadata() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_metadata();
+
+  // string key = 1;
+  void clear_key();
+  static const int kKeyFieldNumber = 1;
+  const ::std::string& key() const;
+  void set_key(const ::std::string& value);
+  #if LANG_CXX11
+  void set_key(::std::string&& value);
+  #endif
+  void set_key(const char* value);
+  void set_key(const char* value, size_t size);
+  ::std::string* mutable_key();
+  ::std::string* release_key();
+  void set_allocated_key(::std::string* key);
+
+  // bytes value = 2;
+  void clear_value();
+  static const int kValueFieldNumber = 2;
+  const ::std::string& value() const;
+  void set_value(const ::std::string& value);
+  #if LANG_CXX11
+  void set_value(::std::string&& value);
+  #endif
+  void set_value(const char* value);
+  void set_value(const void* value, size_t size);
+  ::std::string* mutable_value();
+  ::std::string* release_value();
+  void set_allocated_value(::std::string* value);
+
+  // string etag = 3;
+  void clear_etag();
+  static const int kEtagFieldNumber = 3;
+  const ::std::string& etag() const;
+  void set_etag(const ::std::string& value);
+  #if LANG_CXX11
+  void set_etag(::std::string&& value);
+  #endif
+  void set_etag(const char* value);
+  void set_etag(const char* value, size_t size);
+  ::std::string* mutable_etag();
+  ::std::string* release_etag();
+  void set_allocated_etag(::std::string* etag);
+
+  // .dapr.proto.common.v1.StateOptions options = 5;
+  bool has_options() const;
+  void clear_options();
+  static const int kOptionsFieldNumber = 5;
+  private:
+  const ::dapr::proto::common::v1::StateOptions& _internal_options() const;
+  public:
+  const ::dapr::proto::common::v1::StateOptions& options() const;
+  ::dapr::proto::common::v1::StateOptions* release_options();
+  ::dapr::proto::common::v1::StateOptions* mutable_options();
+  void set_allocated_options(::dapr::proto::common::v1::StateOptions* options);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.common.v1.StateSaveRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::MapField<
+      StateSaveRequest_MetadataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      0 > metadata_;
+  ::google::protobuf::internal::ArenaStringPtr key_;
+  ::google::protobuf::internal::ArenaStringPtr value_;
+  ::google::protobuf::internal::ArenaStringPtr etag_;
+  ::dapr::proto::common::v1::StateOptions* options_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class StateOptions : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.common.v1.StateOptions) */ {
+ public:
+  StateOptions();
+  virtual ~StateOptions();
+
+  StateOptions(const StateOptions& from);
+
+  inline StateOptions& operator=(const StateOptions& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  StateOptions(StateOptions&& from) noexcept
+    : StateOptions() {
+    *this = ::std::move(from);
+  }
+
+  inline StateOptions& operator=(StateOptions&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const StateOptions& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const StateOptions* internal_default_instance() {
+    return reinterpret_cast<const StateOptions*>(
+               &_StateOptions_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  void Swap(StateOptions* other);
+  friend void swap(StateOptions& a, StateOptions& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline StateOptions* New() const final {
+    return CreateMaybeMessage<StateOptions>(NULL);
+  }
+
+  StateOptions* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<StateOptions>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const StateOptions& from);
+  void MergeFrom(const StateOptions& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StateOptions* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef StateOptions_StateConcurrency StateConcurrency;
+  static const StateConcurrency CONCURRENCY_UNSPECIFIED =
+    StateOptions_StateConcurrency_CONCURRENCY_UNSPECIFIED;
+  static const StateConcurrency CONCURRENCY_FIRST_WRITE =
+    StateOptions_StateConcurrency_CONCURRENCY_FIRST_WRITE;
+  static const StateConcurrency CONCURRENCY_LAST_WRITE =
+    StateOptions_StateConcurrency_CONCURRENCY_LAST_WRITE;
+  static inline bool StateConcurrency_IsValid(int value) {
+    return StateOptions_StateConcurrency_IsValid(value);
+  }
+  static const StateConcurrency StateConcurrency_MIN =
+    StateOptions_StateConcurrency_StateConcurrency_MIN;
+  static const StateConcurrency StateConcurrency_MAX =
+    StateOptions_StateConcurrency_StateConcurrency_MAX;
+  static const int StateConcurrency_ARRAYSIZE =
+    StateOptions_StateConcurrency_StateConcurrency_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  StateConcurrency_descriptor() {
+    return StateOptions_StateConcurrency_descriptor();
+  }
+  static inline const ::std::string& StateConcurrency_Name(StateConcurrency value) {
+    return StateOptions_StateConcurrency_Name(value);
+  }
+  static inline bool StateConcurrency_Parse(const ::std::string& name,
+      StateConcurrency* value) {
+    return StateOptions_StateConcurrency_Parse(name, value);
+  }
+
+  typedef StateOptions_StateConsistency StateConsistency;
+  static const StateConsistency CONSISTENCY_UNSPECIFIED =
+    StateOptions_StateConsistency_CONSISTENCY_UNSPECIFIED;
+  static const StateConsistency CONSISTENCY_EVENTUAL =
+    StateOptions_StateConsistency_CONSISTENCY_EVENTUAL;
+  static const StateConsistency CONSISTENCY_STRONG =
+    StateOptions_StateConsistency_CONSISTENCY_STRONG;
+  static inline bool StateConsistency_IsValid(int value) {
+    return StateOptions_StateConsistency_IsValid(value);
+  }
+  static const StateConsistency StateConsistency_MIN =
+    StateOptions_StateConsistency_StateConsistency_MIN;
+  static const StateConsistency StateConsistency_MAX =
+    StateOptions_StateConsistency_StateConsistency_MAX;
+  static const int StateConsistency_ARRAYSIZE =
+    StateOptions_StateConsistency_StateConsistency_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  StateConsistency_descriptor() {
+    return StateOptions_StateConsistency_descriptor();
+  }
+  static inline const ::std::string& StateConsistency_Name(StateConsistency value) {
+    return StateOptions_StateConsistency_Name(value);
+  }
+  static inline bool StateConsistency_Parse(const ::std::string& name,
+      StateConsistency* value) {
+    return StateOptions_StateConsistency_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  // .dapr.proto.common.v1.StateRetryPolicy retry_policy = 3;
+  bool has_retry_policy() const;
+  void clear_retry_policy();
+  static const int kRetryPolicyFieldNumber = 3;
+  private:
+  const ::dapr::proto::common::v1::StateRetryPolicy& _internal_retry_policy() const;
+  public:
+  const ::dapr::proto::common::v1::StateRetryPolicy& retry_policy() const;
+  ::dapr::proto::common::v1::StateRetryPolicy* release_retry_policy();
+  ::dapr::proto::common::v1::StateRetryPolicy* mutable_retry_policy();
+  void set_allocated_retry_policy(::dapr::proto::common::v1::StateRetryPolicy* retry_policy);
+
+  // .dapr.proto.common.v1.StateOptions.StateConcurrency concurrency = 1;
+  void clear_concurrency();
+  static const int kConcurrencyFieldNumber = 1;
+  ::dapr::proto::common::v1::StateOptions_StateConcurrency concurrency() const;
+  void set_concurrency(::dapr::proto::common::v1::StateOptions_StateConcurrency value);
+
+  // .dapr.proto.common.v1.StateOptions.StateConsistency consistency = 2;
+  void clear_consistency();
+  static const int kConsistencyFieldNumber = 2;
+  ::dapr::proto::common::v1::StateOptions_StateConsistency consistency() const;
+  void set_consistency(::dapr::proto::common::v1::StateOptions_StateConsistency value);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.common.v1.StateOptions)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::dapr::proto::common::v1::StateRetryPolicy* retry_policy_;
+  int concurrency_;
+  int consistency_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class StateRetryPolicy : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.common.v1.StateRetryPolicy) */ {
+ public:
+  StateRetryPolicy();
+  virtual ~StateRetryPolicy();
+
+  StateRetryPolicy(const StateRetryPolicy& from);
+
+  inline StateRetryPolicy& operator=(const StateRetryPolicy& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  StateRetryPolicy(StateRetryPolicy&& from) noexcept
+    : StateRetryPolicy() {
+    *this = ::std::move(from);
+  }
+
+  inline StateRetryPolicy& operator=(StateRetryPolicy&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const StateRetryPolicy& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const StateRetryPolicy* internal_default_instance() {
+    return reinterpret_cast<const StateRetryPolicy*>(
+               &_StateRetryPolicy_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  void Swap(StateRetryPolicy* other);
+  friend void swap(StateRetryPolicy& a, StateRetryPolicy& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline StateRetryPolicy* New() const final {
+    return CreateMaybeMessage<StateRetryPolicy>(NULL);
+  }
+
+  StateRetryPolicy* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<StateRetryPolicy>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const StateRetryPolicy& from);
+  void MergeFrom(const StateRetryPolicy& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StateRetryPolicy* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef StateRetryPolicy_RetryPattern RetryPattern;
+  static const RetryPattern RETRY_UNSPECIFIED =
+    StateRetryPolicy_RetryPattern_RETRY_UNSPECIFIED;
+  static const RetryPattern RETRY_LINEAR =
+    StateRetryPolicy_RetryPattern_RETRY_LINEAR;
+  static const RetryPattern RETRY_EXPONENTIAL =
+    StateRetryPolicy_RetryPattern_RETRY_EXPONENTIAL;
+  static inline bool RetryPattern_IsValid(int value) {
+    return StateRetryPolicy_RetryPattern_IsValid(value);
+  }
+  static const RetryPattern RetryPattern_MIN =
+    StateRetryPolicy_RetryPattern_RetryPattern_MIN;
+  static const RetryPattern RetryPattern_MAX =
+    StateRetryPolicy_RetryPattern_RetryPattern_MAX;
+  static const int RetryPattern_ARRAYSIZE =
+    StateRetryPolicy_RetryPattern_RetryPattern_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  RetryPattern_descriptor() {
+    return StateRetryPolicy_RetryPattern_descriptor();
+  }
+  static inline const ::std::string& RetryPattern_Name(RetryPattern value) {
+    return StateRetryPolicy_RetryPattern_Name(value);
+  }
+  static inline bool RetryPattern_Parse(const ::std::string& name,
+      RetryPattern* value) {
+    return StateRetryPolicy_RetryPattern_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  // .google.protobuf.Duration interval = 3;
+  bool has_interval() const;
+  void clear_interval();
+  static const int kIntervalFieldNumber = 3;
+  private:
+  const ::google::protobuf::Duration& _internal_interval() const;
+  public:
+  const ::google::protobuf::Duration& interval() const;
+  ::google::protobuf::Duration* release_interval();
+  ::google::protobuf::Duration* mutable_interval();
+  void set_allocated_interval(::google::protobuf::Duration* interval);
+
+  // int32 threshold = 1;
+  void clear_threshold();
+  static const int kThresholdFieldNumber = 1;
+  ::google::protobuf::int32 threshold() const;
+  void set_threshold(::google::protobuf::int32 value);
+
+  // .dapr.proto.common.v1.StateRetryPolicy.RetryPattern pattern = 2;
+  void clear_pattern();
+  static const int kPatternFieldNumber = 2;
+  ::dapr::proto::common::v1::StateRetryPolicy_RetryPattern pattern() const;
+  void set_pattern(::dapr::proto::common::v1::StateRetryPolicy_RetryPattern value);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.common.v1.StateRetryPolicy)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::Duration* interval_;
+  ::google::protobuf::int32 threshold_;
+  int pattern_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -929,9 +1533,421 @@ inline void InvokeResponse::set_allocated_content_type(::std::string* content_ty
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.InvokeResponse.content_type)
 }
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// StateSaveRequest
+
+// string key = 1;
+inline void StateSaveRequest::clear_key() {
+  key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& StateSaveRequest::key() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateSaveRequest.key)
+  return key_.GetNoArena();
+}
+inline void StateSaveRequest::set_key(const ::std::string& value) {
+  
+  key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateSaveRequest.key)
+}
+#if LANG_CXX11
+inline void StateSaveRequest::set_key(::std::string&& value) {
+  
+  key_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.StateSaveRequest.key)
+}
+#endif
+inline void StateSaveRequest::set_key(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.StateSaveRequest.key)
+}
+inline void StateSaveRequest::set_key(const char* value, size_t size) {
+  
+  key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.StateSaveRequest.key)
+}
+inline ::std::string* StateSaveRequest::mutable_key() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateSaveRequest.key)
+  return key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StateSaveRequest::release_key() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateSaveRequest.key)
+  
+  return key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StateSaveRequest::set_allocated_key(::std::string* key) {
+  if (key != NULL) {
+    
+  } else {
+    
+  }
+  key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), key);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateSaveRequest.key)
+}
+
+// bytes value = 2;
+inline void StateSaveRequest::clear_value() {
+  value_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& StateSaveRequest::value() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateSaveRequest.value)
+  return value_.GetNoArena();
+}
+inline void StateSaveRequest::set_value(const ::std::string& value) {
+  
+  value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateSaveRequest.value)
+}
+#if LANG_CXX11
+inline void StateSaveRequest::set_value(::std::string&& value) {
+  
+  value_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.StateSaveRequest.value)
+}
+#endif
+inline void StateSaveRequest::set_value(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.StateSaveRequest.value)
+}
+inline void StateSaveRequest::set_value(const void* value, size_t size) {
+  
+  value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.StateSaveRequest.value)
+}
+inline ::std::string* StateSaveRequest::mutable_value() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateSaveRequest.value)
+  return value_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StateSaveRequest::release_value() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateSaveRequest.value)
+  
+  return value_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StateSaveRequest::set_allocated_value(::std::string* value) {
+  if (value != NULL) {
+    
+  } else {
+    
+  }
+  value_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateSaveRequest.value)
+}
+
+// string etag = 3;
+inline void StateSaveRequest::clear_etag() {
+  etag_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& StateSaveRequest::etag() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateSaveRequest.etag)
+  return etag_.GetNoArena();
+}
+inline void StateSaveRequest::set_etag(const ::std::string& value) {
+  
+  etag_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateSaveRequest.etag)
+}
+#if LANG_CXX11
+inline void StateSaveRequest::set_etag(::std::string&& value) {
+  
+  etag_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.StateSaveRequest.etag)
+}
+#endif
+inline void StateSaveRequest::set_etag(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  etag_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.StateSaveRequest.etag)
+}
+inline void StateSaveRequest::set_etag(const char* value, size_t size) {
+  
+  etag_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.StateSaveRequest.etag)
+}
+inline ::std::string* StateSaveRequest::mutable_etag() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateSaveRequest.etag)
+  return etag_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StateSaveRequest::release_etag() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateSaveRequest.etag)
+  
+  return etag_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StateSaveRequest::set_allocated_etag(::std::string* etag) {
+  if (etag != NULL) {
+    
+  } else {
+    
+  }
+  etag_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), etag);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateSaveRequest.etag)
+}
+
+// map<string, string> metadata = 4;
+inline int StateSaveRequest::metadata_size() const {
+  return metadata_.size();
+}
+inline void StateSaveRequest::clear_metadata() {
+  metadata_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+StateSaveRequest::metadata() const {
+  // @@protoc_insertion_point(field_map:dapr.proto.common.v1.StateSaveRequest.metadata)
+  return metadata_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+StateSaveRequest::mutable_metadata() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.common.v1.StateSaveRequest.metadata)
+  return metadata_.MutableMap();
+}
+
+// .dapr.proto.common.v1.StateOptions options = 5;
+inline bool StateSaveRequest::has_options() const {
+  return this != internal_default_instance() && options_ != NULL;
+}
+inline void StateSaveRequest::clear_options() {
+  if (GetArenaNoVirtual() == NULL && options_ != NULL) {
+    delete options_;
+  }
+  options_ = NULL;
+}
+inline const ::dapr::proto::common::v1::StateOptions& StateSaveRequest::_internal_options() const {
+  return *options_;
+}
+inline const ::dapr::proto::common::v1::StateOptions& StateSaveRequest::options() const {
+  const ::dapr::proto::common::v1::StateOptions* p = options_;
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateSaveRequest.options)
+  return p != NULL ? *p : *reinterpret_cast<const ::dapr::proto::common::v1::StateOptions*>(
+      &::dapr::proto::common::v1::_StateOptions_default_instance_);
+}
+inline ::dapr::proto::common::v1::StateOptions* StateSaveRequest::release_options() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateSaveRequest.options)
+  
+  ::dapr::proto::common::v1::StateOptions* temp = options_;
+  options_ = NULL;
+  return temp;
+}
+inline ::dapr::proto::common::v1::StateOptions* StateSaveRequest::mutable_options() {
+  
+  if (options_ == NULL) {
+    auto* p = CreateMaybeMessage<::dapr::proto::common::v1::StateOptions>(GetArenaNoVirtual());
+    options_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateSaveRequest.options)
+  return options_;
+}
+inline void StateSaveRequest::set_allocated_options(::dapr::proto::common::v1::StateOptions* options) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete options_;
+  }
+  if (options) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      options = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, options, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  options_ = options;
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateSaveRequest.options)
+}
+
+// -------------------------------------------------------------------
+
+// StateOptions
+
+// .dapr.proto.common.v1.StateOptions.StateConcurrency concurrency = 1;
+inline void StateOptions::clear_concurrency() {
+  concurrency_ = 0;
+}
+inline ::dapr::proto::common::v1::StateOptions_StateConcurrency StateOptions::concurrency() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateOptions.concurrency)
+  return static_cast< ::dapr::proto::common::v1::StateOptions_StateConcurrency >(concurrency_);
+}
+inline void StateOptions::set_concurrency(::dapr::proto::common::v1::StateOptions_StateConcurrency value) {
+  
+  concurrency_ = value;
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateOptions.concurrency)
+}
+
+// .dapr.proto.common.v1.StateOptions.StateConsistency consistency = 2;
+inline void StateOptions::clear_consistency() {
+  consistency_ = 0;
+}
+inline ::dapr::proto::common::v1::StateOptions_StateConsistency StateOptions::consistency() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateOptions.consistency)
+  return static_cast< ::dapr::proto::common::v1::StateOptions_StateConsistency >(consistency_);
+}
+inline void StateOptions::set_consistency(::dapr::proto::common::v1::StateOptions_StateConsistency value) {
+  
+  consistency_ = value;
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateOptions.consistency)
+}
+
+// .dapr.proto.common.v1.StateRetryPolicy retry_policy = 3;
+inline bool StateOptions::has_retry_policy() const {
+  return this != internal_default_instance() && retry_policy_ != NULL;
+}
+inline void StateOptions::clear_retry_policy() {
+  if (GetArenaNoVirtual() == NULL && retry_policy_ != NULL) {
+    delete retry_policy_;
+  }
+  retry_policy_ = NULL;
+}
+inline const ::dapr::proto::common::v1::StateRetryPolicy& StateOptions::_internal_retry_policy() const {
+  return *retry_policy_;
+}
+inline const ::dapr::proto::common::v1::StateRetryPolicy& StateOptions::retry_policy() const {
+  const ::dapr::proto::common::v1::StateRetryPolicy* p = retry_policy_;
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateOptions.retry_policy)
+  return p != NULL ? *p : *reinterpret_cast<const ::dapr::proto::common::v1::StateRetryPolicy*>(
+      &::dapr::proto::common::v1::_StateRetryPolicy_default_instance_);
+}
+inline ::dapr::proto::common::v1::StateRetryPolicy* StateOptions::release_retry_policy() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateOptions.retry_policy)
+  
+  ::dapr::proto::common::v1::StateRetryPolicy* temp = retry_policy_;
+  retry_policy_ = NULL;
+  return temp;
+}
+inline ::dapr::proto::common::v1::StateRetryPolicy* StateOptions::mutable_retry_policy() {
+  
+  if (retry_policy_ == NULL) {
+    auto* p = CreateMaybeMessage<::dapr::proto::common::v1::StateRetryPolicy>(GetArenaNoVirtual());
+    retry_policy_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateOptions.retry_policy)
+  return retry_policy_;
+}
+inline void StateOptions::set_allocated_retry_policy(::dapr::proto::common::v1::StateRetryPolicy* retry_policy) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete retry_policy_;
+  }
+  if (retry_policy) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      retry_policy = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, retry_policy, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  retry_policy_ = retry_policy;
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateOptions.retry_policy)
+}
+
+// -------------------------------------------------------------------
+
+// StateRetryPolicy
+
+// int32 threshold = 1;
+inline void StateRetryPolicy::clear_threshold() {
+  threshold_ = 0;
+}
+inline ::google::protobuf::int32 StateRetryPolicy::threshold() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateRetryPolicy.threshold)
+  return threshold_;
+}
+inline void StateRetryPolicy::set_threshold(::google::protobuf::int32 value) {
+  
+  threshold_ = value;
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateRetryPolicy.threshold)
+}
+
+// .dapr.proto.common.v1.StateRetryPolicy.RetryPattern pattern = 2;
+inline void StateRetryPolicy::clear_pattern() {
+  pattern_ = 0;
+}
+inline ::dapr::proto::common::v1::StateRetryPolicy_RetryPattern StateRetryPolicy::pattern() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateRetryPolicy.pattern)
+  return static_cast< ::dapr::proto::common::v1::StateRetryPolicy_RetryPattern >(pattern_);
+}
+inline void StateRetryPolicy::set_pattern(::dapr::proto::common::v1::StateRetryPolicy_RetryPattern value) {
+  
+  pattern_ = value;
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateRetryPolicy.pattern)
+}
+
+// .google.protobuf.Duration interval = 3;
+inline bool StateRetryPolicy::has_interval() const {
+  return this != internal_default_instance() && interval_ != NULL;
+}
+inline const ::google::protobuf::Duration& StateRetryPolicy::_internal_interval() const {
+  return *interval_;
+}
+inline const ::google::protobuf::Duration& StateRetryPolicy::interval() const {
+  const ::google::protobuf::Duration* p = interval_;
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateRetryPolicy.interval)
+  return p != NULL ? *p : *reinterpret_cast<const ::google::protobuf::Duration*>(
+      &::google::protobuf::_Duration_default_instance_);
+}
+inline ::google::protobuf::Duration* StateRetryPolicy::release_interval() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateRetryPolicy.interval)
+  
+  ::google::protobuf::Duration* temp = interval_;
+  interval_ = NULL;
+  return temp;
+}
+inline ::google::protobuf::Duration* StateRetryPolicy::mutable_interval() {
+  
+  if (interval_ == NULL) {
+    auto* p = CreateMaybeMessage<::google::protobuf::Duration>(GetArenaNoVirtual());
+    interval_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateRetryPolicy.interval)
+  return interval_;
+}
+inline void StateRetryPolicy::set_allocated_interval(::google::protobuf::Duration* interval) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete reinterpret_cast< ::google::protobuf::MessageLite*>(interval_);
+  }
+  if (interval) {
+    ::google::protobuf::Arena* submessage_arena =
+      reinterpret_cast<::google::protobuf::MessageLite*>(interval)->GetArena();
+    if (message_arena != submessage_arena) {
+      interval = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, interval, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  interval_ = interval;
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateRetryPolicy.interval)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -953,6 +1969,21 @@ template <> struct is_proto_enum< ::dapr::proto::common::v1::HTTPExtension_Verb>
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::dapr::proto::common::v1::HTTPExtension_Verb>() {
   return ::dapr::proto::common::v1::HTTPExtension_Verb_descriptor();
+}
+template <> struct is_proto_enum< ::dapr::proto::common::v1::StateOptions_StateConcurrency> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::dapr::proto::common::v1::StateOptions_StateConcurrency>() {
+  return ::dapr::proto::common::v1::StateOptions_StateConcurrency_descriptor();
+}
+template <> struct is_proto_enum< ::dapr::proto::common::v1::StateOptions_StateConsistency> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::dapr::proto::common::v1::StateOptions_StateConsistency>() {
+  return ::dapr::proto::common::v1::StateOptions_StateConsistency_descriptor();
+}
+template <> struct is_proto_enum< ::dapr::proto::common::v1::StateRetryPolicy_RetryPattern> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::dapr::proto::common::v1::StateRetryPolicy_RetryPattern>() {
+  return ::dapr::proto::common::v1::StateRetryPolicy_RetryPattern_descriptor();
 }
 
 }  // namespace protobuf

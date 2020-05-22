@@ -17,11 +17,11 @@ using google::protobuf::Empty;
 
 using dapr::proto::common::v1::InvokeRequest;
 using dapr::proto::common::v1::InvokeResponse;
-using dapr::proto::daprclient::v1::GetTopicSubscriptionsEnvelope;
-using dapr::proto::daprclient::v1::GetBindingsSubscriptionsEnvelope;
-using dapr::proto::daprclient::v1::BindingEventEnvelope;
-using dapr::proto::daprclient::v1::BindingResponseEnvelope;
-using dapr::proto::daprclient::v1::CloudEventEnvelope;
+using dapr::proto::runtime::v1::ListTopicSubscriptionsResponse;
+using dapr::proto::runtime::v1::ListInputBindingsResponse;
+using dapr::proto::runtime::v1::BindingEventRequest;
+using dapr::proto::runtime::v1::BindingEventResponse;
+using dapr::proto::runtime::v1::TopicEventRequest;
 
 namespace dapr_cpp_echo_example {
 
@@ -41,33 +41,33 @@ Status EchoAppServerImpl::OnInvoke(
   return Status::OK;
 }
 
-Status EchoAppServerImpl::GetTopicSubscriptions(
+Status EchoAppServerImpl::ListTopicSubscriptions(
   ServerContext* context,
   const Empty* request,
-  GetTopicSubscriptionsEnvelope* response)  {
-  std::cout << "GetTopicSubscriptions() is called"  << std::endl;
+  ListTopicSubscriptionsResponse* response)  {
+  std::cout << "ListTopicSubscriptions() is called"  << std::endl;
   return Status::OK;
 }
 
-Status EchoAppServerImpl::GetBindingsSubscriptions(
+Status EchoAppServerImpl::ListInputBindings(
   ServerContext* context,
   const Empty* request,
-  GetBindingsSubscriptionsEnvelope* response)  {
-  std::cout << "GetBindingsSubscriptions() is called" << std::endl;
+  ListInputBindingsResponse* response)  {
+  std::cout << "ListInputBindings() is called" << std::endl;
   return Status::OK;
 }
 
 Status EchoAppServerImpl::OnBindingEvent(
   ServerContext* context,
-  const BindingEventEnvelope* request,
-  BindingResponseEnvelope* response)  {
+  const BindingEventRequest* request,
+  BindingEventResponse* response)  {
   std::cout << "OnBindingEvent() is called"  << std::endl;
   return Status::OK;
 }
 
 Status EchoAppServerImpl::OnTopicEvent(
   ServerContext* context,
-  const CloudEventEnvelope* request,
+  const TopicEventRequest* request,
   Empty* response)  {
   std::cout << "OnBindingEvent() is called"  << std::endl;
   return Status::OK;
