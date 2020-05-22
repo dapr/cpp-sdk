@@ -24,7 +24,7 @@ DAPR_SRC_ROOT = ../../src/dapr/proto
 
 all: echo_app
 
-echo_app: $(DAPR_SRC_ROOT)/common/v1/common.pb.o $(DAPR_SRC_ROOT)/dapr/v1/dapr.pb.o $(DAPR_SRC_ROOT)/dapr/v1/dapr.grpc.pb.o $(DAPR_SRC_ROOT)/daprclient/v1/daprclient.pb.o $(DAPR_SRC_ROOT)/daprclient/v1/daprclient.grpc.pb.o echo_app_server_impl.o echo_app.o
+echo_app: $(DAPR_SRC_ROOT)/common/v1/common.pb.o $(DAPR_SRC_ROOT)/runtime/v1/dapr.pb.o $(DAPR_SRC_ROOT)/runtime/v1/dapr.grpc.pb.o $(DAPR_SRC_ROOT)/runtime/v1/appcallback.pb.o $(DAPR_SRC_ROOT)/runtime/v1/appcallback.grpc.pb.o echo_app_server_impl.o echo_app.o
 	$(CXX) $^ $(LDFLAGS) -o $@
 
 clean:

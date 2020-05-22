@@ -14,10 +14,10 @@
 #include <grpcpp/ext/proto_server_reflection_plugin.h>
 
 #include "echo_app_server_impl.h"
-#include "dapr/proto/dapr/v1/dapr.grpc.pb.h"
+#include "dapr/proto/runtime/v1/dapr.grpc.pb.h"
 
-using dapr::proto::dapr::v1::Dapr;
-using dapr::proto::dapr::v1::InvokeServiceRequest;
+using dapr::proto::runtime::v1::Dapr;
+using dapr::proto::runtime::v1::InvokeServiceRequest;
 using dapr::proto::common::v1::InvokeRequest;
 using dapr::proto::common::v1::InvokeResponse;
 
