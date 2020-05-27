@@ -741,17 +741,17 @@ class SaveStateRequest : public ::google::protobuf::Message /* @@protoc_insertio
 
   // accessors -------------------------------------------------------
 
-  // repeated .dapr.proto.common.v1.StateSaveRequest requests = 2;
-  int requests_size() const;
-  void clear_requests();
-  static const int kRequestsFieldNumber = 2;
-  ::dapr::proto::common::v1::StateSaveRequest* mutable_requests(int index);
-  ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateSaveRequest >*
-      mutable_requests();
-  const ::dapr::proto::common::v1::StateSaveRequest& requests(int index) const;
-  ::dapr::proto::common::v1::StateSaveRequest* add_requests();
-  const ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateSaveRequest >&
-      requests() const;
+  // repeated .dapr.proto.common.v1.StateItem states = 2;
+  int states_size() const;
+  void clear_states();
+  static const int kStatesFieldNumber = 2;
+  ::dapr::proto::common::v1::StateItem* mutable_states(int index);
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateItem >*
+      mutable_states();
+  const ::dapr::proto::common::v1::StateItem& states(int index) const;
+  ::dapr::proto::common::v1::StateItem* add_states();
+  const ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateItem >&
+      states() const;
 
   // string store_name = 1;
   void clear_store_name();
@@ -771,7 +771,7 @@ class SaveStateRequest : public ::google::protobuf::Message /* @@protoc_insertio
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateSaveRequest > requests_;
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateItem > states_;
   ::google::protobuf::internal::ArenaStringPtr store_name_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
@@ -1975,31 +1975,31 @@ inline void SaveStateRequest::set_allocated_store_name(::std::string* store_name
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.SaveStateRequest.store_name)
 }
 
-// repeated .dapr.proto.common.v1.StateSaveRequest requests = 2;
-inline int SaveStateRequest::requests_size() const {
-  return requests_.size();
+// repeated .dapr.proto.common.v1.StateItem states = 2;
+inline int SaveStateRequest::states_size() const {
+  return states_.size();
 }
-inline ::dapr::proto::common::v1::StateSaveRequest* SaveStateRequest::mutable_requests(int index) {
-  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.SaveStateRequest.requests)
-  return requests_.Mutable(index);
+inline ::dapr::proto::common::v1::StateItem* SaveStateRequest::mutable_states(int index) {
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.SaveStateRequest.states)
+  return states_.Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateSaveRequest >*
-SaveStateRequest::mutable_requests() {
-  // @@protoc_insertion_point(field_mutable_list:dapr.proto.runtime.v1.SaveStateRequest.requests)
-  return &requests_;
+inline ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateItem >*
+SaveStateRequest::mutable_states() {
+  // @@protoc_insertion_point(field_mutable_list:dapr.proto.runtime.v1.SaveStateRequest.states)
+  return &states_;
 }
-inline const ::dapr::proto::common::v1::StateSaveRequest& SaveStateRequest::requests(int index) const {
-  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.SaveStateRequest.requests)
-  return requests_.Get(index);
+inline const ::dapr::proto::common::v1::StateItem& SaveStateRequest::states(int index) const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.SaveStateRequest.states)
+  return states_.Get(index);
 }
-inline ::dapr::proto::common::v1::StateSaveRequest* SaveStateRequest::add_requests() {
-  // @@protoc_insertion_point(field_add:dapr.proto.runtime.v1.SaveStateRequest.requests)
-  return requests_.Add();
+inline ::dapr::proto::common::v1::StateItem* SaveStateRequest::add_states() {
+  // @@protoc_insertion_point(field_add:dapr.proto.runtime.v1.SaveStateRequest.states)
+  return states_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateSaveRequest >&
-SaveStateRequest::requests() const {
-  // @@protoc_insertion_point(field_list:dapr.proto.runtime.v1.SaveStateRequest.requests)
-  return requests_;
+inline const ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateItem >&
+SaveStateRequest::states() const {
+  // @@protoc_insertion_point(field_list:dapr.proto.runtime.v1.SaveStateRequest.states)
+  return states_;
 }
 
 // -------------------------------------------------------------------

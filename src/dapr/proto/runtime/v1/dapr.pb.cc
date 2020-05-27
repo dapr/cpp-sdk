@@ -22,7 +22,7 @@
 namespace protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto {
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_StateOptions;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_InvokeRequest;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_StateSaveRequest;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_StateItem;
 }  // namespace protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto
 namespace protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto {
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_GetSecretRequest_MetadataEntry_DoNotUse;
@@ -169,7 +169,7 @@ static void InitDefaultsSaveStateRequest() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_SaveStateRequest =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsSaveStateRequest}, {
-      &protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::scc_info_StateSaveRequest.base,}};
+      &protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::scc_info_StateItem.base,}};
 
 static void InitDefaultsPublishEventRequest() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -324,7 +324,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::SaveStateRequest, store_name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::SaveStateRequest, requests_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::SaveStateRequest, states_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::PublishEventRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -445,45 +445,45 @@ void AddDescriptorsImpl() {
       "\004data\030\001 \001(\014\022\014\n\004etag\030\002 \001(\t\"x\n\022DeleteState"
       "Request\022\022\n\nstore_name\030\001 \001(\t\022\013\n\003key\030\002 \001(\t"
       "\022\014\n\004etag\030\003 \001(\t\0223\n\007options\030\004 \001(\0132\".dapr.p"
-      "roto.common.v1.StateOptions\"`\n\020SaveState"
-      "Request\022\022\n\nstore_name\030\001 \001(\t\0228\n\010requests\030"
-      "\002 \003(\0132&.dapr.proto.common.v1.StateSaveRe"
-      "quest\"2\n\023PublishEventRequest\022\r\n\005topic\030\001 "
-      "\001(\t\022\014\n\004data\030\002 \001(\014\"\260\001\n\024InvokeBindingReque"
-      "st\022\014\n\004name\030\001 \001(\t\022\014\n\004data\030\002 \001(\014\022K\n\010metada"
-      "ta\030\003 \003(\01329.dapr.proto.runtime.v1.InvokeB"
-      "indingRequest.MetadataEntry\032/\n\rMetadataE"
-      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\255\001\n"
-      "\020GetSecretRequest\022\022\n\nstore_name\030\001 \001(\t\022\013\n"
-      "\003key\030\002 \001(\t\022G\n\010metadata\030\003 \003(\01325.dapr.prot"
-      "o.runtime.v1.GetSecretRequest.MetadataEn"
-      "try\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val"
-      "ue\030\002 \001(\t:\0028\001\"\202\001\n\021GetSecretResponse\022@\n\004da"
-      "ta\030\001 \003(\01322.dapr.proto.runtime.v1.GetSecr"
-      "etResponse.DataEntry\032+\n\tDataEntry\022\013\n\003key"
-      "\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\0012\377\004\n\004Dapr\022d\n\rIn"
-      "vokeService\022+.dapr.proto.runtime.v1.Invo"
-      "keServiceRequest\032$.dapr.proto.common.v1."
-      "InvokeResponse\"\000\022]\n\010GetState\022&.dapr.prot"
-      "o.runtime.v1.GetStateRequest\032\'.dapr.prot"
-      "o.runtime.v1.GetStateResponse\"\000\022N\n\tSaveS"
-      "tate\022\'.dapr.proto.runtime.v1.SaveStateRe"
-      "quest\032\026.google.protobuf.Empty\"\000\022R\n\013Delet"
-      "eState\022).dapr.proto.runtime.v1.DeleteSta"
-      "teRequest\032\026.google.protobuf.Empty\"\000\022T\n\014P"
-      "ublishEvent\022*.dapr.proto.runtime.v1.Publ"
-      "ishEventRequest\032\026.google.protobuf.Empty\""
-      "\000\022V\n\rInvokeBinding\022+.dapr.proto.runtime."
-      "v1.InvokeBindingRequest\032\026.google.protobu"
-      "f.Empty\"\000\022`\n\tGetSecret\022\'.dapr.proto.runt"
-      "ime.v1.GetSecretRequest\032(.dapr.proto.run"
-      "time.v1.GetSecretResponse\"\000Bi\n\nio.dapr.v"
-      "1B\nDaprProtosZ1github.com/dapr/dapr/pkg/"
-      "proto/runtime/v1;runtime\252\002\033Dapr.Client.A"
-      "utogen.Grpc.v1b\006proto3"
+      "roto.common.v1.StateOptions\"W\n\020SaveState"
+      "Request\022\022\n\nstore_name\030\001 \001(\t\022/\n\006states\030\002 "
+      "\003(\0132\037.dapr.proto.common.v1.StateItem\"2\n\023"
+      "PublishEventRequest\022\r\n\005topic\030\001 \001(\t\022\014\n\004da"
+      "ta\030\002 \001(\014\"\260\001\n\024InvokeBindingRequest\022\014\n\004nam"
+      "e\030\001 \001(\t\022\014\n\004data\030\002 \001(\014\022K\n\010metadata\030\003 \003(\0132"
+      "9.dapr.proto.runtime.v1.InvokeBindingReq"
+      "uest.MetadataEntry\032/\n\rMetadataEntry\022\013\n\003k"
+      "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\255\001\n\020GetSecre"
+      "tRequest\022\022\n\nstore_name\030\001 \001(\t\022\013\n\003key\030\002 \001("
+      "\t\022G\n\010metadata\030\003 \003(\01325.dapr.proto.runtime"
+      ".v1.GetSecretRequest.MetadataEntry\032/\n\rMe"
+      "tadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:"
+      "\0028\001\"\202\001\n\021GetSecretResponse\022@\n\004data\030\001 \003(\0132"
+      "2.dapr.proto.runtime.v1.GetSecretRespons"
+      "e.DataEntry\032+\n\tDataEntry\022\013\n\003key\030\001 \001(\t\022\r\n"
+      "\005value\030\002 \001(\t:\0028\0012\377\004\n\004Dapr\022d\n\rInvokeServi"
+      "ce\022+.dapr.proto.runtime.v1.InvokeService"
+      "Request\032$.dapr.proto.common.v1.InvokeRes"
+      "ponse\"\000\022]\n\010GetState\022&.dapr.proto.runtime"
+      ".v1.GetStateRequest\032\'.dapr.proto.runtime"
+      ".v1.GetStateResponse\"\000\022N\n\tSaveState\022\'.da"
+      "pr.proto.runtime.v1.SaveStateRequest\032\026.g"
+      "oogle.protobuf.Empty\"\000\022R\n\013DeleteState\022)."
+      "dapr.proto.runtime.v1.DeleteStateRequest"
+      "\032\026.google.protobuf.Empty\"\000\022T\n\014PublishEve"
+      "nt\022*.dapr.proto.runtime.v1.PublishEventR"
+      "equest\032\026.google.protobuf.Empty\"\000\022V\n\rInvo"
+      "keBinding\022+.dapr.proto.runtime.v1.Invoke"
+      "BindingRequest\032\026.google.protobuf.Empty\"\000"
+      "\022`\n\tGetSecret\022\'.dapr.proto.runtime.v1.Ge"
+      "tSecretRequest\032(.dapr.proto.runtime.v1.G"
+      "etSecretResponse\"\000Bi\n\nio.dapr.v1B\nDaprPr"
+      "otosZ1github.com/dapr/dapr/pkg/proto/run"
+      "time/v1;runtime\252\002\033Dapr.Client.Autogen.Gr"
+      "pc.v1b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1902);
+      descriptor, 1893);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dapr/proto/runtime/v1/dapr.proto", &protobuf_RegisterTypes);
   ::protobuf_google_2fprotobuf_2fempty_2eproto::AddDescriptors();
@@ -1851,12 +1851,12 @@ void DeleteStateRequest::InternalSwap(DeleteStateRequest* other) {
 
 void SaveStateRequest::InitAsDefaultInstance() {
 }
-void SaveStateRequest::clear_requests() {
-  requests_.Clear();
+void SaveStateRequest::clear_states() {
+  states_.Clear();
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int SaveStateRequest::kStoreNameFieldNumber;
-const int SaveStateRequest::kRequestsFieldNumber;
+const int SaveStateRequest::kStatesFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 SaveStateRequest::SaveStateRequest()
@@ -1869,7 +1869,7 @@ SaveStateRequest::SaveStateRequest()
 SaveStateRequest::SaveStateRequest(const SaveStateRequest& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      requests_(from.requests_) {
+      states_(from.states_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   store_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.store_name().size() > 0) {
@@ -1911,7 +1911,7 @@ void SaveStateRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  requests_.Clear();
+  states_.Clear();
   store_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
@@ -1942,12 +1942,12 @@ bool SaveStateRequest::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .dapr.proto.common.v1.StateSaveRequest requests = 2;
+      // repeated .dapr.proto.common.v1.StateItem states = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_requests()));
+                input, add_states()));
         } else {
           goto handle_unusual;
         }
@@ -1990,12 +1990,12 @@ void SaveStateRequest::SerializeWithCachedSizes(
       1, this->store_name(), output);
   }
 
-  // repeated .dapr.proto.common.v1.StateSaveRequest requests = 2;
+  // repeated .dapr.proto.common.v1.StateItem states = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->requests_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->states_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2,
-      this->requests(static_cast<int>(i)),
+      this->states(static_cast<int>(i)),
       output);
   }
 
@@ -2024,12 +2024,12 @@ void SaveStateRequest::SerializeWithCachedSizes(
         1, this->store_name(), target);
   }
 
-  // repeated .dapr.proto.common.v1.StateSaveRequest requests = 2;
+  // repeated .dapr.proto.common.v1.StateItem states = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->requests_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->states_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        2, this->requests(static_cast<int>(i)), deterministic, target);
+        2, this->states(static_cast<int>(i)), deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2049,14 +2049,14 @@ size_t SaveStateRequest::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // repeated .dapr.proto.common.v1.StateSaveRequest requests = 2;
+  // repeated .dapr.proto.common.v1.StateItem states = 2;
   {
-    unsigned int count = static_cast<unsigned int>(this->requests_size());
+    unsigned int count = static_cast<unsigned int>(this->states_size());
     total_size += 1UL * count;
     for (unsigned int i = 0; i < count; i++) {
       total_size +=
         ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->requests(static_cast<int>(i)));
+          this->states(static_cast<int>(i)));
     }
   }
 
@@ -2094,7 +2094,7 @@ void SaveStateRequest::MergeFrom(const SaveStateRequest& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  requests_.MergeFrom(from.requests_);
+  states_.MergeFrom(from.states_);
   if (from.store_name().size() > 0) {
 
     store_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.store_name_);
@@ -2125,7 +2125,7 @@ void SaveStateRequest::Swap(SaveStateRequest* other) {
 }
 void SaveStateRequest::InternalSwap(SaveStateRequest* other) {
   using std::swap;
-  CastToBase(&requests_)->InternalSwap(CastToBase(&other->requests_));
+  CastToBase(&states_)->InternalSwap(CastToBase(&other->states_));
   store_name_.Swap(&other->store_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);

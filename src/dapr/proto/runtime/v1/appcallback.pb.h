@@ -600,16 +600,16 @@ class BindingEventResponse : public ::google::protobuf::Message /* @@protoc_inse
 
   // accessors -------------------------------------------------------
 
-  // repeated .dapr.proto.common.v1.StateSaveRequest states = 2;
+  // repeated .dapr.proto.common.v1.StateItem states = 2;
   int states_size() const;
   void clear_states();
   static const int kStatesFieldNumber = 2;
-  ::dapr::proto::common::v1::StateSaveRequest* mutable_states(int index);
-  ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateSaveRequest >*
+  ::dapr::proto::common::v1::StateItem* mutable_states(int index);
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateItem >*
       mutable_states();
-  const ::dapr::proto::common::v1::StateSaveRequest& states(int index) const;
-  ::dapr::proto::common::v1::StateSaveRequest* add_states();
-  const ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateSaveRequest >&
+  const ::dapr::proto::common::v1::StateItem& states(int index) const;
+  ::dapr::proto::common::v1::StateItem* add_states();
+  const ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateItem >&
       states() const;
 
   // repeated string to = 3;
@@ -672,7 +672,7 @@ class BindingEventResponse : public ::google::protobuf::Message /* @@protoc_inse
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateSaveRequest > states_;
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateItem > states_;
   ::google::protobuf::RepeatedPtrField< ::std::string> to_;
   ::google::protobuf::internal::ArenaStringPtr store_name_;
   ::google::protobuf::internal::ArenaStringPtr data_;
@@ -1625,28 +1625,28 @@ inline void BindingEventResponse::set_allocated_store_name(::std::string* store_
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.BindingEventResponse.store_name)
 }
 
-// repeated .dapr.proto.common.v1.StateSaveRequest states = 2;
+// repeated .dapr.proto.common.v1.StateItem states = 2;
 inline int BindingEventResponse::states_size() const {
   return states_.size();
 }
-inline ::dapr::proto::common::v1::StateSaveRequest* BindingEventResponse::mutable_states(int index) {
+inline ::dapr::proto::common::v1::StateItem* BindingEventResponse::mutable_states(int index) {
   // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.BindingEventResponse.states)
   return states_.Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateSaveRequest >*
+inline ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateItem >*
 BindingEventResponse::mutable_states() {
   // @@protoc_insertion_point(field_mutable_list:dapr.proto.runtime.v1.BindingEventResponse.states)
   return &states_;
 }
-inline const ::dapr::proto::common::v1::StateSaveRequest& BindingEventResponse::states(int index) const {
+inline const ::dapr::proto::common::v1::StateItem& BindingEventResponse::states(int index) const {
   // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.BindingEventResponse.states)
   return states_.Get(index);
 }
-inline ::dapr::proto::common::v1::StateSaveRequest* BindingEventResponse::add_states() {
+inline ::dapr::proto::common::v1::StateItem* BindingEventResponse::add_states() {
   // @@protoc_insertion_point(field_add:dapr.proto.runtime.v1.BindingEventResponse.states)
   return states_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateSaveRequest >&
+inline const ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::StateItem >&
 BindingEventResponse::states() const {
   // @@protoc_insertion_point(field_list:dapr.proto.runtime.v1.BindingEventResponse.states)
   return states_;
