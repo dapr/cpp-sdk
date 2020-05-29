@@ -86,12 +86,12 @@ class Dapr final {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncPublishEventRaw(context, request, cq));
     }
     // Invokes binding data to specific output bindings
-    virtual ::grpc::Status InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::google::protobuf::Empty* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncInvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncInvokeBindingRaw(context, request, cq));
+    virtual ::grpc::Status InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::InvokeBindingResponse>> AsyncInvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::InvokeBindingResponse>>(AsyncInvokeBindingRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncInvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncInvokeBindingRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::InvokeBindingResponse>> PrepareAsyncInvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::InvokeBindingResponse>>(PrepareAsyncInvokeBindingRaw(context, request, cq));
     }
     // Gets secrets from secret stores.
     virtual ::grpc::Status GetSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::dapr::proto::runtime::v1::GetSecretResponse* response) = 0;
@@ -115,7 +115,7 @@ class Dapr final {
       // Publishes events to the specific topic.
       virtual void PublishEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PublishEventRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
       // Invokes binding data to specific output bindings
-      virtual void InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response, std::function<void(::grpc::Status)>) = 0;
       // Gets secrets from secret stores.
       virtual void GetSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest* request, ::dapr::proto::runtime::v1::GetSecretResponse* response, std::function<void(::grpc::Status)>) = 0;
     };
@@ -131,8 +131,8 @@ class Dapr final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncDeleteStateRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::DeleteStateRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncPublishEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PublishEventRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncPublishEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PublishEventRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::InvokeBindingResponse>* AsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::InvokeBindingResponse>* PrepareAsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetSecretResponse>* AsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetSecretResponse>* PrepareAsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
@@ -174,12 +174,12 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncPublishEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PublishEventRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncPublishEventRaw(context, request, cq));
     }
-    ::grpc::Status InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::google::protobuf::Empty* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncInvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncInvokeBindingRaw(context, request, cq));
+    ::grpc::Status InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::InvokeBindingResponse>> AsyncInvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::InvokeBindingResponse>>(AsyncInvokeBindingRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncInvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncInvokeBindingRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::InvokeBindingResponse>> PrepareAsyncInvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::InvokeBindingResponse>>(PrepareAsyncInvokeBindingRaw(context, request, cq));
     }
     ::grpc::Status GetSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::dapr::proto::runtime::v1::GetSecretResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetSecretResponse>> AsyncGetSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::grpc::CompletionQueue* cq) {
@@ -196,7 +196,7 @@ class Dapr final {
       void SaveState(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SaveStateRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void DeleteState(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::DeleteStateRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void PublishEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PublishEventRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
-      void InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response, std::function<void(::grpc::Status)>) override;
       void GetSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest* request, ::dapr::proto::runtime::v1::GetSecretResponse* response, std::function<void(::grpc::Status)>) override;
      private:
       friend class Stub;
@@ -219,8 +219,8 @@ class Dapr final {
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncDeleteStateRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::DeleteStateRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncPublishEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PublishEventRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncPublishEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PublishEventRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::InvokeBindingResponse>* AsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::InvokeBindingResponse>* PrepareAsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetSecretResponse>* AsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetSecretResponse>* PrepareAsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_InvokeService_;
@@ -248,7 +248,7 @@ class Dapr final {
     // Publishes events to the specific topic.
     virtual ::grpc::Status PublishEvent(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::PublishEventRequest* request, ::google::protobuf::Empty* response);
     // Invokes binding data to specific output bindings
-    virtual ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::google::protobuf::Empty* response);
+    virtual ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response);
     // Gets secrets from secret stores.
     virtual ::grpc::Status GetSecret(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest* request, ::dapr::proto::runtime::v1::GetSecretResponse* response);
   };
@@ -364,11 +364,11 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::google::protobuf::Empty* response) override {
+    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestInvokeBinding(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestInvokeBinding(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::InvokeBindingResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -490,7 +490,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::google::protobuf::Empty* response) override {
+    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -624,7 +624,7 @@ class Dapr final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::google::protobuf::Empty* response) override {
+    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -759,18 +759,18 @@ class Dapr final {
    public:
     WithStreamedUnaryMethod_InvokeBinding() {
       ::grpc::Service::MarkMethodStreamed(5,
-        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::InvokeBindingRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_InvokeBinding<BaseClass>::StreamedInvokeBinding, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::InvokeBindingRequest, ::dapr::proto::runtime::v1::InvokeBindingResponse>(std::bind(&WithStreamedUnaryMethod_InvokeBinding<BaseClass>::StreamedInvokeBinding, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_InvokeBinding() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::google::protobuf::Empty* response) override {
+    ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedInvokeBinding(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::InvokeBindingRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedInvokeBinding(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::InvokeBindingRequest,::dapr::proto::runtime::v1::InvokeBindingResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_GetSecret : public BaseClass {

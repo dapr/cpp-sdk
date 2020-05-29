@@ -20,7 +20,7 @@
 // @@protoc_insertion_point(includes)
 
 namespace protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_StateSaveRequest;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_StateItem;
 }  // namespace protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto
 namespace protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto {
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_BindingEventRequest_MetadataEntry_DoNotUse;
@@ -131,7 +131,7 @@ static void InitDefaultsBindingEventResponse() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_BindingEventResponse =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsBindingEventResponse}, {
-      &protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::scc_info_StateSaveRequest.base,}};
+      &protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::scc_info_StateItem.base,}};
 
 static void InitDefaultsListTopicSubscriptionsResponse() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -327,40 +327,40 @@ void AddDescriptorsImpl() {
       "(\014\022J\n\010metadata\030\003 \003(\01328.dapr.proto.runtim"
       "e.v1.BindingEventRequest.MetadataEntry\032/"
       "\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 "
-      "\001(\t:\0028\001\"\217\002\n\024BindingEventResponse\022\022\n\nstor"
-      "e_name\030\001 \001(\t\0226\n\006states\030\002 \003(\0132&.dapr.prot"
-      "o.common.v1.StateSaveRequest\022\n\n\002to\030\003 \003(\t"
-      "\022\014\n\004data\030\004 \001(\014\022X\n\013concurrency\030\005 \001(\0162C.da"
+      "\001(\t:\0028\001\"\210\002\n\024BindingEventResponse\022\022\n\nstor"
+      "e_name\030\001 \001(\t\022/\n\006states\030\002 \003(\0132\037.dapr.prot"
+      "o.common.v1.StateItem\022\n\n\002to\030\003 \003(\t\022\014\n\004dat"
+      "a\030\004 \001(\014\022X\n\013concurrency\030\005 \001(\0162C.dapr.prot"
+      "o.runtime.v1.BindingEventResponse.Bindin"
+      "gEventConcurrency\"7\n\027BindingEventConcurr"
+      "ency\022\016\n\nSEQUENTIAL\020\000\022\014\n\010PARALLEL\020\001\"a\n\036Li"
+      "stTopicSubscriptionsResponse\022\?\n\rsubscrip"
+      "tions\030\001 \003(\0132(.dapr.proto.runtime.v1.Topi"
+      "cSubscription\"\235\001\n\021TopicSubscription\022\r\n\005t"
+      "opic\030\001 \001(\t\022H\n\010metadata\030\002 \003(\01326.dapr.prot"
+      "o.runtime.v1.TopicSubscription.MetadataE"
+      "ntry\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005va"
+      "lue\030\002 \001(\t:\0028\001\"-\n\031ListInputBindingsRespon"
+      "se\022\020\n\010bindings\030\001 \003(\t2\363\003\n\013AppCallback\022W\n\010"
+      "OnInvoke\022#.dapr.proto.common.v1.InvokeRe"
+      "quest\032$.dapr.proto.common.v1.InvokeRespo"
+      "nse\"\000\022i\n\026ListTopicSubscriptions\022\026.google"
+      ".protobuf.Empty\0325.dapr.proto.runtime.v1."
+      "ListTopicSubscriptionsResponse\"\000\022R\n\014OnTo"
+      "picEvent\022(.dapr.proto.runtime.v1.TopicEv"
+      "entRequest\032\026.google.protobuf.Empty\"\000\022_\n\021"
+      "ListInputBindings\022\026.google.protobuf.Empt"
+      "y\0320.dapr.proto.runtime.v1.ListInputBindi"
+      "ngsResponse\"\000\022k\n\016OnBindingEvent\022*.dapr.p"
+      "roto.runtime.v1.BindingEventRequest\032+.da"
       "pr.proto.runtime.v1.BindingEventResponse"
-      ".BindingEventConcurrency\"7\n\027BindingEvent"
-      "Concurrency\022\016\n\nSEQUENTIAL\020\000\022\014\n\010PARALLEL\020"
-      "\001\"a\n\036ListTopicSubscriptionsResponse\022\?\n\rs"
-      "ubscriptions\030\001 \003(\0132(.dapr.proto.runtime."
-      "v1.TopicSubscription\"\235\001\n\021TopicSubscripti"
-      "on\022\r\n\005topic\030\001 \001(\t\022H\n\010metadata\030\002 \003(\01326.da"
-      "pr.proto.runtime.v1.TopicSubscription.Me"
-      "tadataEntry\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001("
-      "\t\022\r\n\005value\030\002 \001(\t:\0028\001\"-\n\031ListInputBinding"
-      "sResponse\022\020\n\010bindings\030\001 \003(\t2\363\003\n\013AppCallb"
-      "ack\022W\n\010OnInvoke\022#.dapr.proto.common.v1.I"
-      "nvokeRequest\032$.dapr.proto.common.v1.Invo"
-      "keResponse\"\000\022i\n\026ListTopicSubscriptions\022\026"
-      ".google.protobuf.Empty\0325.dapr.proto.runt"
-      "ime.v1.ListTopicSubscriptionsResponse\"\000\022"
-      "R\n\014OnTopicEvent\022(.dapr.proto.runtime.v1."
-      "TopicEventRequest\032\026.google.protobuf.Empt"
-      "y\"\000\022_\n\021ListInputBindings\022\026.google.protob"
-      "uf.Empty\0320.dapr.proto.runtime.v1.ListInp"
-      "utBindingsResponse\"\000\022k\n\016OnBindingEvent\022*"
-      ".dapr.proto.runtime.v1.BindingEventReque"
-      "st\032+.dapr.proto.runtime.v1.BindingEventR"
-      "esponse\"\000By\n\nio.dapr.v1B\025DaprAppCallback"
-      "ProtosZ1github.com/dapr/dapr/pkg/proto/r"
-      "untime/v1;runtime\252\002 Dapr.AppCallback.Aut"
-      "ogen.Grpc.v1b\006proto3"
+      "\"\000By\n\nio.dapr.v1B\025DaprAppCallbackProtosZ"
+      "1github.com/dapr/dapr/pkg/proto/runtime/"
+      "v1;runtime\252\002 Dapr.AppCallback.Autogen.Gr"
+      "pc.v1b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1660);
+      descriptor, 1653);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dapr/proto/runtime/v1/appcallback.proto", &protobuf_RegisterTypes);
   ::protobuf_google_2fprotobuf_2fempty_2eproto::AddDescriptors();
@@ -1553,7 +1553,7 @@ bool BindingEventResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .dapr.proto.common.v1.StateSaveRequest states = 2;
+      // repeated .dapr.proto.common.v1.StateItem states = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
@@ -1645,7 +1645,7 @@ void BindingEventResponse::SerializeWithCachedSizes(
       1, this->store_name(), output);
   }
 
-  // repeated .dapr.proto.common.v1.StateSaveRequest states = 2;
+  // repeated .dapr.proto.common.v1.StateItem states = 2;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->states_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -1701,7 +1701,7 @@ void BindingEventResponse::SerializeWithCachedSizes(
         1, this->store_name(), target);
   }
 
-  // repeated .dapr.proto.common.v1.StateSaveRequest states = 2;
+  // repeated .dapr.proto.common.v1.StateItem states = 2;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->states_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -1749,7 +1749,7 @@ size_t BindingEventResponse::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // repeated .dapr.proto.common.v1.StateSaveRequest states = 2;
+  // repeated .dapr.proto.common.v1.StateItem states = 2;
   {
     unsigned int count = static_cast<unsigned int>(this->states_size());
     total_size += 1UL * count;

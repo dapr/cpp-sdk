@@ -126,20 +126,20 @@ void Dapr::Stub::experimental_async::PublishEvent(::grpc::ClientContext* context
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_PublishEvent_, context, request, false);
 }
 
-::grpc::Status Dapr::Stub::InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::google::protobuf::Empty* response) {
+::grpc::Status Dapr::Stub::InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_InvokeBinding_, context, request, response);
 }
 
-void Dapr::Stub::experimental_async::InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+void Dapr::Stub::experimental_async::InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response, std::function<void(::grpc::Status)> f) {
   return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_InvokeBinding_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::AsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_InvokeBinding_, context, request, true);
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::InvokeBindingResponse>* Dapr::Stub::AsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::InvokeBindingResponse>::Create(channel_.get(), cq, rpcmethod_InvokeBinding_, context, request, true);
 }
 
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::PrepareAsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_InvokeBinding_, context, request, false);
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::InvokeBindingResponse>* Dapr::Stub::PrepareAsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::InvokeBindingResponse>::Create(channel_.get(), cq, rpcmethod_InvokeBinding_, context, request, false);
 }
 
 ::grpc::Status Dapr::Stub::GetSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::dapr::proto::runtime::v1::GetSecretResponse* response) {
@@ -187,7 +187,7 @@ Dapr::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Dapr_method_names[5],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::InvokeBindingRequest, ::google::protobuf::Empty>(
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::InvokeBindingRequest, ::dapr::proto::runtime::v1::InvokeBindingResponse>(
           std::mem_fn(&Dapr::Service::InvokeBinding), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Dapr_method_names[6],
@@ -234,7 +234,7 @@ Dapr::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Dapr::Service::InvokeBinding(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::google::protobuf::Empty* response) {
+::grpc::Status Dapr::Service::InvokeBinding(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response) {
   (void) context;
   (void) request;
   (void) response;
