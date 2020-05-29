@@ -67,18 +67,18 @@ extern InvokeRequestDefaultTypeInternal _InvokeRequest_default_instance_;
 class InvokeResponse;
 class InvokeResponseDefaultTypeInternal;
 extern InvokeResponseDefaultTypeInternal _InvokeResponse_default_instance_;
+class StateItem;
+class StateItemDefaultTypeInternal;
+extern StateItemDefaultTypeInternal _StateItem_default_instance_;
+class StateItem_MetadataEntry_DoNotUse;
+class StateItem_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern StateItem_MetadataEntry_DoNotUseDefaultTypeInternal _StateItem_MetadataEntry_DoNotUse_default_instance_;
 class StateOptions;
 class StateOptionsDefaultTypeInternal;
 extern StateOptionsDefaultTypeInternal _StateOptions_default_instance_;
 class StateRetryPolicy;
 class StateRetryPolicyDefaultTypeInternal;
 extern StateRetryPolicyDefaultTypeInternal _StateRetryPolicy_default_instance_;
-class StateSaveRequest;
-class StateSaveRequestDefaultTypeInternal;
-extern StateSaveRequestDefaultTypeInternal _StateSaveRequest_default_instance_;
-class StateSaveRequest_MetadataEntry_DoNotUse;
-class StateSaveRequest_MetadataEntry_DoNotUseDefaultTypeInternal;
-extern StateSaveRequest_MetadataEntry_DoNotUseDefaultTypeInternal _StateSaveRequest_MetadataEntry_DoNotUse_default_instance_;
 }  // namespace v1
 }  // namespace common
 }  // namespace proto
@@ -89,10 +89,10 @@ template<> ::dapr::proto::common::v1::HTTPExtension* Arena::CreateMaybeMessage<:
 template<> ::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::common::v1::InvokeRequest* Arena::CreateMaybeMessage<::dapr::proto::common::v1::InvokeRequest>(Arena*);
 template<> ::dapr::proto::common::v1::InvokeResponse* Arena::CreateMaybeMessage<::dapr::proto::common::v1::InvokeResponse>(Arena*);
+template<> ::dapr::proto::common::v1::StateItem* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StateItem>(Arena*);
+template<> ::dapr::proto::common::v1::StateItem_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StateItem_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::common::v1::StateOptions* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StateOptions>(Arena*);
 template<> ::dapr::proto::common::v1::StateRetryPolicy* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StateRetryPolicy>(Arena*);
-template<> ::dapr::proto::common::v1::StateSaveRequest* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StateSaveRequest>(Arena*);
-template<> ::dapr::proto::common::v1::StateSaveRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StateSaveRequest_MetadataEntry_DoNotUse>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace dapr {
@@ -652,45 +652,45 @@ class InvokeResponse : public ::google::protobuf::Message /* @@protoc_insertion_
 };
 // -------------------------------------------------------------------
 
-class StateSaveRequest_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<StateSaveRequest_MetadataEntry_DoNotUse, 
+class StateItem_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<StateItem_MetadataEntry_DoNotUse, 
     ::std::string, ::std::string,
     ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
     ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
     0 > {
 public:
-  typedef ::google::protobuf::internal::MapEntry<StateSaveRequest_MetadataEntry_DoNotUse, 
+  typedef ::google::protobuf::internal::MapEntry<StateItem_MetadataEntry_DoNotUse, 
     ::std::string, ::std::string,
     ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
     ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
     0 > SuperType;
-  StateSaveRequest_MetadataEntry_DoNotUse();
-  StateSaveRequest_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
-  void MergeFrom(const StateSaveRequest_MetadataEntry_DoNotUse& other);
-  static const StateSaveRequest_MetadataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const StateSaveRequest_MetadataEntry_DoNotUse*>(&_StateSaveRequest_MetadataEntry_DoNotUse_default_instance_); }
+  StateItem_MetadataEntry_DoNotUse();
+  StateItem_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const StateItem_MetadataEntry_DoNotUse& other);
+  static const StateItem_MetadataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const StateItem_MetadataEntry_DoNotUse*>(&_StateItem_MetadataEntry_DoNotUse_default_instance_); }
   void MergeFrom(const ::google::protobuf::Message& other) final;
   ::google::protobuf::Metadata GetMetadata() const;
 };
 
 // -------------------------------------------------------------------
 
-class StateSaveRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.common.v1.StateSaveRequest) */ {
+class StateItem : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.common.v1.StateItem) */ {
  public:
-  StateSaveRequest();
-  virtual ~StateSaveRequest();
+  StateItem();
+  virtual ~StateItem();
 
-  StateSaveRequest(const StateSaveRequest& from);
+  StateItem(const StateItem& from);
 
-  inline StateSaveRequest& operator=(const StateSaveRequest& from) {
+  inline StateItem& operator=(const StateItem& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  StateSaveRequest(StateSaveRequest&& from) noexcept
-    : StateSaveRequest() {
+  StateItem(StateItem&& from) noexcept
+    : StateItem() {
     *this = ::std::move(from);
   }
 
-  inline StateSaveRequest& operator=(StateSaveRequest&& from) noexcept {
+  inline StateItem& operator=(StateItem&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -700,34 +700,34 @@ class StateSaveRequest : public ::google::protobuf::Message /* @@protoc_insertio
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const StateSaveRequest& default_instance();
+  static const StateItem& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const StateSaveRequest* internal_default_instance() {
-    return reinterpret_cast<const StateSaveRequest*>(
-               &_StateSaveRequest_default_instance_);
+  static inline const StateItem* internal_default_instance() {
+    return reinterpret_cast<const StateItem*>(
+               &_StateItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     5;
 
-  void Swap(StateSaveRequest* other);
-  friend void swap(StateSaveRequest& a, StateSaveRequest& b) {
+  void Swap(StateItem* other);
+  friend void swap(StateItem& a, StateItem& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline StateSaveRequest* New() const final {
-    return CreateMaybeMessage<StateSaveRequest>(NULL);
+  inline StateItem* New() const final {
+    return CreateMaybeMessage<StateItem>(NULL);
   }
 
-  StateSaveRequest* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<StateSaveRequest>(arena);
+  StateItem* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<StateItem>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const StateSaveRequest& from);
-  void MergeFrom(const StateSaveRequest& from);
+  void CopyFrom(const StateItem& from);
+  void MergeFrom(const StateItem& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -744,7 +744,7 @@ class StateSaveRequest : public ::google::protobuf::Message /* @@protoc_insertio
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(StateSaveRequest* other);
+  void InternalSwap(StateItem* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -824,12 +824,12 @@ class StateSaveRequest : public ::google::protobuf::Message /* @@protoc_insertio
   ::dapr::proto::common::v1::StateOptions* mutable_options();
   void set_allocated_options(::dapr::proto::common::v1::StateOptions* options);
 
-  // @@protoc_insertion_point(class_scope:dapr.proto.common.v1.StateSaveRequest)
+  // @@protoc_insertion_point(class_scope:dapr.proto.common.v1.StateItem)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::MapField<
-      StateSaveRequest_MetadataEntry_DoNotUse,
+      StateItem_MetadataEntry_DoNotUse,
       ::std::string, ::std::string,
       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
@@ -1537,221 +1537,221 @@ inline void InvokeResponse::set_allocated_content_type(::std::string* content_ty
 
 // -------------------------------------------------------------------
 
-// StateSaveRequest
+// StateItem
 
 // string key = 1;
-inline void StateSaveRequest::clear_key() {
+inline void StateItem::clear_key() {
   key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& StateSaveRequest::key() const {
-  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateSaveRequest.key)
+inline const ::std::string& StateItem::key() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateItem.key)
   return key_.GetNoArena();
 }
-inline void StateSaveRequest::set_key(const ::std::string& value) {
+inline void StateItem::set_key(const ::std::string& value) {
   
   key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateSaveRequest.key)
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateItem.key)
 }
 #if LANG_CXX11
-inline void StateSaveRequest::set_key(::std::string&& value) {
+inline void StateItem::set_key(::std::string&& value) {
   
   key_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.StateSaveRequest.key)
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.StateItem.key)
 }
 #endif
-inline void StateSaveRequest::set_key(const char* value) {
+inline void StateItem::set_key(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.StateSaveRequest.key)
+  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.StateItem.key)
 }
-inline void StateSaveRequest::set_key(const char* value, size_t size) {
+inline void StateItem::set_key(const char* value, size_t size) {
   
   key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.StateSaveRequest.key)
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.StateItem.key)
 }
-inline ::std::string* StateSaveRequest::mutable_key() {
+inline ::std::string* StateItem::mutable_key() {
   
-  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateSaveRequest.key)
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateItem.key)
   return key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* StateSaveRequest::release_key() {
-  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateSaveRequest.key)
+inline ::std::string* StateItem::release_key() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateItem.key)
   
   return key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void StateSaveRequest::set_allocated_key(::std::string* key) {
+inline void StateItem::set_allocated_key(::std::string* key) {
   if (key != NULL) {
     
   } else {
     
   }
   key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), key);
-  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateSaveRequest.key)
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateItem.key)
 }
 
 // bytes value = 2;
-inline void StateSaveRequest::clear_value() {
+inline void StateItem::clear_value() {
   value_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& StateSaveRequest::value() const {
-  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateSaveRequest.value)
+inline const ::std::string& StateItem::value() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateItem.value)
   return value_.GetNoArena();
 }
-inline void StateSaveRequest::set_value(const ::std::string& value) {
+inline void StateItem::set_value(const ::std::string& value) {
   
   value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateSaveRequest.value)
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateItem.value)
 }
 #if LANG_CXX11
-inline void StateSaveRequest::set_value(::std::string&& value) {
+inline void StateItem::set_value(::std::string&& value) {
   
   value_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.StateSaveRequest.value)
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.StateItem.value)
 }
 #endif
-inline void StateSaveRequest::set_value(const char* value) {
+inline void StateItem::set_value(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.StateSaveRequest.value)
+  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.StateItem.value)
 }
-inline void StateSaveRequest::set_value(const void* value, size_t size) {
+inline void StateItem::set_value(const void* value, size_t size) {
   
   value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.StateSaveRequest.value)
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.StateItem.value)
 }
-inline ::std::string* StateSaveRequest::mutable_value() {
+inline ::std::string* StateItem::mutable_value() {
   
-  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateSaveRequest.value)
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateItem.value)
   return value_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* StateSaveRequest::release_value() {
-  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateSaveRequest.value)
+inline ::std::string* StateItem::release_value() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateItem.value)
   
   return value_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void StateSaveRequest::set_allocated_value(::std::string* value) {
+inline void StateItem::set_allocated_value(::std::string* value) {
   if (value != NULL) {
     
   } else {
     
   }
   value_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateSaveRequest.value)
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateItem.value)
 }
 
 // string etag = 3;
-inline void StateSaveRequest::clear_etag() {
+inline void StateItem::clear_etag() {
   etag_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& StateSaveRequest::etag() const {
-  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateSaveRequest.etag)
+inline const ::std::string& StateItem::etag() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateItem.etag)
   return etag_.GetNoArena();
 }
-inline void StateSaveRequest::set_etag(const ::std::string& value) {
+inline void StateItem::set_etag(const ::std::string& value) {
   
   etag_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateSaveRequest.etag)
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateItem.etag)
 }
 #if LANG_CXX11
-inline void StateSaveRequest::set_etag(::std::string&& value) {
+inline void StateItem::set_etag(::std::string&& value) {
   
   etag_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.StateSaveRequest.etag)
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.StateItem.etag)
 }
 #endif
-inline void StateSaveRequest::set_etag(const char* value) {
+inline void StateItem::set_etag(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   etag_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.StateSaveRequest.etag)
+  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.StateItem.etag)
 }
-inline void StateSaveRequest::set_etag(const char* value, size_t size) {
+inline void StateItem::set_etag(const char* value, size_t size) {
   
   etag_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.StateSaveRequest.etag)
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.StateItem.etag)
 }
-inline ::std::string* StateSaveRequest::mutable_etag() {
+inline ::std::string* StateItem::mutable_etag() {
   
-  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateSaveRequest.etag)
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateItem.etag)
   return etag_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* StateSaveRequest::release_etag() {
-  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateSaveRequest.etag)
+inline ::std::string* StateItem::release_etag() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateItem.etag)
   
   return etag_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void StateSaveRequest::set_allocated_etag(::std::string* etag) {
+inline void StateItem::set_allocated_etag(::std::string* etag) {
   if (etag != NULL) {
     
   } else {
     
   }
   etag_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), etag);
-  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateSaveRequest.etag)
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateItem.etag)
 }
 
 // map<string, string> metadata = 4;
-inline int StateSaveRequest::metadata_size() const {
+inline int StateItem::metadata_size() const {
   return metadata_.size();
 }
-inline void StateSaveRequest::clear_metadata() {
+inline void StateItem::clear_metadata() {
   metadata_.Clear();
 }
 inline const ::google::protobuf::Map< ::std::string, ::std::string >&
-StateSaveRequest::metadata() const {
-  // @@protoc_insertion_point(field_map:dapr.proto.common.v1.StateSaveRequest.metadata)
+StateItem::metadata() const {
+  // @@protoc_insertion_point(field_map:dapr.proto.common.v1.StateItem.metadata)
   return metadata_.GetMap();
 }
 inline ::google::protobuf::Map< ::std::string, ::std::string >*
-StateSaveRequest::mutable_metadata() {
-  // @@protoc_insertion_point(field_mutable_map:dapr.proto.common.v1.StateSaveRequest.metadata)
+StateItem::mutable_metadata() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.common.v1.StateItem.metadata)
   return metadata_.MutableMap();
 }
 
 // .dapr.proto.common.v1.StateOptions options = 5;
-inline bool StateSaveRequest::has_options() const {
+inline bool StateItem::has_options() const {
   return this != internal_default_instance() && options_ != NULL;
 }
-inline void StateSaveRequest::clear_options() {
+inline void StateItem::clear_options() {
   if (GetArenaNoVirtual() == NULL && options_ != NULL) {
     delete options_;
   }
   options_ = NULL;
 }
-inline const ::dapr::proto::common::v1::StateOptions& StateSaveRequest::_internal_options() const {
+inline const ::dapr::proto::common::v1::StateOptions& StateItem::_internal_options() const {
   return *options_;
 }
-inline const ::dapr::proto::common::v1::StateOptions& StateSaveRequest::options() const {
+inline const ::dapr::proto::common::v1::StateOptions& StateItem::options() const {
   const ::dapr::proto::common::v1::StateOptions* p = options_;
-  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateSaveRequest.options)
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StateItem.options)
   return p != NULL ? *p : *reinterpret_cast<const ::dapr::proto::common::v1::StateOptions*>(
       &::dapr::proto::common::v1::_StateOptions_default_instance_);
 }
-inline ::dapr::proto::common::v1::StateOptions* StateSaveRequest::release_options() {
-  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateSaveRequest.options)
+inline ::dapr::proto::common::v1::StateOptions* StateItem::release_options() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StateItem.options)
   
   ::dapr::proto::common::v1::StateOptions* temp = options_;
   options_ = NULL;
   return temp;
 }
-inline ::dapr::proto::common::v1::StateOptions* StateSaveRequest::mutable_options() {
+inline ::dapr::proto::common::v1::StateOptions* StateItem::mutable_options() {
   
   if (options_ == NULL) {
     auto* p = CreateMaybeMessage<::dapr::proto::common::v1::StateOptions>(GetArenaNoVirtual());
     options_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateSaveRequest.options)
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StateItem.options)
   return options_;
 }
-inline void StateSaveRequest::set_allocated_options(::dapr::proto::common::v1::StateOptions* options) {
+inline void StateItem::set_allocated_options(::dapr::proto::common::v1::StateOptions* options) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == NULL) {
     delete options_;
@@ -1767,7 +1767,7 @@ inline void StateSaveRequest::set_allocated_options(::dapr::proto::common::v1::S
     
   }
   options_ = options;
-  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateSaveRequest.options)
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StateItem.options)
 }
 
 // -------------------------------------------------------------------
