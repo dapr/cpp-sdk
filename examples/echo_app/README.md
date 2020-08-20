@@ -20,11 +20,11 @@ make
 1. Open new bash terminal
 2. Run callee app
 ```
-dapr run --app-id callee --protocol grpc --app-port 6000 --redis-host host.docker.internal --placement-host host.docker.internal ./echo_app callee 6000
+dapr run --app-id callee --protocol grpc --app-port 6000  ./echo_app callee 6000
 ```
 3. Run caller app
 ```
-dapr run --app-id echo_app --protocol grpc --app-port 6100 --redis-host host.docker.internal --placement-host host.docker.internal ./echo_app caller 6100 callee
+dapr run --app-id echo_app --protocol grpc --app-port 6100 ./echo_app caller 6100 callee
 ```
 4. Check the logs
 From callee app:

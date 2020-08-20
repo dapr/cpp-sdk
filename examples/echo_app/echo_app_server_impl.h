@@ -22,6 +22,7 @@ using dapr::proto::runtime::v1::ListInputBindingsResponse;
 using dapr::proto::runtime::v1::BindingEventRequest;
 using dapr::proto::runtime::v1::BindingEventResponse;
 using dapr::proto::runtime::v1::TopicEventRequest;
+using dapr::proto::runtime::v1::TopicEventResponse;
 
 namespace dapr_cpp_echo_example {
   
@@ -31,7 +32,7 @@ class EchoAppServerImpl final : public AppCallback::Service {
     Status ListTopicSubscriptions(ServerContext* context, const Empty* request, ListTopicSubscriptionsResponse* response) override;
     Status ListInputBindings(ServerContext* context, const Empty* request, ListInputBindingsResponse* response) override;
     Status OnBindingEvent(ServerContext* context, const BindingEventRequest* request, BindingEventResponse* response) override;
-    Status OnTopicEvent(ServerContext* context, const TopicEventRequest* request, Empty* response) override;
+    Status OnTopicEvent(ServerContext* context, const TopicEventRequest* request, TopicEventResponse* response) override;
 };
 
 } // namespace dapr_cpp_echo_example

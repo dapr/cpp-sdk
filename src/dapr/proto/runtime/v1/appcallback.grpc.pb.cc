@@ -74,20 +74,20 @@ void AppCallback::Stub::experimental_async::ListTopicSubscriptions(::grpc::Clien
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse>::Create(channel_.get(), cq, rpcmethod_ListTopicSubscriptions_, context, request, false);
 }
 
-::grpc::Status AppCallback::Stub::OnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::google::protobuf::Empty* response) {
+::grpc::Status AppCallback::Stub::OnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::dapr::proto::runtime::v1::TopicEventResponse* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_OnTopicEvent_, context, request, response);
 }
 
-void AppCallback::Stub::experimental_async::OnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+void AppCallback::Stub::experimental_async::OnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::dapr::proto::runtime::v1::TopicEventResponse* response, std::function<void(::grpc::Status)> f) {
   return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_OnTopicEvent_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AppCallback::Stub::AsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_OnTopicEvent_, context, request, true);
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventResponse>* AppCallback::Stub::AsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::TopicEventResponse>::Create(channel_.get(), cq, rpcmethod_OnTopicEvent_, context, request, true);
 }
 
-::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AppCallback::Stub::PrepareAsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_OnTopicEvent_, context, request, false);
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventResponse>* AppCallback::Stub::PrepareAsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::TopicEventResponse>::Create(channel_.get(), cq, rpcmethod_OnTopicEvent_, context, request, false);
 }
 
 ::grpc::Status AppCallback::Stub::ListInputBindings(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::dapr::proto::runtime::v1::ListInputBindingsResponse* response) {
@@ -136,7 +136,7 @@ AppCallback::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       AppCallback_method_names[2],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< AppCallback::Service, ::dapr::proto::runtime::v1::TopicEventRequest, ::google::protobuf::Empty>(
+      new ::grpc::internal::RpcMethodHandler< AppCallback::Service, ::dapr::proto::runtime::v1::TopicEventRequest, ::dapr::proto::runtime::v1::TopicEventResponse>(
           std::mem_fn(&AppCallback::Service::OnTopicEvent), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       AppCallback_method_names[3],
@@ -167,7 +167,7 @@ AppCallback::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status AppCallback::Service::OnTopicEvent(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::google::protobuf::Empty* response) {
+::grpc::Status AppCallback::Service::OnTopicEvent(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::dapr::proto::runtime::v1::TopicEventResponse* response) {
   (void) context;
   (void) request;
   (void) response;

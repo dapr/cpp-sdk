@@ -22,6 +22,7 @@ using dapr::proto::runtime::v1::ListInputBindingsResponse;
 using dapr::proto::runtime::v1::BindingEventRequest;
 using dapr::proto::runtime::v1::BindingEventResponse;
 using dapr::proto::runtime::v1::TopicEventRequest;
+using dapr::proto::runtime::v1::TopicEventResponse;
 
 namespace dapr_cpp_echo_example {
 
@@ -68,7 +69,7 @@ Status EchoAppServerImpl::OnBindingEvent(
 Status EchoAppServerImpl::OnTopicEvent(
   ServerContext* context,
   const TopicEventRequest* request,
-  Empty* response)  {
+  TopicEventResponse* response)  {
   std::cout << "OnBindingEvent() is called"  << std::endl;
   return Status::OK;
 }
