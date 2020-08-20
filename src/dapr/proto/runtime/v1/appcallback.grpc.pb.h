@@ -64,12 +64,12 @@ class AppCallback final {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse>>(PrepareAsyncListTopicSubscriptionsRaw(context, request, cq));
     }
     // Subscribes events from Pubsub
-    virtual ::grpc::Status OnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::google::protobuf::Empty* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncOnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncOnTopicEventRaw(context, request, cq));
+    virtual ::grpc::Status OnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::dapr::proto::runtime::v1::TopicEventResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TopicEventResponse>> AsyncOnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TopicEventResponse>>(AsyncOnTopicEventRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncOnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncOnTopicEventRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TopicEventResponse>> PrepareAsyncOnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TopicEventResponse>>(PrepareAsyncOnTopicEventRaw(context, request, cq));
     }
     // Lists all input bindings subscribed by this app.
     virtual ::grpc::Status ListInputBindings(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::dapr::proto::runtime::v1::ListInputBindingsResponse* response) = 0;
@@ -98,7 +98,7 @@ class AppCallback final {
       // Lists all topics subscribed by this app.
       virtual void ListTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse* response, std::function<void(::grpc::Status)>) = 0;
       // Subscribes events from Pubsub
-      virtual void OnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void OnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::dapr::proto::runtime::v1::TopicEventResponse* response, std::function<void(::grpc::Status)>) = 0;
       // Lists all input bindings subscribed by this app.
       virtual void ListInputBindings(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::ListInputBindingsResponse* response, std::function<void(::grpc::Status)>) = 0;
       // Listens events from the input bindings
@@ -113,8 +113,8 @@ class AppCallback final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::common::v1::InvokeResponse>* PrepareAsyncOnInvokeRaw(::grpc::ClientContext* context, const ::dapr::proto::common::v1::InvokeRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse>* AsyncListTopicSubscriptionsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse>* PrepareAsyncListTopicSubscriptionsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TopicEventResponse>* AsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TopicEventResponse>* PrepareAsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::ListInputBindingsResponse>* AsyncListInputBindingsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::ListInputBindingsResponse>* PrepareAsyncListInputBindingsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::BindingEventResponse>* AsyncOnBindingEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::BindingEventRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -137,12 +137,12 @@ class AppCallback final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse>> PrepareAsyncListTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse>>(PrepareAsyncListTopicSubscriptionsRaw(context, request, cq));
     }
-    ::grpc::Status OnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::google::protobuf::Empty* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncOnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncOnTopicEventRaw(context, request, cq));
+    ::grpc::Status OnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::dapr::proto::runtime::v1::TopicEventResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventResponse>> AsyncOnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventResponse>>(AsyncOnTopicEventRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncOnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncOnTopicEventRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventResponse>> PrepareAsyncOnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventResponse>>(PrepareAsyncOnTopicEventRaw(context, request, cq));
     }
     ::grpc::Status ListInputBindings(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::dapr::proto::runtime::v1::ListInputBindingsResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::ListInputBindingsResponse>> AsyncListInputBindings(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
@@ -163,7 +163,7 @@ class AppCallback final {
      public:
       void OnInvoke(::grpc::ClientContext* context, const ::dapr::proto::common::v1::InvokeRequest* request, ::dapr::proto::common::v1::InvokeResponse* response, std::function<void(::grpc::Status)>) override;
       void ListTopicSubscriptions(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse* response, std::function<void(::grpc::Status)>) override;
-      void OnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void OnTopicEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::dapr::proto::runtime::v1::TopicEventResponse* response, std::function<void(::grpc::Status)>) override;
       void ListInputBindings(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::ListInputBindingsResponse* response, std::function<void(::grpc::Status)>) override;
       void OnBindingEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::BindingEventRequest* request, ::dapr::proto::runtime::v1::BindingEventResponse* response, std::function<void(::grpc::Status)>) override;
      private:
@@ -181,8 +181,8 @@ class AppCallback final {
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::common::v1::InvokeResponse>* PrepareAsyncOnInvokeRaw(::grpc::ClientContext* context, const ::dapr::proto::common::v1::InvokeRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse>* AsyncListTopicSubscriptionsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse>* PrepareAsyncListTopicSubscriptionsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventResponse>* AsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventResponse>* PrepareAsyncOnTopicEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::ListInputBindingsResponse>* AsyncListInputBindingsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::ListInputBindingsResponse>* PrepareAsyncListInputBindingsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::BindingEventResponse>* AsyncOnBindingEventRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::BindingEventRequest& request, ::grpc::CompletionQueue* cq) override;
@@ -204,7 +204,7 @@ class AppCallback final {
     // Lists all topics subscribed by this app.
     virtual ::grpc::Status ListTopicSubscriptions(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse* response);
     // Subscribes events from Pubsub
-    virtual ::grpc::Status OnTopicEvent(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::google::protobuf::Empty* response);
+    virtual ::grpc::Status OnTopicEvent(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::dapr::proto::runtime::v1::TopicEventResponse* response);
     // Lists all input bindings subscribed by this app.
     virtual ::grpc::Status ListInputBindings(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::ListInputBindingsResponse* response);
     // Listens events from the input bindings
@@ -265,11 +265,11 @@ class AppCallback final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status OnTopicEvent(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::google::protobuf::Empty* response) override {
+    ::grpc::Status OnTopicEvent(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::dapr::proto::runtime::v1::TopicEventResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestOnTopicEvent(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::TopicEventRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestOnTopicEvent(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::TopicEventRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::TopicEventResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -360,7 +360,7 @@ class AppCallback final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status OnTopicEvent(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::google::protobuf::Empty* response) override {
+    ::grpc::Status OnTopicEvent(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::dapr::proto::runtime::v1::TopicEventResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -451,7 +451,7 @@ class AppCallback final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status OnTopicEvent(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::google::protobuf::Empty* response) override {
+    ::grpc::Status OnTopicEvent(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::dapr::proto::runtime::v1::TopicEventResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -546,18 +546,18 @@ class AppCallback final {
    public:
     WithStreamedUnaryMethod_OnTopicEvent() {
       ::grpc::Service::MarkMethodStreamed(2,
-        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::TopicEventRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_OnTopicEvent<BaseClass>::StreamedOnTopicEvent, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::TopicEventRequest, ::dapr::proto::runtime::v1::TopicEventResponse>(std::bind(&WithStreamedUnaryMethod_OnTopicEvent<BaseClass>::StreamedOnTopicEvent, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_OnTopicEvent() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status OnTopicEvent(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::google::protobuf::Empty* response) override {
+    ::grpc::Status OnTopicEvent(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventRequest* request, ::dapr::proto::runtime::v1::TopicEventResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedOnTopicEvent(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::TopicEventRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedOnTopicEvent(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::TopicEventRequest,::dapr::proto::runtime::v1::TopicEventResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_ListInputBindings : public BaseClass {

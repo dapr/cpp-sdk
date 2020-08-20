@@ -44,7 +44,7 @@ namespace protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[8];
+  static const ::google::protobuf::internal::ParseTable schema[9];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -73,6 +73,9 @@ extern ListTopicSubscriptionsResponseDefaultTypeInternal _ListTopicSubscriptions
 class TopicEventRequest;
 class TopicEventRequestDefaultTypeInternal;
 extern TopicEventRequestDefaultTypeInternal _TopicEventRequest_default_instance_;
+class TopicEventResponse;
+class TopicEventResponseDefaultTypeInternal;
+extern TopicEventResponseDefaultTypeInternal _TopicEventResponse_default_instance_;
 class TopicSubscription;
 class TopicSubscriptionDefaultTypeInternal;
 extern TopicSubscriptionDefaultTypeInternal _TopicSubscription_default_instance_;
@@ -91,6 +94,7 @@ template<> ::dapr::proto::runtime::v1::BindingEventResponse* Arena::CreateMaybeM
 template<> ::dapr::proto::runtime::v1::ListInputBindingsResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::ListInputBindingsResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::TopicEventRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TopicEventRequest>(Arena*);
+template<> ::dapr::proto::runtime::v1::TopicEventResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TopicEventResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::TopicSubscription* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TopicSubscription>(Arena*);
 template<> ::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse>(Arena*);
 }  // namespace protobuf
@@ -308,6 +312,20 @@ class TopicEventRequest : public ::google::protobuf::Message /* @@protoc_inserti
   ::std::string* release_data();
   void set_allocated_data(::std::string* data);
 
+  // string pubsub_name = 8;
+  void clear_pubsub_name();
+  static const int kPubsubNameFieldNumber = 8;
+  const ::std::string& pubsub_name() const;
+  void set_pubsub_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_pubsub_name(::std::string&& value);
+  #endif
+  void set_pubsub_name(const char* value);
+  void set_pubsub_name(const char* value, size_t size);
+  ::std::string* mutable_pubsub_name();
+  ::std::string* release_pubsub_name();
+  void set_allocated_pubsub_name(::std::string* pubsub_name);
+
   // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.TopicEventRequest)
  private:
 
@@ -319,6 +337,103 @@ class TopicEventRequest : public ::google::protobuf::Message /* @@protoc_inserti
   ::google::protobuf::internal::ArenaStringPtr data_content_type_;
   ::google::protobuf::internal::ArenaStringPtr topic_;
   ::google::protobuf::internal::ArenaStringPtr data_;
+  ::google::protobuf::internal::ArenaStringPtr pubsub_name_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class TopicEventResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.TopicEventResponse) */ {
+ public:
+  TopicEventResponse();
+  virtual ~TopicEventResponse();
+
+  TopicEventResponse(const TopicEventResponse& from);
+
+  inline TopicEventResponse& operator=(const TopicEventResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  TopicEventResponse(TopicEventResponse&& from) noexcept
+    : TopicEventResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline TopicEventResponse& operator=(TopicEventResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TopicEventResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TopicEventResponse* internal_default_instance() {
+    return reinterpret_cast<const TopicEventResponse*>(
+               &_TopicEventResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  void Swap(TopicEventResponse* other);
+  friend void swap(TopicEventResponse& a, TopicEventResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TopicEventResponse* New() const final {
+    return CreateMaybeMessage<TopicEventResponse>(NULL);
+  }
+
+  TopicEventResponse* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<TopicEventResponse>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const TopicEventResponse& from);
+  void MergeFrom(const TopicEventResponse& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TopicEventResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.TopicEventResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::TableStruct;
 };
@@ -380,7 +495,7 @@ class BindingEventRequest : public ::google::protobuf::Message /* @@protoc_inser
                &_BindingEventRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   void Swap(BindingEventRequest* other);
   friend void swap(BindingEventRequest& a, BindingEventRequest& b) {
@@ -522,7 +637,7 @@ class BindingEventResponse : public ::google::protobuf::Message /* @@protoc_inse
                &_BindingEventResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   void Swap(BindingEventResponse* other);
   friend void swap(BindingEventResponse& a, BindingEventResponse& b) {
@@ -717,7 +832,7 @@ class ListTopicSubscriptionsResponse : public ::google::protobuf::Message /* @@p
                &_ListTopicSubscriptionsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   void Swap(ListTopicSubscriptionsResponse* other);
   friend void swap(ListTopicSubscriptionsResponse& a, ListTopicSubscriptionsResponse& b) {
@@ -847,7 +962,7 @@ class TopicSubscription : public ::google::protobuf::Message /* @@protoc_inserti
                &_TopicSubscription_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   void Swap(TopicSubscription* other);
   friend void swap(TopicSubscription& a, TopicSubscription& b) {
@@ -900,18 +1015,32 @@ class TopicSubscription : public ::google::protobuf::Message /* @@protoc_inserti
 
   // accessors -------------------------------------------------------
 
-  // map<string, string> metadata = 2;
+  // map<string, string> metadata = 3;
   int metadata_size() const;
   void clear_metadata();
-  static const int kMetadataFieldNumber = 2;
+  static const int kMetadataFieldNumber = 3;
   const ::google::protobuf::Map< ::std::string, ::std::string >&
       metadata() const;
   ::google::protobuf::Map< ::std::string, ::std::string >*
       mutable_metadata();
 
-  // string topic = 1;
+  // string pubsub_name = 1;
+  void clear_pubsub_name();
+  static const int kPubsubNameFieldNumber = 1;
+  const ::std::string& pubsub_name() const;
+  void set_pubsub_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_pubsub_name(::std::string&& value);
+  #endif
+  void set_pubsub_name(const char* value);
+  void set_pubsub_name(const char* value, size_t size);
+  ::std::string* mutable_pubsub_name();
+  ::std::string* release_pubsub_name();
+  void set_allocated_pubsub_name(::std::string* pubsub_name);
+
+  // string topic = 2;
   void clear_topic();
-  static const int kTopicFieldNumber = 1;
+  static const int kTopicFieldNumber = 2;
   const ::std::string& topic() const;
   void set_topic(const ::std::string& value);
   #if LANG_CXX11
@@ -933,6 +1062,7 @@ class TopicSubscription : public ::google::protobuf::Message /* @@protoc_inserti
       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
       0 > metadata_;
+  ::google::protobuf::internal::ArenaStringPtr pubsub_name_;
   ::google::protobuf::internal::ArenaStringPtr topic_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::TableStruct;
@@ -974,7 +1104,7 @@ class ListInputBindingsResponse : public ::google::protobuf::Message /* @@protoc
                &_ListInputBindingsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   void Swap(ListInputBindingsResponse* other);
   friend void swap(ListInputBindingsResponse& a, ListInputBindingsResponse& b) {
@@ -1438,6 +1568,63 @@ inline void TopicEventRequest::set_allocated_topic(::std::string* topic) {
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TopicEventRequest.topic)
 }
 
+// string pubsub_name = 8;
+inline void TopicEventRequest::clear_pubsub_name() {
+  pubsub_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TopicEventRequest::pubsub_name() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.TopicEventRequest.pubsub_name)
+  return pubsub_name_.GetNoArena();
+}
+inline void TopicEventRequest::set_pubsub_name(const ::std::string& value) {
+  
+  pubsub_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.TopicEventRequest.pubsub_name)
+}
+#if LANG_CXX11
+inline void TopicEventRequest::set_pubsub_name(::std::string&& value) {
+  
+  pubsub_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.TopicEventRequest.pubsub_name)
+}
+#endif
+inline void TopicEventRequest::set_pubsub_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  pubsub_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.TopicEventRequest.pubsub_name)
+}
+inline void TopicEventRequest::set_pubsub_name(const char* value, size_t size) {
+  
+  pubsub_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.TopicEventRequest.pubsub_name)
+}
+inline ::std::string* TopicEventRequest::mutable_pubsub_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.TopicEventRequest.pubsub_name)
+  return pubsub_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TopicEventRequest::release_pubsub_name() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.TopicEventRequest.pubsub_name)
+  
+  return pubsub_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TopicEventRequest::set_allocated_pubsub_name(::std::string* pubsub_name) {
+  if (pubsub_name != NULL) {
+    
+  } else {
+    
+  }
+  pubsub_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), pubsub_name);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TopicEventRequest.pubsub_name)
+}
+
+// -------------------------------------------------------------------
+
+// TopicEventResponse
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -1828,7 +2015,60 @@ ListTopicSubscriptionsResponse::subscriptions() const {
 
 // TopicSubscription
 
-// string topic = 1;
+// string pubsub_name = 1;
+inline void TopicSubscription::clear_pubsub_name() {
+  pubsub_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TopicSubscription::pubsub_name() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.TopicSubscription.pubsub_name)
+  return pubsub_name_.GetNoArena();
+}
+inline void TopicSubscription::set_pubsub_name(const ::std::string& value) {
+  
+  pubsub_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.TopicSubscription.pubsub_name)
+}
+#if LANG_CXX11
+inline void TopicSubscription::set_pubsub_name(::std::string&& value) {
+  
+  pubsub_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.TopicSubscription.pubsub_name)
+}
+#endif
+inline void TopicSubscription::set_pubsub_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  pubsub_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.TopicSubscription.pubsub_name)
+}
+inline void TopicSubscription::set_pubsub_name(const char* value, size_t size) {
+  
+  pubsub_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.TopicSubscription.pubsub_name)
+}
+inline ::std::string* TopicSubscription::mutable_pubsub_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.TopicSubscription.pubsub_name)
+  return pubsub_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TopicSubscription::release_pubsub_name() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.TopicSubscription.pubsub_name)
+  
+  return pubsub_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TopicSubscription::set_allocated_pubsub_name(::std::string* pubsub_name) {
+  if (pubsub_name != NULL) {
+    
+  } else {
+    
+  }
+  pubsub_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), pubsub_name);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TopicSubscription.pubsub_name)
+}
+
+// string topic = 2;
 inline void TopicSubscription::clear_topic() {
   topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1881,7 +2121,7 @@ inline void TopicSubscription::set_allocated_topic(::std::string* topic) {
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TopicSubscription.topic)
 }
 
-// map<string, string> metadata = 2;
+// map<string, string> metadata = 3;
 inline int TopicSubscription::metadata_size() const {
   return metadata_.size();
 }
@@ -1975,6 +2215,8 @@ ListInputBindingsResponse::mutable_bindings() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
