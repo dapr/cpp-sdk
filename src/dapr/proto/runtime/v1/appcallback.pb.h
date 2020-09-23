@@ -104,6 +104,28 @@ namespace proto {
 namespace runtime {
 namespace v1 {
 
+enum TopicEventResponse_TopicEventResponseStatus {
+  TopicEventResponse_TopicEventResponseStatus_SUCCESS = 0,
+  TopicEventResponse_TopicEventResponseStatus_RETRY = 1,
+  TopicEventResponse_TopicEventResponseStatus_DROP = 2,
+  TopicEventResponse_TopicEventResponseStatus_TopicEventResponse_TopicEventResponseStatus_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  TopicEventResponse_TopicEventResponseStatus_TopicEventResponse_TopicEventResponseStatus_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool TopicEventResponse_TopicEventResponseStatus_IsValid(int value);
+const TopicEventResponse_TopicEventResponseStatus TopicEventResponse_TopicEventResponseStatus_TopicEventResponseStatus_MIN = TopicEventResponse_TopicEventResponseStatus_SUCCESS;
+const TopicEventResponse_TopicEventResponseStatus TopicEventResponse_TopicEventResponseStatus_TopicEventResponseStatus_MAX = TopicEventResponse_TopicEventResponseStatus_DROP;
+const int TopicEventResponse_TopicEventResponseStatus_TopicEventResponseStatus_ARRAYSIZE = TopicEventResponse_TopicEventResponseStatus_TopicEventResponseStatus_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* TopicEventResponse_TopicEventResponseStatus_descriptor();
+inline const ::std::string& TopicEventResponse_TopicEventResponseStatus_Name(TopicEventResponse_TopicEventResponseStatus value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    TopicEventResponse_TopicEventResponseStatus_descriptor(), value);
+}
+inline bool TopicEventResponse_TopicEventResponseStatus_Parse(
+    const ::std::string& name, TopicEventResponse_TopicEventResponseStatus* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<TopicEventResponse_TopicEventResponseStatus>(
+    TopicEventResponse_TopicEventResponseStatus_descriptor(), name, value);
+}
 enum BindingEventResponse_BindingEventConcurrency {
   BindingEventResponse_BindingEventConcurrency_SEQUENTIAL = 0,
   BindingEventResponse_BindingEventConcurrency_PARALLEL = 1,
@@ -428,12 +450,47 @@ class TopicEventResponse : public ::google::protobuf::Message /* @@protoc_insert
 
   // nested types ----------------------------------------------------
 
+  typedef TopicEventResponse_TopicEventResponseStatus TopicEventResponseStatus;
+  static const TopicEventResponseStatus SUCCESS =
+    TopicEventResponse_TopicEventResponseStatus_SUCCESS;
+  static const TopicEventResponseStatus RETRY =
+    TopicEventResponse_TopicEventResponseStatus_RETRY;
+  static const TopicEventResponseStatus DROP =
+    TopicEventResponse_TopicEventResponseStatus_DROP;
+  static inline bool TopicEventResponseStatus_IsValid(int value) {
+    return TopicEventResponse_TopicEventResponseStatus_IsValid(value);
+  }
+  static const TopicEventResponseStatus TopicEventResponseStatus_MIN =
+    TopicEventResponse_TopicEventResponseStatus_TopicEventResponseStatus_MIN;
+  static const TopicEventResponseStatus TopicEventResponseStatus_MAX =
+    TopicEventResponse_TopicEventResponseStatus_TopicEventResponseStatus_MAX;
+  static const int TopicEventResponseStatus_ARRAYSIZE =
+    TopicEventResponse_TopicEventResponseStatus_TopicEventResponseStatus_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  TopicEventResponseStatus_descriptor() {
+    return TopicEventResponse_TopicEventResponseStatus_descriptor();
+  }
+  static inline const ::std::string& TopicEventResponseStatus_Name(TopicEventResponseStatus value) {
+    return TopicEventResponse_TopicEventResponseStatus_Name(value);
+  }
+  static inline bool TopicEventResponseStatus_Parse(const ::std::string& name,
+      TopicEventResponseStatus* value) {
+    return TopicEventResponse_TopicEventResponseStatus_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
+
+  // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 1;
+  void clear_status();
+  static const int kStatusFieldNumber = 1;
+  ::dapr::proto::runtime::v1::TopicEventResponse_TopicEventResponseStatus status() const;
+  void set_status(::dapr::proto::runtime::v1::TopicEventResponse_TopicEventResponseStatus value);
 
   // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.TopicEventResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  int status_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::TableStruct;
 };
@@ -1625,6 +1682,20 @@ inline void TopicEventRequest::set_allocated_pubsub_name(::std::string* pubsub_n
 
 // TopicEventResponse
 
+// .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 1;
+inline void TopicEventResponse::clear_status() {
+  status_ = 0;
+}
+inline ::dapr::proto::runtime::v1::TopicEventResponse_TopicEventResponseStatus TopicEventResponse::status() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.TopicEventResponse.status)
+  return static_cast< ::dapr::proto::runtime::v1::TopicEventResponse_TopicEventResponseStatus >(status_);
+}
+inline void TopicEventResponse::set_status(::dapr::proto::runtime::v1::TopicEventResponse_TopicEventResponseStatus value) {
+  
+  status_ = value;
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.TopicEventResponse.status)
+}
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -2242,6 +2313,11 @@ ListInputBindingsResponse::mutable_bindings() {
 namespace google {
 namespace protobuf {
 
+template <> struct is_proto_enum< ::dapr::proto::runtime::v1::TopicEventResponse_TopicEventResponseStatus> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::dapr::proto::runtime::v1::TopicEventResponse_TopicEventResponseStatus>() {
+  return ::dapr::proto::runtime::v1::TopicEventResponse_TopicEventResponseStatus_descriptor();
+}
 template <> struct is_proto_enum< ::dapr::proto::runtime::v1::BindingEventResponse_BindingEventConcurrency> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::dapr::proto::runtime::v1::BindingEventResponse_BindingEventConcurrency>() {

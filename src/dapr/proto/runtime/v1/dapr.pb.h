@@ -43,7 +43,7 @@ namespace protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[20];
+  static const ::google::protobuf::internal::ParseTable schema[23];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -60,6 +60,9 @@ extern BulkStateItemDefaultTypeInternal _BulkStateItem_default_instance_;
 class DeleteStateRequest;
 class DeleteStateRequestDefaultTypeInternal;
 extern DeleteStateRequestDefaultTypeInternal _DeleteStateRequest_default_instance_;
+class DeleteStateRequest_MetadataEntry_DoNotUse;
+class DeleteStateRequest_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern DeleteStateRequest_MetadataEntry_DoNotUseDefaultTypeInternal _DeleteStateRequest_MetadataEntry_DoNotUse_default_instance_;
 class ExecuteStateTransactionRequest;
 class ExecuteStateTransactionRequestDefaultTypeInternal;
 extern ExecuteStateTransactionRequestDefaultTypeInternal _ExecuteStateTransactionRequest_default_instance_;
@@ -69,6 +72,9 @@ extern ExecuteStateTransactionRequest_MetadataEntry_DoNotUseDefaultTypeInternal 
 class GetBulkStateRequest;
 class GetBulkStateRequestDefaultTypeInternal;
 extern GetBulkStateRequestDefaultTypeInternal _GetBulkStateRequest_default_instance_;
+class GetBulkStateRequest_MetadataEntry_DoNotUse;
+class GetBulkStateRequest_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern GetBulkStateRequest_MetadataEntry_DoNotUseDefaultTypeInternal _GetBulkStateRequest_MetadataEntry_DoNotUse_default_instance_;
 class GetBulkStateResponse;
 class GetBulkStateResponseDefaultTypeInternal;
 extern GetBulkStateResponseDefaultTypeInternal _GetBulkStateResponse_default_instance_;
@@ -87,6 +93,9 @@ extern GetSecretResponse_DataEntry_DoNotUseDefaultTypeInternal _GetSecretRespons
 class GetStateRequest;
 class GetStateRequestDefaultTypeInternal;
 extern GetStateRequestDefaultTypeInternal _GetStateRequest_default_instance_;
+class GetStateRequest_MetadataEntry_DoNotUse;
+class GetStateRequest_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern GetStateRequest_MetadataEntry_DoNotUseDefaultTypeInternal _GetStateRequest_MetadataEntry_DoNotUse_default_instance_;
 class GetStateResponse;
 class GetStateResponseDefaultTypeInternal;
 extern GetStateResponseDefaultTypeInternal _GetStateResponse_default_instance_;
@@ -122,15 +131,18 @@ namespace google {
 namespace protobuf {
 template<> ::dapr::proto::runtime::v1::BulkStateItem* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::BulkStateItem>(Arena*);
 template<> ::dapr::proto::runtime::v1::DeleteStateRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::DeleteStateRequest>(Arena*);
+template<> ::dapr::proto::runtime::v1::DeleteStateRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::DeleteStateRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::ExecuteStateTransactionRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::ExecuteStateTransactionRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::ExecuteStateTransactionRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::ExecuteStateTransactionRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetBulkStateRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetBulkStateRequest>(Arena*);
+template<> ::dapr::proto::runtime::v1::GetBulkStateRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetBulkStateRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetBulkStateResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetBulkStateResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetSecretRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetSecretRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetSecretRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetSecretRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetSecretResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetSecretResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetSecretResponse_DataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetSecretResponse_DataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetStateRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetStateRequest>(Arena*);
+template<> ::dapr::proto::runtime::v1::GetStateRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetStateRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetStateResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetStateResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeBindingRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeBindingRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeBindingRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeBindingRequest_MetadataEntry_DoNotUse>(Arena*);
@@ -273,6 +285,27 @@ class InvokeServiceRequest : public ::google::protobuf::Message /* @@protoc_inse
 };
 // -------------------------------------------------------------------
 
+class GetStateRequest_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<GetStateRequest_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<GetStateRequest_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  GetStateRequest_MetadataEntry_DoNotUse();
+  GetStateRequest_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const GetStateRequest_MetadataEntry_DoNotUse& other);
+  static const GetStateRequest_MetadataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const GetStateRequest_MetadataEntry_DoNotUse*>(&_GetStateRequest_MetadataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
 class GetStateRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.GetStateRequest) */ {
  public:
   GetStateRequest();
@@ -308,7 +341,7 @@ class GetStateRequest : public ::google::protobuf::Message /* @@protoc_insertion
                &_GetStateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   void Swap(GetStateRequest* other);
   friend void swap(GetStateRequest& a, GetStateRequest& b) {
@@ -358,7 +391,17 @@ class GetStateRequest : public ::google::protobuf::Message /* @@protoc_insertion
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
+
+  // map<string, string> metadata = 4;
+  int metadata_size() const;
+  void clear_metadata();
+  static const int kMetadataFieldNumber = 4;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      metadata() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_metadata();
 
   // string store_name = 1;
   void clear_store_name();
@@ -398,12 +441,39 @@ class GetStateRequest : public ::google::protobuf::Message /* @@protoc_insertion
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::MapField<
+      GetStateRequest_MetadataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      0 > metadata_;
   ::google::protobuf::internal::ArenaStringPtr store_name_;
   ::google::protobuf::internal::ArenaStringPtr key_;
   int consistency_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class GetBulkStateRequest_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<GetBulkStateRequest_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<GetBulkStateRequest_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  GetBulkStateRequest_MetadataEntry_DoNotUse();
+  GetBulkStateRequest_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const GetBulkStateRequest_MetadataEntry_DoNotUse& other);
+  static const GetBulkStateRequest_MetadataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const GetBulkStateRequest_MetadataEntry_DoNotUse*>(&_GetBulkStateRequest_MetadataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
 // -------------------------------------------------------------------
 
 class GetBulkStateRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.GetBulkStateRequest) */ {
@@ -441,7 +511,7 @@ class GetBulkStateRequest : public ::google::protobuf::Message /* @@protoc_inser
                &_GetBulkStateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   void Swap(GetBulkStateRequest* other);
   friend void swap(GetBulkStateRequest& a, GetBulkStateRequest& b) {
@@ -491,6 +561,7 @@ class GetBulkStateRequest : public ::google::protobuf::Message /* @@protoc_inser
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
   // repeated string keys = 2;
@@ -514,6 +585,15 @@ class GetBulkStateRequest : public ::google::protobuf::Message /* @@protoc_inser
   void add_keys(const char* value, size_t size);
   const ::google::protobuf::RepeatedPtrField< ::std::string>& keys() const;
   ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_keys();
+
+  // map<string, string> metadata = 4;
+  int metadata_size() const;
+  void clear_metadata();
+  static const int kMetadataFieldNumber = 4;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      metadata() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_metadata();
 
   // string store_name = 1;
   void clear_store_name();
@@ -540,6 +620,12 @@ class GetBulkStateRequest : public ::google::protobuf::Message /* @@protoc_inser
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::std::string> keys_;
+  ::google::protobuf::internal::MapField<
+      GetBulkStateRequest_MetadataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      0 > metadata_;
   ::google::protobuf::internal::ArenaStringPtr store_name_;
   ::google::protobuf::int32 parallelism_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
@@ -582,7 +668,7 @@ class GetBulkStateResponse : public ::google::protobuf::Message /* @@protoc_inse
                &_GetBulkStateResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   void Swap(GetBulkStateResponse* other);
   friend void swap(GetBulkStateResponse& a, GetBulkStateResponse& b) {
@@ -691,7 +777,7 @@ class BulkStateItem : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_BulkStateItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   void Swap(BulkStateItem* other);
   friend void swap(BulkStateItem& a, BulkStateItem& b) {
@@ -785,6 +871,20 @@ class BulkStateItem : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::std::string* release_etag();
   void set_allocated_etag(::std::string* etag);
 
+  // string error = 4;
+  void clear_error();
+  static const int kErrorFieldNumber = 4;
+  const ::std::string& error() const;
+  void set_error(const ::std::string& value);
+  #if LANG_CXX11
+  void set_error(::std::string&& value);
+  #endif
+  void set_error(const char* value);
+  void set_error(const char* value, size_t size);
+  ::std::string* mutable_error();
+  ::std::string* release_error();
+  void set_allocated_error(::std::string* error);
+
   // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.BulkStateItem)
  private:
 
@@ -792,6 +892,7 @@ class BulkStateItem : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::google::protobuf::internal::ArenaStringPtr key_;
   ::google::protobuf::internal::ArenaStringPtr data_;
   ::google::protobuf::internal::ArenaStringPtr etag_;
+  ::google::protobuf::internal::ArenaStringPtr error_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
 };
@@ -832,7 +933,7 @@ class GetStateResponse : public ::google::protobuf::Message /* @@protoc_insertio
                &_GetStateResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   void Swap(GetStateResponse* other);
   friend void swap(GetStateResponse& a, GetStateResponse& b) {
@@ -923,6 +1024,27 @@ class GetStateResponse : public ::google::protobuf::Message /* @@protoc_insertio
 };
 // -------------------------------------------------------------------
 
+class DeleteStateRequest_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<DeleteStateRequest_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<DeleteStateRequest_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  DeleteStateRequest_MetadataEntry_DoNotUse();
+  DeleteStateRequest_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const DeleteStateRequest_MetadataEntry_DoNotUse& other);
+  static const DeleteStateRequest_MetadataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const DeleteStateRequest_MetadataEntry_DoNotUse*>(&_DeleteStateRequest_MetadataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
 class DeleteStateRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.DeleteStateRequest) */ {
  public:
   DeleteStateRequest();
@@ -958,7 +1080,7 @@ class DeleteStateRequest : public ::google::protobuf::Message /* @@protoc_insert
                &_DeleteStateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    9;
 
   void Swap(DeleteStateRequest* other);
   friend void swap(DeleteStateRequest& a, DeleteStateRequest& b) {
@@ -1008,7 +1130,17 @@ class DeleteStateRequest : public ::google::protobuf::Message /* @@protoc_insert
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
+
+  // map<string, string> metadata = 5;
+  int metadata_size() const;
+  void clear_metadata();
+  static const int kMetadataFieldNumber = 5;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      metadata() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_metadata();
 
   // string store_name = 1;
   void clear_store_name();
@@ -1068,6 +1200,12 @@ class DeleteStateRequest : public ::google::protobuf::Message /* @@protoc_insert
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::MapField<
+      DeleteStateRequest_MetadataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      0 > metadata_;
   ::google::protobuf::internal::ArenaStringPtr store_name_;
   ::google::protobuf::internal::ArenaStringPtr key_;
   ::google::protobuf::internal::ArenaStringPtr etag_;
@@ -1112,7 +1250,7 @@ class SaveStateRequest : public ::google::protobuf::Message /* @@protoc_insertio
                &_SaveStateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    10;
 
   void Swap(SaveStateRequest* other);
   friend void swap(SaveStateRequest& a, SaveStateRequest& b) {
@@ -1236,7 +1374,7 @@ class PublishEventRequest : public ::google::protobuf::Message /* @@protoc_inser
                &_PublishEventRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    11;
 
   void Swap(PublishEventRequest* other);
   friend void swap(PublishEventRequest& a, PublishEventRequest& b) {
@@ -1398,7 +1536,7 @@ class InvokeBindingRequest : public ::google::protobuf::Message /* @@protoc_inse
                &_InvokeBindingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    13;
 
   void Swap(InvokeBindingRequest* other);
   friend void swap(InvokeBindingRequest& a, InvokeBindingRequest& b) {
@@ -1576,7 +1714,7 @@ class InvokeBindingResponse : public ::google::protobuf::Message /* @@protoc_ins
                &_InvokeBindingResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    15;
 
   void Swap(InvokeBindingResponse* other);
   friend void swap(InvokeBindingResponse& a, InvokeBindingResponse& b) {
@@ -1724,7 +1862,7 @@ class GetSecretRequest : public ::google::protobuf::Message /* @@protoc_insertio
                &_GetSecretRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    17;
 
   void Swap(GetSecretRequest* other);
   friend void swap(GetSecretRequest& a, GetSecretRequest& b) {
@@ -1887,7 +2025,7 @@ class GetSecretResponse : public ::google::protobuf::Message /* @@protoc_inserti
                &_GetSecretResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    19;
 
   void Swap(GetSecretResponse* other);
   friend void swap(GetSecretResponse& a, GetSecretResponse& b) {
@@ -1999,7 +2137,7 @@ class TransactionalStateOperation : public ::google::protobuf::Message /* @@prot
                &_TransactionalStateOperation_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    20;
 
   void Swap(TransactionalStateOperation* other);
   friend void swap(TransactionalStateOperation& a, TransactionalStateOperation& b) {
@@ -2144,7 +2282,7 @@ class ExecuteStateTransactionRequest : public ::google::protobuf::Message /* @@p
                &_ExecuteStateTransactionRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    22;
 
   void Swap(ExecuteStateTransactionRequest* other);
   friend void swap(ExecuteStateTransactionRequest& a, ExecuteStateTransactionRequest& b) {
@@ -2361,6 +2499,8 @@ inline void InvokeServiceRequest::set_allocated_message(::dapr::proto::common::v
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // GetStateRequest
 
 // string store_name = 1;
@@ -2482,6 +2622,26 @@ inline void GetStateRequest::set_consistency(::dapr::proto::common::v1::StateOpt
   consistency_ = value;
   // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.GetStateRequest.consistency)
 }
+
+// map<string, string> metadata = 4;
+inline int GetStateRequest::metadata_size() const {
+  return metadata_.size();
+}
+inline void GetStateRequest::clear_metadata() {
+  metadata_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+GetStateRequest::metadata() const {
+  // @@protoc_insertion_point(field_map:dapr.proto.runtime.v1.GetStateRequest.metadata)
+  return metadata_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+GetStateRequest::mutable_metadata() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.runtime.v1.GetStateRequest.metadata)
+  return metadata_.MutableMap();
+}
+
+// -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
 
@@ -2621,6 +2781,24 @@ inline void GetBulkStateRequest::set_parallelism(::google::protobuf::int32 value
   
   parallelism_ = value;
   // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.GetBulkStateRequest.parallelism)
+}
+
+// map<string, string> metadata = 4;
+inline int GetBulkStateRequest::metadata_size() const {
+  return metadata_.size();
+}
+inline void GetBulkStateRequest::clear_metadata() {
+  metadata_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+GetBulkStateRequest::metadata() const {
+  // @@protoc_insertion_point(field_map:dapr.proto.runtime.v1.GetBulkStateRequest.metadata)
+  return metadata_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+GetBulkStateRequest::mutable_metadata() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.runtime.v1.GetBulkStateRequest.metadata)
+  return metadata_.MutableMap();
 }
 
 // -------------------------------------------------------------------
@@ -2820,6 +2998,59 @@ inline void BulkStateItem::set_allocated_etag(::std::string* etag) {
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.BulkStateItem.etag)
 }
 
+// string error = 4;
+inline void BulkStateItem::clear_error() {
+  error_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& BulkStateItem::error() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.BulkStateItem.error)
+  return error_.GetNoArena();
+}
+inline void BulkStateItem::set_error(const ::std::string& value) {
+  
+  error_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.BulkStateItem.error)
+}
+#if LANG_CXX11
+inline void BulkStateItem::set_error(::std::string&& value) {
+  
+  error_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.BulkStateItem.error)
+}
+#endif
+inline void BulkStateItem::set_error(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  error_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.BulkStateItem.error)
+}
+inline void BulkStateItem::set_error(const char* value, size_t size) {
+  
+  error_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.BulkStateItem.error)
+}
+inline ::std::string* BulkStateItem::mutable_error() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.BulkStateItem.error)
+  return error_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* BulkStateItem::release_error() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.BulkStateItem.error)
+  
+  return error_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void BulkStateItem::set_allocated_error(::std::string* error) {
+  if (error != NULL) {
+    
+  } else {
+    
+  }
+  error_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), error);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.BulkStateItem.error)
+}
+
 // -------------------------------------------------------------------
 
 // GetStateResponse
@@ -2929,6 +3160,8 @@ inline void GetStateResponse::set_allocated_etag(::std::string* etag) {
   etag_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), etag);
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.GetStateResponse.etag)
 }
+
+// -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
 
@@ -3139,6 +3372,24 @@ inline void DeleteStateRequest::set_allocated_options(::dapr::proto::common::v1:
   }
   options_ = options;
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.DeleteStateRequest.options)
+}
+
+// map<string, string> metadata = 5;
+inline int DeleteStateRequest::metadata_size() const {
+  return metadata_.size();
+}
+inline void DeleteStateRequest::clear_metadata() {
+  metadata_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+DeleteStateRequest::metadata() const {
+  // @@protoc_insertion_point(field_map:dapr.proto.runtime.v1.DeleteStateRequest.metadata)
+  return metadata_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+DeleteStateRequest::mutable_metadata() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.runtime.v1.DeleteStateRequest.metadata)
+  return metadata_.MutableMap();
 }
 
 // -------------------------------------------------------------------
@@ -4017,6 +4268,12 @@ ExecuteStateTransactionRequest::mutable_metadata() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
