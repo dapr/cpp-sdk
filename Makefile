@@ -15,7 +15,7 @@ vpath %.proto $(PROTOS_PATH)
 all: system-check libdapr.so
 
 libdapr.so : ./src/dapr/proto/common/v1/common.pb.o ./src/dapr/proto/runtime/v1/dapr.pb.o ./src/dapr/proto/runtime/v1/dapr.grpc.pb.o ./src/dapr/proto/runtime/v1/appcallback.pb.o ./src/dapr/proto/runtime/v1/appcallback.grpc.pb.o
-	-mkdir ./out
+	-mkdir -p ./out
 	$(CXX) -shared -Wl,-soname,libdapr.so.0 -o ./out/libdapr.0.2.0.so ./src/dapr/proto/runtime/v1/*.o ./src/dapr/proto/common/v1/*.o
 
 %.o : %.cc

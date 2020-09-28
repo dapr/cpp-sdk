@@ -222,7 +222,7 @@ void InitDefaults() {
 }
 
 ::google::protobuf::Metadata file_level_metadata[9];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
@@ -243,6 +243,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventResponse, status_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse, _has_bits_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -303,13 +304,13 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::dapr::proto::runtime::v1::TopicEventRequest)},
   { 13, -1, sizeof(::dapr::proto::runtime::v1::TopicEventResponse)},
-  { 18, 25, sizeof(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse)},
-  { 27, -1, sizeof(::dapr::proto::runtime::v1::BindingEventRequest)},
-  { 35, -1, sizeof(::dapr::proto::runtime::v1::BindingEventResponse)},
-  { 45, -1, sizeof(::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse)},
-  { 51, 58, sizeof(::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse)},
-  { 60, -1, sizeof(::dapr::proto::runtime::v1::TopicSubscription)},
-  { 68, -1, sizeof(::dapr::proto::runtime::v1::ListInputBindingsResponse)},
+  { 19, 26, sizeof(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse)},
+  { 28, -1, sizeof(::dapr::proto::runtime::v1::BindingEventRequest)},
+  { 36, -1, sizeof(::dapr::proto::runtime::v1::BindingEventResponse)},
+  { 46, -1, sizeof(::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse)},
+  { 52, 59, sizeof(::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse)},
+  { 61, -1, sizeof(::dapr::proto::runtime::v1::TopicSubscription)},
+  { 69, -1, sizeof(::dapr::proto::runtime::v1::ListInputBindingsResponse)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -352,46 +353,50 @@ void AddDescriptorsImpl() {
       "(\t\022\016\n\006source\030\002 \001(\t\022\014\n\004type\030\003 \001(\t\022\024\n\014spec"
       "_version\030\004 \001(\t\022\031\n\021data_content_type\030\005 \001("
       "\t\022\014\n\004data\030\007 \001(\014\022\r\n\005topic\030\006 \001(\t\022\023\n\013pubsub"
-      "_name\030\010 \001(\t\"\024\n\022TopicEventResponse\"\256\001\n\023Bi"
-      "ndingEventRequest\022\014\n\004name\030\001 \001(\t\022\014\n\004data\030"
-      "\002 \001(\014\022J\n\010metadata\030\003 \003(\01328.dapr.proto.run"
-      "time.v1.BindingEventRequest.MetadataEntr"
-      "y\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value"
-      "\030\002 \001(\t:\0028\001\"\210\002\n\024BindingEventResponse\022\022\n\ns"
-      "tore_name\030\001 \001(\t\022/\n\006states\030\002 \003(\0132\037.dapr.p"
-      "roto.common.v1.StateItem\022\n\n\002to\030\003 \003(\t\022\014\n\004"
-      "data\030\004 \001(\014\022X\n\013concurrency\030\005 \001(\0162C.dapr.p"
-      "roto.runtime.v1.BindingEventResponse.Bin"
-      "dingEventConcurrency\"7\n\027BindingEventConc"
-      "urrency\022\016\n\nSEQUENTIAL\020\000\022\014\n\010PARALLEL\020\001\"a\n"
-      "\036ListTopicSubscriptionsResponse\022\?\n\rsubsc"
-      "riptions\030\001 \003(\0132(.dapr.proto.runtime.v1.T"
-      "opicSubscription\"\262\001\n\021TopicSubscription\022\023"
-      "\n\013pubsub_name\030\001 \001(\t\022\r\n\005topic\030\002 \001(\t\022H\n\010me"
-      "tadata\030\003 \003(\01326.dapr.proto.runtime.v1.Top"
-      "icSubscription.MetadataEntry\032/\n\rMetadata"
-      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"-\n"
-      "\031ListInputBindingsResponse\022\020\n\010bindings\030\001"
-      " \003(\t2\206\004\n\013AppCallback\022W\n\010OnInvoke\022#.dapr."
-      "proto.common.v1.InvokeRequest\032$.dapr.pro"
-      "to.common.v1.InvokeResponse\"\000\022i\n\026ListTop"
-      "icSubscriptions\022\026.google.protobuf.Empty\032"
-      "5.dapr.proto.runtime.v1.ListTopicSubscri"
-      "ptionsResponse\"\000\022e\n\014OnTopicEvent\022(.dapr."
-      "proto.runtime.v1.TopicEventRequest\032).dap"
-      "r.proto.runtime.v1.TopicEventResponse\"\000\022"
-      "_\n\021ListInputBindings\022\026.google.protobuf.E"
-      "mpty\0320.dapr.proto.runtime.v1.ListInputBi"
-      "ndingsResponse\"\000\022k\n\016OnBindingEvent\022*.dap"
-      "r.proto.runtime.v1.BindingEventRequest\032+"
-      ".dapr.proto.runtime.v1.BindingEventRespo"
-      "nse\"\000By\n\nio.dapr.v1B\025DaprAppCallbackProt"
-      "osZ1github.com/dapr/dapr/pkg/proto/runti"
-      "me/v1;runtime\252\002 Dapr.AppCallback.Autogen"
-      ".Grpc.v1b\006proto3"
+      "_name\030\010 \001(\t\"\246\001\n\022TopicEventResponse\022R\n\006st"
+      "atus\030\001 \001(\0162B.dapr.proto.runtime.v1.Topic"
+      "EventResponse.TopicEventResponseStatus\"<"
+      "\n\030TopicEventResponseStatus\022\013\n\007SUCCESS\020\000\022"
+      "\t\n\005RETRY\020\001\022\010\n\004DROP\020\002\"\256\001\n\023BindingEventReq"
+      "uest\022\014\n\004name\030\001 \001(\t\022\014\n\004data\030\002 \001(\014\022J\n\010meta"
+      "data\030\003 \003(\01328.dapr.proto.runtime.v1.Bindi"
+      "ngEventRequest.MetadataEntry\032/\n\rMetadata"
+      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\210\002"
+      "\n\024BindingEventResponse\022\022\n\nstore_name\030\001 \001"
+      "(\t\022/\n\006states\030\002 \003(\0132\037.dapr.proto.common.v"
+      "1.StateItem\022\n\n\002to\030\003 \003(\t\022\014\n\004data\030\004 \001(\014\022X\n"
+      "\013concurrency\030\005 \001(\0162C.dapr.proto.runtime."
+      "v1.BindingEventResponse.BindingEventConc"
+      "urrency\"7\n\027BindingEventConcurrency\022\016\n\nSE"
+      "QUENTIAL\020\000\022\014\n\010PARALLEL\020\001\"a\n\036ListTopicSub"
+      "scriptionsResponse\022\?\n\rsubscriptions\030\001 \003("
+      "\0132(.dapr.proto.runtime.v1.TopicSubscript"
+      "ion\"\262\001\n\021TopicSubscription\022\023\n\013pubsub_name"
+      "\030\001 \001(\t\022\r\n\005topic\030\002 \001(\t\022H\n\010metadata\030\003 \003(\0132"
+      "6.dapr.proto.runtime.v1.TopicSubscriptio"
+      "n.MetadataEntry\032/\n\rMetadataEntry\022\013\n\003key\030"
+      "\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"-\n\031ListInputBin"
+      "dingsResponse\022\020\n\010bindings\030\001 \003(\t2\206\004\n\013AppC"
+      "allback\022W\n\010OnInvoke\022#.dapr.proto.common."
+      "v1.InvokeRequest\032$.dapr.proto.common.v1."
+      "InvokeResponse\"\000\022i\n\026ListTopicSubscriptio"
+      "ns\022\026.google.protobuf.Empty\0325.dapr.proto."
+      "runtime.v1.ListTopicSubscriptionsRespons"
+      "e\"\000\022e\n\014OnTopicEvent\022(.dapr.proto.runtime"
+      ".v1.TopicEventRequest\032).dapr.proto.runti"
+      "me.v1.TopicEventResponse\"\000\022_\n\021ListInputB"
+      "indings\022\026.google.protobuf.Empty\0320.dapr.p"
+      "roto.runtime.v1.ListInputBindingsRespons"
+      "e\"\000\022k\n\016OnBindingEvent\022*.dapr.proto.runti"
+      "me.v1.BindingEventRequest\032+.dapr.proto.r"
+      "untime.v1.BindingEventResponse\"\000By\n\nio.d"
+      "apr.v1B\025DaprAppCallbackProtosZ1github.co"
+      "m/dapr/dapr/pkg/proto/runtime/v1;runtime"
+      "\252\002 Dapr.AppCallback.Autogen.Grpc.v1b\006pro"
+      "to3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1736);
+      descriptor, 1883);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dapr/proto/runtime/v1/appcallback.proto", &protobuf_RegisterTypes);
   ::protobuf_google_2fprotobuf_2fempty_2eproto::AddDescriptors();
@@ -413,9 +418,32 @@ namespace dapr {
 namespace proto {
 namespace runtime {
 namespace v1 {
-const ::google::protobuf::EnumDescriptor* BindingEventResponse_BindingEventConcurrency_descriptor() {
+const ::google::protobuf::EnumDescriptor* TopicEventResponse_TopicEventResponseStatus_descriptor() {
   protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_enum_descriptors[0];
+}
+bool TopicEventResponse_TopicEventResponseStatus_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const TopicEventResponse_TopicEventResponseStatus TopicEventResponse::SUCCESS;
+const TopicEventResponse_TopicEventResponseStatus TopicEventResponse::RETRY;
+const TopicEventResponse_TopicEventResponseStatus TopicEventResponse::DROP;
+const TopicEventResponse_TopicEventResponseStatus TopicEventResponse::TopicEventResponseStatus_MIN;
+const TopicEventResponse_TopicEventResponseStatus TopicEventResponse::TopicEventResponseStatus_MAX;
+const int TopicEventResponse::TopicEventResponseStatus_ARRAYSIZE;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+const ::google::protobuf::EnumDescriptor* BindingEventResponse_BindingEventConcurrency_descriptor() {
+  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_enum_descriptors[1];
 }
 bool BindingEventResponse_BindingEventConcurrency_IsValid(int value) {
   switch (value) {
@@ -1076,6 +1104,7 @@ void TopicEventRequest::InternalSwap(TopicEventRequest* other) {
 void TopicEventResponse::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int TopicEventResponse::kStatusFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 TopicEventResponse::TopicEventResponse()
@@ -1089,10 +1118,12 @@ TopicEventResponse::TopicEventResponse(const TopicEventResponse& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  status_ = from.status_;
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.TopicEventResponse)
 }
 
 void TopicEventResponse::SharedCtor() {
+  status_ = 0;
 }
 
 TopicEventResponse::~TopicEventResponse() {
@@ -1123,6 +1154,7 @@ void TopicEventResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  status_ = 0;
   _internal_metadata_.Clear();
 }
 
@@ -1135,12 +1167,32 @@ bool TopicEventResponse::MergePartialFromCodedStream(
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
-  handle_unusual:
-    if (tag == 0) {
-      goto success;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_status(static_cast< ::dapr::proto::runtime::v1::TopicEventResponse_TopicEventResponseStatus >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
     }
-    DO_(::google::protobuf::internal::WireFormat::SkipField(
-          input, tag, _internal_metadata_.mutable_unknown_fields()));
   }
 success:
   // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.TopicEventResponse)
@@ -1157,6 +1209,12 @@ void TopicEventResponse::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 1;
+  if (this->status() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->status(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -1170,6 +1228,12 @@ void TopicEventResponse::SerializeWithCachedSizes(
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.TopicEventResponse)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
+
+  // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 1;
+  if (this->status() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->status(), target);
+  }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
@@ -1188,6 +1252,12 @@ size_t TopicEventResponse::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
+  // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 1;
+  if (this->status() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->status());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -1215,6 +1285,9 @@ void TopicEventResponse::MergeFrom(const TopicEventResponse& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.status() != 0) {
+    set_status(from.status());
+  }
 }
 
 void TopicEventResponse::CopyFrom(const ::google::protobuf::Message& from) {
@@ -1241,6 +1314,7 @@ void TopicEventResponse::Swap(TopicEventResponse* other) {
 }
 void TopicEventResponse::InternalSwap(TopicEventResponse* other) {
   using std::swap;
+  swap(status_, other->status_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
