@@ -43,7 +43,7 @@ namespace protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[23];
+  static const ::google::protobuf::internal::ParseTable schema[27];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -99,6 +99,12 @@ extern GetStateRequest_MetadataEntry_DoNotUseDefaultTypeInternal _GetStateReques
 class GetStateResponse;
 class GetStateResponseDefaultTypeInternal;
 extern GetStateResponseDefaultTypeInternal _GetStateResponse_default_instance_;
+class InvokeActorRequest;
+class InvokeActorRequestDefaultTypeInternal;
+extern InvokeActorRequestDefaultTypeInternal _InvokeActorRequest_default_instance_;
+class InvokeActorResponse;
+class InvokeActorResponseDefaultTypeInternal;
+extern InvokeActorResponseDefaultTypeInternal _InvokeActorResponse_default_instance_;
 class InvokeBindingRequest;
 class InvokeBindingRequestDefaultTypeInternal;
 extern InvokeBindingRequestDefaultTypeInternal _InvokeBindingRequest_default_instance_;
@@ -117,12 +123,18 @@ extern InvokeServiceRequestDefaultTypeInternal _InvokeServiceRequest_default_ins
 class PublishEventRequest;
 class PublishEventRequestDefaultTypeInternal;
 extern PublishEventRequestDefaultTypeInternal _PublishEventRequest_default_instance_;
+class RegisterActorTimerRequest;
+class RegisterActorTimerRequestDefaultTypeInternal;
+extern RegisterActorTimerRequestDefaultTypeInternal _RegisterActorTimerRequest_default_instance_;
 class SaveStateRequest;
 class SaveStateRequestDefaultTypeInternal;
 extern SaveStateRequestDefaultTypeInternal _SaveStateRequest_default_instance_;
 class TransactionalStateOperation;
 class TransactionalStateOperationDefaultTypeInternal;
 extern TransactionalStateOperationDefaultTypeInternal _TransactionalStateOperation_default_instance_;
+class UnregisterActorTimerRequest;
+class UnregisterActorTimerRequestDefaultTypeInternal;
+extern UnregisterActorTimerRequestDefaultTypeInternal _UnregisterActorTimerRequest_default_instance_;
 }  // namespace v1
 }  // namespace runtime
 }  // namespace proto
@@ -144,14 +156,18 @@ template<> ::dapr::proto::runtime::v1::GetSecretResponse_DataEntry_DoNotUse* Are
 template<> ::dapr::proto::runtime::v1::GetStateRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetStateRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetStateRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetStateRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetStateResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetStateResponse>(Arena*);
+template<> ::dapr::proto::runtime::v1::InvokeActorRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeActorRequest>(Arena*);
+template<> ::dapr::proto::runtime::v1::InvokeActorResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeActorResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeBindingRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeBindingRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeBindingRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeBindingRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeBindingResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeBindingResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeBindingResponse_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeBindingResponse_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeServiceRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeServiceRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::PublishEventRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::PublishEventRequest>(Arena*);
+template<> ::dapr::proto::runtime::v1::RegisterActorTimerRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::RegisterActorTimerRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::SaveStateRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::SaveStateRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::TransactionalStateOperation* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TransactionalStateOperation>(Arena*);
+template<> ::dapr::proto::runtime::v1::UnregisterActorTimerRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::UnregisterActorTimerRequest>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace dapr {
@@ -2385,6 +2401,615 @@ class ExecuteStateTransactionRequest : public ::google::protobuf::Message /* @@p
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class RegisterActorTimerRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.RegisterActorTimerRequest) */ {
+ public:
+  RegisterActorTimerRequest();
+  virtual ~RegisterActorTimerRequest();
+
+  RegisterActorTimerRequest(const RegisterActorTimerRequest& from);
+
+  inline RegisterActorTimerRequest& operator=(const RegisterActorTimerRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  RegisterActorTimerRequest(RegisterActorTimerRequest&& from) noexcept
+    : RegisterActorTimerRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline RegisterActorTimerRequest& operator=(RegisterActorTimerRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RegisterActorTimerRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const RegisterActorTimerRequest* internal_default_instance() {
+    return reinterpret_cast<const RegisterActorTimerRequest*>(
+               &_RegisterActorTimerRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    23;
+
+  void Swap(RegisterActorTimerRequest* other);
+  friend void swap(RegisterActorTimerRequest& a, RegisterActorTimerRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RegisterActorTimerRequest* New() const final {
+    return CreateMaybeMessage<RegisterActorTimerRequest>(NULL);
+  }
+
+  RegisterActorTimerRequest* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<RegisterActorTimerRequest>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const RegisterActorTimerRequest& from);
+  void MergeFrom(const RegisterActorTimerRequest& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RegisterActorTimerRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string actor_type = 1;
+  void clear_actor_type();
+  static const int kActorTypeFieldNumber = 1;
+  const ::std::string& actor_type() const;
+  void set_actor_type(const ::std::string& value);
+  #if LANG_CXX11
+  void set_actor_type(::std::string&& value);
+  #endif
+  void set_actor_type(const char* value);
+  void set_actor_type(const char* value, size_t size);
+  ::std::string* mutable_actor_type();
+  ::std::string* release_actor_type();
+  void set_allocated_actor_type(::std::string* actor_type);
+
+  // string actor_id = 2;
+  void clear_actor_id();
+  static const int kActorIdFieldNumber = 2;
+  const ::std::string& actor_id() const;
+  void set_actor_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_actor_id(::std::string&& value);
+  #endif
+  void set_actor_id(const char* value);
+  void set_actor_id(const char* value, size_t size);
+  ::std::string* mutable_actor_id();
+  ::std::string* release_actor_id();
+  void set_allocated_actor_id(::std::string* actor_id);
+
+  // string name = 3;
+  void clear_name();
+  static const int kNameFieldNumber = 3;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // string due_time = 4;
+  void clear_due_time();
+  static const int kDueTimeFieldNumber = 4;
+  const ::std::string& due_time() const;
+  void set_due_time(const ::std::string& value);
+  #if LANG_CXX11
+  void set_due_time(::std::string&& value);
+  #endif
+  void set_due_time(const char* value);
+  void set_due_time(const char* value, size_t size);
+  ::std::string* mutable_due_time();
+  ::std::string* release_due_time();
+  void set_allocated_due_time(::std::string* due_time);
+
+  // string period = 5;
+  void clear_period();
+  static const int kPeriodFieldNumber = 5;
+  const ::std::string& period() const;
+  void set_period(const ::std::string& value);
+  #if LANG_CXX11
+  void set_period(::std::string&& value);
+  #endif
+  void set_period(const char* value);
+  void set_period(const char* value, size_t size);
+  ::std::string* mutable_period();
+  ::std::string* release_period();
+  void set_allocated_period(::std::string* period);
+
+  // string callback = 6;
+  void clear_callback();
+  static const int kCallbackFieldNumber = 6;
+  const ::std::string& callback() const;
+  void set_callback(const ::std::string& value);
+  #if LANG_CXX11
+  void set_callback(::std::string&& value);
+  #endif
+  void set_callback(const char* value);
+  void set_callback(const char* value, size_t size);
+  ::std::string* mutable_callback();
+  ::std::string* release_callback();
+  void set_allocated_callback(::std::string* callback);
+
+  // bytes data = 7;
+  void clear_data();
+  static const int kDataFieldNumber = 7;
+  const ::std::string& data() const;
+  void set_data(const ::std::string& value);
+  #if LANG_CXX11
+  void set_data(::std::string&& value);
+  #endif
+  void set_data(const char* value);
+  void set_data(const void* value, size_t size);
+  ::std::string* mutable_data();
+  ::std::string* release_data();
+  void set_allocated_data(::std::string* data);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.RegisterActorTimerRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr actor_type_;
+  ::google::protobuf::internal::ArenaStringPtr actor_id_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr due_time_;
+  ::google::protobuf::internal::ArenaStringPtr period_;
+  ::google::protobuf::internal::ArenaStringPtr callback_;
+  ::google::protobuf::internal::ArenaStringPtr data_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class UnregisterActorTimerRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.UnregisterActorTimerRequest) */ {
+ public:
+  UnregisterActorTimerRequest();
+  virtual ~UnregisterActorTimerRequest();
+
+  UnregisterActorTimerRequest(const UnregisterActorTimerRequest& from);
+
+  inline UnregisterActorTimerRequest& operator=(const UnregisterActorTimerRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  UnregisterActorTimerRequest(UnregisterActorTimerRequest&& from) noexcept
+    : UnregisterActorTimerRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline UnregisterActorTimerRequest& operator=(UnregisterActorTimerRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UnregisterActorTimerRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const UnregisterActorTimerRequest* internal_default_instance() {
+    return reinterpret_cast<const UnregisterActorTimerRequest*>(
+               &_UnregisterActorTimerRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    24;
+
+  void Swap(UnregisterActorTimerRequest* other);
+  friend void swap(UnregisterActorTimerRequest& a, UnregisterActorTimerRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline UnregisterActorTimerRequest* New() const final {
+    return CreateMaybeMessage<UnregisterActorTimerRequest>(NULL);
+  }
+
+  UnregisterActorTimerRequest* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<UnregisterActorTimerRequest>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const UnregisterActorTimerRequest& from);
+  void MergeFrom(const UnregisterActorTimerRequest& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UnregisterActorTimerRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string actor_type = 1;
+  void clear_actor_type();
+  static const int kActorTypeFieldNumber = 1;
+  const ::std::string& actor_type() const;
+  void set_actor_type(const ::std::string& value);
+  #if LANG_CXX11
+  void set_actor_type(::std::string&& value);
+  #endif
+  void set_actor_type(const char* value);
+  void set_actor_type(const char* value, size_t size);
+  ::std::string* mutable_actor_type();
+  ::std::string* release_actor_type();
+  void set_allocated_actor_type(::std::string* actor_type);
+
+  // string actor_id = 2;
+  void clear_actor_id();
+  static const int kActorIdFieldNumber = 2;
+  const ::std::string& actor_id() const;
+  void set_actor_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_actor_id(::std::string&& value);
+  #endif
+  void set_actor_id(const char* value);
+  void set_actor_id(const char* value, size_t size);
+  ::std::string* mutable_actor_id();
+  ::std::string* release_actor_id();
+  void set_allocated_actor_id(::std::string* actor_id);
+
+  // string name = 3;
+  void clear_name();
+  static const int kNameFieldNumber = 3;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.UnregisterActorTimerRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr actor_type_;
+  ::google::protobuf::internal::ArenaStringPtr actor_id_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class InvokeActorRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.InvokeActorRequest) */ {
+ public:
+  InvokeActorRequest();
+  virtual ~InvokeActorRequest();
+
+  InvokeActorRequest(const InvokeActorRequest& from);
+
+  inline InvokeActorRequest& operator=(const InvokeActorRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  InvokeActorRequest(InvokeActorRequest&& from) noexcept
+    : InvokeActorRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline InvokeActorRequest& operator=(InvokeActorRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const InvokeActorRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const InvokeActorRequest* internal_default_instance() {
+    return reinterpret_cast<const InvokeActorRequest*>(
+               &_InvokeActorRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    25;
+
+  void Swap(InvokeActorRequest* other);
+  friend void swap(InvokeActorRequest& a, InvokeActorRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline InvokeActorRequest* New() const final {
+    return CreateMaybeMessage<InvokeActorRequest>(NULL);
+  }
+
+  InvokeActorRequest* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<InvokeActorRequest>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const InvokeActorRequest& from);
+  void MergeFrom(const InvokeActorRequest& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(InvokeActorRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string actor_type = 1;
+  void clear_actor_type();
+  static const int kActorTypeFieldNumber = 1;
+  const ::std::string& actor_type() const;
+  void set_actor_type(const ::std::string& value);
+  #if LANG_CXX11
+  void set_actor_type(::std::string&& value);
+  #endif
+  void set_actor_type(const char* value);
+  void set_actor_type(const char* value, size_t size);
+  ::std::string* mutable_actor_type();
+  ::std::string* release_actor_type();
+  void set_allocated_actor_type(::std::string* actor_type);
+
+  // string actor_id = 2;
+  void clear_actor_id();
+  static const int kActorIdFieldNumber = 2;
+  const ::std::string& actor_id() const;
+  void set_actor_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_actor_id(::std::string&& value);
+  #endif
+  void set_actor_id(const char* value);
+  void set_actor_id(const char* value, size_t size);
+  ::std::string* mutable_actor_id();
+  ::std::string* release_actor_id();
+  void set_allocated_actor_id(::std::string* actor_id);
+
+  // string method = 3;
+  void clear_method();
+  static const int kMethodFieldNumber = 3;
+  const ::std::string& method() const;
+  void set_method(const ::std::string& value);
+  #if LANG_CXX11
+  void set_method(::std::string&& value);
+  #endif
+  void set_method(const char* value);
+  void set_method(const char* value, size_t size);
+  ::std::string* mutable_method();
+  ::std::string* release_method();
+  void set_allocated_method(::std::string* method);
+
+  // bytes data = 4;
+  void clear_data();
+  static const int kDataFieldNumber = 4;
+  const ::std::string& data() const;
+  void set_data(const ::std::string& value);
+  #if LANG_CXX11
+  void set_data(::std::string&& value);
+  #endif
+  void set_data(const char* value);
+  void set_data(const void* value, size_t size);
+  ::std::string* mutable_data();
+  ::std::string* release_data();
+  void set_allocated_data(::std::string* data);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.InvokeActorRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr actor_type_;
+  ::google::protobuf::internal::ArenaStringPtr actor_id_;
+  ::google::protobuf::internal::ArenaStringPtr method_;
+  ::google::protobuf::internal::ArenaStringPtr data_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class InvokeActorResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.InvokeActorResponse) */ {
+ public:
+  InvokeActorResponse();
+  virtual ~InvokeActorResponse();
+
+  InvokeActorResponse(const InvokeActorResponse& from);
+
+  inline InvokeActorResponse& operator=(const InvokeActorResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  InvokeActorResponse(InvokeActorResponse&& from) noexcept
+    : InvokeActorResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline InvokeActorResponse& operator=(InvokeActorResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const InvokeActorResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const InvokeActorResponse* internal_default_instance() {
+    return reinterpret_cast<const InvokeActorResponse*>(
+               &_InvokeActorResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    26;
+
+  void Swap(InvokeActorResponse* other);
+  friend void swap(InvokeActorResponse& a, InvokeActorResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline InvokeActorResponse* New() const final {
+    return CreateMaybeMessage<InvokeActorResponse>(NULL);
+  }
+
+  InvokeActorResponse* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<InvokeActorResponse>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const InvokeActorResponse& from);
+  void MergeFrom(const InvokeActorResponse& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(InvokeActorResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bytes data = 1;
+  void clear_data();
+  static const int kDataFieldNumber = 1;
+  const ::std::string& data() const;
+  void set_data(const ::std::string& value);
+  #if LANG_CXX11
+  void set_data(::std::string&& value);
+  #endif
+  void set_data(const char* value);
+  void set_data(const void* value, size_t size);
+  ::std::string* mutable_data();
+  ::std::string* release_data();
+  void set_allocated_data(::std::string* data);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.InvokeActorResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr data_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -4265,9 +4890,828 @@ ExecuteStateTransactionRequest::mutable_metadata() {
   return metadata_.MutableMap();
 }
 
+// -------------------------------------------------------------------
+
+// RegisterActorTimerRequest
+
+// string actor_type = 1;
+inline void RegisterActorTimerRequest::clear_actor_type() {
+  actor_type_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& RegisterActorTimerRequest::actor_type() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_type)
+  return actor_type_.GetNoArena();
+}
+inline void RegisterActorTimerRequest::set_actor_type(const ::std::string& value) {
+  
+  actor_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_type)
+}
+#if LANG_CXX11
+inline void RegisterActorTimerRequest::set_actor_type(::std::string&& value) {
+  
+  actor_type_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_type)
+}
+#endif
+inline void RegisterActorTimerRequest::set_actor_type(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  actor_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_type)
+}
+inline void RegisterActorTimerRequest::set_actor_type(const char* value, size_t size) {
+  
+  actor_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_type)
+}
+inline ::std::string* RegisterActorTimerRequest::mutable_actor_type() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_type)
+  return actor_type_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RegisterActorTimerRequest::release_actor_type() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_type)
+  
+  return actor_type_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RegisterActorTimerRequest::set_allocated_actor_type(::std::string* actor_type) {
+  if (actor_type != NULL) {
+    
+  } else {
+    
+  }
+  actor_type_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), actor_type);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_type)
+}
+
+// string actor_id = 2;
+inline void RegisterActorTimerRequest::clear_actor_id() {
+  actor_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& RegisterActorTimerRequest::actor_id() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_id)
+  return actor_id_.GetNoArena();
+}
+inline void RegisterActorTimerRequest::set_actor_id(const ::std::string& value) {
+  
+  actor_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_id)
+}
+#if LANG_CXX11
+inline void RegisterActorTimerRequest::set_actor_id(::std::string&& value) {
+  
+  actor_id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_id)
+}
+#endif
+inline void RegisterActorTimerRequest::set_actor_id(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  actor_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_id)
+}
+inline void RegisterActorTimerRequest::set_actor_id(const char* value, size_t size) {
+  
+  actor_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_id)
+}
+inline ::std::string* RegisterActorTimerRequest::mutable_actor_id() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_id)
+  return actor_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RegisterActorTimerRequest::release_actor_id() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_id)
+  
+  return actor_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RegisterActorTimerRequest::set_allocated_actor_id(::std::string* actor_id) {
+  if (actor_id != NULL) {
+    
+  } else {
+    
+  }
+  actor_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), actor_id);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.RegisterActorTimerRequest.actor_id)
+}
+
+// string name = 3;
+inline void RegisterActorTimerRequest::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& RegisterActorTimerRequest::name() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.RegisterActorTimerRequest.name)
+  return name_.GetNoArena();
+}
+inline void RegisterActorTimerRequest::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.RegisterActorTimerRequest.name)
+}
+#if LANG_CXX11
+inline void RegisterActorTimerRequest::set_name(::std::string&& value) {
+  
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.RegisterActorTimerRequest.name)
+}
+#endif
+inline void RegisterActorTimerRequest::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.RegisterActorTimerRequest.name)
+}
+inline void RegisterActorTimerRequest::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.RegisterActorTimerRequest.name)
+}
+inline ::std::string* RegisterActorTimerRequest::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.RegisterActorTimerRequest.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RegisterActorTimerRequest::release_name() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.RegisterActorTimerRequest.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RegisterActorTimerRequest::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.RegisterActorTimerRequest.name)
+}
+
+// string due_time = 4;
+inline void RegisterActorTimerRequest::clear_due_time() {
+  due_time_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& RegisterActorTimerRequest::due_time() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.RegisterActorTimerRequest.due_time)
+  return due_time_.GetNoArena();
+}
+inline void RegisterActorTimerRequest::set_due_time(const ::std::string& value) {
+  
+  due_time_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.RegisterActorTimerRequest.due_time)
+}
+#if LANG_CXX11
+inline void RegisterActorTimerRequest::set_due_time(::std::string&& value) {
+  
+  due_time_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.RegisterActorTimerRequest.due_time)
+}
+#endif
+inline void RegisterActorTimerRequest::set_due_time(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  due_time_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.RegisterActorTimerRequest.due_time)
+}
+inline void RegisterActorTimerRequest::set_due_time(const char* value, size_t size) {
+  
+  due_time_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.RegisterActorTimerRequest.due_time)
+}
+inline ::std::string* RegisterActorTimerRequest::mutable_due_time() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.RegisterActorTimerRequest.due_time)
+  return due_time_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RegisterActorTimerRequest::release_due_time() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.RegisterActorTimerRequest.due_time)
+  
+  return due_time_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RegisterActorTimerRequest::set_allocated_due_time(::std::string* due_time) {
+  if (due_time != NULL) {
+    
+  } else {
+    
+  }
+  due_time_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), due_time);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.RegisterActorTimerRequest.due_time)
+}
+
+// string period = 5;
+inline void RegisterActorTimerRequest::clear_period() {
+  period_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& RegisterActorTimerRequest::period() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.RegisterActorTimerRequest.period)
+  return period_.GetNoArena();
+}
+inline void RegisterActorTimerRequest::set_period(const ::std::string& value) {
+  
+  period_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.RegisterActorTimerRequest.period)
+}
+#if LANG_CXX11
+inline void RegisterActorTimerRequest::set_period(::std::string&& value) {
+  
+  period_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.RegisterActorTimerRequest.period)
+}
+#endif
+inline void RegisterActorTimerRequest::set_period(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  period_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.RegisterActorTimerRequest.period)
+}
+inline void RegisterActorTimerRequest::set_period(const char* value, size_t size) {
+  
+  period_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.RegisterActorTimerRequest.period)
+}
+inline ::std::string* RegisterActorTimerRequest::mutable_period() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.RegisterActorTimerRequest.period)
+  return period_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RegisterActorTimerRequest::release_period() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.RegisterActorTimerRequest.period)
+  
+  return period_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RegisterActorTimerRequest::set_allocated_period(::std::string* period) {
+  if (period != NULL) {
+    
+  } else {
+    
+  }
+  period_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), period);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.RegisterActorTimerRequest.period)
+}
+
+// string callback = 6;
+inline void RegisterActorTimerRequest::clear_callback() {
+  callback_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& RegisterActorTimerRequest::callback() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.RegisterActorTimerRequest.callback)
+  return callback_.GetNoArena();
+}
+inline void RegisterActorTimerRequest::set_callback(const ::std::string& value) {
+  
+  callback_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.RegisterActorTimerRequest.callback)
+}
+#if LANG_CXX11
+inline void RegisterActorTimerRequest::set_callback(::std::string&& value) {
+  
+  callback_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.RegisterActorTimerRequest.callback)
+}
+#endif
+inline void RegisterActorTimerRequest::set_callback(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  callback_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.RegisterActorTimerRequest.callback)
+}
+inline void RegisterActorTimerRequest::set_callback(const char* value, size_t size) {
+  
+  callback_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.RegisterActorTimerRequest.callback)
+}
+inline ::std::string* RegisterActorTimerRequest::mutable_callback() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.RegisterActorTimerRequest.callback)
+  return callback_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RegisterActorTimerRequest::release_callback() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.RegisterActorTimerRequest.callback)
+  
+  return callback_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RegisterActorTimerRequest::set_allocated_callback(::std::string* callback) {
+  if (callback != NULL) {
+    
+  } else {
+    
+  }
+  callback_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), callback);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.RegisterActorTimerRequest.callback)
+}
+
+// bytes data = 7;
+inline void RegisterActorTimerRequest::clear_data() {
+  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& RegisterActorTimerRequest::data() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.RegisterActorTimerRequest.data)
+  return data_.GetNoArena();
+}
+inline void RegisterActorTimerRequest::set_data(const ::std::string& value) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.RegisterActorTimerRequest.data)
+}
+#if LANG_CXX11
+inline void RegisterActorTimerRequest::set_data(::std::string&& value) {
+  
+  data_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.RegisterActorTimerRequest.data)
+}
+#endif
+inline void RegisterActorTimerRequest::set_data(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.RegisterActorTimerRequest.data)
+}
+inline void RegisterActorTimerRequest::set_data(const void* value, size_t size) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.RegisterActorTimerRequest.data)
+}
+inline ::std::string* RegisterActorTimerRequest::mutable_data() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.RegisterActorTimerRequest.data)
+  return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RegisterActorTimerRequest::release_data() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.RegisterActorTimerRequest.data)
+  
+  return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RegisterActorTimerRequest::set_allocated_data(::std::string* data) {
+  if (data != NULL) {
+    
+  } else {
+    
+  }
+  data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.RegisterActorTimerRequest.data)
+}
+
+// -------------------------------------------------------------------
+
+// UnregisterActorTimerRequest
+
+// string actor_type = 1;
+inline void UnregisterActorTimerRequest::clear_actor_type() {
+  actor_type_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& UnregisterActorTimerRequest::actor_type() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_type)
+  return actor_type_.GetNoArena();
+}
+inline void UnregisterActorTimerRequest::set_actor_type(const ::std::string& value) {
+  
+  actor_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_type)
+}
+#if LANG_CXX11
+inline void UnregisterActorTimerRequest::set_actor_type(::std::string&& value) {
+  
+  actor_type_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_type)
+}
+#endif
+inline void UnregisterActorTimerRequest::set_actor_type(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  actor_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_type)
+}
+inline void UnregisterActorTimerRequest::set_actor_type(const char* value, size_t size) {
+  
+  actor_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_type)
+}
+inline ::std::string* UnregisterActorTimerRequest::mutable_actor_type() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_type)
+  return actor_type_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* UnregisterActorTimerRequest::release_actor_type() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_type)
+  
+  return actor_type_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void UnregisterActorTimerRequest::set_allocated_actor_type(::std::string* actor_type) {
+  if (actor_type != NULL) {
+    
+  } else {
+    
+  }
+  actor_type_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), actor_type);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_type)
+}
+
+// string actor_id = 2;
+inline void UnregisterActorTimerRequest::clear_actor_id() {
+  actor_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& UnregisterActorTimerRequest::actor_id() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_id)
+  return actor_id_.GetNoArena();
+}
+inline void UnregisterActorTimerRequest::set_actor_id(const ::std::string& value) {
+  
+  actor_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_id)
+}
+#if LANG_CXX11
+inline void UnregisterActorTimerRequest::set_actor_id(::std::string&& value) {
+  
+  actor_id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_id)
+}
+#endif
+inline void UnregisterActorTimerRequest::set_actor_id(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  actor_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_id)
+}
+inline void UnregisterActorTimerRequest::set_actor_id(const char* value, size_t size) {
+  
+  actor_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_id)
+}
+inline ::std::string* UnregisterActorTimerRequest::mutable_actor_id() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_id)
+  return actor_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* UnregisterActorTimerRequest::release_actor_id() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_id)
+  
+  return actor_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void UnregisterActorTimerRequest::set_allocated_actor_id(::std::string* actor_id) {
+  if (actor_id != NULL) {
+    
+  } else {
+    
+  }
+  actor_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), actor_id);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.UnregisterActorTimerRequest.actor_id)
+}
+
+// string name = 3;
+inline void UnregisterActorTimerRequest::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& UnregisterActorTimerRequest::name() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.UnregisterActorTimerRequest.name)
+  return name_.GetNoArena();
+}
+inline void UnregisterActorTimerRequest::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.UnregisterActorTimerRequest.name)
+}
+#if LANG_CXX11
+inline void UnregisterActorTimerRequest::set_name(::std::string&& value) {
+  
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.UnregisterActorTimerRequest.name)
+}
+#endif
+inline void UnregisterActorTimerRequest::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.UnregisterActorTimerRequest.name)
+}
+inline void UnregisterActorTimerRequest::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.UnregisterActorTimerRequest.name)
+}
+inline ::std::string* UnregisterActorTimerRequest::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.UnregisterActorTimerRequest.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* UnregisterActorTimerRequest::release_name() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.UnregisterActorTimerRequest.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void UnregisterActorTimerRequest::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.UnregisterActorTimerRequest.name)
+}
+
+// -------------------------------------------------------------------
+
+// InvokeActorRequest
+
+// string actor_type = 1;
+inline void InvokeActorRequest::clear_actor_type() {
+  actor_type_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& InvokeActorRequest::actor_type() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.InvokeActorRequest.actor_type)
+  return actor_type_.GetNoArena();
+}
+inline void InvokeActorRequest::set_actor_type(const ::std::string& value) {
+  
+  actor_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.InvokeActorRequest.actor_type)
+}
+#if LANG_CXX11
+inline void InvokeActorRequest::set_actor_type(::std::string&& value) {
+  
+  actor_type_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.InvokeActorRequest.actor_type)
+}
+#endif
+inline void InvokeActorRequest::set_actor_type(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  actor_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.InvokeActorRequest.actor_type)
+}
+inline void InvokeActorRequest::set_actor_type(const char* value, size_t size) {
+  
+  actor_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.InvokeActorRequest.actor_type)
+}
+inline ::std::string* InvokeActorRequest::mutable_actor_type() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.InvokeActorRequest.actor_type)
+  return actor_type_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* InvokeActorRequest::release_actor_type() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.InvokeActorRequest.actor_type)
+  
+  return actor_type_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void InvokeActorRequest::set_allocated_actor_type(::std::string* actor_type) {
+  if (actor_type != NULL) {
+    
+  } else {
+    
+  }
+  actor_type_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), actor_type);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.InvokeActorRequest.actor_type)
+}
+
+// string actor_id = 2;
+inline void InvokeActorRequest::clear_actor_id() {
+  actor_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& InvokeActorRequest::actor_id() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.InvokeActorRequest.actor_id)
+  return actor_id_.GetNoArena();
+}
+inline void InvokeActorRequest::set_actor_id(const ::std::string& value) {
+  
+  actor_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.InvokeActorRequest.actor_id)
+}
+#if LANG_CXX11
+inline void InvokeActorRequest::set_actor_id(::std::string&& value) {
+  
+  actor_id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.InvokeActorRequest.actor_id)
+}
+#endif
+inline void InvokeActorRequest::set_actor_id(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  actor_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.InvokeActorRequest.actor_id)
+}
+inline void InvokeActorRequest::set_actor_id(const char* value, size_t size) {
+  
+  actor_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.InvokeActorRequest.actor_id)
+}
+inline ::std::string* InvokeActorRequest::mutable_actor_id() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.InvokeActorRequest.actor_id)
+  return actor_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* InvokeActorRequest::release_actor_id() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.InvokeActorRequest.actor_id)
+  
+  return actor_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void InvokeActorRequest::set_allocated_actor_id(::std::string* actor_id) {
+  if (actor_id != NULL) {
+    
+  } else {
+    
+  }
+  actor_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), actor_id);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.InvokeActorRequest.actor_id)
+}
+
+// string method = 3;
+inline void InvokeActorRequest::clear_method() {
+  method_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& InvokeActorRequest::method() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.InvokeActorRequest.method)
+  return method_.GetNoArena();
+}
+inline void InvokeActorRequest::set_method(const ::std::string& value) {
+  
+  method_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.InvokeActorRequest.method)
+}
+#if LANG_CXX11
+inline void InvokeActorRequest::set_method(::std::string&& value) {
+  
+  method_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.InvokeActorRequest.method)
+}
+#endif
+inline void InvokeActorRequest::set_method(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  method_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.InvokeActorRequest.method)
+}
+inline void InvokeActorRequest::set_method(const char* value, size_t size) {
+  
+  method_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.InvokeActorRequest.method)
+}
+inline ::std::string* InvokeActorRequest::mutable_method() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.InvokeActorRequest.method)
+  return method_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* InvokeActorRequest::release_method() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.InvokeActorRequest.method)
+  
+  return method_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void InvokeActorRequest::set_allocated_method(::std::string* method) {
+  if (method != NULL) {
+    
+  } else {
+    
+  }
+  method_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), method);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.InvokeActorRequest.method)
+}
+
+// bytes data = 4;
+inline void InvokeActorRequest::clear_data() {
+  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& InvokeActorRequest::data() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.InvokeActorRequest.data)
+  return data_.GetNoArena();
+}
+inline void InvokeActorRequest::set_data(const ::std::string& value) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.InvokeActorRequest.data)
+}
+#if LANG_CXX11
+inline void InvokeActorRequest::set_data(::std::string&& value) {
+  
+  data_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.InvokeActorRequest.data)
+}
+#endif
+inline void InvokeActorRequest::set_data(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.InvokeActorRequest.data)
+}
+inline void InvokeActorRequest::set_data(const void* value, size_t size) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.InvokeActorRequest.data)
+}
+inline ::std::string* InvokeActorRequest::mutable_data() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.InvokeActorRequest.data)
+  return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* InvokeActorRequest::release_data() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.InvokeActorRequest.data)
+  
+  return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void InvokeActorRequest::set_allocated_data(::std::string* data) {
+  if (data != NULL) {
+    
+  } else {
+    
+  }
+  data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.InvokeActorRequest.data)
+}
+
+// -------------------------------------------------------------------
+
+// InvokeActorResponse
+
+// bytes data = 1;
+inline void InvokeActorResponse::clear_data() {
+  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& InvokeActorResponse::data() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.InvokeActorResponse.data)
+  return data_.GetNoArena();
+}
+inline void InvokeActorResponse::set_data(const ::std::string& value) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.InvokeActorResponse.data)
+}
+#if LANG_CXX11
+inline void InvokeActorResponse::set_data(::std::string&& value) {
+  
+  data_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.InvokeActorResponse.data)
+}
+#endif
+inline void InvokeActorResponse::set_data(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.InvokeActorResponse.data)
+}
+inline void InvokeActorResponse::set_data(const void* value, size_t size) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.InvokeActorResponse.data)
+}
+inline ::std::string* InvokeActorResponse::mutable_data() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.InvokeActorResponse.data)
+  return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* InvokeActorResponse::release_data() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.InvokeActorResponse.data)
+  
+  return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void InvokeActorResponse::set_allocated_data(::std::string* data) {
+  if (data != NULL) {
+    
+  } else {
+    
+  }
+  data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.InvokeActorResponse.data)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
