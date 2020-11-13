@@ -10,18 +10,15 @@ Alpha quality.
 2. Install [VSCode](https://code.visualstudio.com/download)
 3. Install [VSCode Remote - Container extension](https://code.visualstudio.com/docs/remote/containers)
 
-### Generate gRPC client
+### To refresh .proto files from upstream dapr
 
-1. Copy dapr.proto from https://github.com/dapr/dapr/tree/master/pkg/proto/dapr to [proto](./proto)
-2. Copy daprclient.proto from https://github.com/dapr/dapr/tree/master/pkg/proto/daprclient to [proto](./proto)
-3. Generate client
+1. Rebuild and commit generated API
     ```bash
-    make ./dapr/proto/common/v1/common.pb.cc
-    make ./dapr/proto/runtime/v1/dapr.grpc.pb.cc
-    make ./dapr/proto/runtime/v1/dapr.pb.cc
-    make ./dapr/proto/runtime/v1/appcallback.grpc.pb.cc
-    make ./dapr/proto/runtime/v1/appcallback.pb.cc
+    export DAPR_TARGET=<runtime_release_tag>
+    make refresh_proto_files && make && git add src/dapr/proto/*/v1/*{.cc,.h} dapr/proto/*/v1/*.proto 
+    git commit -m "Updating to dapr runtime $DAPR_TARGET"
     ```
+2. Submit a PR with the changes
 
 ### Build library
 
