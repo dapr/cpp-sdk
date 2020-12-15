@@ -30,8 +30,13 @@ static const char* Dapr_method_names[] = {
   "/dapr.proto.runtime.v1.Dapr/PublishEvent",
   "/dapr.proto.runtime.v1.Dapr/InvokeBinding",
   "/dapr.proto.runtime.v1.Dapr/GetSecret",
+  "/dapr.proto.runtime.v1.Dapr/GetBulkSecret",
   "/dapr.proto.runtime.v1.Dapr/RegisterActorTimer",
   "/dapr.proto.runtime.v1.Dapr/UnregisterActorTimer",
+  "/dapr.proto.runtime.v1.Dapr/RegisterActorReminder",
+  "/dapr.proto.runtime.v1.Dapr/UnregisterActorReminder",
+  "/dapr.proto.runtime.v1.Dapr/GetActorState",
+  "/dapr.proto.runtime.v1.Dapr/ExecuteActorStateTransaction",
   "/dapr.proto.runtime.v1.Dapr/InvokeActor",
 };
 
@@ -51,9 +56,14 @@ Dapr::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   , rpcmethod_PublishEvent_(Dapr_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_InvokeBinding_(Dapr_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetSecret_(Dapr_method_names[8], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_RegisterActorTimer_(Dapr_method_names[9], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_UnregisterActorTimer_(Dapr_method_names[10], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_InvokeActor_(Dapr_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetBulkSecret_(Dapr_method_names[9], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RegisterActorTimer_(Dapr_method_names[10], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_UnregisterActorTimer_(Dapr_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RegisterActorReminder_(Dapr_method_names[12], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_UnregisterActorReminder_(Dapr_method_names[13], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetActorState_(Dapr_method_names[14], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ExecuteActorStateTransaction_(Dapr_method_names[15], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_InvokeActor_(Dapr_method_names[16], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Dapr::Stub::InvokeService(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeServiceRequest& request, ::dapr::proto::common::v1::InvokeResponse* response) {
@@ -200,6 +210,22 @@ void Dapr::Stub::experimental_async::GetSecret(::grpc::ClientContext* context, c
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::GetSecretResponse>::Create(channel_.get(), cq, rpcmethod_GetSecret_, context, request, false);
 }
 
+::grpc::Status Dapr::Stub::GetBulkSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest& request, ::dapr::proto::runtime::v1::GetBulkSecretResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetBulkSecret_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::GetBulkSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest* request, ::dapr::proto::runtime::v1::GetBulkSecretResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetBulkSecret_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetBulkSecretResponse>* Dapr::Stub::AsyncGetBulkSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::GetBulkSecretResponse>::Create(channel_.get(), cq, rpcmethod_GetBulkSecret_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetBulkSecretResponse>* Dapr::Stub::PrepareAsyncGetBulkSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::GetBulkSecretResponse>::Create(channel_.get(), cq, rpcmethod_GetBulkSecret_, context, request, false);
+}
+
 ::grpc::Status Dapr::Stub::RegisterActorTimer(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorTimerRequest& request, ::google::protobuf::Empty* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_RegisterActorTimer_, context, request, response);
 }
@@ -230,6 +256,70 @@ void Dapr::Stub::experimental_async::UnregisterActorTimer(::grpc::ClientContext*
 
 ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::PrepareAsyncUnregisterActorTimerRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorTimerRequest& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_UnregisterActorTimer_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::RegisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_RegisterActorReminder_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::RegisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_RegisterActorReminder_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::AsyncRegisterActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_RegisterActorReminder_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::PrepareAsyncRegisterActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_RegisterActorReminder_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::UnregisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_UnregisterActorReminder_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::UnregisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_UnregisterActorReminder_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::AsyncUnregisterActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_UnregisterActorReminder_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::PrepareAsyncUnregisterActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_UnregisterActorReminder_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::GetActorState(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::dapr::proto::runtime::v1::GetActorStateResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetActorState_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::GetActorState(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest* request, ::dapr::proto::runtime::v1::GetActorStateResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetActorState_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetActorStateResponse>* Dapr::Stub::AsyncGetActorStateRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::GetActorStateResponse>::Create(channel_.get(), cq, rpcmethod_GetActorState_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetActorStateResponse>* Dapr::Stub::PrepareAsyncGetActorStateRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::GetActorStateResponse>::Create(channel_.get(), cq, rpcmethod_GetActorState_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::ExecuteActorStateTransaction(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_ExecuteActorStateTransaction_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::ExecuteActorStateTransaction(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_ExecuteActorStateTransaction_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::AsyncExecuteActorStateTransactionRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_ExecuteActorStateTransaction_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::PrepareAsyncExecuteActorStateTransactionRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_ExecuteActorStateTransaction_, context, request, false);
 }
 
 ::grpc::Status Dapr::Stub::InvokeActor(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest& request, ::dapr::proto::runtime::v1::InvokeActorResponse* response) {
@@ -297,15 +387,40 @@ Dapr::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Dapr_method_names[9],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::GetBulkSecretRequest, ::dapr::proto::runtime::v1::GetBulkSecretResponse>(
+          std::mem_fn(&Dapr::Service::GetBulkSecret), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[10],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::RegisterActorTimerRequest, ::google::protobuf::Empty>(
           std::mem_fn(&Dapr::Service::RegisterActorTimer), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[10],
+      Dapr_method_names[11],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::UnregisterActorTimerRequest, ::google::protobuf::Empty>(
           std::mem_fn(&Dapr::Service::UnregisterActorTimer), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[11],
+      Dapr_method_names[12],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::RegisterActorReminderRequest, ::google::protobuf::Empty>(
+          std::mem_fn(&Dapr::Service::RegisterActorReminder), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[13],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::UnregisterActorReminderRequest, ::google::protobuf::Empty>(
+          std::mem_fn(&Dapr::Service::UnregisterActorReminder), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[14],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::GetActorStateRequest, ::dapr::proto::runtime::v1::GetActorStateResponse>(
+          std::mem_fn(&Dapr::Service::GetActorState), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[15],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest, ::google::protobuf::Empty>(
+          std::mem_fn(&Dapr::Service::ExecuteActorStateTransaction), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[16],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::InvokeActorRequest, ::dapr::proto::runtime::v1::InvokeActorResponse>(
           std::mem_fn(&Dapr::Service::InvokeActor), this)));
@@ -377,6 +492,13 @@ Dapr::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
+::grpc::Status Dapr::Service::GetBulkSecret(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest* request, ::dapr::proto::runtime::v1::GetBulkSecretResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
 ::grpc::Status Dapr::Service::RegisterActorTimer(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RegisterActorTimerRequest* request, ::google::protobuf::Empty* response) {
   (void) context;
   (void) request;
@@ -385,6 +507,34 @@ Dapr::Service::~Service() {
 }
 
 ::grpc::Status Dapr::Service::UnregisterActorTimer(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnregisterActorTimerRequest* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::RegisterActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::UnregisterActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::GetActorState(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest* request, ::dapr::proto::runtime::v1::GetActorStateResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::ExecuteActorStateTransaction(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest* request, ::google::protobuf::Empty* response) {
   (void) context;
   (void) request;
   (void) response;
