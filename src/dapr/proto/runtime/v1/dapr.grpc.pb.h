@@ -117,6 +117,14 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetSecretResponse>> PrepareAsyncGetSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetSecretResponse>>(PrepareAsyncGetSecretRaw(context, request, cq));
     }
+    // Gets a bulk of secrets
+    virtual ::grpc::Status GetBulkSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest& request, ::dapr::proto::runtime::v1::GetBulkSecretResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetBulkSecretResponse>> AsyncGetBulkSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetBulkSecretResponse>>(AsyncGetBulkSecretRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetBulkSecretResponse>> PrepareAsyncGetBulkSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetBulkSecretResponse>>(PrepareAsyncGetBulkSecretRaw(context, request, cq));
+    }
     // Register an actor timer.
     virtual ::grpc::Status RegisterActorTimer(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorTimerRequest& request, ::google::protobuf::Empty* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncRegisterActorTimer(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorTimerRequest& request, ::grpc::CompletionQueue* cq) {
@@ -132,6 +140,38 @@ class Dapr final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncUnregisterActorTimer(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorTimerRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncUnregisterActorTimerRaw(context, request, cq));
+    }
+    // Register an actor reminder.
+    virtual ::grpc::Status RegisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncRegisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncRegisterActorReminderRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncRegisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncRegisterActorReminderRaw(context, request, cq));
+    }
+    // Unregister an actor reminder.
+    virtual ::grpc::Status UnregisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncUnregisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncUnregisterActorReminderRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncUnregisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncUnregisterActorReminderRaw(context, request, cq));
+    }
+    // Gets the state for a specific actor.
+    virtual ::grpc::Status GetActorState(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::dapr::proto::runtime::v1::GetActorStateResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetActorStateResponse>> AsyncGetActorState(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetActorStateResponse>>(AsyncGetActorStateRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetActorStateResponse>> PrepareAsyncGetActorState(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetActorStateResponse>>(PrepareAsyncGetActorStateRaw(context, request, cq));
+    }
+    // Executes state transactions for a specified actor
+    virtual ::grpc::Status ExecuteActorStateTransaction(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncExecuteActorStateTransaction(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncExecuteActorStateTransactionRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncExecuteActorStateTransaction(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncExecuteActorStateTransactionRaw(context, request, cq));
     }
     // InvokeActor calls a method on an actor.
     virtual ::grpc::Status InvokeActor(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest& request, ::dapr::proto::runtime::v1::InvokeActorResponse* response) = 0;
@@ -162,10 +202,20 @@ class Dapr final {
       virtual void InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response, std::function<void(::grpc::Status)>) = 0;
       // Gets secrets from secret stores.
       virtual void GetSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest* request, ::dapr::proto::runtime::v1::GetSecretResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // Gets a bulk of secrets
+      virtual void GetBulkSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest* request, ::dapr::proto::runtime::v1::GetBulkSecretResponse* response, std::function<void(::grpc::Status)>) = 0;
       // Register an actor timer.
       virtual void RegisterActorTimer(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorTimerRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
       // Unregister an actor timer.
       virtual void UnregisterActorTimer(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorTimerRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      // Register an actor reminder.
+      virtual void RegisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      // Unregister an actor reminder.
+      virtual void UnregisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      // Gets the state for a specific actor.
+      virtual void GetActorState(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest* request, ::dapr::proto::runtime::v1::GetActorStateResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // Executes state transactions for a specified actor
+      virtual void ExecuteActorStateTransaction(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
       // InvokeActor calls a method on an actor.
       virtual void InvokeActor(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest* request, ::dapr::proto::runtime::v1::InvokeActorResponse* response, std::function<void(::grpc::Status)>) = 0;
     };
@@ -189,10 +239,20 @@ class Dapr final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::InvokeBindingResponse>* PrepareAsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetSecretResponse>* AsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetSecretResponse>* PrepareAsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetBulkSecretResponse>* AsyncGetBulkSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetBulkSecretResponse>* PrepareAsyncGetBulkSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncRegisterActorTimerRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorTimerRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncRegisterActorTimerRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorTimerRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncUnregisterActorTimerRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorTimerRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncUnregisterActorTimerRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorTimerRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncRegisterActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncRegisterActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncUnregisterActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncUnregisterActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetActorStateResponse>* AsyncGetActorStateRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetActorStateResponse>* PrepareAsyncGetActorStateRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncExecuteActorStateTransactionRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncExecuteActorStateTransactionRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::InvokeActorResponse>* AsyncInvokeActorRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::InvokeActorResponse>* PrepareAsyncInvokeActorRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
@@ -262,6 +322,13 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetSecretResponse>> PrepareAsyncGetSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetSecretResponse>>(PrepareAsyncGetSecretRaw(context, request, cq));
     }
+    ::grpc::Status GetBulkSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest& request, ::dapr::proto::runtime::v1::GetBulkSecretResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetBulkSecretResponse>> AsyncGetBulkSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetBulkSecretResponse>>(AsyncGetBulkSecretRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetBulkSecretResponse>> PrepareAsyncGetBulkSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetBulkSecretResponse>>(PrepareAsyncGetBulkSecretRaw(context, request, cq));
+    }
     ::grpc::Status RegisterActorTimer(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorTimerRequest& request, ::google::protobuf::Empty* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncRegisterActorTimer(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorTimerRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncRegisterActorTimerRaw(context, request, cq));
@@ -275,6 +342,34 @@ class Dapr final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncUnregisterActorTimer(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorTimerRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncUnregisterActorTimerRaw(context, request, cq));
+    }
+    ::grpc::Status RegisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncRegisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncRegisterActorReminderRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncRegisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncRegisterActorReminderRaw(context, request, cq));
+    }
+    ::grpc::Status UnregisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncUnregisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncUnregisterActorReminderRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncUnregisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncUnregisterActorReminderRaw(context, request, cq));
+    }
+    ::grpc::Status GetActorState(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::dapr::proto::runtime::v1::GetActorStateResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetActorStateResponse>> AsyncGetActorState(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetActorStateResponse>>(AsyncGetActorStateRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetActorStateResponse>> PrepareAsyncGetActorState(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetActorStateResponse>>(PrepareAsyncGetActorStateRaw(context, request, cq));
+    }
+    ::grpc::Status ExecuteActorStateTransaction(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncExecuteActorStateTransaction(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncExecuteActorStateTransactionRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncExecuteActorStateTransaction(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncExecuteActorStateTransactionRaw(context, request, cq));
     }
     ::grpc::Status InvokeActor(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest& request, ::dapr::proto::runtime::v1::InvokeActorResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::InvokeActorResponse>> AsyncInvokeActor(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest& request, ::grpc::CompletionQueue* cq) {
@@ -295,8 +390,13 @@ class Dapr final {
       void PublishEvent(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PublishEventRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void InvokeBinding(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response, std::function<void(::grpc::Status)>) override;
       void GetSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest* request, ::dapr::proto::runtime::v1::GetSecretResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetBulkSecret(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest* request, ::dapr::proto::runtime::v1::GetBulkSecretResponse* response, std::function<void(::grpc::Status)>) override;
       void RegisterActorTimer(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorTimerRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void UnregisterActorTimer(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorTimerRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void RegisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void UnregisterActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void GetActorState(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest* request, ::dapr::proto::runtime::v1::GetActorStateResponse* response, std::function<void(::grpc::Status)>) override;
+      void ExecuteActorStateTransaction(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void InvokeActor(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest* request, ::dapr::proto::runtime::v1::InvokeActorResponse* response, std::function<void(::grpc::Status)>) override;
      private:
       friend class Stub;
@@ -327,10 +427,20 @@ class Dapr final {
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::InvokeBindingResponse>* PrepareAsyncInvokeBindingRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetSecretResponse>* AsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetSecretResponse>* PrepareAsyncGetSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetBulkSecretResponse>* AsyncGetBulkSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetBulkSecretResponse>* PrepareAsyncGetBulkSecretRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncRegisterActorTimerRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorTimerRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncRegisterActorTimerRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorTimerRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncUnregisterActorTimerRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorTimerRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncUnregisterActorTimerRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorTimerRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncRegisterActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncRegisterActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncUnregisterActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncUnregisterActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetActorStateResponse>* AsyncGetActorStateRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetActorStateResponse>* PrepareAsyncGetActorStateRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncExecuteActorStateTransactionRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncExecuteActorStateTransactionRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::InvokeActorResponse>* AsyncInvokeActorRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::InvokeActorResponse>* PrepareAsyncInvokeActorRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_InvokeService_;
@@ -342,8 +452,13 @@ class Dapr final {
     const ::grpc::internal::RpcMethod rpcmethod_PublishEvent_;
     const ::grpc::internal::RpcMethod rpcmethod_InvokeBinding_;
     const ::grpc::internal::RpcMethod rpcmethod_GetSecret_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetBulkSecret_;
     const ::grpc::internal::RpcMethod rpcmethod_RegisterActorTimer_;
     const ::grpc::internal::RpcMethod rpcmethod_UnregisterActorTimer_;
+    const ::grpc::internal::RpcMethod rpcmethod_RegisterActorReminder_;
+    const ::grpc::internal::RpcMethod rpcmethod_UnregisterActorReminder_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetActorState_;
+    const ::grpc::internal::RpcMethod rpcmethod_ExecuteActorStateTransaction_;
     const ::grpc::internal::RpcMethod rpcmethod_InvokeActor_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -370,10 +485,20 @@ class Dapr final {
     virtual ::grpc::Status InvokeBinding(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeBindingRequest* request, ::dapr::proto::runtime::v1::InvokeBindingResponse* response);
     // Gets secrets from secret stores.
     virtual ::grpc::Status GetSecret(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetSecretRequest* request, ::dapr::proto::runtime::v1::GetSecretResponse* response);
+    // Gets a bulk of secrets
+    virtual ::grpc::Status GetBulkSecret(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest* request, ::dapr::proto::runtime::v1::GetBulkSecretResponse* response);
     // Register an actor timer.
     virtual ::grpc::Status RegisterActorTimer(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RegisterActorTimerRequest* request, ::google::protobuf::Empty* response);
     // Unregister an actor timer.
     virtual ::grpc::Status UnregisterActorTimer(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnregisterActorTimerRequest* request, ::google::protobuf::Empty* response);
+    // Register an actor reminder.
+    virtual ::grpc::Status RegisterActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest* request, ::google::protobuf::Empty* response);
+    // Unregister an actor reminder.
+    virtual ::grpc::Status UnregisterActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest* request, ::google::protobuf::Empty* response);
+    // Gets the state for a specific actor.
+    virtual ::grpc::Status GetActorState(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest* request, ::dapr::proto::runtime::v1::GetActorStateResponse* response);
+    // Executes state transactions for a specified actor
+    virtual ::grpc::Status ExecuteActorStateTransaction(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest* request, ::google::protobuf::Empty* response);
     // InvokeActor calls a method on an actor.
     virtual ::grpc::Status InvokeActor(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest* request, ::dapr::proto::runtime::v1::InvokeActorResponse* response);
   };
@@ -558,12 +683,32 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_GetBulkSecret : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_GetBulkSecret() {
+      ::grpc::Service::MarkMethodAsync(9);
+    }
+    ~WithAsyncMethod_GetBulkSecret() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetBulkSecret(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest* request, ::dapr::proto::runtime::v1::GetBulkSecretResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetBulkSecret(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::GetBulkSecretRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::GetBulkSecretResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_RegisterActorTimer : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_RegisterActorTimer() {
-      ::grpc::Service::MarkMethodAsync(9);
+      ::grpc::Service::MarkMethodAsync(10);
     }
     ~WithAsyncMethod_RegisterActorTimer() override {
       BaseClassMustBeDerivedFromService(this);
@@ -574,7 +719,7 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestRegisterActorTimer(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::RegisterActorTimerRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -583,7 +728,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_UnregisterActorTimer() {
-      ::grpc::Service::MarkMethodAsync(10);
+      ::grpc::Service::MarkMethodAsync(11);
     }
     ~WithAsyncMethod_UnregisterActorTimer() override {
       BaseClassMustBeDerivedFromService(this);
@@ -594,7 +739,87 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestUnregisterActorTimer(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::UnregisterActorTimerRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_RegisterActorReminder : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_RegisterActorReminder() {
+      ::grpc::Service::MarkMethodAsync(12);
+    }
+    ~WithAsyncMethod_RegisterActorReminder() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRegisterActorReminder(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::RegisterActorReminderRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_UnregisterActorReminder : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_UnregisterActorReminder() {
+      ::grpc::Service::MarkMethodAsync(13);
+    }
+    ~WithAsyncMethod_UnregisterActorReminder() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnregisterActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUnregisterActorReminder(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::UnregisterActorReminderRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetActorState : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_GetActorState() {
+      ::grpc::Service::MarkMethodAsync(14);
+    }
+    ~WithAsyncMethod_GetActorState() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetActorState(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest* request, ::dapr::proto::runtime::v1::GetActorStateResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetActorState(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::GetActorStateRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::GetActorStateResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_ExecuteActorStateTransaction : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_ExecuteActorStateTransaction() {
+      ::grpc::Service::MarkMethodAsync(15);
+    }
+    ~WithAsyncMethod_ExecuteActorStateTransaction() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ExecuteActorStateTransaction(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestExecuteActorStateTransaction(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -603,7 +828,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_InvokeActor() {
-      ::grpc::Service::MarkMethodAsync(11);
+      ::grpc::Service::MarkMethodAsync(16);
     }
     ~WithAsyncMethod_InvokeActor() override {
       BaseClassMustBeDerivedFromService(this);
@@ -614,10 +839,10 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestInvokeActor(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::InvokeActorRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::InvokeActorResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_InvokeService<WithAsyncMethod_GetState<WithAsyncMethod_GetBulkState<WithAsyncMethod_SaveState<WithAsyncMethod_DeleteState<WithAsyncMethod_ExecuteStateTransaction<WithAsyncMethod_PublishEvent<WithAsyncMethod_InvokeBinding<WithAsyncMethod_GetSecret<WithAsyncMethod_RegisterActorTimer<WithAsyncMethod_UnregisterActorTimer<WithAsyncMethod_InvokeActor<Service > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_InvokeService<WithAsyncMethod_GetState<WithAsyncMethod_GetBulkState<WithAsyncMethod_SaveState<WithAsyncMethod_DeleteState<WithAsyncMethod_ExecuteStateTransaction<WithAsyncMethod_PublishEvent<WithAsyncMethod_InvokeBinding<WithAsyncMethod_GetSecret<WithAsyncMethod_GetBulkSecret<WithAsyncMethod_RegisterActorTimer<WithAsyncMethod_UnregisterActorTimer<WithAsyncMethod_RegisterActorReminder<WithAsyncMethod_UnregisterActorReminder<WithAsyncMethod_GetActorState<WithAsyncMethod_ExecuteActorStateTransaction<WithAsyncMethod_InvokeActor<Service > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithGenericMethod_InvokeService : public BaseClass {
    private:
@@ -772,12 +997,29 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_GetBulkSecret : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_GetBulkSecret() {
+      ::grpc::Service::MarkMethodGeneric(9);
+    }
+    ~WithGenericMethod_GetBulkSecret() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetBulkSecret(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest* request, ::dapr::proto::runtime::v1::GetBulkSecretResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_RegisterActorTimer : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_RegisterActorTimer() {
-      ::grpc::Service::MarkMethodGeneric(9);
+      ::grpc::Service::MarkMethodGeneric(10);
     }
     ~WithGenericMethod_RegisterActorTimer() override {
       BaseClassMustBeDerivedFromService(this);
@@ -794,7 +1036,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_UnregisterActorTimer() {
-      ::grpc::Service::MarkMethodGeneric(10);
+      ::grpc::Service::MarkMethodGeneric(11);
     }
     ~WithGenericMethod_UnregisterActorTimer() override {
       BaseClassMustBeDerivedFromService(this);
@@ -806,12 +1048,80 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_RegisterActorReminder : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_RegisterActorReminder() {
+      ::grpc::Service::MarkMethodGeneric(12);
+    }
+    ~WithGenericMethod_RegisterActorReminder() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_UnregisterActorReminder : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_UnregisterActorReminder() {
+      ::grpc::Service::MarkMethodGeneric(13);
+    }
+    ~WithGenericMethod_UnregisterActorReminder() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnregisterActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetActorState : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_GetActorState() {
+      ::grpc::Service::MarkMethodGeneric(14);
+    }
+    ~WithGenericMethod_GetActorState() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetActorState(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest* request, ::dapr::proto::runtime::v1::GetActorStateResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_ExecuteActorStateTransaction : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_ExecuteActorStateTransaction() {
+      ::grpc::Service::MarkMethodGeneric(15);
+    }
+    ~WithGenericMethod_ExecuteActorStateTransaction() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ExecuteActorStateTransaction(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_InvokeActor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_InvokeActor() {
-      ::grpc::Service::MarkMethodGeneric(11);
+      ::grpc::Service::MarkMethodGeneric(16);
     }
     ~WithGenericMethod_InvokeActor() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1003,12 +1313,32 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_GetBulkSecret : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_GetBulkSecret() {
+      ::grpc::Service::MarkMethodRaw(9);
+    }
+    ~WithRawMethod_GetBulkSecret() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetBulkSecret(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest* request, ::dapr::proto::runtime::v1::GetBulkSecretResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetBulkSecret(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_RegisterActorTimer : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_RegisterActorTimer() {
-      ::grpc::Service::MarkMethodRaw(9);
+      ::grpc::Service::MarkMethodRaw(10);
     }
     ~WithRawMethod_RegisterActorTimer() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1019,7 +1349,7 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestRegisterActorTimer(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1028,7 +1358,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_UnregisterActorTimer() {
-      ::grpc::Service::MarkMethodRaw(10);
+      ::grpc::Service::MarkMethodRaw(11);
     }
     ~WithRawMethod_UnregisterActorTimer() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1039,7 +1369,87 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestUnregisterActorTimer(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_RegisterActorReminder : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_RegisterActorReminder() {
+      ::grpc::Service::MarkMethodRaw(12);
+    }
+    ~WithRawMethod_RegisterActorReminder() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRegisterActorReminder(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_UnregisterActorReminder : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_UnregisterActorReminder() {
+      ::grpc::Service::MarkMethodRaw(13);
+    }
+    ~WithRawMethod_UnregisterActorReminder() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnregisterActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUnregisterActorReminder(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetActorState : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_GetActorState() {
+      ::grpc::Service::MarkMethodRaw(14);
+    }
+    ~WithRawMethod_GetActorState() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetActorState(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest* request, ::dapr::proto::runtime::v1::GetActorStateResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetActorState(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_ExecuteActorStateTransaction : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_ExecuteActorStateTransaction() {
+      ::grpc::Service::MarkMethodRaw(15);
+    }
+    ~WithRawMethod_ExecuteActorStateTransaction() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ExecuteActorStateTransaction(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestExecuteActorStateTransaction(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1048,7 +1458,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_InvokeActor() {
-      ::grpc::Service::MarkMethodRaw(11);
+      ::grpc::Service::MarkMethodRaw(16);
     }
     ~WithRawMethod_InvokeActor() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1059,7 +1469,7 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestInvokeActor(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1243,12 +1653,32 @@ class Dapr final {
     virtual ::grpc::Status StreamedGetSecret(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::GetSecretRequest,::dapr::proto::runtime::v1::GetSecretResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_GetBulkSecret : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_GetBulkSecret() {
+      ::grpc::Service::MarkMethodStreamed(9,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::GetBulkSecretRequest, ::dapr::proto::runtime::v1::GetBulkSecretResponse>(std::bind(&WithStreamedUnaryMethod_GetBulkSecret<BaseClass>::StreamedGetBulkSecret, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_GetBulkSecret() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetBulkSecret(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetBulkSecretRequest* request, ::dapr::proto::runtime::v1::GetBulkSecretResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetBulkSecret(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::GetBulkSecretRequest,::dapr::proto::runtime::v1::GetBulkSecretResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_RegisterActorTimer : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_RegisterActorTimer() {
-      ::grpc::Service::MarkMethodStreamed(9,
+      ::grpc::Service::MarkMethodStreamed(10,
         new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::RegisterActorTimerRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_RegisterActorTimer<BaseClass>::StreamedRegisterActorTimer, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_RegisterActorTimer() override {
@@ -1268,7 +1698,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_UnregisterActorTimer() {
-      ::grpc::Service::MarkMethodStreamed(10,
+      ::grpc::Service::MarkMethodStreamed(11,
         new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::UnregisterActorTimerRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_UnregisterActorTimer<BaseClass>::StreamedUnregisterActorTimer, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_UnregisterActorTimer() override {
@@ -1283,12 +1713,92 @@ class Dapr final {
     virtual ::grpc::Status StreamedUnregisterActorTimer(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::UnregisterActorTimerRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_RegisterActorReminder : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_RegisterActorReminder() {
+      ::grpc::Service::MarkMethodStreamed(12,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::RegisterActorReminderRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_RegisterActorReminder<BaseClass>::StreamedRegisterActorReminder, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_RegisterActorReminder() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status RegisterActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RegisterActorReminderRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedRegisterActorReminder(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::RegisterActorReminderRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_UnregisterActorReminder : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_UnregisterActorReminder() {
+      ::grpc::Service::MarkMethodStreamed(13,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::UnregisterActorReminderRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_UnregisterActorReminder<BaseClass>::StreamedUnregisterActorReminder, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_UnregisterActorReminder() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status UnregisterActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedUnregisterActorReminder(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::UnregisterActorReminderRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetActorState : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_GetActorState() {
+      ::grpc::Service::MarkMethodStreamed(14,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::GetActorStateRequest, ::dapr::proto::runtime::v1::GetActorStateResponse>(std::bind(&WithStreamedUnaryMethod_GetActorState<BaseClass>::StreamedGetActorState, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_GetActorState() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetActorState(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest* request, ::dapr::proto::runtime::v1::GetActorStateResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetActorState(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::GetActorStateRequest,::dapr::proto::runtime::v1::GetActorStateResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_ExecuteActorStateTransaction : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_ExecuteActorStateTransaction() {
+      ::grpc::Service::MarkMethodStreamed(15,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_ExecuteActorStateTransaction<BaseClass>::StreamedExecuteActorStateTransaction, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_ExecuteActorStateTransaction() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status ExecuteActorStateTransaction(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedExecuteActorStateTransaction(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_InvokeActor : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_InvokeActor() {
-      ::grpc::Service::MarkMethodStreamed(11,
+      ::grpc::Service::MarkMethodStreamed(16,
         new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::InvokeActorRequest, ::dapr::proto::runtime::v1::InvokeActorResponse>(std::bind(&WithStreamedUnaryMethod_InvokeActor<BaseClass>::StreamedInvokeActor, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_InvokeActor() override {
@@ -1302,9 +1812,9 @@ class Dapr final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedInvokeActor(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::InvokeActorRequest,::dapr::proto::runtime::v1::InvokeActorResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_InvokeService<WithStreamedUnaryMethod_GetState<WithStreamedUnaryMethod_GetBulkState<WithStreamedUnaryMethod_SaveState<WithStreamedUnaryMethod_DeleteState<WithStreamedUnaryMethod_ExecuteStateTransaction<WithStreamedUnaryMethod_PublishEvent<WithStreamedUnaryMethod_InvokeBinding<WithStreamedUnaryMethod_GetSecret<WithStreamedUnaryMethod_RegisterActorTimer<WithStreamedUnaryMethod_UnregisterActorTimer<WithStreamedUnaryMethod_InvokeActor<Service > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_InvokeService<WithStreamedUnaryMethod_GetState<WithStreamedUnaryMethod_GetBulkState<WithStreamedUnaryMethod_SaveState<WithStreamedUnaryMethod_DeleteState<WithStreamedUnaryMethod_ExecuteStateTransaction<WithStreamedUnaryMethod_PublishEvent<WithStreamedUnaryMethod_InvokeBinding<WithStreamedUnaryMethod_GetSecret<WithStreamedUnaryMethod_GetBulkSecret<WithStreamedUnaryMethod_RegisterActorTimer<WithStreamedUnaryMethod_UnregisterActorTimer<WithStreamedUnaryMethod_RegisterActorReminder<WithStreamedUnaryMethod_UnregisterActorReminder<WithStreamedUnaryMethod_GetActorState<WithStreamedUnaryMethod_ExecuteActorStateTransaction<WithStreamedUnaryMethod_InvokeActor<Service > > > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_InvokeService<WithStreamedUnaryMethod_GetState<WithStreamedUnaryMethod_GetBulkState<WithStreamedUnaryMethod_SaveState<WithStreamedUnaryMethod_DeleteState<WithStreamedUnaryMethod_ExecuteStateTransaction<WithStreamedUnaryMethod_PublishEvent<WithStreamedUnaryMethod_InvokeBinding<WithStreamedUnaryMethod_GetSecret<WithStreamedUnaryMethod_RegisterActorTimer<WithStreamedUnaryMethod_UnregisterActorTimer<WithStreamedUnaryMethod_InvokeActor<Service > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_InvokeService<WithStreamedUnaryMethod_GetState<WithStreamedUnaryMethod_GetBulkState<WithStreamedUnaryMethod_SaveState<WithStreamedUnaryMethod_DeleteState<WithStreamedUnaryMethod_ExecuteStateTransaction<WithStreamedUnaryMethod_PublishEvent<WithStreamedUnaryMethod_InvokeBinding<WithStreamedUnaryMethod_GetSecret<WithStreamedUnaryMethod_GetBulkSecret<WithStreamedUnaryMethod_RegisterActorTimer<WithStreamedUnaryMethod_UnregisterActorTimer<WithStreamedUnaryMethod_RegisterActorReminder<WithStreamedUnaryMethod_UnregisterActorReminder<WithStreamedUnaryMethod_GetActorState<WithStreamedUnaryMethod_ExecuteActorStateTransaction<WithStreamedUnaryMethod_InvokeActor<Service > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace v1
