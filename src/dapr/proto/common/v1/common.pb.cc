@@ -21,10 +21,9 @@
 
 namespace protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto {
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Etag;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_HTTPExtension_QuerystringEntry_DoNotUse;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_HTTPExtension;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_StateItem_MetadataEntry_DoNotUse;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_StateOptions;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_HTTPExtension;
 }  // namespace protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto
 namespace protobuf_google_2fprotobuf_2fany_2eproto {
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_google_2fprotobuf_2fany_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Any;
@@ -33,11 +32,6 @@ namespace dapr {
 namespace proto {
 namespace common {
 namespace v1 {
-class HTTPExtension_QuerystringEntry_DoNotUseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<HTTPExtension_QuerystringEntry_DoNotUse>
-      _instance;
-} _HTTPExtension_QuerystringEntry_DoNotUse_default_instance_;
 class HTTPExtensionDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<HTTPExtension>
@@ -78,19 +72,6 @@ class StateOptionsDefaultTypeInternal {
 }  // namespace proto
 }  // namespace dapr
 namespace protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto {
-static void InitDefaultsHTTPExtension_QuerystringEntry_DoNotUse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::common::v1::_HTTPExtension_QuerystringEntry_DoNotUse_default_instance_;
-    new (ptr) ::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse();
-  }
-  ::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_HTTPExtension_QuerystringEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsHTTPExtension_QuerystringEntry_DoNotUse}, {}};
-
 static void InitDefaultsHTTPExtension() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -102,9 +83,8 @@ static void InitDefaultsHTTPExtension() {
   ::dapr::proto::common::v1::HTTPExtension::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_HTTPExtension =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsHTTPExtension}, {
-      &protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::scc_info_HTTPExtension_QuerystringEntry_DoNotUse.base,}};
+::google::protobuf::internal::SCCInfo<0> scc_info_HTTPExtension =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsHTTPExtension}, {}};
 
 static void InitDefaultsInvokeRequest() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -196,7 +176,6 @@ static void InitDefaultsStateOptions() {
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsStateOptions}, {}};
 
 void InitDefaults() {
-  ::google::protobuf::internal::InitSCC(&scc_info_HTTPExtension_QuerystringEntry_DoNotUse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_HTTPExtension.base);
   ::google::protobuf::internal::InitSCC(&scc_info_InvokeRequest.base);
   ::google::protobuf::internal::InitSCC(&scc_info_InvokeResponse.base);
@@ -206,19 +185,10 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_StateOptions.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[8];
+::google::protobuf::Metadata file_level_metadata[7];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[3];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse, value_),
-  0,
-  1,
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::common::v1::HTTPExtension, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -276,18 +246,16 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::common::v1::StateOptions, consistency_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 7, sizeof(::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse)},
-  { 9, -1, sizeof(::dapr::proto::common::v1::HTTPExtension)},
-  { 16, -1, sizeof(::dapr::proto::common::v1::InvokeRequest)},
-  { 25, -1, sizeof(::dapr::proto::common::v1::InvokeResponse)},
-  { 32, 39, sizeof(::dapr::proto::common::v1::StateItem_MetadataEntry_DoNotUse)},
-  { 41, -1, sizeof(::dapr::proto::common::v1::StateItem)},
-  { 51, -1, sizeof(::dapr::proto::common::v1::Etag)},
-  { 57, -1, sizeof(::dapr::proto::common::v1::StateOptions)},
+  { 0, -1, sizeof(::dapr::proto::common::v1::HTTPExtension)},
+  { 7, -1, sizeof(::dapr::proto::common::v1::InvokeRequest)},
+  { 16, -1, sizeof(::dapr::proto::common::v1::InvokeResponse)},
+  { 23, 30, sizeof(::dapr::proto::common::v1::StateItem_MetadataEntry_DoNotUse)},
+  { 32, -1, sizeof(::dapr::proto::common::v1::StateItem)},
+  { 42, -1, sizeof(::dapr::proto::common::v1::Etag)},
+  { 48, -1, sizeof(::dapr::proto::common::v1::StateOptions)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::common::v1::_HTTPExtension_QuerystringEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::common::v1::_HTTPExtension_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::common::v1::_InvokeRequest_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::common::v1::_InvokeResponse_default_instance_),
@@ -312,7 +280,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 8);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 7);
 }
 
 void AddDescriptorsImpl() {
@@ -320,42 +288,39 @@ void AddDescriptorsImpl() {
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n!dapr/proto/common/v1/common.proto\022\024dap"
       "r.proto.common.v1\032\031google/protobuf/any.p"
-      "roto\"\257\002\n\rHTTPExtension\0226\n\004verb\030\001 \001(\0162(.d"
-      "apr.proto.common.v1.HTTPExtension.Verb\022I"
-      "\n\013querystring\030\002 \003(\01324.dapr.proto.common."
-      "v1.HTTPExtension.QuerystringEntry\0322\n\020Que"
-      "rystringEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001("
-      "\t:\0028\001\"g\n\004Verb\022\010\n\004NONE\020\000\022\007\n\003GET\020\001\022\010\n\004HEAD"
-      "\020\002\022\010\n\004POST\020\003\022\007\n\003PUT\020\004\022\n\n\006DELETE\020\005\022\013\n\007CON"
-      "NECT\020\006\022\013\n\007OPTIONS\020\007\022\t\n\005TRACE\020\010\"\226\001\n\rInvok"
-      "eRequest\022\016\n\006method\030\001 \001(\t\022\"\n\004data\030\002 \001(\0132\024"
-      ".google.protobuf.Any\022\024\n\014content_type\030\003 \001"
-      "(\t\022;\n\016http_extension\030\004 \001(\0132#.dapr.proto."
-      "common.v1.HTTPExtension\"J\n\016InvokeRespons"
-      "e\022\"\n\004data\030\001 \001(\0132\024.google.protobuf.Any\022\024\n"
-      "\014content_type\030\002 \001(\t\"\370\001\n\tStateItem\022\013\n\003key"
-      "\030\001 \001(\t\022\r\n\005value\030\002 \001(\014\022(\n\004etag\030\003 \001(\0132\032.da"
-      "pr.proto.common.v1.Etag\022\?\n\010metadata\030\004 \003("
-      "\0132-.dapr.proto.common.v1.StateItem.Metad"
-      "ataEntry\0223\n\007options\030\005 \001(\0132\".dapr.proto.c"
-      "ommon.v1.StateOptions\032/\n\rMetadataEntry\022\013"
-      "\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\025\n\004Etag\022\r"
-      "\n\005value\030\001 \001(\t\"\357\002\n\014StateOptions\022H\n\013concur"
-      "rency\030\001 \001(\01623.dapr.proto.common.v1.State"
-      "Options.StateConcurrency\022H\n\013consistency\030"
-      "\002 \001(\01623.dapr.proto.common.v1.StateOption"
-      "s.StateConsistency\"h\n\020StateConcurrency\022\033"
-      "\n\027CONCURRENCY_UNSPECIFIED\020\000\022\033\n\027CONCURREN"
-      "CY_FIRST_WRITE\020\001\022\032\n\026CONCURRENCY_LAST_WRI"
-      "TE\020\002\"a\n\020StateConsistency\022\033\n\027CONSISTENCY_"
-      "UNSPECIFIED\020\000\022\030\n\024CONSISTENCY_EVENTUAL\020\001\022"
-      "\026\n\022CONSISTENCY_STRONG\020\002Bi\n\nio.dapr.v1B\014C"
-      "ommonProtosZ/github.com/dapr/dapr/pkg/pr"
-      "oto/common/v1;common\252\002\033Dapr.Client.Autog"
-      "en.Grpc.v1b\006proto3"
+      "roto\"\305\001\n\rHTTPExtension\0226\n\004verb\030\001 \001(\0162(.d"
+      "apr.proto.common.v1.HTTPExtension.Verb\022\023"
+      "\n\013querystring\030\002 \001(\t\"g\n\004Verb\022\010\n\004NONE\020\000\022\007\n"
+      "\003GET\020\001\022\010\n\004HEAD\020\002\022\010\n\004POST\020\003\022\007\n\003PUT\020\004\022\n\n\006D"
+      "ELETE\020\005\022\013\n\007CONNECT\020\006\022\013\n\007OPTIONS\020\007\022\t\n\005TRA"
+      "CE\020\010\"\226\001\n\rInvokeRequest\022\016\n\006method\030\001 \001(\t\022\""
+      "\n\004data\030\002 \001(\0132\024.google.protobuf.Any\022\024\n\014co"
+      "ntent_type\030\003 \001(\t\022;\n\016http_extension\030\004 \001(\013"
+      "2#.dapr.proto.common.v1.HTTPExtension\"J\n"
+      "\016InvokeResponse\022\"\n\004data\030\001 \001(\0132\024.google.p"
+      "rotobuf.Any\022\024\n\014content_type\030\002 \001(\t\"\370\001\n\tSt"
+      "ateItem\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014\022(\n\004e"
+      "tag\030\003 \001(\0132\032.dapr.proto.common.v1.Etag\022\?\n"
+      "\010metadata\030\004 \003(\0132-.dapr.proto.common.v1.S"
+      "tateItem.MetadataEntry\0223\n\007options\030\005 \001(\0132"
+      "\".dapr.proto.common.v1.StateOptions\032/\n\rM"
+      "etadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t"
+      ":\0028\001\"\025\n\004Etag\022\r\n\005value\030\001 \001(\t\"\357\002\n\014StateOpt"
+      "ions\022H\n\013concurrency\030\001 \001(\01623.dapr.proto.c"
+      "ommon.v1.StateOptions.StateConcurrency\022H"
+      "\n\013consistency\030\002 \001(\01623.dapr.proto.common."
+      "v1.StateOptions.StateConsistency\"h\n\020Stat"
+      "eConcurrency\022\033\n\027CONCURRENCY_UNSPECIFIED\020"
+      "\000\022\033\n\027CONCURRENCY_FIRST_WRITE\020\001\022\032\n\026CONCUR"
+      "RENCY_LAST_WRITE\020\002\"a\n\020StateConsistency\022\033"
+      "\n\027CONSISTENCY_UNSPECIFIED\020\000\022\030\n\024CONSISTEN"
+      "CY_EVENTUAL\020\001\022\026\n\022CONSISTENCY_STRONG\020\002Bi\n"
+      "\nio.dapr.v1B\014CommonProtosZ/github.com/da"
+      "pr/dapr/pkg/proto/common/v1;common\252\002\033Dap"
+      "r.Client.Autogen.Grpc.v1b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1378);
+      descriptor, 1272);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dapr/proto/common/v1/common.proto", &protobuf_RegisterTypes);
   ::protobuf_google_2fprotobuf_2fany_2eproto::AddDescriptors();
@@ -460,23 +425,6 @@ const int StateOptions::StateConsistency_ARRAYSIZE;
 
 // ===================================================================
 
-HTTPExtension_QuerystringEntry_DoNotUse::HTTPExtension_QuerystringEntry_DoNotUse() {}
-HTTPExtension_QuerystringEntry_DoNotUse::HTTPExtension_QuerystringEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
-void HTTPExtension_QuerystringEntry_DoNotUse::MergeFrom(const HTTPExtension_QuerystringEntry_DoNotUse& other) {
-  MergeFromInternal(other);
-}
-::google::protobuf::Metadata HTTPExtension_QuerystringEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::file_level_metadata[0];
-}
-void HTTPExtension_QuerystringEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
-}
-
-
-// ===================================================================
-
 void HTTPExtension::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -495,12 +443,16 @@ HTTPExtension::HTTPExtension(const HTTPExtension& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  querystring_.MergeFrom(from.querystring_);
+  querystring_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.querystring().size() > 0) {
+    querystring_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.querystring_);
+  }
   verb_ = from.verb_;
   // @@protoc_insertion_point(copy_constructor:dapr.proto.common.v1.HTTPExtension)
 }
 
 void HTTPExtension::SharedCtor() {
+  querystring_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   verb_ = 0;
 }
 
@@ -510,6 +462,7 @@ HTTPExtension::~HTTPExtension() {
 }
 
 void HTTPExtension::SharedDtor() {
+  querystring_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void HTTPExtension::SetCachedSize(int size) const {
@@ -532,7 +485,7 @@ void HTTPExtension::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  querystring_.Clear();
+  querystring_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   verb_ = 0;
   _internal_metadata_.Clear();
 }
@@ -562,27 +515,16 @@ bool HTTPExtension::MergePartialFromCodedStream(
         break;
       }
 
-      // map<string, string> querystring = 2;
+      // string querystring = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          HTTPExtension_QuerystringEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              HTTPExtension_QuerystringEntry_DoNotUse,
-              ::std::string, ::std::string,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::std::string > > parser(&querystring_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_querystring()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
+            this->querystring().data(), static_cast<int>(this->querystring().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.common.v1.HTTPExtension.QuerystringEntry.key"));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.value().data(), static_cast<int>(parser.value().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.common.v1.HTTPExtension.QuerystringEntry.value"));
+            "dapr.proto.common.v1.HTTPExtension.querystring"));
         } else {
           goto handle_unusual;
         }
@@ -621,57 +563,14 @@ void HTTPExtension::SerializeWithCachedSizes(
       1, this->verb(), output);
   }
 
-  // map<string, string> querystring = 2;
-  if (!this->querystring().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.common.v1.HTTPExtension.QuerystringEntry.key");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->second.data(), static_cast<int>(p->second.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.common.v1.HTTPExtension.QuerystringEntry.value");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->querystring().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->querystring().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->querystring().begin();
-          it != this->querystring().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<HTTPExtension_QuerystringEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(querystring_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            2, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<HTTPExtension_QuerystringEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->querystring().begin();
-          it != this->querystring().end(); ++it) {
-        entry.reset(querystring_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            2, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
+  // string querystring = 2;
+  if (this->querystring().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->querystring().data(), static_cast<int>(this->querystring().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.common.v1.HTTPExtension.querystring");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->querystring(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -694,61 +593,15 @@ void HTTPExtension::SerializeWithCachedSizes(
       1, this->verb(), target);
   }
 
-  // map<string, string> querystring = 2;
-  if (!this->querystring().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.common.v1.HTTPExtension.QuerystringEntry.key");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->second.data(), static_cast<int>(p->second.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.common.v1.HTTPExtension.QuerystringEntry.value");
-      }
-    };
-
-    if (deterministic &&
-        this->querystring().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->querystring().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->querystring().begin();
-          it != this->querystring().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<HTTPExtension_QuerystringEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(querystring_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       2, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<HTTPExtension_QuerystringEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->querystring().begin();
-          it != this->querystring().end(); ++it) {
-        entry.reset(querystring_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       2, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
-      }
-    }
+  // string querystring = 2;
+  if (this->querystring().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->querystring().data(), static_cast<int>(this->querystring().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.common.v1.HTTPExtension.querystring");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->querystring(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -768,18 +621,11 @@ size_t HTTPExtension::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // map<string, string> querystring = 2;
-  total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->querystring_size());
-  {
-    ::std::unique_ptr<HTTPExtension_QuerystringEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-        it = this->querystring().begin();
-        it != this->querystring().end(); ++it) {
-      entry.reset(querystring_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+  // string querystring = 2;
+  if (this->querystring().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->querystring());
   }
 
   // .dapr.proto.common.v1.HTTPExtension.Verb verb = 1;
@@ -815,7 +661,10 @@ void HTTPExtension::MergeFrom(const HTTPExtension& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  querystring_.MergeFrom(from.querystring_);
+  if (from.querystring().size() > 0) {
+
+    querystring_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.querystring_);
+  }
   if (from.verb() != 0) {
     set_verb(from.verb());
   }
@@ -845,7 +694,8 @@ void HTTPExtension::Swap(HTTPExtension* other) {
 }
 void HTTPExtension::InternalSwap(HTTPExtension* other) {
   using std::swap;
-  querystring_.Swap(&other->querystring_);
+  querystring_.Swap(&other->querystring_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(verb_, other->verb_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
@@ -1570,7 +1420,7 @@ void StateItem_MetadataEntry_DoNotUse::MergeFrom(const StateItem_MetadataEntry_D
 }
 ::google::protobuf::Metadata StateItem_MetadataEntry_DoNotUse::GetMetadata() const {
   ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::file_level_metadata[4];
+  return ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::file_level_metadata[3];
 }
 void StateItem_MetadataEntry_DoNotUse::MergeFrom(
     const ::google::protobuf::Message& other) {
@@ -2641,9 +2491,6 @@ void StateOptions::InternalSwap(StateOptions* other) {
 }  // namespace dapr
 namespace google {
 namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse* Arena::CreateMaybeMessage< ::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::common::v1::HTTPExtension_QuerystringEntry_DoNotUse >(arena);
-}
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::common::v1::HTTPExtension* Arena::CreateMaybeMessage< ::dapr::proto::common::v1::HTTPExtension >(Arena* arena) {
   return Arena::CreateInternal< ::dapr::proto::common::v1::HTTPExtension >(arena);
 }
