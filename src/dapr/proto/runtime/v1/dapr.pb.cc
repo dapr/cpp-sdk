@@ -1680,7 +1680,7 @@ void AddDescriptorsImpl() {
       "\005\"C\n\024RegisteredComponents\022\014\n\004name\030\001 \001(\t\022"
       "\014\n\004type\030\002 \001(\t\022\017\n\007version\030\003 \001(\t\"0\n\022SetMet"
       "adataRequest\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t"
-      "2\307\017\n\004Dapr\022d\n\rInvokeService\022+.dapr.proto."
+      "2\205\020\n\004Dapr\022d\n\rInvokeService\022+.dapr.proto."
       "runtime.v1.InvokeServiceRequest\032$.dapr.p"
       "roto.common.v1.InvokeResponse\"\000\022]\n\010GetSt"
       "ate\022&.dapr.proto.runtime.v1.GetStateRequ"
@@ -1729,13 +1729,15 @@ void AddDescriptorsImpl() {
       "\022\026.google.protobuf.Empty\032*.dapr.proto.ru"
       "ntime.v1.GetMetadataResponse\"\000\022R\n\013SetMet"
       "adata\022).dapr.proto.runtime.v1.SetMetadat"
-      "aRequest\032\026.google.protobuf.Empty\"\000Bi\n\nio"
-      ".dapr.v1B\nDaprProtosZ1github.com/dapr/da"
-      "pr/pkg/proto/runtime/v1;runtime\252\002\033Dapr.C"
-      "lient.Autogen.Grpc.v1b\006proto3"
+      "aRequest\032\026.google.protobuf.Empty\"\000\022<\n\010Sh"
+      "utdown\022\026.google.protobuf.Empty\032\026.google."
+      "protobuf.Empty\"\000Bi\n\nio.dapr.v1B\nDaprProt"
+      "osZ1github.com/dapr/dapr/pkg/proto/runti"
+      "me/v1;runtime\252\002\033Dapr.Client.Autogen.Grpc"
+      ".v1b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 6909);
+      descriptor, 6971);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dapr/proto/runtime/v1/dapr.proto", &protobuf_RegisterTypes);
   ::protobuf_google_2fprotobuf_2fany_2eproto::AddDescriptors();
