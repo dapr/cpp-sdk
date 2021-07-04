@@ -25,6 +25,24 @@ make
 
 <!-- END_STEP -->
 
+### Build echo app with CMake
+
+1. Install dependencies
+
+```
+$ sudo apt-get install libgrpc++-dev
+$ sudo apt-get install libprotobuf-dev
+```
+
+2. Build echo_app
+
+```
+$ mkdir build
+$ cd build/
+$ cmake ..
+$ make
+```
+
 ### Run callee app
 
 1. Open new bash terminal

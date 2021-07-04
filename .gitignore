@@ -4,3 +4,4 @@ out
 
 .vscode/*
 **/components/*.yaml
+build
