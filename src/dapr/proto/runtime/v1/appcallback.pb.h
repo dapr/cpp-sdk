@@ -44,7 +44,7 @@ namespace protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[9];
+  static const ::google::protobuf::internal::ParseTable schema[11];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -76,6 +76,12 @@ extern TopicEventRequestDefaultTypeInternal _TopicEventRequest_default_instance_
 class TopicEventResponse;
 class TopicEventResponseDefaultTypeInternal;
 extern TopicEventResponseDefaultTypeInternal _TopicEventResponse_default_instance_;
+class TopicRoutes;
+class TopicRoutesDefaultTypeInternal;
+extern TopicRoutesDefaultTypeInternal _TopicRoutes_default_instance_;
+class TopicRule;
+class TopicRuleDefaultTypeInternal;
+extern TopicRuleDefaultTypeInternal _TopicRule_default_instance_;
 class TopicSubscription;
 class TopicSubscriptionDefaultTypeInternal;
 extern TopicSubscriptionDefaultTypeInternal _TopicSubscription_default_instance_;
@@ -95,6 +101,8 @@ template<> ::dapr::proto::runtime::v1::ListInputBindingsResponse* Arena::CreateM
 template<> ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::TopicEventRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TopicEventRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::TopicEventResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TopicEventResponse>(Arena*);
+template<> ::dapr::proto::runtime::v1::TopicRoutes* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TopicRoutes>(Arena*);
+template<> ::dapr::proto::runtime::v1::TopicRule* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TopicRule>(Arena*);
 template<> ::dapr::proto::runtime::v1::TopicSubscription* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TopicSubscription>(Arena*);
 template<> ::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse>(Arena*);
 }  // namespace protobuf
@@ -348,6 +356,20 @@ class TopicEventRequest : public ::google::protobuf::Message /* @@protoc_inserti
   ::std::string* release_pubsub_name();
   void set_allocated_pubsub_name(::std::string* pubsub_name);
 
+  // string path = 9;
+  void clear_path();
+  static const int kPathFieldNumber = 9;
+  const ::std::string& path() const;
+  void set_path(const ::std::string& value);
+  #if LANG_CXX11
+  void set_path(::std::string&& value);
+  #endif
+  void set_path(const char* value);
+  void set_path(const char* value, size_t size);
+  ::std::string* mutable_path();
+  ::std::string* release_path();
+  void set_allocated_path(::std::string* path);
+
   // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.TopicEventRequest)
  private:
 
@@ -360,6 +382,7 @@ class TopicEventRequest : public ::google::protobuf::Message /* @@protoc_inserti
   ::google::protobuf::internal::ArenaStringPtr topic_;
   ::google::protobuf::internal::ArenaStringPtr data_;
   ::google::protobuf::internal::ArenaStringPtr pubsub_name_;
+  ::google::protobuf::internal::ArenaStringPtr path_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::TableStruct;
 };
@@ -1109,6 +1132,18 @@ class TopicSubscription : public ::google::protobuf::Message /* @@protoc_inserti
   ::std::string* release_topic();
   void set_allocated_topic(::std::string* topic);
 
+  // .dapr.proto.runtime.v1.TopicRoutes routes = 5;
+  bool has_routes() const;
+  void clear_routes();
+  static const int kRoutesFieldNumber = 5;
+  private:
+  const ::dapr::proto::runtime::v1::TopicRoutes& _internal_routes() const;
+  public:
+  const ::dapr::proto::runtime::v1::TopicRoutes& routes() const;
+  ::dapr::proto::runtime::v1::TopicRoutes* release_routes();
+  ::dapr::proto::runtime::v1::TopicRoutes* mutable_routes();
+  void set_allocated_routes(::dapr::proto::runtime::v1::TopicRoutes* routes);
+
   // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.TopicSubscription)
  private:
 
@@ -1121,6 +1156,257 @@ class TopicSubscription : public ::google::protobuf::Message /* @@protoc_inserti
       0 > metadata_;
   ::google::protobuf::internal::ArenaStringPtr pubsub_name_;
   ::google::protobuf::internal::ArenaStringPtr topic_;
+  ::dapr::proto::runtime::v1::TopicRoutes* routes_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class TopicRoutes : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.TopicRoutes) */ {
+ public:
+  TopicRoutes();
+  virtual ~TopicRoutes();
+
+  TopicRoutes(const TopicRoutes& from);
+
+  inline TopicRoutes& operator=(const TopicRoutes& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  TopicRoutes(TopicRoutes&& from) noexcept
+    : TopicRoutes() {
+    *this = ::std::move(from);
+  }
+
+  inline TopicRoutes& operator=(TopicRoutes&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TopicRoutes& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TopicRoutes* internal_default_instance() {
+    return reinterpret_cast<const TopicRoutes*>(
+               &_TopicRoutes_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  void Swap(TopicRoutes* other);
+  friend void swap(TopicRoutes& a, TopicRoutes& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TopicRoutes* New() const final {
+    return CreateMaybeMessage<TopicRoutes>(NULL);
+  }
+
+  TopicRoutes* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<TopicRoutes>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const TopicRoutes& from);
+  void MergeFrom(const TopicRoutes& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TopicRoutes* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .dapr.proto.runtime.v1.TopicRule rules = 1;
+  int rules_size() const;
+  void clear_rules();
+  static const int kRulesFieldNumber = 1;
+  ::dapr::proto::runtime::v1::TopicRule* mutable_rules(int index);
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::TopicRule >*
+      mutable_rules();
+  const ::dapr::proto::runtime::v1::TopicRule& rules(int index) const;
+  ::dapr::proto::runtime::v1::TopicRule* add_rules();
+  const ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::TopicRule >&
+      rules() const;
+
+  // string default = 2;
+  void clear_default_();
+  static const int kDefaultFieldNumber = 2;
+  const ::std::string& default_() const;
+  void set_default_(const ::std::string& value);
+  #if LANG_CXX11
+  void set_default_(::std::string&& value);
+  #endif
+  void set_default_(const char* value);
+  void set_default_(const char* value, size_t size);
+  ::std::string* mutable_default_();
+  ::std::string* release_default_();
+  void set_allocated_default_(::std::string* default_);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.TopicRoutes)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::TopicRule > rules_;
+  ::google::protobuf::internal::ArenaStringPtr default__;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class TopicRule : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.TopicRule) */ {
+ public:
+  TopicRule();
+  virtual ~TopicRule();
+
+  TopicRule(const TopicRule& from);
+
+  inline TopicRule& operator=(const TopicRule& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  TopicRule(TopicRule&& from) noexcept
+    : TopicRule() {
+    *this = ::std::move(from);
+  }
+
+  inline TopicRule& operator=(TopicRule&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TopicRule& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TopicRule* internal_default_instance() {
+    return reinterpret_cast<const TopicRule*>(
+               &_TopicRule_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  void Swap(TopicRule* other);
+  friend void swap(TopicRule& a, TopicRule& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TopicRule* New() const final {
+    return CreateMaybeMessage<TopicRule>(NULL);
+  }
+
+  TopicRule* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<TopicRule>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const TopicRule& from);
+  void MergeFrom(const TopicRule& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TopicRule* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string match = 1;
+  void clear_match();
+  static const int kMatchFieldNumber = 1;
+  const ::std::string& match() const;
+  void set_match(const ::std::string& value);
+  #if LANG_CXX11
+  void set_match(::std::string&& value);
+  #endif
+  void set_match(const char* value);
+  void set_match(const char* value, size_t size);
+  ::std::string* mutable_match();
+  ::std::string* release_match();
+  void set_allocated_match(::std::string* match);
+
+  // string path = 2;
+  void clear_path();
+  static const int kPathFieldNumber = 2;
+  const ::std::string& path() const;
+  void set_path(const ::std::string& value);
+  #if LANG_CXX11
+  void set_path(::std::string&& value);
+  #endif
+  void set_path(const char* value);
+  void set_path(const char* value, size_t size);
+  ::std::string* mutable_path();
+  ::std::string* release_path();
+  void set_allocated_path(::std::string* path);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.TopicRule)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr match_;
+  ::google::protobuf::internal::ArenaStringPtr path_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::TableStruct;
 };
@@ -1161,7 +1447,7 @@ class ListInputBindingsResponse : public ::google::protobuf::Message /* @@protoc
                &_ListInputBindingsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   void Swap(ListInputBindingsResponse* other);
   friend void swap(ListInputBindingsResponse& a, ListInputBindingsResponse& b) {
@@ -1676,6 +1962,59 @@ inline void TopicEventRequest::set_allocated_pubsub_name(::std::string* pubsub_n
   }
   pubsub_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), pubsub_name);
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TopicEventRequest.pubsub_name)
+}
+
+// string path = 9;
+inline void TopicEventRequest::clear_path() {
+  path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TopicEventRequest::path() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.TopicEventRequest.path)
+  return path_.GetNoArena();
+}
+inline void TopicEventRequest::set_path(const ::std::string& value) {
+  
+  path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.TopicEventRequest.path)
+}
+#if LANG_CXX11
+inline void TopicEventRequest::set_path(::std::string&& value) {
+  
+  path_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.TopicEventRequest.path)
+}
+#endif
+inline void TopicEventRequest::set_path(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.TopicEventRequest.path)
+}
+inline void TopicEventRequest::set_path(const char* value, size_t size) {
+  
+  path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.TopicEventRequest.path)
+}
+inline ::std::string* TopicEventRequest::mutable_path() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.TopicEventRequest.path)
+  return path_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TopicEventRequest::release_path() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.TopicEventRequest.path)
+  
+  return path_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TopicEventRequest::set_allocated_path(::std::string* path) {
+  if (path != NULL) {
+    
+  } else {
+    
+  }
+  path_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), path);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TopicEventRequest.path)
 }
 
 // -------------------------------------------------------------------
@@ -2210,6 +2549,257 @@ TopicSubscription::mutable_metadata() {
   return metadata_.MutableMap();
 }
 
+// .dapr.proto.runtime.v1.TopicRoutes routes = 5;
+inline bool TopicSubscription::has_routes() const {
+  return this != internal_default_instance() && routes_ != NULL;
+}
+inline void TopicSubscription::clear_routes() {
+  if (GetArenaNoVirtual() == NULL && routes_ != NULL) {
+    delete routes_;
+  }
+  routes_ = NULL;
+}
+inline const ::dapr::proto::runtime::v1::TopicRoutes& TopicSubscription::_internal_routes() const {
+  return *routes_;
+}
+inline const ::dapr::proto::runtime::v1::TopicRoutes& TopicSubscription::routes() const {
+  const ::dapr::proto::runtime::v1::TopicRoutes* p = routes_;
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.TopicSubscription.routes)
+  return p != NULL ? *p : *reinterpret_cast<const ::dapr::proto::runtime::v1::TopicRoutes*>(
+      &::dapr::proto::runtime::v1::_TopicRoutes_default_instance_);
+}
+inline ::dapr::proto::runtime::v1::TopicRoutes* TopicSubscription::release_routes() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.TopicSubscription.routes)
+  
+  ::dapr::proto::runtime::v1::TopicRoutes* temp = routes_;
+  routes_ = NULL;
+  return temp;
+}
+inline ::dapr::proto::runtime::v1::TopicRoutes* TopicSubscription::mutable_routes() {
+  
+  if (routes_ == NULL) {
+    auto* p = CreateMaybeMessage<::dapr::proto::runtime::v1::TopicRoutes>(GetArenaNoVirtual());
+    routes_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.TopicSubscription.routes)
+  return routes_;
+}
+inline void TopicSubscription::set_allocated_routes(::dapr::proto::runtime::v1::TopicRoutes* routes) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete routes_;
+  }
+  if (routes) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      routes = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, routes, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  routes_ = routes;
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TopicSubscription.routes)
+}
+
+// -------------------------------------------------------------------
+
+// TopicRoutes
+
+// repeated .dapr.proto.runtime.v1.TopicRule rules = 1;
+inline int TopicRoutes::rules_size() const {
+  return rules_.size();
+}
+inline void TopicRoutes::clear_rules() {
+  rules_.Clear();
+}
+inline ::dapr::proto::runtime::v1::TopicRule* TopicRoutes::mutable_rules(int index) {
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.TopicRoutes.rules)
+  return rules_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::TopicRule >*
+TopicRoutes::mutable_rules() {
+  // @@protoc_insertion_point(field_mutable_list:dapr.proto.runtime.v1.TopicRoutes.rules)
+  return &rules_;
+}
+inline const ::dapr::proto::runtime::v1::TopicRule& TopicRoutes::rules(int index) const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.TopicRoutes.rules)
+  return rules_.Get(index);
+}
+inline ::dapr::proto::runtime::v1::TopicRule* TopicRoutes::add_rules() {
+  // @@protoc_insertion_point(field_add:dapr.proto.runtime.v1.TopicRoutes.rules)
+  return rules_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::TopicRule >&
+TopicRoutes::rules() const {
+  // @@protoc_insertion_point(field_list:dapr.proto.runtime.v1.TopicRoutes.rules)
+  return rules_;
+}
+
+// string default = 2;
+inline void TopicRoutes::clear_default_() {
+  default__.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TopicRoutes::default_() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.TopicRoutes.default)
+  return default__.GetNoArena();
+}
+inline void TopicRoutes::set_default_(const ::std::string& value) {
+  
+  default__.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.TopicRoutes.default)
+}
+#if LANG_CXX11
+inline void TopicRoutes::set_default_(::std::string&& value) {
+  
+  default__.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.TopicRoutes.default)
+}
+#endif
+inline void TopicRoutes::set_default_(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  default__.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.TopicRoutes.default)
+}
+inline void TopicRoutes::set_default_(const char* value, size_t size) {
+  
+  default__.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.TopicRoutes.default)
+}
+inline ::std::string* TopicRoutes::mutable_default_() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.TopicRoutes.default)
+  return default__.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TopicRoutes::release_default_() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.TopicRoutes.default)
+  
+  return default__.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TopicRoutes::set_allocated_default_(::std::string* default_) {
+  if (default_ != NULL) {
+    
+  } else {
+    
+  }
+  default__.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), default_);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TopicRoutes.default)
+}
+
+// -------------------------------------------------------------------
+
+// TopicRule
+
+// string match = 1;
+inline void TopicRule::clear_match() {
+  match_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TopicRule::match() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.TopicRule.match)
+  return match_.GetNoArena();
+}
+inline void TopicRule::set_match(const ::std::string& value) {
+  
+  match_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.TopicRule.match)
+}
+#if LANG_CXX11
+inline void TopicRule::set_match(::std::string&& value) {
+  
+  match_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.TopicRule.match)
+}
+#endif
+inline void TopicRule::set_match(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  match_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.TopicRule.match)
+}
+inline void TopicRule::set_match(const char* value, size_t size) {
+  
+  match_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.TopicRule.match)
+}
+inline ::std::string* TopicRule::mutable_match() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.TopicRule.match)
+  return match_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TopicRule::release_match() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.TopicRule.match)
+  
+  return match_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TopicRule::set_allocated_match(::std::string* match) {
+  if (match != NULL) {
+    
+  } else {
+    
+  }
+  match_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), match);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TopicRule.match)
+}
+
+// string path = 2;
+inline void TopicRule::clear_path() {
+  path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TopicRule::path() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.TopicRule.path)
+  return path_.GetNoArena();
+}
+inline void TopicRule::set_path(const ::std::string& value) {
+  
+  path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.TopicRule.path)
+}
+#if LANG_CXX11
+inline void TopicRule::set_path(::std::string&& value) {
+  
+  path_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.TopicRule.path)
+}
+#endif
+inline void TopicRule::set_path(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.TopicRule.path)
+}
+inline void TopicRule::set_path(const char* value, size_t size) {
+  
+  path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.TopicRule.path)
+}
+inline ::std::string* TopicRule::mutable_path() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.TopicRule.path)
+  return path_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TopicRule::release_path() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.TopicRule.path)
+  
+  return path_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TopicRule::set_allocated_path(::std::string* path) {
+  if (path != NULL) {
+    
+  } else {
+    
+  }
+  path_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), path);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TopicRule.path)
+}
+
 // -------------------------------------------------------------------
 
 // ListInputBindingsResponse
@@ -2286,6 +2876,10 @@ ListInputBindingsResponse::mutable_bindings() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
