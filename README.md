@@ -27,3 +27,11 @@ Alpha quality.
     ```bash
     make all
     ```
+
+### Run the example validation
+
+1. Make sure that you enable vscode remote container
+2. Run the example validation
+    ```bash
+    cd examples/echo_app/ && mm.py README.md && echo SUCCESS
+    ```
