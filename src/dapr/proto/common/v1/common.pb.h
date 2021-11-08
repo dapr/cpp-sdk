@@ -43,7 +43,7 @@ namespace protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[7];
+  static const ::google::protobuf::internal::ParseTable schema[9];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -54,6 +54,12 @@ namespace dapr {
 namespace proto {
 namespace common {
 namespace v1 {
+class ConfigurationItem;
+class ConfigurationItemDefaultTypeInternal;
+extern ConfigurationItemDefaultTypeInternal _ConfigurationItem_default_instance_;
+class ConfigurationItem_MetadataEntry_DoNotUse;
+class ConfigurationItem_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern ConfigurationItem_MetadataEntry_DoNotUseDefaultTypeInternal _ConfigurationItem_MetadataEntry_DoNotUse_default_instance_;
 class Etag;
 class EtagDefaultTypeInternal;
 extern EtagDefaultTypeInternal _Etag_default_instance_;
@@ -81,6 +87,8 @@ extern StateOptionsDefaultTypeInternal _StateOptions_default_instance_;
 }  // namespace dapr
 namespace google {
 namespace protobuf {
+template<> ::dapr::proto::common::v1::ConfigurationItem* Arena::CreateMaybeMessage<::dapr::proto::common::v1::ConfigurationItem>(Arena*);
+template<> ::dapr::proto::common::v1::ConfigurationItem_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::common::v1::ConfigurationItem_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::common::v1::Etag* Arena::CreateMaybeMessage<::dapr::proto::common::v1::Etag>(Arena*);
 template<> ::dapr::proto::common::v1::HTTPExtension* Arena::CreateMaybeMessage<::dapr::proto::common::v1::HTTPExtension>(Arena*);
 template<> ::dapr::proto::common::v1::InvokeRequest* Arena::CreateMaybeMessage<::dapr::proto::common::v1::InvokeRequest>(Arena*);
@@ -105,12 +113,13 @@ enum HTTPExtension_Verb {
   HTTPExtension_Verb_CONNECT = 6,
   HTTPExtension_Verb_OPTIONS = 7,
   HTTPExtension_Verb_TRACE = 8,
+  HTTPExtension_Verb_PATCH = 9,
   HTTPExtension_Verb_HTTPExtension_Verb_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   HTTPExtension_Verb_HTTPExtension_Verb_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool HTTPExtension_Verb_IsValid(int value);
 const HTTPExtension_Verb HTTPExtension_Verb_Verb_MIN = HTTPExtension_Verb_NONE;
-const HTTPExtension_Verb HTTPExtension_Verb_Verb_MAX = HTTPExtension_Verb_TRACE;
+const HTTPExtension_Verb HTTPExtension_Verb_Verb_MAX = HTTPExtension_Verb_PATCH;
 const int HTTPExtension_Verb_Verb_ARRAYSIZE = HTTPExtension_Verb_Verb_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* HTTPExtension_Verb_descriptor();
@@ -273,6 +282,8 @@ class HTTPExtension : public ::google::protobuf::Message /* @@protoc_insertion_p
     HTTPExtension_Verb_OPTIONS;
   static const Verb TRACE =
     HTTPExtension_Verb_TRACE;
+  static const Verb PATCH =
+    HTTPExtension_Verb_PATCH;
   static inline bool Verb_IsValid(int value) {
     return HTTPExtension_Verb_IsValid(value);
   }
@@ -1067,6 +1078,184 @@ class StateOptions : public ::google::protobuf::Message /* @@protoc_insertion_po
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class ConfigurationItem_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<ConfigurationItem_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<ConfigurationItem_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  ConfigurationItem_MetadataEntry_DoNotUse();
+  ConfigurationItem_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const ConfigurationItem_MetadataEntry_DoNotUse& other);
+  static const ConfigurationItem_MetadataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const ConfigurationItem_MetadataEntry_DoNotUse*>(&_ConfigurationItem_MetadataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
+class ConfigurationItem : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.common.v1.ConfigurationItem) */ {
+ public:
+  ConfigurationItem();
+  virtual ~ConfigurationItem();
+
+  ConfigurationItem(const ConfigurationItem& from);
+
+  inline ConfigurationItem& operator=(const ConfigurationItem& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ConfigurationItem(ConfigurationItem&& from) noexcept
+    : ConfigurationItem() {
+    *this = ::std::move(from);
+  }
+
+  inline ConfigurationItem& operator=(ConfigurationItem&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ConfigurationItem& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ConfigurationItem* internal_default_instance() {
+    return reinterpret_cast<const ConfigurationItem*>(
+               &_ConfigurationItem_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  void Swap(ConfigurationItem* other);
+  friend void swap(ConfigurationItem& a, ConfigurationItem& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ConfigurationItem* New() const final {
+    return CreateMaybeMessage<ConfigurationItem>(NULL);
+  }
+
+  ConfigurationItem* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<ConfigurationItem>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const ConfigurationItem& from);
+  void MergeFrom(const ConfigurationItem& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ConfigurationItem* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  // map<string, string> metadata = 4;
+  int metadata_size() const;
+  void clear_metadata();
+  static const int kMetadataFieldNumber = 4;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      metadata() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_metadata();
+
+  // string key = 1;
+  void clear_key();
+  static const int kKeyFieldNumber = 1;
+  const ::std::string& key() const;
+  void set_key(const ::std::string& value);
+  #if LANG_CXX11
+  void set_key(::std::string&& value);
+  #endif
+  void set_key(const char* value);
+  void set_key(const char* value, size_t size);
+  ::std::string* mutable_key();
+  ::std::string* release_key();
+  void set_allocated_key(::std::string* key);
+
+  // string value = 2;
+  void clear_value();
+  static const int kValueFieldNumber = 2;
+  const ::std::string& value() const;
+  void set_value(const ::std::string& value);
+  #if LANG_CXX11
+  void set_value(::std::string&& value);
+  #endif
+  void set_value(const char* value);
+  void set_value(const char* value, size_t size);
+  ::std::string* mutable_value();
+  ::std::string* release_value();
+  void set_allocated_value(::std::string* value);
+
+  // string version = 3;
+  void clear_version();
+  static const int kVersionFieldNumber = 3;
+  const ::std::string& version() const;
+  void set_version(const ::std::string& value);
+  #if LANG_CXX11
+  void set_version(::std::string&& value);
+  #endif
+  void set_version(const char* value);
+  void set_version(const char* value, size_t size);
+  ::std::string* mutable_version();
+  ::std::string* release_version();
+  void set_allocated_version(::std::string* version);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.common.v1.ConfigurationItem)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::MapField<
+      ConfigurationItem_MetadataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      0 > metadata_;
+  ::google::protobuf::internal::ArenaStringPtr key_;
+  ::google::protobuf::internal::ArenaStringPtr value_;
+  ::google::protobuf::internal::ArenaStringPtr version_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -1789,9 +1978,196 @@ inline void StateOptions::set_consistency(::dapr::proto::common::v1::StateOption
   // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StateOptions.consistency)
 }
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// ConfigurationItem
+
+// string key = 1;
+inline void ConfigurationItem::clear_key() {
+  key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& ConfigurationItem::key() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.ConfigurationItem.key)
+  return key_.GetNoArena();
+}
+inline void ConfigurationItem::set_key(const ::std::string& value) {
+  
+  key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.ConfigurationItem.key)
+}
+#if LANG_CXX11
+inline void ConfigurationItem::set_key(::std::string&& value) {
+  
+  key_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.ConfigurationItem.key)
+}
+#endif
+inline void ConfigurationItem::set_key(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.ConfigurationItem.key)
+}
+inline void ConfigurationItem::set_key(const char* value, size_t size) {
+  
+  key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.ConfigurationItem.key)
+}
+inline ::std::string* ConfigurationItem::mutable_key() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.ConfigurationItem.key)
+  return key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ConfigurationItem::release_key() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.ConfigurationItem.key)
+  
+  return key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ConfigurationItem::set_allocated_key(::std::string* key) {
+  if (key != NULL) {
+    
+  } else {
+    
+  }
+  key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), key);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.ConfigurationItem.key)
+}
+
+// string value = 2;
+inline void ConfigurationItem::clear_value() {
+  value_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& ConfigurationItem::value() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.ConfigurationItem.value)
+  return value_.GetNoArena();
+}
+inline void ConfigurationItem::set_value(const ::std::string& value) {
+  
+  value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.ConfigurationItem.value)
+}
+#if LANG_CXX11
+inline void ConfigurationItem::set_value(::std::string&& value) {
+  
+  value_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.ConfigurationItem.value)
+}
+#endif
+inline void ConfigurationItem::set_value(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.ConfigurationItem.value)
+}
+inline void ConfigurationItem::set_value(const char* value, size_t size) {
+  
+  value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.ConfigurationItem.value)
+}
+inline ::std::string* ConfigurationItem::mutable_value() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.ConfigurationItem.value)
+  return value_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ConfigurationItem::release_value() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.ConfigurationItem.value)
+  
+  return value_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ConfigurationItem::set_allocated_value(::std::string* value) {
+  if (value != NULL) {
+    
+  } else {
+    
+  }
+  value_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.ConfigurationItem.value)
+}
+
+// string version = 3;
+inline void ConfigurationItem::clear_version() {
+  version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& ConfigurationItem::version() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.ConfigurationItem.version)
+  return version_.GetNoArena();
+}
+inline void ConfigurationItem::set_version(const ::std::string& value) {
+  
+  version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.ConfigurationItem.version)
+}
+#if LANG_CXX11
+inline void ConfigurationItem::set_version(::std::string&& value) {
+  
+  version_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.ConfigurationItem.version)
+}
+#endif
+inline void ConfigurationItem::set_version(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.ConfigurationItem.version)
+}
+inline void ConfigurationItem::set_version(const char* value, size_t size) {
+  
+  version_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.ConfigurationItem.version)
+}
+inline ::std::string* ConfigurationItem::mutable_version() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.ConfigurationItem.version)
+  return version_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ConfigurationItem::release_version() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.ConfigurationItem.version)
+  
+  return version_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ConfigurationItem::set_allocated_version(::std::string* version) {
+  if (version != NULL) {
+    
+  } else {
+    
+  }
+  version_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), version);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.ConfigurationItem.version)
+}
+
+// map<string, string> metadata = 4;
+inline int ConfigurationItem::metadata_size() const {
+  return metadata_.size();
+}
+inline void ConfigurationItem::clear_metadata() {
+  metadata_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+ConfigurationItem::metadata() const {
+  // @@protoc_insertion_point(field_map:dapr.proto.common.v1.ConfigurationItem.metadata)
+  return metadata_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+ConfigurationItem::mutable_metadata() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.common.v1.ConfigurationItem.metadata)
+  return metadata_.MutableMap();
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
