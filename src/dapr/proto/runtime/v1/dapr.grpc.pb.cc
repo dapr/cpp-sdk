@@ -37,6 +37,7 @@ static const char* Dapr_method_names[] = {
   "/dapr.proto.runtime.v1.Dapr/UnregisterActorTimer",
   "/dapr.proto.runtime.v1.Dapr/RegisterActorReminder",
   "/dapr.proto.runtime.v1.Dapr/UnregisterActorReminder",
+  "/dapr.proto.runtime.v1.Dapr/RenameActorReminder",
   "/dapr.proto.runtime.v1.Dapr/GetActorState",
   "/dapr.proto.runtime.v1.Dapr/ExecuteActorStateTransaction",
   "/dapr.proto.runtime.v1.Dapr/InvokeActor",
@@ -70,14 +71,15 @@ Dapr::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   , rpcmethod_UnregisterActorTimer_(Dapr_method_names[13], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_RegisterActorReminder_(Dapr_method_names[14], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_UnregisterActorReminder_(Dapr_method_names[15], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetActorState_(Dapr_method_names[16], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ExecuteActorStateTransaction_(Dapr_method_names[17], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_InvokeActor_(Dapr_method_names[18], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetConfigurationAlpha1_(Dapr_method_names[19], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SubscribeConfigurationAlpha1_(Dapr_method_names[20], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_GetMetadata_(Dapr_method_names[21], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetMetadata_(Dapr_method_names[22], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Shutdown_(Dapr_method_names[23], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RenameActorReminder_(Dapr_method_names[16], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetActorState_(Dapr_method_names[17], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ExecuteActorStateTransaction_(Dapr_method_names[18], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_InvokeActor_(Dapr_method_names[19], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetConfigurationAlpha1_(Dapr_method_names[20], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubscribeConfigurationAlpha1_(Dapr_method_names[21], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_GetMetadata_(Dapr_method_names[22], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetMetadata_(Dapr_method_names[23], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Shutdown_(Dapr_method_names[24], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Dapr::Stub::InvokeService(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeServiceRequest& request, ::dapr::proto::common::v1::InvokeResponse* response) {
@@ -336,6 +338,22 @@ void Dapr::Stub::experimental_async::UnregisterActorReminder(::grpc::ClientConte
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_UnregisterActorReminder_, context, request, false);
 }
 
+::grpc::Status Dapr::Stub::RenameActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RenameActorReminderRequest& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_RenameActorReminder_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::RenameActorReminder(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RenameActorReminderRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_RenameActorReminder_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::AsyncRenameActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RenameActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_RenameActorReminder_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::PrepareAsyncRenameActorReminderRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RenameActorReminderRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_RenameActorReminder_, context, request, false);
+}
+
 ::grpc::Status Dapr::Stub::GetActorState(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetActorStateRequest& request, ::dapr::proto::runtime::v1::GetActorStateResponse* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetActorState_, context, request, response);
 }
@@ -544,40 +562,45 @@ Dapr::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Dapr_method_names[16],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::RenameActorReminderRequest, ::google::protobuf::Empty>(
+          std::mem_fn(&Dapr::Service::RenameActorReminder), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[17],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::GetActorStateRequest, ::dapr::proto::runtime::v1::GetActorStateResponse>(
           std::mem_fn(&Dapr::Service::GetActorState), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[17],
+      Dapr_method_names[18],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest, ::google::protobuf::Empty>(
           std::mem_fn(&Dapr::Service::ExecuteActorStateTransaction), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[18],
+      Dapr_method_names[19],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::InvokeActorRequest, ::dapr::proto::runtime::v1::InvokeActorResponse>(
           std::mem_fn(&Dapr::Service::InvokeActor), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[19],
+      Dapr_method_names[20],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::GetConfigurationRequest, ::dapr::proto::runtime::v1::GetConfigurationResponse>(
           std::mem_fn(&Dapr::Service::GetConfigurationAlpha1), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[20],
+      Dapr_method_names[21],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< Dapr::Service, ::dapr::proto::runtime::v1::SubscribeConfigurationRequest, ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>(
           std::mem_fn(&Dapr::Service::SubscribeConfigurationAlpha1), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[21],
+      Dapr_method_names[22],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::google::protobuf::Empty, ::dapr::proto::runtime::v1::GetMetadataResponse>(
           std::mem_fn(&Dapr::Service::GetMetadata), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[22],
+      Dapr_method_names[23],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::SetMetadataRequest, ::google::protobuf::Empty>(
           std::mem_fn(&Dapr::Service::SetMetadata), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[23],
+      Dapr_method_names[24],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::google::protobuf::Empty, ::google::protobuf::Empty>(
           std::mem_fn(&Dapr::Service::Shutdown), this)));
@@ -692,6 +715,13 @@ Dapr::Service::~Service() {
 }
 
 ::grpc::Status Dapr::Service::UnregisterActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnregisterActorReminderRequest* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::RenameActorReminder(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RenameActorReminderRequest* request, ::google::protobuf::Empty* response) {
   (void) context;
   (void) request;
   (void) response;

@@ -271,6 +271,11 @@ class UnregisterActorReminderRequestDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<UnregisterActorReminderRequest>
       _instance;
 } _UnregisterActorReminderRequest_default_instance_;
+class RenameActorReminderRequestDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<RenameActorReminderRequest>
+      _instance;
+} _RenameActorReminderRequest_default_instance_;
 class GetActorStateRequestDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<GetActorStateRequest>
@@ -959,6 +964,20 @@ static void InitDefaultsUnregisterActorReminderRequest() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_UnregisterActorReminderRequest =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsUnregisterActorReminderRequest}, {}};
 
+static void InitDefaultsRenameActorReminderRequest() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::dapr::proto::runtime::v1::_RenameActorReminderRequest_default_instance_;
+    new (ptr) ::dapr::proto::runtime::v1::RenameActorReminderRequest();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::dapr::proto::runtime::v1::RenameActorReminderRequest::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_RenameActorReminderRequest =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsRenameActorReminderRequest}, {}};
+
 static void InitDefaultsGetActorStateRequest() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -1246,6 +1265,7 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_UnregisterActorTimerRequest.base);
   ::google::protobuf::internal::InitSCC(&scc_info_RegisterActorReminderRequest.base);
   ::google::protobuf::internal::InitSCC(&scc_info_UnregisterActorReminderRequest.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_RenameActorReminderRequest.base);
   ::google::protobuf::internal::InitSCC(&scc_info_GetActorStateRequest.base);
   ::google::protobuf::internal::InitSCC(&scc_info_GetActorStateResponse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_ExecuteActorStateTransactionRequest.base);
@@ -1265,7 +1285,7 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_SubscribeConfigurationResponse.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[59];
+::google::protobuf::Metadata file_level_metadata[60];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
@@ -1626,6 +1646,15 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::UnregisterActorReminderRequest, actor_id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::UnregisterActorReminderRequest, name_),
   ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::RenameActorReminderRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::RenameActorReminderRequest, actor_type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::RenameActorReminderRequest, actor_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::RenameActorReminderRequest, old_name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::RenameActorReminderRequest, new_name_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::GetActorStateRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -1800,23 +1829,24 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 329, -1, sizeof(::dapr::proto::runtime::v1::UnregisterActorTimerRequest)},
   { 337, -1, sizeof(::dapr::proto::runtime::v1::RegisterActorReminderRequest)},
   { 349, -1, sizeof(::dapr::proto::runtime::v1::UnregisterActorReminderRequest)},
-  { 357, -1, sizeof(::dapr::proto::runtime::v1::GetActorStateRequest)},
-  { 365, -1, sizeof(::dapr::proto::runtime::v1::GetActorStateResponse)},
-  { 371, -1, sizeof(::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest)},
-  { 379, -1, sizeof(::dapr::proto::runtime::v1::TransactionalActorStateOperation)},
-  { 387, -1, sizeof(::dapr::proto::runtime::v1::InvokeActorRequest)},
-  { 396, -1, sizeof(::dapr::proto::runtime::v1::InvokeActorResponse)},
-  { 402, 409, sizeof(::dapr::proto::runtime::v1::GetMetadataResponse_ExtendedMetadataEntry_DoNotUse)},
-  { 411, -1, sizeof(::dapr::proto::runtime::v1::GetMetadataResponse)},
-  { 420, -1, sizeof(::dapr::proto::runtime::v1::ActiveActorsCount)},
-  { 427, -1, sizeof(::dapr::proto::runtime::v1::RegisteredComponents)},
-  { 435, -1, sizeof(::dapr::proto::runtime::v1::SetMetadataRequest)},
-  { 442, 449, sizeof(::dapr::proto::runtime::v1::GetConfigurationRequest_MetadataEntry_DoNotUse)},
-  { 451, -1, sizeof(::dapr::proto::runtime::v1::GetConfigurationRequest)},
-  { 459, -1, sizeof(::dapr::proto::runtime::v1::GetConfigurationResponse)},
-  { 465, 472, sizeof(::dapr::proto::runtime::v1::SubscribeConfigurationRequest_MetadataEntry_DoNotUse)},
-  { 474, -1, sizeof(::dapr::proto::runtime::v1::SubscribeConfigurationRequest)},
-  { 482, -1, sizeof(::dapr::proto::runtime::v1::SubscribeConfigurationResponse)},
+  { 357, -1, sizeof(::dapr::proto::runtime::v1::RenameActorReminderRequest)},
+  { 366, -1, sizeof(::dapr::proto::runtime::v1::GetActorStateRequest)},
+  { 374, -1, sizeof(::dapr::proto::runtime::v1::GetActorStateResponse)},
+  { 380, -1, sizeof(::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest)},
+  { 388, -1, sizeof(::dapr::proto::runtime::v1::TransactionalActorStateOperation)},
+  { 396, -1, sizeof(::dapr::proto::runtime::v1::InvokeActorRequest)},
+  { 405, -1, sizeof(::dapr::proto::runtime::v1::InvokeActorResponse)},
+  { 411, 418, sizeof(::dapr::proto::runtime::v1::GetMetadataResponse_ExtendedMetadataEntry_DoNotUse)},
+  { 420, -1, sizeof(::dapr::proto::runtime::v1::GetMetadataResponse)},
+  { 429, -1, sizeof(::dapr::proto::runtime::v1::ActiveActorsCount)},
+  { 436, -1, sizeof(::dapr::proto::runtime::v1::RegisteredComponents)},
+  { 444, -1, sizeof(::dapr::proto::runtime::v1::SetMetadataRequest)},
+  { 451, 458, sizeof(::dapr::proto::runtime::v1::GetConfigurationRequest_MetadataEntry_DoNotUse)},
+  { 460, -1, sizeof(::dapr::proto::runtime::v1::GetConfigurationRequest)},
+  { 468, -1, sizeof(::dapr::proto::runtime::v1::GetConfigurationResponse)},
+  { 474, 481, sizeof(::dapr::proto::runtime::v1::SubscribeConfigurationRequest_MetadataEntry_DoNotUse)},
+  { 483, -1, sizeof(::dapr::proto::runtime::v1::SubscribeConfigurationRequest)},
+  { 491, -1, sizeof(::dapr::proto::runtime::v1::SubscribeConfigurationResponse)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -1862,6 +1892,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_UnregisterActorTimerRequest_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_RegisterActorReminderRequest_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_UnregisterActorReminderRequest_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_RenameActorReminderRequest_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_GetActorStateRequest_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_GetActorStateResponse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_ExecuteActorStateTransactionRequest_default_instance_),
@@ -1896,7 +1927,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 59);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 60);
 }
 
 void AddDescriptorsImpl() {
@@ -2009,113 +2040,118 @@ void AddDescriptorsImpl() {
       "(\t\022\016\n\006period\030\005 \001(\t\022\014\n\004data\030\006 \001(\014\022\013\n\003ttl\030"
       "\007 \001(\t\"T\n\036UnregisterActorReminderRequest\022"
       "\022\n\nactor_type\030\001 \001(\t\022\020\n\010actor_id\030\002 \001(\t\022\014\n"
-      "\004name\030\003 \001(\t\"I\n\024GetActorStateRequest\022\022\n\na"
-      "ctor_type\030\001 \001(\t\022\020\n\010actor_id\030\002 \001(\t\022\013\n\003key"
-      "\030\003 \001(\t\"%\n\025GetActorStateResponse\022\014\n\004data\030"
-      "\001 \001(\014\"\230\001\n#ExecuteActorStateTransactionRe"
-      "quest\022\022\n\nactor_type\030\001 \001(\t\022\020\n\010actor_id\030\002 "
-      "\001(\t\022K\n\noperations\030\003 \003(\01327.dapr.proto.run"
-      "time.v1.TransactionalActorStateOperation"
-      "\"k\n TransactionalActorStateOperation\022\025\n\r"
-      "operationType\030\001 \001(\t\022\013\n\003key\030\002 \001(\t\022#\n\005valu"
-      "e\030\003 \001(\0132\024.google.protobuf.Any\"X\n\022InvokeA"
-      "ctorRequest\022\022\n\nactor_type\030\001 \001(\t\022\020\n\010actor"
-      "_id\030\002 \001(\t\022\016\n\006method\030\003 \001(\t\022\014\n\004data\030\004 \001(\014\""
-      "#\n\023InvokeActorResponse\022\014\n\004data\030\001 \001(\014\"\312\002\n"
-      "\023GetMetadataResponse\022\n\n\002id\030\001 \001(\t\022E\n\023acti"
-      "ve_actors_count\030\002 \003(\0132(.dapr.proto.runti"
-      "me.v1.ActiveActorsCount\022J\n\025registered_co"
-      "mponents\030\003 \003(\0132+.dapr.proto.runtime.v1.R"
-      "egisteredComponents\022[\n\021extended_metadata"
-      "\030\004 \003(\0132@.dapr.proto.runtime.v1.GetMetada"
-      "taResponse.ExtendedMetadataEntry\0327\n\025Exte"
-      "ndedMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030"
-      "\002 \001(\t:\0028\001\"0\n\021ActiveActorsCount\022\014\n\004type\030\001"
-      " \001(\t\022\r\n\005count\030\002 \001(\005\"C\n\024RegisteredCompone"
-      "nts\022\014\n\004name\030\001 \001(\t\022\014\n\004type\030\002 \001(\t\022\017\n\007versi"
-      "on\030\003 \001(\t\"0\n\022SetMetadataRequest\022\013\n\003key\030\001 "
-      "\001(\t\022\r\n\005value\030\002 \001(\t\"\274\001\n\027GetConfigurationR"
-      "equest\022\022\n\nstore_name\030\001 \001(\t\022\014\n\004keys\030\002 \003(\t"
-      "\022N\n\010metadata\030\003 \003(\0132<.dapr.proto.runtime."
-      "v1.GetConfigurationRequest.MetadataEntry"
-      "\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030"
-      "\002 \001(\t:\0028\001\"R\n\030GetConfigurationResponse\0226\n"
-      "\005items\030\001 \003(\0132\'.dapr.proto.common.v1.Conf"
-      "igurationItem\"\310\001\n\035SubscribeConfiguration"
-      "Request\022\022\n\nstore_name\030\001 \001(\t\022\014\n\004keys\030\002 \003("
-      "\t\022T\n\010metadata\030\003 \003(\0132B.dapr.proto.runtime"
-      ".v1.SubscribeConfigurationRequest.Metada"
-      "taEntry\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n"
-      "\005value\030\002 \001(\t:\0028\001\"X\n\036SubscribeConfigurati"
-      "onResponse\0226\n\005items\030\001 \003(\0132\'.dapr.proto.c"
-      "ommon.v1.ConfigurationItem2\377\022\n\004Dapr\022d\n\rI"
-      "nvokeService\022+.dapr.proto.runtime.v1.Inv"
-      "okeServiceRequest\032$.dapr.proto.common.v1"
-      ".InvokeResponse\"\000\022]\n\010GetState\022&.dapr.pro"
-      "to.runtime.v1.GetStateRequest\032\'.dapr.pro"
-      "to.runtime.v1.GetStateResponse\"\000\022i\n\014GetB"
-      "ulkState\022*.dapr.proto.runtime.v1.GetBulk"
-      "StateRequest\032+.dapr.proto.runtime.v1.Get"
-      "BulkStateResponse\"\000\022N\n\tSaveState\022\'.dapr."
-      "proto.runtime.v1.SaveStateRequest\032\026.goog"
-      "le.protobuf.Empty\"\000\022i\n\020QueryStateAlpha1\022"
-      "(.dapr.proto.runtime.v1.QueryStateReques"
-      "t\032).dapr.proto.runtime.v1.QueryStateResp"
-      "onse\"\000\022R\n\013DeleteState\022).dapr.proto.runti"
-      "me.v1.DeleteStateRequest\032\026.google.protob"
-      "uf.Empty\"\000\022Z\n\017DeleteBulkState\022-.dapr.pro"
-      "to.runtime.v1.DeleteBulkStateRequest\032\026.g"
-      "oogle.protobuf.Empty\"\000\022j\n\027ExecuteStateTr"
-      "ansaction\0225.dapr.proto.runtime.v1.Execut"
-      "eStateTransactionRequest\032\026.google.protob"
-      "uf.Empty\"\000\022T\n\014PublishEvent\022*.dapr.proto."
-      "runtime.v1.PublishEventRequest\032\026.google."
-      "protobuf.Empty\"\000\022l\n\rInvokeBinding\022+.dapr"
-      ".proto.runtime.v1.InvokeBindingRequest\032,"
-      ".dapr.proto.runtime.v1.InvokeBindingResp"
-      "onse\"\000\022`\n\tGetSecret\022\'.dapr.proto.runtime"
-      ".v1.GetSecretRequest\032(.dapr.proto.runtim"
-      "e.v1.GetSecretResponse\"\000\022l\n\rGetBulkSecre"
-      "t\022+.dapr.proto.runtime.v1.GetBulkSecretR"
-      "equest\032,.dapr.proto.runtime.v1.GetBulkSe"
-      "cretResponse\"\000\022`\n\022RegisterActorTimer\0220.d"
-      "apr.proto.runtime.v1.RegisterActorTimerR"
-      "equest\032\026.google.protobuf.Empty\"\000\022d\n\024Unre"
-      "gisterActorTimer\0222.dapr.proto.runtime.v1"
-      ".UnregisterActorTimerRequest\032\026.google.pr"
-      "otobuf.Empty\"\000\022f\n\025RegisterActorReminder\022"
-      "3.dapr.proto.runtime.v1.RegisterActorRem"
-      "inderRequest\032\026.google.protobuf.Empty\"\000\022j"
-      "\n\027UnregisterActorReminder\0225.dapr.proto.r"
-      "untime.v1.UnregisterActorReminderRequest"
-      "\032\026.google.protobuf.Empty\"\000\022l\n\rGetActorSt"
-      "ate\022+.dapr.proto.runtime.v1.GetActorStat"
-      "eRequest\032,.dapr.proto.runtime.v1.GetActo"
-      "rStateResponse\"\000\022t\n\034ExecuteActorStateTra"
-      "nsaction\022:.dapr.proto.runtime.v1.Execute"
-      "ActorStateTransactionRequest\032\026.google.pr"
-      "otobuf.Empty\"\000\022f\n\013InvokeActor\022).dapr.pro"
-      "to.runtime.v1.InvokeActorRequest\032*.dapr."
-      "proto.runtime.v1.InvokeActorResponse\"\000\022{"
-      "\n\026GetConfigurationAlpha1\022..dapr.proto.ru"
-      "ntime.v1.GetConfigurationRequest\032/.dapr."
-      "proto.runtime.v1.GetConfigurationRespons"
-      "e\"\000\022\217\001\n\034SubscribeConfigurationAlpha1\0224.d"
-      "apr.proto.runtime.v1.SubscribeConfigurat"
-      "ionRequest\0325.dapr.proto.runtime.v1.Subsc"
-      "ribeConfigurationResponse\"\0000\001\022S\n\013GetMeta"
-      "data\022\026.google.protobuf.Empty\032*.dapr.prot"
-      "o.runtime.v1.GetMetadataResponse\"\000\022R\n\013Se"
-      "tMetadata\022).dapr.proto.runtime.v1.SetMet"
-      "adataRequest\032\026.google.protobuf.Empty\"\000\022<"
-      "\n\010Shutdown\022\026.google.protobuf.Empty\032\026.goo"
-      "gle.protobuf.Empty\"\000Bi\n\nio.dapr.v1B\nDapr"
-      "ProtosZ1github.com/dapr/dapr/pkg/proto/r"
-      "untime/v1;runtime\252\002\033Dapr.Client.Autogen."
-      "Grpc.v1b\006proto3"
+      "\004name\030\003 \001(\t\"f\n\032RenameActorReminderReques"
+      "t\022\022\n\nactor_type\030\001 \001(\t\022\020\n\010actor_id\030\002 \001(\t\022"
+      "\020\n\010old_name\030\003 \001(\t\022\020\n\010new_name\030\004 \001(\t\"I\n\024G"
+      "etActorStateRequest\022\022\n\nactor_type\030\001 \001(\t\022"
+      "\020\n\010actor_id\030\002 \001(\t\022\013\n\003key\030\003 \001(\t\"%\n\025GetAct"
+      "orStateResponse\022\014\n\004data\030\001 \001(\014\"\230\001\n#Execut"
+      "eActorStateTransactionRequest\022\022\n\nactor_t"
+      "ype\030\001 \001(\t\022\020\n\010actor_id\030\002 \001(\t\022K\n\noperation"
+      "s\030\003 \003(\01327.dapr.proto.runtime.v1.Transact"
+      "ionalActorStateOperation\"k\n Transactiona"
+      "lActorStateOperation\022\025\n\roperationType\030\001 "
+      "\001(\t\022\013\n\003key\030\002 \001(\t\022#\n\005value\030\003 \001(\0132\024.google"
+      ".protobuf.Any\"X\n\022InvokeActorRequest\022\022\n\na"
+      "ctor_type\030\001 \001(\t\022\020\n\010actor_id\030\002 \001(\t\022\016\n\006met"
+      "hod\030\003 \001(\t\022\014\n\004data\030\004 \001(\014\"#\n\023InvokeActorRe"
+      "sponse\022\014\n\004data\030\001 \001(\014\"\312\002\n\023GetMetadataResp"
+      "onse\022\n\n\002id\030\001 \001(\t\022E\n\023active_actors_count\030"
+      "\002 \003(\0132(.dapr.proto.runtime.v1.ActiveActo"
+      "rsCount\022J\n\025registered_components\030\003 \003(\0132+"
+      ".dapr.proto.runtime.v1.RegisteredCompone"
+      "nts\022[\n\021extended_metadata\030\004 \003(\0132@.dapr.pr"
+      "oto.runtime.v1.GetMetadataResponse.Exten"
+      "dedMetadataEntry\0327\n\025ExtendedMetadataEntr"
+      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"0\n\021Act"
+      "iveActorsCount\022\014\n\004type\030\001 \001(\t\022\r\n\005count\030\002 "
+      "\001(\005\"C\n\024RegisteredComponents\022\014\n\004name\030\001 \001("
+      "\t\022\014\n\004type\030\002 \001(\t\022\017\n\007version\030\003 \001(\t\"0\n\022SetM"
+      "etadataRequest\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001"
+      "(\t\"\274\001\n\027GetConfigurationRequest\022\022\n\nstore_"
+      "name\030\001 \001(\t\022\014\n\004keys\030\002 \003(\t\022N\n\010metadata\030\003 \003"
+      "(\0132<.dapr.proto.runtime.v1.GetConfigurat"
+      "ionRequest.MetadataEntry\032/\n\rMetadataEntr"
+      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"R\n\030Get"
+      "ConfigurationResponse\0226\n\005items\030\001 \003(\0132\'.d"
+      "apr.proto.common.v1.ConfigurationItem\"\310\001"
+      "\n\035SubscribeConfigurationRequest\022\022\n\nstore"
+      "_name\030\001 \001(\t\022\014\n\004keys\030\002 \003(\t\022T\n\010metadata\030\003 "
+      "\003(\0132B.dapr.proto.runtime.v1.SubscribeCon"
+      "figurationRequest.MetadataEntry\032/\n\rMetad"
+      "ataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001"
+      "\"X\n\036SubscribeConfigurationResponse\0226\n\005it"
+      "ems\030\001 \003(\0132\'.dapr.proto.common.v1.Configu"
+      "rationItem2\343\023\n\004Dapr\022d\n\rInvokeService\022+.d"
+      "apr.proto.runtime.v1.InvokeServiceReques"
+      "t\032$.dapr.proto.common.v1.InvokeResponse\""
+      "\000\022]\n\010GetState\022&.dapr.proto.runtime.v1.Ge"
+      "tStateRequest\032\'.dapr.proto.runtime.v1.Ge"
+      "tStateResponse\"\000\022i\n\014GetBulkState\022*.dapr."
+      "proto.runtime.v1.GetBulkStateRequest\032+.d"
+      "apr.proto.runtime.v1.GetBulkStateRespons"
+      "e\"\000\022N\n\tSaveState\022\'.dapr.proto.runtime.v1"
+      ".SaveStateRequest\032\026.google.protobuf.Empt"
+      "y\"\000\022i\n\020QueryStateAlpha1\022(.dapr.proto.run"
+      "time.v1.QueryStateRequest\032).dapr.proto.r"
+      "untime.v1.QueryStateResponse\"\000\022R\n\013Delete"
+      "State\022).dapr.proto.runtime.v1.DeleteStat"
+      "eRequest\032\026.google.protobuf.Empty\"\000\022Z\n\017De"
+      "leteBulkState\022-.dapr.proto.runtime.v1.De"
+      "leteBulkStateRequest\032\026.google.protobuf.E"
+      "mpty\"\000\022j\n\027ExecuteStateTransaction\0225.dapr"
+      ".proto.runtime.v1.ExecuteStateTransactio"
+      "nRequest\032\026.google.protobuf.Empty\"\000\022T\n\014Pu"
+      "blishEvent\022*.dapr.proto.runtime.v1.Publi"
+      "shEventRequest\032\026.google.protobuf.Empty\"\000"
+      "\022l\n\rInvokeBinding\022+.dapr.proto.runtime.v"
+      "1.InvokeBindingRequest\032,.dapr.proto.runt"
+      "ime.v1.InvokeBindingResponse\"\000\022`\n\tGetSec"
+      "ret\022\'.dapr.proto.runtime.v1.GetSecretReq"
+      "uest\032(.dapr.proto.runtime.v1.GetSecretRe"
+      "sponse\"\000\022l\n\rGetBulkSecret\022+.dapr.proto.r"
+      "untime.v1.GetBulkSecretRequest\032,.dapr.pr"
+      "oto.runtime.v1.GetBulkSecretResponse\"\000\022`"
+      "\n\022RegisterActorTimer\0220.dapr.proto.runtim"
+      "e.v1.RegisterActorTimerRequest\032\026.google."
+      "protobuf.Empty\"\000\022d\n\024UnregisterActorTimer"
+      "\0222.dapr.proto.runtime.v1.UnregisterActor"
+      "TimerRequest\032\026.google.protobuf.Empty\"\000\022f"
+      "\n\025RegisterActorReminder\0223.dapr.proto.run"
+      "time.v1.RegisterActorReminderRequest\032\026.g"
+      "oogle.protobuf.Empty\"\000\022j\n\027UnregisterActo"
+      "rReminder\0225.dapr.proto.runtime.v1.Unregi"
+      "sterActorReminderRequest\032\026.google.protob"
+      "uf.Empty\"\000\022b\n\023RenameActorReminder\0221.dapr"
+      ".proto.runtime.v1.RenameActorReminderReq"
+      "uest\032\026.google.protobuf.Empty\"\000\022l\n\rGetAct"
+      "orState\022+.dapr.proto.runtime.v1.GetActor"
+      "StateRequest\032,.dapr.proto.runtime.v1.Get"
+      "ActorStateResponse\"\000\022t\n\034ExecuteActorStat"
+      "eTransaction\022:.dapr.proto.runtime.v1.Exe"
+      "cuteActorStateTransactionRequest\032\026.googl"
+      "e.protobuf.Empty\"\000\022f\n\013InvokeActor\022).dapr"
+      ".proto.runtime.v1.InvokeActorRequest\032*.d"
+      "apr.proto.runtime.v1.InvokeActorResponse"
+      "\"\000\022{\n\026GetConfigurationAlpha1\022..dapr.prot"
+      "o.runtime.v1.GetConfigurationRequest\032/.d"
+      "apr.proto.runtime.v1.GetConfigurationRes"
+      "ponse\"\000\022\217\001\n\034SubscribeConfigurationAlpha1"
+      "\0224.dapr.proto.runtime.v1.SubscribeConfig"
+      "urationRequest\0325.dapr.proto.runtime.v1.S"
+      "ubscribeConfigurationResponse\"\0000\001\022S\n\013Get"
+      "Metadata\022\026.google.protobuf.Empty\032*.dapr."
+      "proto.runtime.v1.GetMetadataResponse\"\000\022R"
+      "\n\013SetMetadata\022).dapr.proto.runtime.v1.Se"
+      "tMetadataRequest\032\026.google.protobuf.Empty"
+      "\"\000\022<\n\010Shutdown\022\026.google.protobuf.Empty\032\026"
+      ".google.protobuf.Empty\"\000Bi\n\nio.dapr.v1B\n"
+      "DaprProtosZ1github.com/dapr/dapr/pkg/pro"
+      "to/runtime/v1;runtime\252\002\033Dapr.Client.Auto"
+      "gen.Grpc.v1b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 8415);
+      descriptor, 8619);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dapr/proto/runtime/v1/dapr.proto", &protobuf_RegisterTypes);
   ::protobuf_google_2fprotobuf_2fany_2eproto::AddDescriptors();
@@ -13361,6 +13397,422 @@ void UnregisterActorReminderRequest::InternalSwap(UnregisterActorReminderRequest
 
 // ===================================================================
 
+void RenameActorReminderRequest::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int RenameActorReminderRequest::kActorTypeFieldNumber;
+const int RenameActorReminderRequest::kActorIdFieldNumber;
+const int RenameActorReminderRequest::kOldNameFieldNumber;
+const int RenameActorReminderRequest::kNewNameFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+RenameActorReminderRequest::RenameActorReminderRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::scc_info_RenameActorReminderRequest.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.RenameActorReminderRequest)
+}
+RenameActorReminderRequest::RenameActorReminderRequest(const RenameActorReminderRequest& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  actor_type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.actor_type().size() > 0) {
+    actor_type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.actor_type_);
+  }
+  actor_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.actor_id().size() > 0) {
+    actor_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.actor_id_);
+  }
+  old_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.old_name().size() > 0) {
+    old_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.old_name_);
+  }
+  new_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.new_name().size() > 0) {
+    new_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.new_name_);
+  }
+  // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.RenameActorReminderRequest)
+}
+
+void RenameActorReminderRequest::SharedCtor() {
+  actor_type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  actor_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  old_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  new_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+RenameActorReminderRequest::~RenameActorReminderRequest() {
+  // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.RenameActorReminderRequest)
+  SharedDtor();
+}
+
+void RenameActorReminderRequest::SharedDtor() {
+  actor_type_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  actor_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  old_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  new_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void RenameActorReminderRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* RenameActorReminderRequest::descriptor() {
+  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const RenameActorReminderRequest& RenameActorReminderRequest::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::scc_info_RenameActorReminderRequest.base);
+  return *internal_default_instance();
+}
+
+
+void RenameActorReminderRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.RenameActorReminderRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  actor_type_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  actor_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  old_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  new_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+bool RenameActorReminderRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.RenameActorReminderRequest)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string actor_type = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_actor_type()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->actor_type().data(), static_cast<int>(this->actor_type().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "dapr.proto.runtime.v1.RenameActorReminderRequest.actor_type"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string actor_id = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_actor_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->actor_id().data(), static_cast<int>(this->actor_id().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "dapr.proto.runtime.v1.RenameActorReminderRequest.actor_id"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string old_name = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_old_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->old_name().data(), static_cast<int>(this->old_name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "dapr.proto.runtime.v1.RenameActorReminderRequest.old_name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string new_name = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_new_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->new_name().data(), static_cast<int>(this->new_name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "dapr.proto.runtime.v1.RenameActorReminderRequest.new_name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.RenameActorReminderRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.RenameActorReminderRequest)
+  return false;
+#undef DO_
+}
+
+void RenameActorReminderRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.RenameActorReminderRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string actor_type = 1;
+  if (this->actor_type().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->actor_type().data(), static_cast<int>(this->actor_type().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.RenameActorReminderRequest.actor_type");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->actor_type(), output);
+  }
+
+  // string actor_id = 2;
+  if (this->actor_id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->actor_id().data(), static_cast<int>(this->actor_id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.RenameActorReminderRequest.actor_id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->actor_id(), output);
+  }
+
+  // string old_name = 3;
+  if (this->old_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->old_name().data(), static_cast<int>(this->old_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.RenameActorReminderRequest.old_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->old_name(), output);
+  }
+
+  // string new_name = 4;
+  if (this->new_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->new_name().data(), static_cast<int>(this->new_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.RenameActorReminderRequest.new_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->new_name(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.RenameActorReminderRequest)
+}
+
+::google::protobuf::uint8* RenameActorReminderRequest::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.RenameActorReminderRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string actor_type = 1;
+  if (this->actor_type().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->actor_type().data(), static_cast<int>(this->actor_type().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.RenameActorReminderRequest.actor_type");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->actor_type(), target);
+  }
+
+  // string actor_id = 2;
+  if (this->actor_id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->actor_id().data(), static_cast<int>(this->actor_id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.RenameActorReminderRequest.actor_id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->actor_id(), target);
+  }
+
+  // string old_name = 3;
+  if (this->old_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->old_name().data(), static_cast<int>(this->old_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.RenameActorReminderRequest.old_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->old_name(), target);
+  }
+
+  // string new_name = 4;
+  if (this->new_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->new_name().data(), static_cast<int>(this->new_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.RenameActorReminderRequest.new_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->new_name(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.RenameActorReminderRequest)
+  return target;
+}
+
+size_t RenameActorReminderRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.RenameActorReminderRequest)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // string actor_type = 1;
+  if (this->actor_type().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->actor_type());
+  }
+
+  // string actor_id = 2;
+  if (this->actor_id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->actor_id());
+  }
+
+  // string old_name = 3;
+  if (this->old_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->old_name());
+  }
+
+  // string new_name = 4;
+  if (this->new_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->new_name());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void RenameActorReminderRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.RenameActorReminderRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const RenameActorReminderRequest* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const RenameActorReminderRequest>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.RenameActorReminderRequest)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.RenameActorReminderRequest)
+    MergeFrom(*source);
+  }
+}
+
+void RenameActorReminderRequest::MergeFrom(const RenameActorReminderRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.RenameActorReminderRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.actor_type().size() > 0) {
+
+    actor_type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.actor_type_);
+  }
+  if (from.actor_id().size() > 0) {
+
+    actor_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.actor_id_);
+  }
+  if (from.old_name().size() > 0) {
+
+    old_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.old_name_);
+  }
+  if (from.new_name().size() > 0) {
+
+    new_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.new_name_);
+  }
+}
+
+void RenameActorReminderRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.RenameActorReminderRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void RenameActorReminderRequest::CopyFrom(const RenameActorReminderRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dapr.proto.runtime.v1.RenameActorReminderRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RenameActorReminderRequest::IsInitialized() const {
+  return true;
+}
+
+void RenameActorReminderRequest::Swap(RenameActorReminderRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void RenameActorReminderRequest::InternalSwap(RenameActorReminderRequest* other) {
+  using std::swap;
+  actor_type_.Swap(&other->actor_type_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  actor_id_.Swap(&other->actor_id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  old_name_.Swap(&other->old_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  new_name_.Swap(&other->new_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata RenameActorReminderRequest::GetMetadata() const {
+  protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
 void GetActorStateRequest::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -15291,7 +15743,7 @@ void GetMetadataResponse_ExtendedMetadataEntry_DoNotUse::MergeFrom(const GetMeta
 }
 ::google::protobuf::Metadata GetMetadataResponse_ExtendedMetadataEntry_DoNotUse::GetMetadata() const {
   ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::file_level_metadata[48];
+  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::file_level_metadata[49];
 }
 void GetMetadataResponse_ExtendedMetadataEntry_DoNotUse::MergeFrom(
     const ::google::protobuf::Message& other) {
@@ -16735,7 +17187,7 @@ void GetConfigurationRequest_MetadataEntry_DoNotUse::MergeFrom(const GetConfigur
 }
 ::google::protobuf::Metadata GetConfigurationRequest_MetadataEntry_DoNotUse::GetMetadata() const {
   ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::file_level_metadata[53];
+  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::file_level_metadata[54];
 }
 void GetConfigurationRequest_MetadataEntry_DoNotUse::MergeFrom(
     const ::google::protobuf::Message& other) {
@@ -17432,7 +17884,7 @@ void SubscribeConfigurationRequest_MetadataEntry_DoNotUse::MergeFrom(const Subsc
 }
 ::google::protobuf::Metadata SubscribeConfigurationRequest_MetadataEntry_DoNotUse::GetMetadata() const {
   ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::file_level_metadata[56];
+  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::file_level_metadata[57];
 }
 void SubscribeConfigurationRequest_MetadataEntry_DoNotUse::MergeFrom(
     const ::google::protobuf::Message& other) {
@@ -18252,6 +18704,9 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::Regist
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::UnregisterActorReminderRequest* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::UnregisterActorReminderRequest >(Arena* arena) {
   return Arena::CreateInternal< ::dapr::proto::runtime::v1::UnregisterActorReminderRequest >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::RenameActorReminderRequest* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::RenameActorReminderRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::dapr::proto::runtime::v1::RenameActorReminderRequest >(arena);
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::GetActorStateRequest* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::GetActorStateRequest >(Arena* arena) {
   return Arena::CreateInternal< ::dapr::proto::runtime::v1::GetActorStateRequest >(arena);
