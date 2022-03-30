@@ -43,6 +43,7 @@ static const char* Dapr_method_names[] = {
   "/dapr.proto.runtime.v1.Dapr/InvokeActor",
   "/dapr.proto.runtime.v1.Dapr/GetConfigurationAlpha1",
   "/dapr.proto.runtime.v1.Dapr/SubscribeConfigurationAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/UnsubscribeConfigurationAlpha1",
   "/dapr.proto.runtime.v1.Dapr/GetMetadata",
   "/dapr.proto.runtime.v1.Dapr/SetMetadata",
   "/dapr.proto.runtime.v1.Dapr/Shutdown",
@@ -77,9 +78,10 @@ Dapr::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   , rpcmethod_InvokeActor_(Dapr_method_names[19], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetConfigurationAlpha1_(Dapr_method_names[20], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SubscribeConfigurationAlpha1_(Dapr_method_names[21], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_GetMetadata_(Dapr_method_names[22], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetMetadata_(Dapr_method_names[23], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Shutdown_(Dapr_method_names[24], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_UnsubscribeConfigurationAlpha1_(Dapr_method_names[22], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetMetadata_(Dapr_method_names[23], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetMetadata_(Dapr_method_names[24], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Shutdown_(Dapr_method_names[25], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Dapr::Stub::InvokeService(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeServiceRequest& request, ::dapr::proto::common::v1::InvokeResponse* response) {
@@ -430,6 +432,22 @@ void Dapr::Stub::experimental_async::GetConfigurationAlpha1(::grpc::ClientContex
   return ::grpc::internal::ClientAsyncReaderFactory< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeConfigurationAlpha1_, context, request, false, nullptr);
 }
 
+::grpc::Status Dapr::Stub::UnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_UnsubscribeConfigurationAlpha1_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::UnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_UnsubscribeConfigurationAlpha1_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* Dapr::Stub::AsyncUnsubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>::Create(channel_.get(), cq, rpcmethod_UnsubscribeConfigurationAlpha1_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* Dapr::Stub::PrepareAsyncUnsubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>::Create(channel_.get(), cq, rpcmethod_UnsubscribeConfigurationAlpha1_, context, request, false);
+}
+
 ::grpc::Status Dapr::Stub::GetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::dapr::proto::runtime::v1::GetMetadataResponse* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetMetadata_, context, request, response);
 }
@@ -592,15 +610,20 @@ Dapr::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Dapr_method_names[22],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>(
+          std::mem_fn(&Dapr::Service::UnsubscribeConfigurationAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[23],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::google::protobuf::Empty, ::dapr::proto::runtime::v1::GetMetadataResponse>(
           std::mem_fn(&Dapr::Service::GetMetadata), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[23],
+      Dapr_method_names[24],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::SetMetadataRequest, ::google::protobuf::Empty>(
           std::mem_fn(&Dapr::Service::SetMetadata), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[24],
+      Dapr_method_names[25],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::google::protobuf::Empty, ::google::protobuf::Empty>(
           std::mem_fn(&Dapr::Service::Shutdown), this)));
@@ -760,6 +783,13 @@ Dapr::Service::~Service() {
   (void) context;
   (void) request;
   (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::UnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 

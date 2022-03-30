@@ -356,11 +356,21 @@ class SubscribeConfigurationRequestDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<SubscribeConfigurationRequest>
       _instance;
 } _SubscribeConfigurationRequest_default_instance_;
+class UnsubscribeConfigurationRequestDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<UnsubscribeConfigurationRequest>
+      _instance;
+} _UnsubscribeConfigurationRequest_default_instance_;
 class SubscribeConfigurationResponseDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<SubscribeConfigurationResponse>
       _instance;
 } _SubscribeConfigurationResponse_default_instance_;
+class UnsubscribeConfigurationResponseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<UnsubscribeConfigurationResponse>
+      _instance;
+} _UnsubscribeConfigurationResponse_default_instance_;
 }  // namespace v1
 }  // namespace runtime
 }  // namespace proto
@@ -1207,6 +1217,20 @@ static void InitDefaultsSubscribeConfigurationRequest() {
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsSubscribeConfigurationRequest}, {
       &protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::scc_info_SubscribeConfigurationRequest_MetadataEntry_DoNotUse.base,}};
 
+static void InitDefaultsUnsubscribeConfigurationRequest() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::dapr::proto::runtime::v1::_UnsubscribeConfigurationRequest_default_instance_;
+    new (ptr) ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_UnsubscribeConfigurationRequest =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsUnsubscribeConfigurationRequest}, {}};
+
 static void InitDefaultsSubscribeConfigurationResponse() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -1221,6 +1245,20 @@ static void InitDefaultsSubscribeConfigurationResponse() {
 ::google::protobuf::internal::SCCInfo<1> scc_info_SubscribeConfigurationResponse =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsSubscribeConfigurationResponse}, {
       &protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::scc_info_ConfigurationItem.base,}};
+
+static void InitDefaultsUnsubscribeConfigurationResponse() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::dapr::proto::runtime::v1::_UnsubscribeConfigurationResponse_default_instance_;
+    new (ptr) ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_UnsubscribeConfigurationResponse =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsUnsubscribeConfigurationResponse}, {}};
 
 void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_InvokeServiceRequest.base);
@@ -1282,10 +1320,12 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_GetConfigurationResponse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SubscribeConfigurationRequest_MetadataEntry_DoNotUse.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SubscribeConfigurationRequest.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_UnsubscribeConfigurationRequest.base);
   ::google::protobuf::internal::InitSCC(&scc_info_SubscribeConfigurationResponse.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_UnsubscribeConfigurationResponse.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[60];
+::google::protobuf::Metadata file_level_metadata[62];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
@@ -1780,11 +1820,26 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::SubscribeConfigurationRequest, keys_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::SubscribeConfigurationRequest, metadata_),
   ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest, store_name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest, id_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::SubscribeConfigurationResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::SubscribeConfigurationResponse, id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::SubscribeConfigurationResponse, items_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse, ok_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse, message_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::dapr::proto::runtime::v1::InvokeServiceRequest)},
@@ -1846,7 +1901,9 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 468, -1, sizeof(::dapr::proto::runtime::v1::GetConfigurationResponse)},
   { 474, 481, sizeof(::dapr::proto::runtime::v1::SubscribeConfigurationRequest_MetadataEntry_DoNotUse)},
   { 483, -1, sizeof(::dapr::proto::runtime::v1::SubscribeConfigurationRequest)},
-  { 491, -1, sizeof(::dapr::proto::runtime::v1::SubscribeConfigurationResponse)},
+  { 491, -1, sizeof(::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest)},
+  { 498, -1, sizeof(::dapr::proto::runtime::v1::SubscribeConfigurationResponse)},
+  { 505, -1, sizeof(::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -1909,7 +1966,9 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_GetConfigurationResponse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_SubscribeConfigurationRequest_MetadataEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_SubscribeConfigurationRequest_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_UnsubscribeConfigurationRequest_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_SubscribeConfigurationResponse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_UnsubscribeConfigurationResponse_default_instance_),
 };
 
 void protobuf_AssignDescriptors() {
@@ -1927,7 +1986,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 60);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 62);
 }
 
 void AddDescriptorsImpl() {
@@ -2080,78 +2139,85 @@ void AddDescriptorsImpl() {
       "\003(\0132B.dapr.proto.runtime.v1.SubscribeCon"
       "figurationRequest.MetadataEntry\032/\n\rMetad"
       "ataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001"
-      "\"X\n\036SubscribeConfigurationResponse\0226\n\005it"
-      "ems\030\001 \003(\0132\'.dapr.proto.common.v1.Configu"
-      "rationItem2\343\023\n\004Dapr\022d\n\rInvokeService\022+.d"
-      "apr.proto.runtime.v1.InvokeServiceReques"
-      "t\032$.dapr.proto.common.v1.InvokeResponse\""
-      "\000\022]\n\010GetState\022&.dapr.proto.runtime.v1.Ge"
-      "tStateRequest\032\'.dapr.proto.runtime.v1.Ge"
-      "tStateResponse\"\000\022i\n\014GetBulkState\022*.dapr."
-      "proto.runtime.v1.GetBulkStateRequest\032+.d"
-      "apr.proto.runtime.v1.GetBulkStateRespons"
-      "e\"\000\022N\n\tSaveState\022\'.dapr.proto.runtime.v1"
-      ".SaveStateRequest\032\026.google.protobuf.Empt"
-      "y\"\000\022i\n\020QueryStateAlpha1\022(.dapr.proto.run"
-      "time.v1.QueryStateRequest\032).dapr.proto.r"
-      "untime.v1.QueryStateResponse\"\000\022R\n\013Delete"
-      "State\022).dapr.proto.runtime.v1.DeleteStat"
-      "eRequest\032\026.google.protobuf.Empty\"\000\022Z\n\017De"
-      "leteBulkState\022-.dapr.proto.runtime.v1.De"
-      "leteBulkStateRequest\032\026.google.protobuf.E"
-      "mpty\"\000\022j\n\027ExecuteStateTransaction\0225.dapr"
-      ".proto.runtime.v1.ExecuteStateTransactio"
-      "nRequest\032\026.google.protobuf.Empty\"\000\022T\n\014Pu"
-      "blishEvent\022*.dapr.proto.runtime.v1.Publi"
-      "shEventRequest\032\026.google.protobuf.Empty\"\000"
-      "\022l\n\rInvokeBinding\022+.dapr.proto.runtime.v"
-      "1.InvokeBindingRequest\032,.dapr.proto.runt"
-      "ime.v1.InvokeBindingResponse\"\000\022`\n\tGetSec"
-      "ret\022\'.dapr.proto.runtime.v1.GetSecretReq"
-      "uest\032(.dapr.proto.runtime.v1.GetSecretRe"
-      "sponse\"\000\022l\n\rGetBulkSecret\022+.dapr.proto.r"
-      "untime.v1.GetBulkSecretRequest\032,.dapr.pr"
-      "oto.runtime.v1.GetBulkSecretResponse\"\000\022`"
-      "\n\022RegisterActorTimer\0220.dapr.proto.runtim"
-      "e.v1.RegisterActorTimerRequest\032\026.google."
-      "protobuf.Empty\"\000\022d\n\024UnregisterActorTimer"
-      "\0222.dapr.proto.runtime.v1.UnregisterActor"
-      "TimerRequest\032\026.google.protobuf.Empty\"\000\022f"
-      "\n\025RegisterActorReminder\0223.dapr.proto.run"
-      "time.v1.RegisterActorReminderRequest\032\026.g"
-      "oogle.protobuf.Empty\"\000\022j\n\027UnregisterActo"
-      "rReminder\0225.dapr.proto.runtime.v1.Unregi"
-      "sterActorReminderRequest\032\026.google.protob"
-      "uf.Empty\"\000\022b\n\023RenameActorReminder\0221.dapr"
-      ".proto.runtime.v1.RenameActorReminderReq"
-      "uest\032\026.google.protobuf.Empty\"\000\022l\n\rGetAct"
-      "orState\022+.dapr.proto.runtime.v1.GetActor"
-      "StateRequest\032,.dapr.proto.runtime.v1.Get"
-      "ActorStateResponse\"\000\022t\n\034ExecuteActorStat"
-      "eTransaction\022:.dapr.proto.runtime.v1.Exe"
-      "cuteActorStateTransactionRequest\032\026.googl"
-      "e.protobuf.Empty\"\000\022f\n\013InvokeActor\022).dapr"
-      ".proto.runtime.v1.InvokeActorRequest\032*.d"
-      "apr.proto.runtime.v1.InvokeActorResponse"
-      "\"\000\022{\n\026GetConfigurationAlpha1\022..dapr.prot"
-      "o.runtime.v1.GetConfigurationRequest\032/.d"
-      "apr.proto.runtime.v1.GetConfigurationRes"
-      "ponse\"\000\022\217\001\n\034SubscribeConfigurationAlpha1"
-      "\0224.dapr.proto.runtime.v1.SubscribeConfig"
-      "urationRequest\0325.dapr.proto.runtime.v1.S"
-      "ubscribeConfigurationResponse\"\0000\001\022S\n\013Get"
-      "Metadata\022\026.google.protobuf.Empty\032*.dapr."
-      "proto.runtime.v1.GetMetadataResponse\"\000\022R"
-      "\n\013SetMetadata\022).dapr.proto.runtime.v1.Se"
-      "tMetadataRequest\032\026.google.protobuf.Empty"
-      "\"\000\022<\n\010Shutdown\022\026.google.protobuf.Empty\032\026"
-      ".google.protobuf.Empty\"\000Bi\n\nio.dapr.v1B\n"
-      "DaprProtosZ1github.com/dapr/dapr/pkg/pro"
-      "to/runtime/v1;runtime\252\002\033Dapr.Client.Auto"
-      "gen.Grpc.v1b\006proto3"
+      "\"A\n\037UnsubscribeConfigurationRequest\022\022\n\ns"
+      "tore_name\030\001 \001(\t\022\n\n\002id\030\002 \001(\t\"d\n\036Subscribe"
+      "ConfigurationResponse\022\n\n\002id\030\001 \001(\t\0226\n\005ite"
+      "ms\030\002 \003(\0132\'.dapr.proto.common.v1.Configur"
+      "ationItem\"\?\n UnsubscribeConfigurationRes"
+      "ponse\022\n\n\002ok\030\001 \001(\010\022\017\n\007message\030\002 \001(\t2\371\024\n\004D"
+      "apr\022d\n\rInvokeService\022+.dapr.proto.runtim"
+      "e.v1.InvokeServiceRequest\032$.dapr.proto.c"
+      "ommon.v1.InvokeResponse\"\000\022]\n\010GetState\022&."
+      "dapr.proto.runtime.v1.GetStateRequest\032\'."
+      "dapr.proto.runtime.v1.GetStateResponse\"\000"
+      "\022i\n\014GetBulkState\022*.dapr.proto.runtime.v1"
+      ".GetBulkStateRequest\032+.dapr.proto.runtim"
+      "e.v1.GetBulkStateResponse\"\000\022N\n\tSaveState"
+      "\022\'.dapr.proto.runtime.v1.SaveStateReques"
+      "t\032\026.google.protobuf.Empty\"\000\022i\n\020QueryStat"
+      "eAlpha1\022(.dapr.proto.runtime.v1.QuerySta"
+      "teRequest\032).dapr.proto.runtime.v1.QueryS"
+      "tateResponse\"\000\022R\n\013DeleteState\022).dapr.pro"
+      "to.runtime.v1.DeleteStateRequest\032\026.googl"
+      "e.protobuf.Empty\"\000\022Z\n\017DeleteBulkState\022-."
+      "dapr.proto.runtime.v1.DeleteBulkStateReq"
+      "uest\032\026.google.protobuf.Empty\"\000\022j\n\027Execut"
+      "eStateTransaction\0225.dapr.proto.runtime.v"
+      "1.ExecuteStateTransactionRequest\032\026.googl"
+      "e.protobuf.Empty\"\000\022T\n\014PublishEvent\022*.dap"
+      "r.proto.runtime.v1.PublishEventRequest\032\026"
+      ".google.protobuf.Empty\"\000\022l\n\rInvokeBindin"
+      "g\022+.dapr.proto.runtime.v1.InvokeBindingR"
+      "equest\032,.dapr.proto.runtime.v1.InvokeBin"
+      "dingResponse\"\000\022`\n\tGetSecret\022\'.dapr.proto"
+      ".runtime.v1.GetSecretRequest\032(.dapr.prot"
+      "o.runtime.v1.GetSecretResponse\"\000\022l\n\rGetB"
+      "ulkSecret\022+.dapr.proto.runtime.v1.GetBul"
+      "kSecretRequest\032,.dapr.proto.runtime.v1.G"
+      "etBulkSecretResponse\"\000\022`\n\022RegisterActorT"
+      "imer\0220.dapr.proto.runtime.v1.RegisterAct"
+      "orTimerRequest\032\026.google.protobuf.Empty\"\000"
+      "\022d\n\024UnregisterActorTimer\0222.dapr.proto.ru"
+      "ntime.v1.UnregisterActorTimerRequest\032\026.g"
+      "oogle.protobuf.Empty\"\000\022f\n\025RegisterActorR"
+      "eminder\0223.dapr.proto.runtime.v1.Register"
+      "ActorReminderRequest\032\026.google.protobuf.E"
+      "mpty\"\000\022j\n\027UnregisterActorReminder\0225.dapr"
+      ".proto.runtime.v1.UnregisterActorReminde"
+      "rRequest\032\026.google.protobuf.Empty\"\000\022b\n\023Re"
+      "nameActorReminder\0221.dapr.proto.runtime.v"
+      "1.RenameActorReminderRequest\032\026.google.pr"
+      "otobuf.Empty\"\000\022l\n\rGetActorState\022+.dapr.p"
+      "roto.runtime.v1.GetActorStateRequest\032,.d"
+      "apr.proto.runtime.v1.GetActorStateRespon"
+      "se\"\000\022t\n\034ExecuteActorStateTransaction\022:.d"
+      "apr.proto.runtime.v1.ExecuteActorStateTr"
+      "ansactionRequest\032\026.google.protobuf.Empty"
+      "\"\000\022f\n\013InvokeActor\022).dapr.proto.runtime.v"
+      "1.InvokeActorRequest\032*.dapr.proto.runtim"
+      "e.v1.InvokeActorResponse\"\000\022{\n\026GetConfigu"
+      "rationAlpha1\022..dapr.proto.runtime.v1.Get"
+      "ConfigurationRequest\032/.dapr.proto.runtim"
+      "e.v1.GetConfigurationResponse\"\000\022\217\001\n\034Subs"
+      "cribeConfigurationAlpha1\0224.dapr.proto.ru"
+      "ntime.v1.SubscribeConfigurationRequest\0325"
+      ".dapr.proto.runtime.v1.SubscribeConfigur"
+      "ationResponse\"\0000\001\022\223\001\n\036UnsubscribeConfigu"
+      "rationAlpha1\0226.dapr.proto.runtime.v1.Uns"
+      "ubscribeConfigurationRequest\0327.dapr.prot"
+      "o.runtime.v1.UnsubscribeConfigurationRes"
+      "ponse\"\000\022S\n\013GetMetadata\022\026.google.protobuf"
+      ".Empty\032*.dapr.proto.runtime.v1.GetMetada"
+      "taResponse\"\000\022R\n\013SetMetadata\022).dapr.proto"
+      ".runtime.v1.SetMetadataRequest\032\026.google."
+      "protobuf.Empty\"\000\022<\n\010Shutdown\022\026.google.pr"
+      "otobuf.Empty\032\026.google.protobuf.Empty\"\000Bi"
+      "\n\nio.dapr.v1B\nDaprProtosZ1github.com/dap"
+      "r/dapr/pkg/proto/runtime/v1;runtime\252\002\033Da"
+      "pr.Client.Autogen.Grpc.v1b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 8619);
+      descriptor, 8913);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dapr/proto/runtime/v1/dapr.proto", &protobuf_RegisterTypes);
   ::protobuf_google_2fprotobuf_2fany_2eproto::AddDescriptors();
@@ -18342,12 +18408,313 @@ void SubscribeConfigurationRequest::InternalSwap(SubscribeConfigurationRequest* 
 
 // ===================================================================
 
+void UnsubscribeConfigurationRequest::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int UnsubscribeConfigurationRequest::kStoreNameFieldNumber;
+const int UnsubscribeConfigurationRequest::kIdFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+UnsubscribeConfigurationRequest::UnsubscribeConfigurationRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::scc_info_UnsubscribeConfigurationRequest.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+}
+UnsubscribeConfigurationRequest::UnsubscribeConfigurationRequest(const UnsubscribeConfigurationRequest& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  store_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.store_name().size() > 0) {
+    store_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.store_name_);
+  }
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+  // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+}
+
+void UnsubscribeConfigurationRequest::SharedCtor() {
+  store_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+UnsubscribeConfigurationRequest::~UnsubscribeConfigurationRequest() {
+  // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+  SharedDtor();
+}
+
+void UnsubscribeConfigurationRequest::SharedDtor() {
+  store_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void UnsubscribeConfigurationRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* UnsubscribeConfigurationRequest::descriptor() {
+  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const UnsubscribeConfigurationRequest& UnsubscribeConfigurationRequest::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::scc_info_UnsubscribeConfigurationRequest.base);
+  return *internal_default_instance();
+}
+
+
+void UnsubscribeConfigurationRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  store_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+bool UnsubscribeConfigurationRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string store_name = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_store_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->store_name().data(), static_cast<int>(this->store_name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "dapr.proto.runtime.v1.UnsubscribeConfigurationRequest.store_name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string id = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->id().data(), static_cast<int>(this->id().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "dapr.proto.runtime.v1.UnsubscribeConfigurationRequest.id"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+  return false;
+#undef DO_
+}
+
+void UnsubscribeConfigurationRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string store_name = 1;
+  if (this->store_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->store_name().data(), static_cast<int>(this->store_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.UnsubscribeConfigurationRequest.store_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->store_name(), output);
+  }
+
+  // string id = 2;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.UnsubscribeConfigurationRequest.id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->id(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+}
+
+::google::protobuf::uint8* UnsubscribeConfigurationRequest::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string store_name = 1;
+  if (this->store_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->store_name().data(), static_cast<int>(this->store_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.UnsubscribeConfigurationRequest.store_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->store_name(), target);
+  }
+
+  // string id = 2;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.UnsubscribeConfigurationRequest.id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->id(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+  return target;
+}
+
+size_t UnsubscribeConfigurationRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // string store_name = 1;
+  if (this->store_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->store_name());
+  }
+
+  // string id = 2;
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->id());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void UnsubscribeConfigurationRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const UnsubscribeConfigurationRequest* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const UnsubscribeConfigurationRequest>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+    MergeFrom(*source);
+  }
+}
+
+void UnsubscribeConfigurationRequest::MergeFrom(const UnsubscribeConfigurationRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.store_name().size() > 0) {
+
+    store_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.store_name_);
+  }
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
+}
+
+void UnsubscribeConfigurationRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void UnsubscribeConfigurationRequest::CopyFrom(const UnsubscribeConfigurationRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dapr.proto.runtime.v1.UnsubscribeConfigurationRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UnsubscribeConfigurationRequest::IsInitialized() const {
+  return true;
+}
+
+void UnsubscribeConfigurationRequest::Swap(UnsubscribeConfigurationRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void UnsubscribeConfigurationRequest::InternalSwap(UnsubscribeConfigurationRequest* other) {
+  using std::swap;
+  store_name_.Swap(&other->store_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata UnsubscribeConfigurationRequest::GetMetadata() const {
+  protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
 void SubscribeConfigurationResponse::InitAsDefaultInstance() {
 }
 void SubscribeConfigurationResponse::clear_items() {
   items_.Clear();
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int SubscribeConfigurationResponse::kIdFieldNumber;
 const int SubscribeConfigurationResponse::kItemsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -18363,10 +18730,15 @@ SubscribeConfigurationResponse::SubscribeConfigurationResponse(const SubscribeCo
       _internal_metadata_(NULL),
       items_(from.items_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.id().size() > 0) {
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.SubscribeConfigurationResponse)
 }
 
 void SubscribeConfigurationResponse::SharedCtor() {
+  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 SubscribeConfigurationResponse::~SubscribeConfigurationResponse() {
@@ -18375,6 +18747,7 @@ SubscribeConfigurationResponse::~SubscribeConfigurationResponse() {
 }
 
 void SubscribeConfigurationResponse::SharedDtor() {
+  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void SubscribeConfigurationResponse::SetCachedSize(int size) const {
@@ -18398,6 +18771,7 @@ void SubscribeConfigurationResponse::Clear() {
   (void) cached_has_bits;
 
   items_.Clear();
+  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
@@ -18411,10 +18785,26 @@ bool SubscribeConfigurationResponse::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .dapr.proto.common.v1.ConfigurationItem items = 1;
+      // string id = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_id()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->id().data(), static_cast<int>(this->id().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "dapr.proto.runtime.v1.SubscribeConfigurationResponse.id"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated .dapr.proto.common.v1.ConfigurationItem items = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                 input, add_items()));
         } else {
@@ -18449,11 +18839,21 @@ void SubscribeConfigurationResponse::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .dapr.proto.common.v1.ConfigurationItem items = 1;
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.SubscribeConfigurationResponse.id");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->id(), output);
+  }
+
+  // repeated .dapr.proto.common.v1.ConfigurationItem items = 2;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->items_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
+      2,
       this->items(static_cast<int>(i)),
       output);
   }
@@ -18472,12 +18872,23 @@ void SubscribeConfigurationResponse::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .dapr.proto.common.v1.ConfigurationItem items = 1;
+  // string id = 1;
+  if (this->id().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->id().data(), static_cast<int>(this->id().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.SubscribeConfigurationResponse.id");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->id(), target);
+  }
+
+  // repeated .dapr.proto.common.v1.ConfigurationItem items = 2;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->items_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        1, this->items(static_cast<int>(i)), deterministic, target);
+        2, this->items(static_cast<int>(i)), deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -18497,7 +18908,7 @@ size_t SubscribeConfigurationResponse::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // repeated .dapr.proto.common.v1.ConfigurationItem items = 1;
+  // repeated .dapr.proto.common.v1.ConfigurationItem items = 2;
   {
     unsigned int count = static_cast<unsigned int>(this->items_size());
     total_size += 1UL * count;
@@ -18506,6 +18917,13 @@ size_t SubscribeConfigurationResponse::ByteSizeLong() const {
         ::google::protobuf::internal::WireFormatLite::MessageSize(
           this->items(static_cast<int>(i)));
     }
+  }
+
+  // string id = 1;
+  if (this->id().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->id());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -18536,6 +18954,10 @@ void SubscribeConfigurationResponse::MergeFrom(const SubscribeConfigurationRespo
   (void) cached_has_bits;
 
   items_.MergeFrom(from.items_);
+  if (from.id().size() > 0) {
+
+    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  }
 }
 
 void SubscribeConfigurationResponse::CopyFrom(const ::google::protobuf::Message& from) {
@@ -18563,10 +18985,291 @@ void SubscribeConfigurationResponse::Swap(SubscribeConfigurationResponse* other)
 void SubscribeConfigurationResponse::InternalSwap(SubscribeConfigurationResponse* other) {
   using std::swap;
   CastToBase(&items_)->InternalSwap(CastToBase(&other->items_));
+  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata SubscribeConfigurationResponse::GetMetadata() const {
+  protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void UnsubscribeConfigurationResponse::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int UnsubscribeConfigurationResponse::kOkFieldNumber;
+const int UnsubscribeConfigurationResponse::kMessageFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+UnsubscribeConfigurationResponse::UnsubscribeConfigurationResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::scc_info_UnsubscribeConfigurationResponse.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+}
+UnsubscribeConfigurationResponse::UnsubscribeConfigurationResponse(const UnsubscribeConfigurationResponse& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  message_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.message().size() > 0) {
+    message_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+  ok_ = from.ok_;
+  // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+}
+
+void UnsubscribeConfigurationResponse::SharedCtor() {
+  message_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ok_ = false;
+}
+
+UnsubscribeConfigurationResponse::~UnsubscribeConfigurationResponse() {
+  // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+  SharedDtor();
+}
+
+void UnsubscribeConfigurationResponse::SharedDtor() {
+  message_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void UnsubscribeConfigurationResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* UnsubscribeConfigurationResponse::descriptor() {
+  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const UnsubscribeConfigurationResponse& UnsubscribeConfigurationResponse::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::scc_info_UnsubscribeConfigurationResponse.base);
+  return *internal_default_instance();
+}
+
+
+void UnsubscribeConfigurationResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  message_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ok_ = false;
+  _internal_metadata_.Clear();
+}
+
+bool UnsubscribeConfigurationResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // bool ok = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &ok_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string message = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_message()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->message().data(), static_cast<int>(this->message().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "dapr.proto.runtime.v1.UnsubscribeConfigurationResponse.message"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+  return false;
+#undef DO_
+}
+
+void UnsubscribeConfigurationResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool ok = 1;
+  if (this->ok() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->ok(), output);
+  }
+
+  // string message = 2;
+  if (this->message().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->message().data(), static_cast<int>(this->message().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.UnsubscribeConfigurationResponse.message");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->message(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+}
+
+::google::protobuf::uint8* UnsubscribeConfigurationResponse::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool ok = 1;
+  if (this->ok() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->ok(), target);
+  }
+
+  // string message = 2;
+  if (this->message().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->message().data(), static_cast<int>(this->message().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "dapr.proto.runtime.v1.UnsubscribeConfigurationResponse.message");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->message(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+  return target;
+}
+
+size_t UnsubscribeConfigurationResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // string message = 2;
+  if (this->message().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->message());
+  }
+
+  // bool ok = 1;
+  if (this->ok() != 0) {
+    total_size += 1 + 1;
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void UnsubscribeConfigurationResponse::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const UnsubscribeConfigurationResponse* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const UnsubscribeConfigurationResponse>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+    MergeFrom(*source);
+  }
+}
+
+void UnsubscribeConfigurationResponse::MergeFrom(const UnsubscribeConfigurationResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.message().size() > 0) {
+
+    message_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.message_);
+  }
+  if (from.ok() != 0) {
+    set_ok(from.ok());
+  }
+}
+
+void UnsubscribeConfigurationResponse::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void UnsubscribeConfigurationResponse::CopyFrom(const UnsubscribeConfigurationResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dapr.proto.runtime.v1.UnsubscribeConfigurationResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UnsubscribeConfigurationResponse::IsInitialized() const {
+  return true;
+}
+
+void UnsubscribeConfigurationResponse::Swap(UnsubscribeConfigurationResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void UnsubscribeConfigurationResponse::InternalSwap(UnsubscribeConfigurationResponse* other) {
+  using std::swap;
+  message_.Swap(&other->message_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(ok_, other->ok_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata UnsubscribeConfigurationResponse::GetMetadata() const {
   protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::file_level_metadata[kIndexInFileMessages];
 }
@@ -18756,8 +19459,14 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::Subscr
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::SubscribeConfigurationRequest >(Arena* arena) {
   return Arena::CreateInternal< ::dapr::proto::runtime::v1::SubscribeConfigurationRequest >(arena);
 }
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest >(arena);
+}
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::SubscribeConfigurationResponse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse >(Arena* arena) {
   return Arena::CreateInternal< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse >(Arena* arena) {
+  return Arena::CreateInternal< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse >(arena);
 }
 }  // namespace protobuf
 }  // namespace google
