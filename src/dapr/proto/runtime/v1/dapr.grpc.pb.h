@@ -230,6 +230,14 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>> PrepareAsyncSubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>>(PrepareAsyncSubscribeConfigurationAlpha1Raw(context, request, cq));
     }
+    // UnSubscribeConfiguration unsubscribe the subscription of configuration
+    virtual ::grpc::Status UnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>> AsyncUnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>>(AsyncUnsubscribeConfigurationAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>> PrepareAsyncUnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>>(PrepareAsyncUnsubscribeConfigurationAlpha1Raw(context, request, cq));
+    }
     // Gets metadata of the sidecar
     virtual ::grpc::Status GetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::dapr::proto::runtime::v1::GetMetadataResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetMetadataResponse>> AsyncGetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
@@ -300,6 +308,8 @@ class Dapr final {
       // GetConfiguration gets configuration from configuration store.
       virtual void GetConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response, std::function<void(::grpc::Status)>) = 0;
       // SubscribeConfiguration gets configuration from configuration store and subscribe the updates event by grpc stream
+      // UnSubscribeConfiguration unsubscribe the subscription of configuration
+      virtual void UnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response, std::function<void(::grpc::Status)>) = 0;
       // Gets metadata of the sidecar
       virtual void GetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::GetMetadataResponse* response, std::function<void(::grpc::Status)>) = 0;
       // Sets value in extended metadata of the sidecar
@@ -354,6 +364,8 @@ class Dapr final {
     virtual ::grpc::ClientReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* SubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* AsyncSubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* PrepareAsyncSubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* AsyncUnsubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* PrepareAsyncUnsubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetMetadataResponse>* AsyncGetMetadataRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetMetadataResponse>* PrepareAsyncGetMetadataRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncSetMetadataRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SetMetadataRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -520,6 +532,13 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>> PrepareAsyncSubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>>(PrepareAsyncSubscribeConfigurationAlpha1Raw(context, request, cq));
     }
+    ::grpc::Status UnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>> AsyncUnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>>(AsyncUnsubscribeConfigurationAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>> PrepareAsyncUnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>>(PrepareAsyncUnsubscribeConfigurationAlpha1Raw(context, request, cq));
+    }
     ::grpc::Status GetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::dapr::proto::runtime::v1::GetMetadataResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetMetadataResponse>> AsyncGetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetMetadataResponse>>(AsyncGetMetadataRaw(context, request, cq));
@@ -565,6 +584,7 @@ class Dapr final {
       void ExecuteActorStateTransaction(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void InvokeActor(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest* request, ::dapr::proto::runtime::v1::InvokeActorResponse* response, std::function<void(::grpc::Status)>) override;
       void GetConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response, std::function<void(::grpc::Status)>) override;
+      void UnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response, std::function<void(::grpc::Status)>) override;
       void GetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::GetMetadataResponse* response, std::function<void(::grpc::Status)>) override;
       void SetMetadata(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SetMetadataRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void Shutdown(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
@@ -624,6 +644,8 @@ class Dapr final {
     ::grpc::ClientReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* SubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request) override;
     ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* AsyncSubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* PrepareAsyncSubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* AsyncUnsubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* PrepareAsyncUnsubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetMetadataResponse>* AsyncGetMetadataRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetMetadataResponse>* PrepareAsyncGetMetadataRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncSetMetadataRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SetMetadataRequest& request, ::grpc::CompletionQueue* cq) override;
@@ -652,6 +674,7 @@ class Dapr final {
     const ::grpc::internal::RpcMethod rpcmethod_InvokeActor_;
     const ::grpc::internal::RpcMethod rpcmethod_GetConfigurationAlpha1_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeConfigurationAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_UnsubscribeConfigurationAlpha1_;
     const ::grpc::internal::RpcMethod rpcmethod_GetMetadata_;
     const ::grpc::internal::RpcMethod rpcmethod_SetMetadata_;
     const ::grpc::internal::RpcMethod rpcmethod_Shutdown_;
@@ -706,6 +729,8 @@ class Dapr final {
     virtual ::grpc::Status GetConfigurationAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response);
     // SubscribeConfiguration gets configuration from configuration store and subscribe the updates event by grpc stream
     virtual ::grpc::Status SubscribeConfigurationAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* request, ::grpc::ServerWriter< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* writer);
+    // UnSubscribeConfiguration unsubscribe the subscription of configuration
+    virtual ::grpc::Status UnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response);
     // Gets metadata of the sidecar
     virtual ::grpc::Status GetMetadata(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::GetMetadataResponse* response);
     // Sets value in extended metadata of the sidecar
@@ -1154,12 +1179,32 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_UnsubscribeConfigurationAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_UnsubscribeConfigurationAlpha1() {
+      ::grpc::Service::MarkMethodAsync(22);
+    }
+    ~WithAsyncMethod_UnsubscribeConfigurationAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_GetMetadata : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_GetMetadata() {
-      ::grpc::Service::MarkMethodAsync(22);
+      ::grpc::Service::MarkMethodAsync(23);
     }
     ~WithAsyncMethod_GetMetadata() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1170,7 +1215,7 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMetadata(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::GetMetadataResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1179,7 +1224,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_SetMetadata() {
-      ::grpc::Service::MarkMethodAsync(23);
+      ::grpc::Service::MarkMethodAsync(24);
     }
     ~WithAsyncMethod_SetMetadata() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1190,7 +1235,7 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetMetadata(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::SetMetadataRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1199,7 +1244,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_Shutdown() {
-      ::grpc::Service::MarkMethodAsync(24);
+      ::grpc::Service::MarkMethodAsync(25);
     }
     ~WithAsyncMethod_Shutdown() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1210,10 +1255,10 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestShutdown(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_InvokeService<WithAsyncMethod_GetState<WithAsyncMethod_GetBulkState<WithAsyncMethod_SaveState<WithAsyncMethod_QueryStateAlpha1<WithAsyncMethod_DeleteState<WithAsyncMethod_DeleteBulkState<WithAsyncMethod_ExecuteStateTransaction<WithAsyncMethod_PublishEvent<WithAsyncMethod_InvokeBinding<WithAsyncMethod_GetSecret<WithAsyncMethod_GetBulkSecret<WithAsyncMethod_RegisterActorTimer<WithAsyncMethod_UnregisterActorTimer<WithAsyncMethod_RegisterActorReminder<WithAsyncMethod_UnregisterActorReminder<WithAsyncMethod_RenameActorReminder<WithAsyncMethod_GetActorState<WithAsyncMethod_ExecuteActorStateTransaction<WithAsyncMethod_InvokeActor<WithAsyncMethod_GetConfigurationAlpha1<WithAsyncMethod_SubscribeConfigurationAlpha1<WithAsyncMethod_GetMetadata<WithAsyncMethod_SetMetadata<WithAsyncMethod_Shutdown<Service > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_InvokeService<WithAsyncMethod_GetState<WithAsyncMethod_GetBulkState<WithAsyncMethod_SaveState<WithAsyncMethod_QueryStateAlpha1<WithAsyncMethod_DeleteState<WithAsyncMethod_DeleteBulkState<WithAsyncMethod_ExecuteStateTransaction<WithAsyncMethod_PublishEvent<WithAsyncMethod_InvokeBinding<WithAsyncMethod_GetSecret<WithAsyncMethod_GetBulkSecret<WithAsyncMethod_RegisterActorTimer<WithAsyncMethod_UnregisterActorTimer<WithAsyncMethod_RegisterActorReminder<WithAsyncMethod_UnregisterActorReminder<WithAsyncMethod_RenameActorReminder<WithAsyncMethod_GetActorState<WithAsyncMethod_ExecuteActorStateTransaction<WithAsyncMethod_InvokeActor<WithAsyncMethod_GetConfigurationAlpha1<WithAsyncMethod_SubscribeConfigurationAlpha1<WithAsyncMethod_UnsubscribeConfigurationAlpha1<WithAsyncMethod_GetMetadata<WithAsyncMethod_SetMetadata<WithAsyncMethod_Shutdown<Service > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithGenericMethod_InvokeService : public BaseClass {
    private:
@@ -1589,12 +1634,29 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_UnsubscribeConfigurationAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_UnsubscribeConfigurationAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(22);
+    }
+    ~WithGenericMethod_UnsubscribeConfigurationAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_GetMetadata : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_GetMetadata() {
-      ::grpc::Service::MarkMethodGeneric(22);
+      ::grpc::Service::MarkMethodGeneric(23);
     }
     ~WithGenericMethod_GetMetadata() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1611,7 +1673,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_SetMetadata() {
-      ::grpc::Service::MarkMethodGeneric(23);
+      ::grpc::Service::MarkMethodGeneric(24);
     }
     ~WithGenericMethod_SetMetadata() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1628,7 +1690,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_Shutdown() {
-      ::grpc::Service::MarkMethodGeneric(24);
+      ::grpc::Service::MarkMethodGeneric(25);
     }
     ~WithGenericMethod_Shutdown() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2080,12 +2142,32 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_UnsubscribeConfigurationAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_UnsubscribeConfigurationAlpha1() {
+      ::grpc::Service::MarkMethodRaw(22);
+    }
+    ~WithRawMethod_UnsubscribeConfigurationAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_GetMetadata : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_GetMetadata() {
-      ::grpc::Service::MarkMethodRaw(22);
+      ::grpc::Service::MarkMethodRaw(23);
     }
     ~WithRawMethod_GetMetadata() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2096,7 +2178,7 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMetadata(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2105,7 +2187,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_SetMetadata() {
-      ::grpc::Service::MarkMethodRaw(23);
+      ::grpc::Service::MarkMethodRaw(24);
     }
     ~WithRawMethod_SetMetadata() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2116,7 +2198,7 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetMetadata(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2125,7 +2207,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_Shutdown() {
-      ::grpc::Service::MarkMethodRaw(24);
+      ::grpc::Service::MarkMethodRaw(25);
     }
     ~WithRawMethod_Shutdown() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2136,7 +2218,7 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestShutdown(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2560,12 +2642,32 @@ class Dapr final {
     virtual ::grpc::Status StreamedGetConfigurationAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::GetConfigurationRequest,::dapr::proto::runtime::v1::GetConfigurationResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1() {
+      ::grpc::Service::MarkMethodStreamed(22,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>(std::bind(&WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1<BaseClass>::StreamedUnsubscribeConfigurationAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status UnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedUnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest,::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_GetMetadata : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_GetMetadata() {
-      ::grpc::Service::MarkMethodStreamed(22,
+      ::grpc::Service::MarkMethodStreamed(23,
         new ::grpc::internal::StreamedUnaryHandler< ::google::protobuf::Empty, ::dapr::proto::runtime::v1::GetMetadataResponse>(std::bind(&WithStreamedUnaryMethod_GetMetadata<BaseClass>::StreamedGetMetadata, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetMetadata() override {
@@ -2585,7 +2687,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_SetMetadata() {
-      ::grpc::Service::MarkMethodStreamed(23,
+      ::grpc::Service::MarkMethodStreamed(24,
         new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::SetMetadataRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_SetMetadata<BaseClass>::StreamedSetMetadata, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetMetadata() override {
@@ -2605,7 +2707,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_Shutdown() {
-      ::grpc::Service::MarkMethodStreamed(24,
+      ::grpc::Service::MarkMethodStreamed(25,
         new ::grpc::internal::StreamedUnaryHandler< ::google::protobuf::Empty, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_Shutdown<BaseClass>::StreamedShutdown, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_Shutdown() override {
@@ -2619,7 +2721,7 @@ class Dapr final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedShutdown(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_InvokeService<WithStreamedUnaryMethod_GetState<WithStreamedUnaryMethod_GetBulkState<WithStreamedUnaryMethod_SaveState<WithStreamedUnaryMethod_QueryStateAlpha1<WithStreamedUnaryMethod_DeleteState<WithStreamedUnaryMethod_DeleteBulkState<WithStreamedUnaryMethod_ExecuteStateTransaction<WithStreamedUnaryMethod_PublishEvent<WithStreamedUnaryMethod_InvokeBinding<WithStreamedUnaryMethod_GetSecret<WithStreamedUnaryMethod_GetBulkSecret<WithStreamedUnaryMethod_RegisterActorTimer<WithStreamedUnaryMethod_UnregisterActorTimer<WithStreamedUnaryMethod_RegisterActorReminder<WithStreamedUnaryMethod_UnregisterActorReminder<WithStreamedUnaryMethod_RenameActorReminder<WithStreamedUnaryMethod_GetActorState<WithStreamedUnaryMethod_ExecuteActorStateTransaction<WithStreamedUnaryMethod_InvokeActor<WithStreamedUnaryMethod_GetConfigurationAlpha1<WithStreamedUnaryMethod_GetMetadata<WithStreamedUnaryMethod_SetMetadata<WithStreamedUnaryMethod_Shutdown<Service > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_InvokeService<WithStreamedUnaryMethod_GetState<WithStreamedUnaryMethod_GetBulkState<WithStreamedUnaryMethod_SaveState<WithStreamedUnaryMethod_QueryStateAlpha1<WithStreamedUnaryMethod_DeleteState<WithStreamedUnaryMethod_DeleteBulkState<WithStreamedUnaryMethod_ExecuteStateTransaction<WithStreamedUnaryMethod_PublishEvent<WithStreamedUnaryMethod_InvokeBinding<WithStreamedUnaryMethod_GetSecret<WithStreamedUnaryMethod_GetBulkSecret<WithStreamedUnaryMethod_RegisterActorTimer<WithStreamedUnaryMethod_UnregisterActorTimer<WithStreamedUnaryMethod_RegisterActorReminder<WithStreamedUnaryMethod_UnregisterActorReminder<WithStreamedUnaryMethod_RenameActorReminder<WithStreamedUnaryMethod_GetActorState<WithStreamedUnaryMethod_ExecuteActorStateTransaction<WithStreamedUnaryMethod_InvokeActor<WithStreamedUnaryMethod_GetConfigurationAlpha1<WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1<WithStreamedUnaryMethod_GetMetadata<WithStreamedUnaryMethod_SetMetadata<WithStreamedUnaryMethod_Shutdown<Service > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_SubscribeConfigurationAlpha1 : public BaseClass {
    private:
@@ -2641,7 +2743,7 @@ class Dapr final {
     virtual ::grpc::Status StreamedSubscribeConfigurationAlpha1(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::dapr::proto::runtime::v1::SubscribeConfigurationRequest,::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_SubscribeConfigurationAlpha1<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_InvokeService<WithStreamedUnaryMethod_GetState<WithStreamedUnaryMethod_GetBulkState<WithStreamedUnaryMethod_SaveState<WithStreamedUnaryMethod_QueryStateAlpha1<WithStreamedUnaryMethod_DeleteState<WithStreamedUnaryMethod_DeleteBulkState<WithStreamedUnaryMethod_ExecuteStateTransaction<WithStreamedUnaryMethod_PublishEvent<WithStreamedUnaryMethod_InvokeBinding<WithStreamedUnaryMethod_GetSecret<WithStreamedUnaryMethod_GetBulkSecret<WithStreamedUnaryMethod_RegisterActorTimer<WithStreamedUnaryMethod_UnregisterActorTimer<WithStreamedUnaryMethod_RegisterActorReminder<WithStreamedUnaryMethod_UnregisterActorReminder<WithStreamedUnaryMethod_RenameActorReminder<WithStreamedUnaryMethod_GetActorState<WithStreamedUnaryMethod_ExecuteActorStateTransaction<WithStreamedUnaryMethod_InvokeActor<WithStreamedUnaryMethod_GetConfigurationAlpha1<WithSplitStreamingMethod_SubscribeConfigurationAlpha1<WithStreamedUnaryMethod_GetMetadata<WithStreamedUnaryMethod_SetMetadata<WithStreamedUnaryMethod_Shutdown<Service > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_InvokeService<WithStreamedUnaryMethod_GetState<WithStreamedUnaryMethod_GetBulkState<WithStreamedUnaryMethod_SaveState<WithStreamedUnaryMethod_QueryStateAlpha1<WithStreamedUnaryMethod_DeleteState<WithStreamedUnaryMethod_DeleteBulkState<WithStreamedUnaryMethod_ExecuteStateTransaction<WithStreamedUnaryMethod_PublishEvent<WithStreamedUnaryMethod_InvokeBinding<WithStreamedUnaryMethod_GetSecret<WithStreamedUnaryMethod_GetBulkSecret<WithStreamedUnaryMethod_RegisterActorTimer<WithStreamedUnaryMethod_UnregisterActorTimer<WithStreamedUnaryMethod_RegisterActorReminder<WithStreamedUnaryMethod_UnregisterActorReminder<WithStreamedUnaryMethod_RenameActorReminder<WithStreamedUnaryMethod_GetActorState<WithStreamedUnaryMethod_ExecuteActorStateTransaction<WithStreamedUnaryMethod_InvokeActor<WithStreamedUnaryMethod_GetConfigurationAlpha1<WithSplitStreamingMethod_SubscribeConfigurationAlpha1<WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1<WithStreamedUnaryMethod_GetMetadata<WithStreamedUnaryMethod_SetMetadata<WithStreamedUnaryMethod_Shutdown<Service > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace v1
