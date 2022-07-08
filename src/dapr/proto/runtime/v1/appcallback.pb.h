@@ -1132,6 +1132,20 @@ class TopicSubscription : public ::google::protobuf::Message /* @@protoc_inserti
   ::std::string* release_topic();
   void set_allocated_topic(::std::string* topic);
 
+  // string dead_letter_topic = 6;
+  void clear_dead_letter_topic();
+  static const int kDeadLetterTopicFieldNumber = 6;
+  const ::std::string& dead_letter_topic() const;
+  void set_dead_letter_topic(const ::std::string& value);
+  #if LANG_CXX11
+  void set_dead_letter_topic(::std::string&& value);
+  #endif
+  void set_dead_letter_topic(const char* value);
+  void set_dead_letter_topic(const char* value, size_t size);
+  ::std::string* mutable_dead_letter_topic();
+  ::std::string* release_dead_letter_topic();
+  void set_allocated_dead_letter_topic(::std::string* dead_letter_topic);
+
   // .dapr.proto.runtime.v1.TopicRoutes routes = 5;
   bool has_routes() const;
   void clear_routes();
@@ -1156,6 +1170,7 @@ class TopicSubscription : public ::google::protobuf::Message /* @@protoc_inserti
       0 > metadata_;
   ::google::protobuf::internal::ArenaStringPtr pubsub_name_;
   ::google::protobuf::internal::ArenaStringPtr topic_;
+  ::google::protobuf::internal::ArenaStringPtr dead_letter_topic_;
   ::dapr::proto::runtime::v1::TopicRoutes* routes_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::TableStruct;
@@ -2601,6 +2616,59 @@ inline void TopicSubscription::set_allocated_routes(::dapr::proto::runtime::v1::
   }
   routes_ = routes;
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TopicSubscription.routes)
+}
+
+// string dead_letter_topic = 6;
+inline void TopicSubscription::clear_dead_letter_topic() {
+  dead_letter_topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TopicSubscription::dead_letter_topic() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.TopicSubscription.dead_letter_topic)
+  return dead_letter_topic_.GetNoArena();
+}
+inline void TopicSubscription::set_dead_letter_topic(const ::std::string& value) {
+  
+  dead_letter_topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.TopicSubscription.dead_letter_topic)
+}
+#if LANG_CXX11
+inline void TopicSubscription::set_dead_letter_topic(::std::string&& value) {
+  
+  dead_letter_topic_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.TopicSubscription.dead_letter_topic)
+}
+#endif
+inline void TopicSubscription::set_dead_letter_topic(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  dead_letter_topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.TopicSubscription.dead_letter_topic)
+}
+inline void TopicSubscription::set_dead_letter_topic(const char* value, size_t size) {
+  
+  dead_letter_topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.TopicSubscription.dead_letter_topic)
+}
+inline ::std::string* TopicSubscription::mutable_dead_letter_topic() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.TopicSubscription.dead_letter_topic)
+  return dead_letter_topic_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TopicSubscription::release_dead_letter_topic() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.TopicSubscription.dead_letter_topic)
+  
+  return dead_letter_topic_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TopicSubscription::set_allocated_dead_letter_topic(::std::string* dead_letter_topic) {
+  if (dead_letter_topic != NULL) {
+    
+  } else {
+    
+  }
+  dead_letter_topic_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), dead_letter_topic);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TopicSubscription.dead_letter_topic)
 }
 
 // -------------------------------------------------------------------
