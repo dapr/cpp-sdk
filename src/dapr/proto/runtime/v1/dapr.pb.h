@@ -45,7 +45,7 @@ namespace protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[66];
+  static const ::google::protobuf::internal::ParseTable schema[69];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -119,6 +119,9 @@ extern GetConfigurationRequest_MetadataEntry_DoNotUseDefaultTypeInternal _GetCon
 class GetConfigurationResponse;
 class GetConfigurationResponseDefaultTypeInternal;
 extern GetConfigurationResponseDefaultTypeInternal _GetConfigurationResponse_default_instance_;
+class GetConfigurationResponse_ItemsEntry_DoNotUse;
+class GetConfigurationResponse_ItemsEntry_DoNotUseDefaultTypeInternal;
+extern GetConfigurationResponse_ItemsEntry_DoNotUseDefaultTypeInternal _GetConfigurationResponse_ItemsEntry_DoNotUse_default_instance_;
 class GetMetadataResponse;
 class GetMetadataResponseDefaultTypeInternal;
 extern GetMetadataResponseDefaultTypeInternal _GetMetadataResponse_default_instance_;
@@ -152,6 +155,9 @@ extern GetStateResponse_MetadataEntry_DoNotUseDefaultTypeInternal _GetStateRespo
 class InvokeActorRequest;
 class InvokeActorRequestDefaultTypeInternal;
 extern InvokeActorRequestDefaultTypeInternal _InvokeActorRequest_default_instance_;
+class InvokeActorRequest_MetadataEntry_DoNotUse;
+class InvokeActorRequest_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern InvokeActorRequest_MetadataEntry_DoNotUseDefaultTypeInternal _InvokeActorRequest_MetadataEntry_DoNotUse_default_instance_;
 class InvokeActorResponse;
 class InvokeActorResponseDefaultTypeInternal;
 extern InvokeActorResponseDefaultTypeInternal _InvokeActorResponse_default_instance_;
@@ -224,6 +230,9 @@ extern SubscribeConfigurationRequest_MetadataEntry_DoNotUseDefaultTypeInternal _
 class SubscribeConfigurationResponse;
 class SubscribeConfigurationResponseDefaultTypeInternal;
 extern SubscribeConfigurationResponseDefaultTypeInternal _SubscribeConfigurationResponse_default_instance_;
+class SubscribeConfigurationResponse_ItemsEntry_DoNotUse;
+class SubscribeConfigurationResponse_ItemsEntry_DoNotUseDefaultTypeInternal;
+extern SubscribeConfigurationResponse_ItemsEntry_DoNotUseDefaultTypeInternal _SubscribeConfigurationResponse_ItemsEntry_DoNotUse_default_instance_;
 class TransactionalActorStateOperation;
 class TransactionalActorStateOperationDefaultTypeInternal;
 extern TransactionalActorStateOperationDefaultTypeInternal _TransactionalActorStateOperation_default_instance_;
@@ -281,6 +290,7 @@ template<> ::dapr::proto::runtime::v1::GetBulkStateResponse* Arena::CreateMaybeM
 template<> ::dapr::proto::runtime::v1::GetConfigurationRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetConfigurationRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetConfigurationRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetConfigurationRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetConfigurationResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetConfigurationResponse>(Arena*);
+template<> ::dapr::proto::runtime::v1::GetConfigurationResponse_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetConfigurationResponse_ItemsEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetMetadataResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetMetadataResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetMetadataResponse_ExtendedMetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetMetadataResponse_ExtendedMetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetSecretRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetSecretRequest>(Arena*);
@@ -292,6 +302,7 @@ template<> ::dapr::proto::runtime::v1::GetStateRequest_MetadataEntry_DoNotUse* A
 template<> ::dapr::proto::runtime::v1::GetStateResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetStateResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetStateResponse_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetStateResponse_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeActorRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeActorRequest>(Arena*);
+template<> ::dapr::proto::runtime::v1::InvokeActorRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeActorRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeActorResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeActorResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeBindingRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeBindingRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeBindingRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeBindingRequest_MetadataEntry_DoNotUse>(Arena*);
@@ -316,6 +327,7 @@ template<> ::dapr::proto::runtime::v1::SetMetadataRequest* Arena::CreateMaybeMes
 template<> ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::SubscribeConfigurationRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::SubscribeConfigurationRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::SubscribeConfigurationRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::SubscribeConfigurationResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::SubscribeConfigurationResponse>(Arena*);
+template<> ::dapr::proto::runtime::v1::SubscribeConfigurationResponse_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::SubscribeConfigurationResponse_ItemsEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::TransactionalActorStateOperation* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TransactionalActorStateOperation>(Arena*);
 template<> ::dapr::proto::runtime::v1::TransactionalStateOperation* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TransactionalStateOperation>(Arena*);
 template<> ::dapr::proto::runtime::v1::TryLockRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TryLockRequest>(Arena*);
@@ -335,8 +347,8 @@ namespace v1 {
 
 enum UnlockResponse_Status {
   UnlockResponse_Status_SUCCESS = 0,
-  UnlockResponse_Status_LOCK_UNEXIST = 1,
-  UnlockResponse_Status_LOCK_BELONG_TO_OTHERS = 2,
+  UnlockResponse_Status_LOCK_DOES_NOT_EXIST = 1,
+  UnlockResponse_Status_LOCK_BELONGS_TO_OTHERS = 2,
   UnlockResponse_Status_INTERNAL_ERROR = 3,
   UnlockResponse_Status_UnlockResponse_Status_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   UnlockResponse_Status_UnlockResponse_Status_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
@@ -5111,6 +5123,27 @@ class TransactionalActorStateOperation : public ::google::protobuf::Message /* @
 };
 // -------------------------------------------------------------------
 
+class InvokeActorRequest_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<InvokeActorRequest_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<InvokeActorRequest_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  InvokeActorRequest_MetadataEntry_DoNotUse();
+  InvokeActorRequest_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const InvokeActorRequest_MetadataEntry_DoNotUse& other);
+  static const InvokeActorRequest_MetadataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const InvokeActorRequest_MetadataEntry_DoNotUse*>(&_InvokeActorRequest_MetadataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
 class InvokeActorRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.InvokeActorRequest) */ {
  public:
   InvokeActorRequest();
@@ -5146,7 +5179,7 @@ class InvokeActorRequest : public ::google::protobuf::Message /* @@protoc_insert
                &_InvokeActorRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    47;
+    48;
 
   void Swap(InvokeActorRequest* other);
   friend void swap(InvokeActorRequest& a, InvokeActorRequest& b) {
@@ -5196,7 +5229,17 @@ class InvokeActorRequest : public ::google::protobuf::Message /* @@protoc_insert
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
+
+  // map<string, string> metadata = 5;
+  int metadata_size() const;
+  void clear_metadata();
+  static const int kMetadataFieldNumber = 5;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      metadata() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_metadata();
 
   // string actor_type = 1;
   void clear_actor_type();
@@ -5258,6 +5301,12 @@ class InvokeActorRequest : public ::google::protobuf::Message /* @@protoc_insert
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::MapField<
+      InvokeActorRequest_MetadataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      0 > metadata_;
   ::google::protobuf::internal::ArenaStringPtr actor_type_;
   ::google::protobuf::internal::ArenaStringPtr actor_id_;
   ::google::protobuf::internal::ArenaStringPtr method_;
@@ -5302,7 +5351,7 @@ class InvokeActorResponse : public ::google::protobuf::Message /* @@protoc_inser
                &_InvokeActorResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    48;
+    49;
 
   void Swap(InvokeActorResponse* other);
   friend void swap(InvokeActorResponse& a, InvokeActorResponse& b) {
@@ -5434,7 +5483,7 @@ class GetMetadataResponse : public ::google::protobuf::Message /* @@protoc_inser
                &_GetMetadataResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    50;
+    51;
 
   void Swap(GetMetadataResponse* other);
   friend void swap(GetMetadataResponse& a, GetMetadataResponse& b) {
@@ -5587,7 +5636,7 @@ class ActiveActorsCount : public ::google::protobuf::Message /* @@protoc_inserti
                &_ActiveActorsCount_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    51;
+    52;
 
   void Swap(ActiveActorsCount* other);
   friend void swap(ActiveActorsCount& a, ActiveActorsCount& b) {
@@ -5705,7 +5754,7 @@ class RegisteredComponents : public ::google::protobuf::Message /* @@protoc_inse
                &_RegisteredComponents_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    52;
+    53;
 
   void Swap(RegisteredComponents* other);
   friend void swap(RegisteredComponents& a, RegisteredComponents& b) {
@@ -5869,7 +5918,7 @@ class SetMetadataRequest : public ::google::protobuf::Message /* @@protoc_insert
                &_SetMetadataRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    53;
+    54;
 
   void Swap(SetMetadataRequest* other);
   friend void swap(SetMetadataRequest& a, SetMetadataRequest& b) {
@@ -6016,7 +6065,7 @@ class GetConfigurationRequest : public ::google::protobuf::Message /* @@protoc_i
                &_GetConfigurationRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    55;
+    56;
 
   void Swap(GetConfigurationRequest* other);
   friend void swap(GetConfigurationRequest& a, GetConfigurationRequest& b) {
@@ -6131,6 +6180,27 @@ class GetConfigurationRequest : public ::google::protobuf::Message /* @@protoc_i
 };
 // -------------------------------------------------------------------
 
+class GetConfigurationResponse_ItemsEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<GetConfigurationResponse_ItemsEntry_DoNotUse, 
+    ::std::string, ::dapr::proto::common::v1::ConfigurationItem,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<GetConfigurationResponse_ItemsEntry_DoNotUse, 
+    ::std::string, ::dapr::proto::common::v1::ConfigurationItem,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > SuperType;
+  GetConfigurationResponse_ItemsEntry_DoNotUse();
+  GetConfigurationResponse_ItemsEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const GetConfigurationResponse_ItemsEntry_DoNotUse& other);
+  static const GetConfigurationResponse_ItemsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const GetConfigurationResponse_ItemsEntry_DoNotUse*>(&_GetConfigurationResponse_ItemsEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
 class GetConfigurationResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.GetConfigurationResponse) */ {
  public:
   GetConfigurationResponse();
@@ -6166,7 +6236,7 @@ class GetConfigurationResponse : public ::google::protobuf::Message /* @@protoc_
                &_GetConfigurationResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    56;
+    58;
 
   void Swap(GetConfigurationResponse* other);
   friend void swap(GetConfigurationResponse& a, GetConfigurationResponse& b) {
@@ -6216,25 +6286,28 @@ class GetConfigurationResponse : public ::google::protobuf::Message /* @@protoc_
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
-  // repeated .dapr.proto.common.v1.ConfigurationItem items = 1;
+  // map<string, .dapr.proto.common.v1.ConfigurationItem> items = 1;
   int items_size() const;
   void clear_items();
   static const int kItemsFieldNumber = 1;
-  ::dapr::proto::common::v1::ConfigurationItem* mutable_items(int index);
-  ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::ConfigurationItem >*
-      mutable_items();
-  const ::dapr::proto::common::v1::ConfigurationItem& items(int index) const;
-  ::dapr::proto::common::v1::ConfigurationItem* add_items();
-  const ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::ConfigurationItem >&
+  const ::google::protobuf::Map< ::std::string, ::dapr::proto::common::v1::ConfigurationItem >&
       items() const;
+  ::google::protobuf::Map< ::std::string, ::dapr::proto::common::v1::ConfigurationItem >*
+      mutable_items();
 
   // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.GetConfigurationResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::ConfigurationItem > items_;
+  ::google::protobuf::internal::MapField<
+      GetConfigurationResponse_ItemsEntry_DoNotUse,
+      ::std::string, ::dapr::proto::common::v1::ConfigurationItem,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+      0 > items_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
 };
@@ -6296,7 +6369,7 @@ class SubscribeConfigurationRequest : public ::google::protobuf::Message /* @@pr
                &_SubscribeConfigurationRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    58;
+    60;
 
   void Swap(SubscribeConfigurationRequest* other);
   friend void swap(SubscribeConfigurationRequest& a, SubscribeConfigurationRequest& b) {
@@ -6446,7 +6519,7 @@ class UnsubscribeConfigurationRequest : public ::google::protobuf::Message /* @@
                &_UnsubscribeConfigurationRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    59;
+    61;
 
   void Swap(UnsubscribeConfigurationRequest* other);
   friend void swap(UnsubscribeConfigurationRequest& a, UnsubscribeConfigurationRequest& b) {
@@ -6537,6 +6610,27 @@ class UnsubscribeConfigurationRequest : public ::google::protobuf::Message /* @@
 };
 // -------------------------------------------------------------------
 
+class SubscribeConfigurationResponse_ItemsEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<SubscribeConfigurationResponse_ItemsEntry_DoNotUse, 
+    ::std::string, ::dapr::proto::common::v1::ConfigurationItem,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<SubscribeConfigurationResponse_ItemsEntry_DoNotUse, 
+    ::std::string, ::dapr::proto::common::v1::ConfigurationItem,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+    0 > SuperType;
+  SubscribeConfigurationResponse_ItemsEntry_DoNotUse();
+  SubscribeConfigurationResponse_ItemsEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const SubscribeConfigurationResponse_ItemsEntry_DoNotUse& other);
+  static const SubscribeConfigurationResponse_ItemsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const SubscribeConfigurationResponse_ItemsEntry_DoNotUse*>(&_SubscribeConfigurationResponse_ItemsEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
 class SubscribeConfigurationResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.SubscribeConfigurationResponse) */ {
  public:
   SubscribeConfigurationResponse();
@@ -6572,7 +6666,7 @@ class SubscribeConfigurationResponse : public ::google::protobuf::Message /* @@p
                &_SubscribeConfigurationResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    60;
+    63;
 
   void Swap(SubscribeConfigurationResponse* other);
   friend void swap(SubscribeConfigurationResponse& a, SubscribeConfigurationResponse& b) {
@@ -6622,19 +6716,17 @@ class SubscribeConfigurationResponse : public ::google::protobuf::Message /* @@p
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
-  // repeated .dapr.proto.common.v1.ConfigurationItem items = 2;
+  // map<string, .dapr.proto.common.v1.ConfigurationItem> items = 2;
   int items_size() const;
   void clear_items();
   static const int kItemsFieldNumber = 2;
-  ::dapr::proto::common::v1::ConfigurationItem* mutable_items(int index);
-  ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::ConfigurationItem >*
-      mutable_items();
-  const ::dapr::proto::common::v1::ConfigurationItem& items(int index) const;
-  ::dapr::proto::common::v1::ConfigurationItem* add_items();
-  const ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::ConfigurationItem >&
+  const ::google::protobuf::Map< ::std::string, ::dapr::proto::common::v1::ConfigurationItem >&
       items() const;
+  ::google::protobuf::Map< ::std::string, ::dapr::proto::common::v1::ConfigurationItem >*
+      mutable_items();
 
   // string id = 1;
   void clear_id();
@@ -6654,7 +6746,12 @@ class SubscribeConfigurationResponse : public ::google::protobuf::Message /* @@p
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::ConfigurationItem > items_;
+  ::google::protobuf::internal::MapField<
+      SubscribeConfigurationResponse_ItemsEntry_DoNotUse,
+      ::std::string, ::dapr::proto::common::v1::ConfigurationItem,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+      0 > items_;
   ::google::protobuf::internal::ArenaStringPtr id_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
@@ -6696,7 +6793,7 @@ class UnsubscribeConfigurationResponse : public ::google::protobuf::Message /* @
                &_UnsubscribeConfigurationResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    61;
+    64;
 
   void Swap(UnsubscribeConfigurationResponse* other);
   friend void swap(UnsubscribeConfigurationResponse& a, UnsubscribeConfigurationResponse& b) {
@@ -6814,7 +6911,7 @@ class TryLockRequest : public ::google::protobuf::Message /* @@protoc_insertion_
                &_TryLockRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    62;
+    65;
 
   void Swap(TryLockRequest* other);
   friend void swap(TryLockRequest& a, TryLockRequest& b) {
@@ -6962,7 +7059,7 @@ class TryLockResponse : public ::google::protobuf::Message /* @@protoc_insertion
                &_TryLockResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    63;
+    66;
 
   void Swap(TryLockResponse* other);
   friend void swap(TryLockResponse& a, TryLockResponse& b) {
@@ -7065,7 +7162,7 @@ class UnlockRequest : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_UnlockRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    64;
+    67;
 
   void Swap(UnlockRequest* other);
   friend void swap(UnlockRequest& a, UnlockRequest& b) {
@@ -7206,7 +7303,7 @@ class UnlockResponse : public ::google::protobuf::Message /* @@protoc_insertion_
                &_UnlockResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    65;
+    68;
 
   void Swap(UnlockResponse* other);
   friend void swap(UnlockResponse& a, UnlockResponse& b) {
@@ -7259,10 +7356,10 @@ class UnlockResponse : public ::google::protobuf::Message /* @@protoc_insertion_
   typedef UnlockResponse_Status Status;
   static const Status SUCCESS =
     UnlockResponse_Status_SUCCESS;
-  static const Status LOCK_UNEXIST =
-    UnlockResponse_Status_LOCK_UNEXIST;
-  static const Status LOCK_BELONG_TO_OTHERS =
-    UnlockResponse_Status_LOCK_BELONG_TO_OTHERS;
+  static const Status LOCK_DOES_NOT_EXIST =
+    UnlockResponse_Status_LOCK_DOES_NOT_EXIST;
+  static const Status LOCK_BELONGS_TO_OTHERS =
+    UnlockResponse_Status_LOCK_BELONGS_TO_OTHERS;
   static const Status INTERNAL_ERROR =
     UnlockResponse_Status_INTERNAL_ERROR;
   static inline bool Status_IsValid(int value) {
@@ -11817,6 +11914,8 @@ inline void TransactionalActorStateOperation::set_allocated_value(::google::prot
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // InvokeActorRequest
 
 // string actor_type = 1;
@@ -12029,6 +12128,24 @@ inline void InvokeActorRequest::set_allocated_data(::std::string* data) {
   }
   data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.InvokeActorRequest.data)
+}
+
+// map<string, string> metadata = 5;
+inline int InvokeActorRequest::metadata_size() const {
+  return metadata_.size();
+}
+inline void InvokeActorRequest::clear_metadata() {
+  metadata_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+InvokeActorRequest::metadata() const {
+  // @@protoc_insertion_point(field_map:dapr.proto.runtime.v1.InvokeActorRequest.metadata)
+  return metadata_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+InvokeActorRequest::mutable_metadata() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.runtime.v1.InvokeActorRequest.metadata)
+  return metadata_.MutableMap();
 }
 
 // -------------------------------------------------------------------
@@ -12786,33 +12903,23 @@ GetConfigurationRequest::mutable_metadata() {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // GetConfigurationResponse
 
-// repeated .dapr.proto.common.v1.ConfigurationItem items = 1;
+// map<string, .dapr.proto.common.v1.ConfigurationItem> items = 1;
 inline int GetConfigurationResponse::items_size() const {
   return items_.size();
 }
-inline ::dapr::proto::common::v1::ConfigurationItem* GetConfigurationResponse::mutable_items(int index) {
-  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.GetConfigurationResponse.items)
-  return items_.Mutable(index);
-}
-inline ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::ConfigurationItem >*
-GetConfigurationResponse::mutable_items() {
-  // @@protoc_insertion_point(field_mutable_list:dapr.proto.runtime.v1.GetConfigurationResponse.items)
-  return &items_;
-}
-inline const ::dapr::proto::common::v1::ConfigurationItem& GetConfigurationResponse::items(int index) const {
-  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.GetConfigurationResponse.items)
-  return items_.Get(index);
-}
-inline ::dapr::proto::common::v1::ConfigurationItem* GetConfigurationResponse::add_items() {
-  // @@protoc_insertion_point(field_add:dapr.proto.runtime.v1.GetConfigurationResponse.items)
-  return items_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::ConfigurationItem >&
+inline const ::google::protobuf::Map< ::std::string, ::dapr::proto::common::v1::ConfigurationItem >&
 GetConfigurationResponse::items() const {
-  // @@protoc_insertion_point(field_list:dapr.proto.runtime.v1.GetConfigurationResponse.items)
-  return items_;
+  // @@protoc_insertion_point(field_map:dapr.proto.runtime.v1.GetConfigurationResponse.items)
+  return items_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::dapr::proto::common::v1::ConfigurationItem >*
+GetConfigurationResponse::mutable_items() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.runtime.v1.GetConfigurationResponse.items)
+  return items_.MutableMap();
 }
 
 // -------------------------------------------------------------------
@@ -13073,6 +13180,8 @@ inline void UnsubscribeConfigurationRequest::set_allocated_id(::std::string* id)
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // SubscribeConfigurationResponse
 
 // string id = 1;
@@ -13128,31 +13237,19 @@ inline void SubscribeConfigurationResponse::set_allocated_id(::std::string* id) 
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.SubscribeConfigurationResponse.id)
 }
 
-// repeated .dapr.proto.common.v1.ConfigurationItem items = 2;
+// map<string, .dapr.proto.common.v1.ConfigurationItem> items = 2;
 inline int SubscribeConfigurationResponse::items_size() const {
   return items_.size();
 }
-inline ::dapr::proto::common::v1::ConfigurationItem* SubscribeConfigurationResponse::mutable_items(int index) {
-  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.SubscribeConfigurationResponse.items)
-  return items_.Mutable(index);
-}
-inline ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::ConfigurationItem >*
-SubscribeConfigurationResponse::mutable_items() {
-  // @@protoc_insertion_point(field_mutable_list:dapr.proto.runtime.v1.SubscribeConfigurationResponse.items)
-  return &items_;
-}
-inline const ::dapr::proto::common::v1::ConfigurationItem& SubscribeConfigurationResponse::items(int index) const {
-  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.SubscribeConfigurationResponse.items)
-  return items_.Get(index);
-}
-inline ::dapr::proto::common::v1::ConfigurationItem* SubscribeConfigurationResponse::add_items() {
-  // @@protoc_insertion_point(field_add:dapr.proto.runtime.v1.SubscribeConfigurationResponse.items)
-  return items_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::dapr::proto::common::v1::ConfigurationItem >&
+inline const ::google::protobuf::Map< ::std::string, ::dapr::proto::common::v1::ConfigurationItem >&
 SubscribeConfigurationResponse::items() const {
-  // @@protoc_insertion_point(field_list:dapr.proto.runtime.v1.SubscribeConfigurationResponse.items)
-  return items_;
+  // @@protoc_insertion_point(field_map:dapr.proto.runtime.v1.SubscribeConfigurationResponse.items)
+  return items_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::dapr::proto::common::v1::ConfigurationItem >*
+SubscribeConfigurationResponse::mutable_items() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.runtime.v1.SubscribeConfigurationResponse.items)
+  return items_.MutableMap();
 }
 
 // -------------------------------------------------------------------
@@ -13605,6 +13702,12 @@ inline void UnlockResponse::set_status(::dapr::proto::runtime::v1::UnlockRespons
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

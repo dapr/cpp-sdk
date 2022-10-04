@@ -611,6 +611,156 @@ class AppCallback final {
   typedef WithStreamedUnaryMethod_OnInvoke<WithStreamedUnaryMethod_ListTopicSubscriptions<WithStreamedUnaryMethod_OnTopicEvent<WithStreamedUnaryMethod_ListInputBindings<WithStreamedUnaryMethod_OnBindingEvent<Service > > > > > StreamedService;
 };
 
+// AppCallbackHealthCheck V1 is an optional extension to AppCallback V1 to implement
+// the HealthCheck method.
+class AppCallbackHealthCheck final {
+ public:
+  static constexpr char const* service_full_name() {
+    return "dapr.proto.runtime.v1.AppCallbackHealthCheck";
+  }
+  class StubInterface {
+   public:
+    virtual ~StubInterface() {}
+    // Health check.
+    virtual ::grpc::Status HealthCheck(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::dapr::proto::runtime::v1::HealthCheckResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::HealthCheckResponse>> AsyncHealthCheck(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::HealthCheckResponse>>(AsyncHealthCheckRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::HealthCheckResponse>> PrepareAsyncHealthCheck(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::HealthCheckResponse>>(PrepareAsyncHealthCheckRaw(context, request, cq));
+    }
+    class experimental_async_interface {
+     public:
+      virtual ~experimental_async_interface() {}
+      // Health check.
+      virtual void HealthCheck(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::HealthCheckResponse* response, std::function<void(::grpc::Status)>) = 0;
+    };
+    virtual class experimental_async_interface* experimental_async() { return nullptr; }
+  private:
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::HealthCheckResponse>* AsyncHealthCheckRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::HealthCheckResponse>* PrepareAsyncHealthCheckRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+  };
+  class Stub final : public StubInterface {
+   public:
+    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel);
+    ::grpc::Status HealthCheck(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::dapr::proto::runtime::v1::HealthCheckResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::HealthCheckResponse>> AsyncHealthCheck(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::HealthCheckResponse>>(AsyncHealthCheckRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::HealthCheckResponse>> PrepareAsyncHealthCheck(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::HealthCheckResponse>>(PrepareAsyncHealthCheckRaw(context, request, cq));
+    }
+    class experimental_async final :
+      public StubInterface::experimental_async_interface {
+     public:
+      void HealthCheck(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::HealthCheckResponse* response, std::function<void(::grpc::Status)>) override;
+     private:
+      friend class Stub;
+      explicit experimental_async(Stub* stub): stub_(stub) { }
+      Stub* stub() { return stub_; }
+      Stub* stub_;
+    };
+    class experimental_async_interface* experimental_async() override { return &async_stub_; }
+
+   private:
+    std::shared_ptr< ::grpc::ChannelInterface> channel_;
+    class experimental_async async_stub_{this};
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::HealthCheckResponse>* AsyncHealthCheckRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::HealthCheckResponse>* PrepareAsyncHealthCheckRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_HealthCheck_;
+  };
+  static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+
+  class Service : public ::grpc::Service {
+   public:
+    Service();
+    virtual ~Service();
+    // Health check.
+    virtual ::grpc::Status HealthCheck(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::HealthCheckResponse* response);
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_HealthCheck : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_HealthCheck() {
+      ::grpc::Service::MarkMethodAsync(0);
+    }
+    ~WithAsyncMethod_HealthCheck() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status HealthCheck(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::HealthCheckResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestHealthCheck(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::HealthCheckResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_HealthCheck<Service > AsyncService;
+  template <class BaseClass>
+  class WithGenericMethod_HealthCheck : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_HealthCheck() {
+      ::grpc::Service::MarkMethodGeneric(0);
+    }
+    ~WithGenericMethod_HealthCheck() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status HealthCheck(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::HealthCheckResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_HealthCheck : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_HealthCheck() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_HealthCheck() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status HealthCheck(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::HealthCheckResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestHealthCheck(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_HealthCheck : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_HealthCheck() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler< ::google::protobuf::Empty, ::dapr::proto::runtime::v1::HealthCheckResponse>(std::bind(&WithStreamedUnaryMethod_HealthCheck<BaseClass>::StreamedHealthCheck, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_HealthCheck() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status HealthCheck(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::HealthCheckResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedHealthCheck(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::dapr::proto::runtime::v1::HealthCheckResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_HealthCheck<Service > StreamedUnaryService;
+  typedef Service SplitStreamedService;
+  typedef WithStreamedUnaryMethod_HealthCheck<Service > StreamedService;
+};
+
 }  // namespace v1
 }  // namespace runtime
 }  // namespace proto

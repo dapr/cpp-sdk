@@ -1189,32 +1189,18 @@ class ConfigurationItem : public ::google::protobuf::Message /* @@protoc_inserti
 
   // accessors -------------------------------------------------------
 
-  // map<string, string> metadata = 4;
+  // map<string, string> metadata = 3;
   int metadata_size() const;
   void clear_metadata();
-  static const int kMetadataFieldNumber = 4;
+  static const int kMetadataFieldNumber = 3;
   const ::google::protobuf::Map< ::std::string, ::std::string >&
       metadata() const;
   ::google::protobuf::Map< ::std::string, ::std::string >*
       mutable_metadata();
 
-  // string key = 1;
-  void clear_key();
-  static const int kKeyFieldNumber = 1;
-  const ::std::string& key() const;
-  void set_key(const ::std::string& value);
-  #if LANG_CXX11
-  void set_key(::std::string&& value);
-  #endif
-  void set_key(const char* value);
-  void set_key(const char* value, size_t size);
-  ::std::string* mutable_key();
-  ::std::string* release_key();
-  void set_allocated_key(::std::string* key);
-
-  // string value = 2;
+  // string value = 1;
   void clear_value();
-  static const int kValueFieldNumber = 2;
+  static const int kValueFieldNumber = 1;
   const ::std::string& value() const;
   void set_value(const ::std::string& value);
   #if LANG_CXX11
@@ -1226,9 +1212,9 @@ class ConfigurationItem : public ::google::protobuf::Message /* @@protoc_inserti
   ::std::string* release_value();
   void set_allocated_value(::std::string* value);
 
-  // string version = 3;
+  // string version = 2;
   void clear_version();
-  static const int kVersionFieldNumber = 3;
+  static const int kVersionFieldNumber = 2;
   const ::std::string& version() const;
   void set_version(const ::std::string& value);
   #if LANG_CXX11
@@ -1250,7 +1236,6 @@ class ConfigurationItem : public ::google::protobuf::Message /* @@protoc_inserti
       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
       0 > metadata_;
-  ::google::protobuf::internal::ArenaStringPtr key_;
   ::google::protobuf::internal::ArenaStringPtr value_;
   ::google::protobuf::internal::ArenaStringPtr version_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
@@ -1984,60 +1969,7 @@ inline void StateOptions::set_consistency(::dapr::proto::common::v1::StateOption
 
 // ConfigurationItem
 
-// string key = 1;
-inline void ConfigurationItem::clear_key() {
-  key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& ConfigurationItem::key() const {
-  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.ConfigurationItem.key)
-  return key_.GetNoArena();
-}
-inline void ConfigurationItem::set_key(const ::std::string& value) {
-  
-  key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.ConfigurationItem.key)
-}
-#if LANG_CXX11
-inline void ConfigurationItem::set_key(::std::string&& value) {
-  
-  key_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.ConfigurationItem.key)
-}
-#endif
-inline void ConfigurationItem::set_key(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.ConfigurationItem.key)
-}
-inline void ConfigurationItem::set_key(const char* value, size_t size) {
-  
-  key_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.ConfigurationItem.key)
-}
-inline ::std::string* ConfigurationItem::mutable_key() {
-  
-  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.ConfigurationItem.key)
-  return key_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* ConfigurationItem::release_key() {
-  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.ConfigurationItem.key)
-  
-  return key_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void ConfigurationItem::set_allocated_key(::std::string* key) {
-  if (key != NULL) {
-    
-  } else {
-    
-  }
-  key_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), key);
-  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.ConfigurationItem.key)
-}
-
-// string value = 2;
+// string value = 1;
 inline void ConfigurationItem::clear_value() {
   value_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2090,7 +2022,7 @@ inline void ConfigurationItem::set_allocated_value(::std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.ConfigurationItem.value)
 }
 
-// string version = 3;
+// string version = 2;
 inline void ConfigurationItem::clear_version() {
   version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2143,7 +2075,7 @@ inline void ConfigurationItem::set_allocated_version(::std::string* version) {
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.ConfigurationItem.version)
 }
 
-// map<string, string> metadata = 4;
+// map<string, string> metadata = 3;
 inline int ConfigurationItem::metadata_size() const {
   return metadata_.size();
 }

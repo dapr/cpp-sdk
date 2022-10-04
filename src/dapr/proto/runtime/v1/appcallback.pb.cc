@@ -88,6 +88,11 @@ class ListInputBindingsResponseDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<ListInputBindingsResponse>
       _instance;
 } _ListInputBindingsResponse_default_instance_;
+class HealthCheckResponseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<HealthCheckResponse>
+      _instance;
+} _HealthCheckResponse_default_instance_;
 }  // namespace v1
 }  // namespace runtime
 }  // namespace proto
@@ -251,6 +256,20 @@ static void InitDefaultsListInputBindingsResponse() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_ListInputBindingsResponse =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsListInputBindingsResponse}, {}};
 
+static void InitDefaultsHealthCheckResponse() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::dapr::proto::runtime::v1::_HealthCheckResponse_default_instance_;
+    new (ptr) ::dapr::proto::runtime::v1::HealthCheckResponse();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::dapr::proto::runtime::v1::HealthCheckResponse::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_HealthCheckResponse =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsHealthCheckResponse}, {}};
+
 void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_TopicEventRequest.base);
   ::google::protobuf::internal::InitSCC(&scc_info_TopicEventResponse.base);
@@ -263,9 +282,10 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_TopicRoutes.base);
   ::google::protobuf::internal::InitSCC(&scc_info_TopicRule.base);
   ::google::protobuf::internal::InitSCC(&scc_info_ListInputBindingsResponse.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_HealthCheckResponse.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[11];
+::google::protobuf::Metadata file_level_metadata[12];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -361,6 +381,11 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::ListInputBindingsResponse, bindings_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::HealthCheckResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::dapr::proto::runtime::v1::TopicEventRequest)},
@@ -374,6 +399,7 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 72, -1, sizeof(::dapr::proto::runtime::v1::TopicRoutes)},
   { 79, -1, sizeof(::dapr::proto::runtime::v1::TopicRule)},
   { 86, -1, sizeof(::dapr::proto::runtime::v1::ListInputBindingsResponse)},
+  { 92, -1, sizeof(::dapr::proto::runtime::v1::HealthCheckResponse)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -388,6 +414,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicRoutes_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicRule_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_ListInputBindingsResponse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_HealthCheckResponse_default_instance_),
 };
 
 void protobuf_AssignDescriptors() {
@@ -405,7 +432,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 11);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 12);
 }
 
 void AddDescriptorsImpl() {
@@ -447,26 +474,29 @@ void AddDescriptorsImpl() {
       ".runtime.v1.TopicRule\022\017\n\007default\030\002 \001(\t\"("
       "\n\tTopicRule\022\r\n\005match\030\001 \001(\t\022\014\n\004path\030\002 \001(\t"
       "\"-\n\031ListInputBindingsResponse\022\020\n\010binding"
-      "s\030\001 \003(\t2\206\004\n\013AppCallback\022W\n\010OnInvoke\022#.da"
-      "pr.proto.common.v1.InvokeRequest\032$.dapr."
-      "proto.common.v1.InvokeResponse\"\000\022i\n\026List"
-      "TopicSubscriptions\022\026.google.protobuf.Emp"
-      "ty\0325.dapr.proto.runtime.v1.ListTopicSubs"
-      "criptionsResponse\"\000\022e\n\014OnTopicEvent\022(.da"
-      "pr.proto.runtime.v1.TopicEventRequest\032)."
-      "dapr.proto.runtime.v1.TopicEventResponse"
-      "\"\000\022_\n\021ListInputBindings\022\026.google.protobu"
-      "f.Empty\0320.dapr.proto.runtime.v1.ListInpu"
-      "tBindingsResponse\"\000\022k\n\016OnBindingEvent\022*."
-      "dapr.proto.runtime.v1.BindingEventReques"
-      "t\032+.dapr.proto.runtime.v1.BindingEventRe"
-      "sponse\"\000By\n\nio.dapr.v1B\025DaprAppCallbackP"
-      "rotosZ1github.com/dapr/dapr/pkg/proto/ru"
-      "ntime/v1;runtime\252\002 Dapr.AppCallback.Auto"
-      "gen.Grpc.v1b\006proto3"
+      "s\030\001 \003(\t\"\025\n\023HealthCheckResponse2\206\004\n\013AppCa"
+      "llback\022W\n\010OnInvoke\022#.dapr.proto.common.v"
+      "1.InvokeRequest\032$.dapr.proto.common.v1.I"
+      "nvokeResponse\"\000\022i\n\026ListTopicSubscription"
+      "s\022\026.google.protobuf.Empty\0325.dapr.proto.r"
+      "untime.v1.ListTopicSubscriptionsResponse"
+      "\"\000\022e\n\014OnTopicEvent\022(.dapr.proto.runtime."
+      "v1.TopicEventRequest\032).dapr.proto.runtim"
+      "e.v1.TopicEventResponse\"\000\022_\n\021ListInputBi"
+      "ndings\022\026.google.protobuf.Empty\0320.dapr.pr"
+      "oto.runtime.v1.ListInputBindingsResponse"
+      "\"\000\022k\n\016OnBindingEvent\022*.dapr.proto.runtim"
+      "e.v1.BindingEventRequest\032+.dapr.proto.ru"
+      "ntime.v1.BindingEventResponse\"\0002m\n\026AppCa"
+      "llbackHealthCheck\022S\n\013HealthCheck\022\026.googl"
+      "e.protobuf.Empty\032*.dapr.proto.runtime.v1"
+      ".HealthCheckResponse\"\000By\n\nio.dapr.v1B\025Da"
+      "prAppCallbackProtosZ1github.com/dapr/dap"
+      "r/pkg/proto/runtime/v1;runtime\252\002 Dapr.Ap"
+      "pCallback.Autogen.Grpc.v1b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2099);
+      descriptor, 2233);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dapr/proto/runtime/v1/appcallback.proto", &protobuf_RegisterTypes);
   ::protobuf_google_2fprotobuf_2fempty_2eproto::AddDescriptors();
@@ -3971,6 +4001,185 @@ void ListInputBindingsResponse::InternalSwap(ListInputBindingsResponse* other) {
 }
 
 
+// ===================================================================
+
+void HealthCheckResponse::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+HealthCheckResponse::HealthCheckResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_HealthCheckResponse.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.HealthCheckResponse)
+}
+HealthCheckResponse::HealthCheckResponse(const HealthCheckResponse& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.HealthCheckResponse)
+}
+
+void HealthCheckResponse::SharedCtor() {
+}
+
+HealthCheckResponse::~HealthCheckResponse() {
+  // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.HealthCheckResponse)
+  SharedDtor();
+}
+
+void HealthCheckResponse::SharedDtor() {
+}
+
+void HealthCheckResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* HealthCheckResponse::descriptor() {
+  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const HealthCheckResponse& HealthCheckResponse::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_HealthCheckResponse.base);
+  return *internal_default_instance();
+}
+
+
+void HealthCheckResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.HealthCheckResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_metadata_.Clear();
+}
+
+bool HealthCheckResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.HealthCheckResponse)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, _internal_metadata_.mutable_unknown_fields()));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.HealthCheckResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.HealthCheckResponse)
+  return false;
+#undef DO_
+}
+
+void HealthCheckResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.HealthCheckResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.HealthCheckResponse)
+}
+
+::google::protobuf::uint8* HealthCheckResponse::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.HealthCheckResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.HealthCheckResponse)
+  return target;
+}
+
+size_t HealthCheckResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.HealthCheckResponse)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void HealthCheckResponse::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.HealthCheckResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const HealthCheckResponse* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const HealthCheckResponse>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.HealthCheckResponse)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.HealthCheckResponse)
+    MergeFrom(*source);
+  }
+}
+
+void HealthCheckResponse::MergeFrom(const HealthCheckResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.HealthCheckResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+}
+
+void HealthCheckResponse::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.HealthCheckResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void HealthCheckResponse::CopyFrom(const HealthCheckResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:dapr.proto.runtime.v1.HealthCheckResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool HealthCheckResponse::IsInitialized() const {
+  return true;
+}
+
+void HealthCheckResponse::Swap(HealthCheckResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void HealthCheckResponse::InternalSwap(HealthCheckResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata HealthCheckResponse::GetMetadata() const {
+  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
 }  // namespace runtime
@@ -4010,6 +4219,9 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicR
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::ListInputBindingsResponse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::ListInputBindingsResponse >(Arena* arena) {
   return Arena::CreateInternal< ::dapr::proto::runtime::v1::ListInputBindingsResponse >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::HealthCheckResponse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::HealthCheckResponse >(Arena* arena) {
+  return Arena::CreateInternal< ::dapr::proto::runtime::v1::HealthCheckResponse >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

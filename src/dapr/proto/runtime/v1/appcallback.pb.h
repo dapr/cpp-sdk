@@ -44,7 +44,7 @@ namespace protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[11];
+  static const ::google::protobuf::internal::ParseTable schema[12];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -64,6 +64,9 @@ extern BindingEventRequest_MetadataEntry_DoNotUseDefaultTypeInternal _BindingEve
 class BindingEventResponse;
 class BindingEventResponseDefaultTypeInternal;
 extern BindingEventResponseDefaultTypeInternal _BindingEventResponse_default_instance_;
+class HealthCheckResponse;
+class HealthCheckResponseDefaultTypeInternal;
+extern HealthCheckResponseDefaultTypeInternal _HealthCheckResponse_default_instance_;
 class ListInputBindingsResponse;
 class ListInputBindingsResponseDefaultTypeInternal;
 extern ListInputBindingsResponseDefaultTypeInternal _ListInputBindingsResponse_default_instance_;
@@ -97,6 +100,7 @@ namespace protobuf {
 template<> ::dapr::proto::runtime::v1::BindingEventRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::BindingEventRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::BindingEventResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::BindingEventResponse>(Arena*);
+template<> ::dapr::proto::runtime::v1::HealthCheckResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::HealthCheckResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::ListInputBindingsResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::ListInputBindingsResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::TopicEventRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TopicEventRequest>(Arena*);
@@ -1544,6 +1548,102 @@ class ListInputBindingsResponse : public ::google::protobuf::Message /* @@protoc
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class HealthCheckResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.HealthCheckResponse) */ {
+ public:
+  HealthCheckResponse();
+  virtual ~HealthCheckResponse();
+
+  HealthCheckResponse(const HealthCheckResponse& from);
+
+  inline HealthCheckResponse& operator=(const HealthCheckResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  HealthCheckResponse(HealthCheckResponse&& from) noexcept
+    : HealthCheckResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline HealthCheckResponse& operator=(HealthCheckResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HealthCheckResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const HealthCheckResponse* internal_default_instance() {
+    return reinterpret_cast<const HealthCheckResponse*>(
+               &_HealthCheckResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  void Swap(HealthCheckResponse* other);
+  friend void swap(HealthCheckResponse& a, HealthCheckResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline HealthCheckResponse* New() const final {
+    return CreateMaybeMessage<HealthCheckResponse>(NULL);
+  }
+
+  HealthCheckResponse* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<HealthCheckResponse>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const HealthCheckResponse& from);
+  void MergeFrom(const HealthCheckResponse& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(HealthCheckResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.HealthCheckResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -2941,9 +3041,15 @@ ListInputBindingsResponse::mutable_bindings() {
   return &bindings_;
 }
 
+// -------------------------------------------------------------------
+
+// HealthCheckResponse
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

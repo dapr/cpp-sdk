@@ -299,7 +299,6 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::common::v1::ConfigurationItem, key_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::common::v1::ConfigurationItem, value_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::common::v1::ConfigurationItem, version_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::common::v1::ConfigurationItem, metadata_),
@@ -378,17 +377,17 @@ void AddDescriptorsImpl() {
       "\001\022\032\n\026CONCURRENCY_LAST_WRITE\020\002\"a\n\020StateCo"
       "nsistency\022\033\n\027CONSISTENCY_UNSPECIFIED\020\000\022\030"
       "\n\024CONSISTENCY_EVENTUAL\020\001\022\026\n\022CONSISTENCY_"
-      "STRONG\020\002\"\272\001\n\021ConfigurationItem\022\013\n\003key\030\001 "
-      "\001(\t\022\r\n\005value\030\002 \001(\t\022\017\n\007version\030\003 \001(\t\022G\n\010m"
-      "etadata\030\004 \003(\01325.dapr.proto.common.v1.Con"
-      "figurationItem.MetadataEntry\032/\n\rMetadata"
-      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001Bi\n"
-      "\nio.dapr.v1B\014CommonProtosZ/github.com/da"
-      "pr/dapr/pkg/proto/common/v1;common\252\002\033Dap"
-      "r.Client.Autogen.Grpc.v1b\006proto3"
+      "STRONG\020\002\"\255\001\n\021ConfigurationItem\022\r\n\005value\030"
+      "\001 \001(\t\022\017\n\007version\030\002 \001(\t\022G\n\010metadata\030\003 \003(\013"
+      "25.dapr.proto.common.v1.ConfigurationIte"
+      "m.MetadataEntry\032/\n\rMetadataEntry\022\013\n\003key\030"
+      "\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001Bi\n\nio.dapr.v1B\014"
+      "CommonProtosZ/github.com/dapr/dapr/pkg/p"
+      "roto/common/v1;common\252\002\033Dapr.Client.Auto"
+      "gen.Grpc.v1b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1472);
+      descriptor, 1459);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dapr/proto/common/v1/common.proto", &protobuf_RegisterTypes);
   ::protobuf_google_2fprotobuf_2fany_2eproto::AddDescriptors();
@@ -2576,7 +2575,6 @@ void ConfigurationItem_MetadataEntry_DoNotUse::MergeFrom(
 void ConfigurationItem::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ConfigurationItem::kKeyFieldNumber;
 const int ConfigurationItem::kValueFieldNumber;
 const int ConfigurationItem::kVersionFieldNumber;
 const int ConfigurationItem::kMetadataFieldNumber;
@@ -2594,10 +2592,6 @@ ConfigurationItem::ConfigurationItem(const ConfigurationItem& from)
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   metadata_.MergeFrom(from.metadata_);
-  key_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.key().size() > 0) {
-    key_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.key_);
-  }
   value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.value().size() > 0) {
     value_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.value_);
@@ -2610,7 +2604,6 @@ ConfigurationItem::ConfigurationItem(const ConfigurationItem& from)
 }
 
 void ConfigurationItem::SharedCtor() {
-  key_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2621,7 +2614,6 @@ ConfigurationItem::~ConfigurationItem() {
 }
 
 void ConfigurationItem::SharedDtor() {
-  key_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   value_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   version_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2647,7 +2639,6 @@ void ConfigurationItem::Clear() {
   (void) cached_has_bits;
 
   metadata_.Clear();
-  key_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   value_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
@@ -2663,26 +2654,10 @@ bool ConfigurationItem::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string key = 1;
+      // string value = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_key()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->key().data(), static_cast<int>(this->key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.common.v1.ConfigurationItem.key"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string value = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_value()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2695,10 +2670,10 @@ bool ConfigurationItem::MergePartialFromCodedStream(
         break;
       }
 
-      // string version = 3;
-      case 3: {
+      // string version = 2;
+      case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_version()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2711,10 +2686,10 @@ bool ConfigurationItem::MergePartialFromCodedStream(
         break;
       }
 
-      // map<string, string> metadata = 4;
-      case 4: {
+      // map<string, string> metadata = 3;
+      case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
           ConfigurationItem_MetadataEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
               ConfigurationItem_MetadataEntry_DoNotUse,
               ::std::string, ::std::string,
@@ -2764,37 +2739,27 @@ void ConfigurationItem::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string key = 1;
-  if (this->key().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->key().data(), static_cast<int>(this->key().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.common.v1.ConfigurationItem.key");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->key(), output);
-  }
-
-  // string value = 2;
+  // string value = 1;
   if (this->value().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->value().data(), static_cast<int>(this->value().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "dapr.proto.common.v1.ConfigurationItem.value");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->value(), output);
+      1, this->value(), output);
   }
 
-  // string version = 3;
+  // string version = 2;
   if (this->version().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->version().data(), static_cast<int>(this->version().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "dapr.proto.common.v1.ConfigurationItem.version");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->version(), output);
+      2, this->version(), output);
   }
 
-  // map<string, string> metadata = 4;
+  // map<string, string> metadata = 3;
   if (!this->metadata().empty()) {
     typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
         ConstPtr;
@@ -2830,7 +2795,7 @@ void ConfigurationItem::SerializeWithCachedSizes(
         entry.reset(metadata_.NewEntryWrapper(
             items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
         ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            4, *entry, output);
+            3, *entry, output);
         Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
       }
     } else {
@@ -2841,7 +2806,7 @@ void ConfigurationItem::SerializeWithCachedSizes(
         entry.reset(metadata_.NewEntryWrapper(
             it->first, it->second));
         ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            4, *entry, output);
+            3, *entry, output);
         Utf8Check::Check(&*it);
       }
     }
@@ -2861,18 +2826,7 @@ void ConfigurationItem::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string key = 1;
-  if (this->key().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->key().data(), static_cast<int>(this->key().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.common.v1.ConfigurationItem.key");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->key(), target);
-  }
-
-  // string value = 2;
+  // string value = 1;
   if (this->value().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->value().data(), static_cast<int>(this->value().length()),
@@ -2880,10 +2834,10 @@ void ConfigurationItem::SerializeWithCachedSizes(
       "dapr.proto.common.v1.ConfigurationItem.value");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->value(), target);
+        1, this->value(), target);
   }
 
-  // string version = 3;
+  // string version = 2;
   if (this->version().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->version().data(), static_cast<int>(this->version().length()),
@@ -2891,10 +2845,10 @@ void ConfigurationItem::SerializeWithCachedSizes(
       "dapr.proto.common.v1.ConfigurationItem.version");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->version(), target);
+        2, this->version(), target);
   }
 
-  // map<string, string> metadata = 4;
+  // map<string, string> metadata = 3;
   if (!this->metadata().empty()) {
     typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
         ConstPtr;
@@ -2931,7 +2885,7 @@ void ConfigurationItem::SerializeWithCachedSizes(
             items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
         target = ::google::protobuf::internal::WireFormatLite::
                    InternalWriteMessageNoVirtualToArray(
-                       4, *entry, deterministic, target);
+                       3, *entry, deterministic, target);
 ;
         Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
       }
@@ -2944,7 +2898,7 @@ void ConfigurationItem::SerializeWithCachedSizes(
             it->first, it->second));
         target = ::google::protobuf::internal::WireFormatLite::
                    InternalWriteMessageNoVirtualToArray(
-                       4, *entry, deterministic, target);
+                       3, *entry, deterministic, target);
 ;
         Utf8Check::Check(&*it);
       }
@@ -2968,7 +2922,7 @@ size_t ConfigurationItem::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // map<string, string> metadata = 4;
+  // map<string, string> metadata = 3;
   total_size += 1 *
       ::google::protobuf::internal::FromIntSize(this->metadata_size());
   {
@@ -2982,21 +2936,14 @@ size_t ConfigurationItem::ByteSizeLong() const {
     }
   }
 
-  // string key = 1;
-  if (this->key().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->key());
-  }
-
-  // string value = 2;
+  // string value = 1;
   if (this->value().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->value());
   }
 
-  // string version = 3;
+  // string version = 2;
   if (this->version().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -3031,10 +2978,6 @@ void ConfigurationItem::MergeFrom(const ConfigurationItem& from) {
   (void) cached_has_bits;
 
   metadata_.MergeFrom(from.metadata_);
-  if (from.key().size() > 0) {
-
-    key_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.key_);
-  }
   if (from.value().size() > 0) {
 
     value_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.value_);
@@ -3070,8 +3013,6 @@ void ConfigurationItem::Swap(ConfigurationItem* other) {
 void ConfigurationItem::InternalSwap(ConfigurationItem* other) {
   using std::swap;
   metadata_.Swap(&other->metadata_);
-  key_.Swap(&other->key_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
   value_.Swap(&other->value_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   version_.Swap(&other->version_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
