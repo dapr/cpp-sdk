@@ -189,6 +189,55 @@ AppCallback::Service::~Service() {
 }
 
 
+static const char* AppCallbackHealthCheck_method_names[] = {
+  "/dapr.proto.runtime.v1.AppCallbackHealthCheck/HealthCheck",
+};
+
+std::unique_ptr< AppCallbackHealthCheck::Stub> AppCallbackHealthCheck::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+  (void)options;
+  std::unique_ptr< AppCallbackHealthCheck::Stub> stub(new AppCallbackHealthCheck::Stub(channel));
+  return stub;
+}
+
+AppCallbackHealthCheck::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
+  : channel_(channel), rpcmethod_HealthCheck_(AppCallbackHealthCheck_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  {}
+
+::grpc::Status AppCallbackHealthCheck::Stub::HealthCheck(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::dapr::proto::runtime::v1::HealthCheckResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_HealthCheck_, context, request, response);
+}
+
+void AppCallbackHealthCheck::Stub::experimental_async::HealthCheck(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::HealthCheckResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_HealthCheck_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::HealthCheckResponse>* AppCallbackHealthCheck::Stub::AsyncHealthCheckRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::HealthCheckResponse>::Create(channel_.get(), cq, rpcmethod_HealthCheck_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::HealthCheckResponse>* AppCallbackHealthCheck::Stub::PrepareAsyncHealthCheckRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::HealthCheckResponse>::Create(channel_.get(), cq, rpcmethod_HealthCheck_, context, request, false);
+}
+
+AppCallbackHealthCheck::Service::Service() {
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AppCallbackHealthCheck_method_names[0],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AppCallbackHealthCheck::Service, ::google::protobuf::Empty, ::dapr::proto::runtime::v1::HealthCheckResponse>(
+          std::mem_fn(&AppCallbackHealthCheck::Service::HealthCheck), this)));
+}
+
+AppCallbackHealthCheck::Service::~Service() {
+}
+
+::grpc::Status AppCallbackHealthCheck::Service::HealthCheck(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::HealthCheckResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+
 }  // namespace dapr
 }  // namespace proto
 }  // namespace runtime
