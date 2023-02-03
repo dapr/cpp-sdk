@@ -43,7 +43,7 @@ namespace protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[9];
+  static const ::google::protobuf::internal::ParseTable schema[10];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -81,6 +81,9 @@ extern StateItem_MetadataEntry_DoNotUseDefaultTypeInternal _StateItem_MetadataEn
 class StateOptions;
 class StateOptionsDefaultTypeInternal;
 extern StateOptionsDefaultTypeInternal _StateOptions_default_instance_;
+class StreamPayload;
+class StreamPayloadDefaultTypeInternal;
+extern StreamPayloadDefaultTypeInternal _StreamPayload_default_instance_;
 }  // namespace v1
 }  // namespace common
 }  // namespace proto
@@ -96,6 +99,7 @@ template<> ::dapr::proto::common::v1::InvokeResponse* Arena::CreateMaybeMessage<
 template<> ::dapr::proto::common::v1::StateItem* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StateItem>(Arena*);
 template<> ::dapr::proto::common::v1::StateItem_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StateItem_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::common::v1::StateOptions* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StateOptions>(Arena*);
+template<> ::dapr::proto::common::v1::StreamPayload* Arena::CreateMaybeMessage<::dapr::proto::common::v1::StreamPayload>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace dapr {
@@ -614,6 +618,124 @@ class InvokeResponse : public ::google::protobuf::Message /* @@protoc_insertion_
 };
 // -------------------------------------------------------------------
 
+class StreamPayload : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.common.v1.StreamPayload) */ {
+ public:
+  StreamPayload();
+  virtual ~StreamPayload();
+
+  StreamPayload(const StreamPayload& from);
+
+  inline StreamPayload& operator=(const StreamPayload& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  StreamPayload(StreamPayload&& from) noexcept
+    : StreamPayload() {
+    *this = ::std::move(from);
+  }
+
+  inline StreamPayload& operator=(StreamPayload&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const StreamPayload& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const StreamPayload* internal_default_instance() {
+    return reinterpret_cast<const StreamPayload*>(
+               &_StreamPayload_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  void Swap(StreamPayload* other);
+  friend void swap(StreamPayload& a, StreamPayload& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline StreamPayload* New() const final {
+    return CreateMaybeMessage<StreamPayload>(NULL);
+  }
+
+  StreamPayload* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<StreamPayload>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const StreamPayload& from);
+  void MergeFrom(const StreamPayload& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StreamPayload* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // bytes data = 1;
+  void clear_data();
+  static const int kDataFieldNumber = 1;
+  const ::std::string& data() const;
+  void set_data(const ::std::string& value);
+  #if LANG_CXX11
+  void set_data(::std::string&& value);
+  #endif
+  void set_data(const char* value);
+  void set_data(const void* value, size_t size);
+  ::std::string* mutable_data();
+  ::std::string* release_data();
+  void set_allocated_data(::std::string* data);
+
+  // uint32 seq = 2;
+  void clear_seq();
+  static const int kSeqFieldNumber = 2;
+  ::google::protobuf::uint32 seq() const;
+  void set_seq(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.common.v1.StreamPayload)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr data_;
+  ::google::protobuf::uint32 seq_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class StateItem_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<StateItem_MetadataEntry_DoNotUse, 
     ::std::string, ::std::string,
     ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
@@ -670,7 +792,7 @@ class StateItem : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_StateItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   void Swap(StateItem* other);
   friend void swap(StateItem& a, StateItem& b) {
@@ -838,7 +960,7 @@ class Etag : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
                &_Etag_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   void Swap(Etag* other);
   friend void swap(Etag& a, Etag& b) {
@@ -949,7 +1071,7 @@ class StateOptions : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_StateOptions_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   void Swap(StateOptions* other);
   friend void swap(StateOptions& a, StateOptions& b) {
@@ -1136,7 +1258,7 @@ class ConfigurationItem : public ::google::protobuf::Message /* @@protoc_inserti
                &_ConfigurationItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   void Swap(ConfigurationItem* other);
   friend void swap(ConfigurationItem& a, ConfigurationItem& b) {
@@ -1638,6 +1760,77 @@ inline void InvokeResponse::set_allocated_content_type(::std::string* content_ty
 
 // -------------------------------------------------------------------
 
+// StreamPayload
+
+// bytes data = 1;
+inline void StreamPayload::clear_data() {
+  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& StreamPayload::data() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StreamPayload.data)
+  return data_.GetNoArena();
+}
+inline void StreamPayload::set_data(const ::std::string& value) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StreamPayload.data)
+}
+#if LANG_CXX11
+inline void StreamPayload::set_data(::std::string&& value) {
+  
+  data_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.common.v1.StreamPayload.data)
+}
+#endif
+inline void StreamPayload::set_data(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.common.v1.StreamPayload.data)
+}
+inline void StreamPayload::set_data(const void* value, size_t size) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.common.v1.StreamPayload.data)
+}
+inline ::std::string* StreamPayload::mutable_data() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.common.v1.StreamPayload.data)
+  return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StreamPayload::release_data() {
+  // @@protoc_insertion_point(field_release:dapr.proto.common.v1.StreamPayload.data)
+  
+  return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StreamPayload::set_allocated_data(::std::string* data) {
+  if (data != NULL) {
+    
+  } else {
+    
+  }
+  data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StreamPayload.data)
+}
+
+// uint32 seq = 2;
+inline void StreamPayload::clear_seq() {
+  seq_ = 0u;
+}
+inline ::google::protobuf::uint32 StreamPayload::seq() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StreamPayload.seq)
+  return seq_;
+}
+inline void StreamPayload::set_seq(::google::protobuf::uint32 value) {
+  
+  seq_ = value;
+  // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StreamPayload.seq)
+}
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // StateItem
@@ -2096,6 +2289,8 @@ ConfigurationItem::mutable_metadata() {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

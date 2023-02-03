@@ -45,7 +45,7 @@ namespace protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[69];
+  static const ::google::protobuf::internal::ParseTable schema[87];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -59,6 +59,24 @@ namespace v1 {
 class ActiveActorsCount;
 class ActiveActorsCountDefaultTypeInternal;
 extern ActiveActorsCountDefaultTypeInternal _ActiveActorsCount_default_instance_;
+class BulkPublishRequest;
+class BulkPublishRequestDefaultTypeInternal;
+extern BulkPublishRequestDefaultTypeInternal _BulkPublishRequest_default_instance_;
+class BulkPublishRequestEntry;
+class BulkPublishRequestEntryDefaultTypeInternal;
+extern BulkPublishRequestEntryDefaultTypeInternal _BulkPublishRequestEntry_default_instance_;
+class BulkPublishRequestEntry_MetadataEntry_DoNotUse;
+class BulkPublishRequestEntry_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern BulkPublishRequestEntry_MetadataEntry_DoNotUseDefaultTypeInternal _BulkPublishRequestEntry_MetadataEntry_DoNotUse_default_instance_;
+class BulkPublishRequest_MetadataEntry_DoNotUse;
+class BulkPublishRequest_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern BulkPublishRequest_MetadataEntry_DoNotUseDefaultTypeInternal _BulkPublishRequest_MetadataEntry_DoNotUse_default_instance_;
+class BulkPublishResponse;
+class BulkPublishResponseDefaultTypeInternal;
+extern BulkPublishResponseDefaultTypeInternal _BulkPublishResponse_default_instance_;
+class BulkPublishResponseFailedEntry;
+class BulkPublishResponseFailedEntryDefaultTypeInternal;
+extern BulkPublishResponseFailedEntryDefaultTypeInternal _BulkPublishResponseFailedEntry_default_instance_;
 class BulkStateItem;
 class BulkStateItemDefaultTypeInternal;
 extern BulkStateItemDefaultTypeInternal _BulkStateItem_default_instance_;
@@ -152,6 +170,15 @@ extern GetStateResponseDefaultTypeInternal _GetStateResponse_default_instance_;
 class GetStateResponse_MetadataEntry_DoNotUse;
 class GetStateResponse_MetadataEntry_DoNotUseDefaultTypeInternal;
 extern GetStateResponse_MetadataEntry_DoNotUseDefaultTypeInternal _GetStateResponse_MetadataEntry_DoNotUse_default_instance_;
+class GetWorkflowRequest;
+class GetWorkflowRequestDefaultTypeInternal;
+extern GetWorkflowRequestDefaultTypeInternal _GetWorkflowRequest_default_instance_;
+class GetWorkflowResponse;
+class GetWorkflowResponseDefaultTypeInternal;
+extern GetWorkflowResponseDefaultTypeInternal _GetWorkflowResponse_default_instance_;
+class GetWorkflowResponse_MetadataEntry_DoNotUse;
+class GetWorkflowResponse_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern GetWorkflowResponse_MetadataEntry_DoNotUseDefaultTypeInternal _GetWorkflowResponse_MetadataEntry_DoNotUse_default_instance_;
 class InvokeActorRequest;
 class InvokeActorRequestDefaultTypeInternal;
 extern InvokeActorRequestDefaultTypeInternal _InvokeActorRequest_default_instance_;
@@ -182,6 +209,18 @@ extern PublishEventRequestDefaultTypeInternal _PublishEventRequest_default_insta
 class PublishEventRequest_MetadataEntry_DoNotUse;
 class PublishEventRequest_MetadataEntry_DoNotUseDefaultTypeInternal;
 extern PublishEventRequest_MetadataEntry_DoNotUseDefaultTypeInternal _PublishEventRequest_MetadataEntry_DoNotUse_default_instance_;
+class PubsubSubscription;
+class PubsubSubscriptionDefaultTypeInternal;
+extern PubsubSubscriptionDefaultTypeInternal _PubsubSubscription_default_instance_;
+class PubsubSubscriptionRule;
+class PubsubSubscriptionRuleDefaultTypeInternal;
+extern PubsubSubscriptionRuleDefaultTypeInternal _PubsubSubscriptionRule_default_instance_;
+class PubsubSubscriptionRules;
+class PubsubSubscriptionRulesDefaultTypeInternal;
+extern PubsubSubscriptionRulesDefaultTypeInternal _PubsubSubscriptionRules_default_instance_;
+class PubsubSubscription_MetadataEntry_DoNotUse;
+class PubsubSubscription_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern PubsubSubscription_MetadataEntry_DoNotUseDefaultTypeInternal _PubsubSubscription_MetadataEntry_DoNotUse_default_instance_;
 class QueryStateItem;
 class QueryStateItemDefaultTypeInternal;
 extern QueryStateItemDefaultTypeInternal _QueryStateItem_default_instance_;
@@ -221,6 +260,12 @@ extern SecretResponse_SecretsEntry_DoNotUseDefaultTypeInternal _SecretResponse_S
 class SetMetadataRequest;
 class SetMetadataRequestDefaultTypeInternal;
 extern SetMetadataRequestDefaultTypeInternal _SetMetadataRequest_default_instance_;
+class StartWorkflowRequest;
+class StartWorkflowRequestDefaultTypeInternal;
+extern StartWorkflowRequestDefaultTypeInternal _StartWorkflowRequest_default_instance_;
+class StartWorkflowRequest_OptionsEntry_DoNotUse;
+class StartWorkflowRequest_OptionsEntry_DoNotUseDefaultTypeInternal;
+extern StartWorkflowRequest_OptionsEntry_DoNotUseDefaultTypeInternal _StartWorkflowRequest_OptionsEntry_DoNotUse_default_instance_;
 class SubscribeConfigurationRequest;
 class SubscribeConfigurationRequestDefaultTypeInternal;
 extern SubscribeConfigurationRequestDefaultTypeInternal _SubscribeConfigurationRequest_default_instance_;
@@ -233,6 +278,12 @@ extern SubscribeConfigurationResponseDefaultTypeInternal _SubscribeConfiguration
 class SubscribeConfigurationResponse_ItemsEntry_DoNotUse;
 class SubscribeConfigurationResponse_ItemsEntry_DoNotUseDefaultTypeInternal;
 extern SubscribeConfigurationResponse_ItemsEntry_DoNotUseDefaultTypeInternal _SubscribeConfigurationResponse_ItemsEntry_DoNotUse_default_instance_;
+class TerminateWorkflowRequest;
+class TerminateWorkflowRequestDefaultTypeInternal;
+extern TerminateWorkflowRequestDefaultTypeInternal _TerminateWorkflowRequest_default_instance_;
+class TerminateWorkflowResponse;
+class TerminateWorkflowResponseDefaultTypeInternal;
+extern TerminateWorkflowResponseDefaultTypeInternal _TerminateWorkflowResponse_default_instance_;
 class TransactionalActorStateOperation;
 class TransactionalActorStateOperationDefaultTypeInternal;
 extern TransactionalActorStateOperationDefaultTypeInternal _TransactionalActorStateOperation_default_instance_;
@@ -263,6 +314,9 @@ extern UnsubscribeConfigurationRequestDefaultTypeInternal _UnsubscribeConfigurat
 class UnsubscribeConfigurationResponse;
 class UnsubscribeConfigurationResponseDefaultTypeInternal;
 extern UnsubscribeConfigurationResponseDefaultTypeInternal _UnsubscribeConfigurationResponse_default_instance_;
+class WorkflowReference;
+class WorkflowReferenceDefaultTypeInternal;
+extern WorkflowReferenceDefaultTypeInternal _WorkflowReference_default_instance_;
 }  // namespace v1
 }  // namespace runtime
 }  // namespace proto
@@ -270,6 +324,12 @@ extern UnsubscribeConfigurationResponseDefaultTypeInternal _UnsubscribeConfigura
 namespace google {
 namespace protobuf {
 template<> ::dapr::proto::runtime::v1::ActiveActorsCount* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::ActiveActorsCount>(Arena*);
+template<> ::dapr::proto::runtime::v1::BulkPublishRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::BulkPublishRequest>(Arena*);
+template<> ::dapr::proto::runtime::v1::BulkPublishRequestEntry* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::BulkPublishRequestEntry>(Arena*);
+template<> ::dapr::proto::runtime::v1::BulkPublishRequestEntry_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::BulkPublishRequestEntry_MetadataEntry_DoNotUse>(Arena*);
+template<> ::dapr::proto::runtime::v1::BulkPublishRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::BulkPublishRequest_MetadataEntry_DoNotUse>(Arena*);
+template<> ::dapr::proto::runtime::v1::BulkPublishResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::BulkPublishResponse>(Arena*);
+template<> ::dapr::proto::runtime::v1::BulkPublishResponseFailedEntry* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::BulkPublishResponseFailedEntry>(Arena*);
 template<> ::dapr::proto::runtime::v1::BulkStateItem* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::BulkStateItem>(Arena*);
 template<> ::dapr::proto::runtime::v1::BulkStateItem_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::BulkStateItem_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::DeleteBulkStateRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::DeleteBulkStateRequest>(Arena*);
@@ -301,6 +361,9 @@ template<> ::dapr::proto::runtime::v1::GetStateRequest* Arena::CreateMaybeMessag
 template<> ::dapr::proto::runtime::v1::GetStateRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetStateRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetStateResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetStateResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::GetStateResponse_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetStateResponse_MetadataEntry_DoNotUse>(Arena*);
+template<> ::dapr::proto::runtime::v1::GetWorkflowRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetWorkflowRequest>(Arena*);
+template<> ::dapr::proto::runtime::v1::GetWorkflowResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetWorkflowResponse>(Arena*);
+template<> ::dapr::proto::runtime::v1::GetWorkflowResponse_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::GetWorkflowResponse_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeActorRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeActorRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeActorRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeActorRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::InvokeActorResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeActorResponse>(Arena*);
@@ -311,6 +374,10 @@ template<> ::dapr::proto::runtime::v1::InvokeBindingResponse_MetadataEntry_DoNot
 template<> ::dapr::proto::runtime::v1::InvokeServiceRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::InvokeServiceRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::PublishEventRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::PublishEventRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::PublishEventRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::PublishEventRequest_MetadataEntry_DoNotUse>(Arena*);
+template<> ::dapr::proto::runtime::v1::PubsubSubscription* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::PubsubSubscription>(Arena*);
+template<> ::dapr::proto::runtime::v1::PubsubSubscriptionRule* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::PubsubSubscriptionRule>(Arena*);
+template<> ::dapr::proto::runtime::v1::PubsubSubscriptionRules* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::PubsubSubscriptionRules>(Arena*);
+template<> ::dapr::proto::runtime::v1::PubsubSubscription_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::PubsubSubscription_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::QueryStateItem* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::QueryStateItem>(Arena*);
 template<> ::dapr::proto::runtime::v1::QueryStateRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::QueryStateRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::QueryStateRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::QueryStateRequest_MetadataEntry_DoNotUse>(Arena*);
@@ -324,10 +391,14 @@ template<> ::dapr::proto::runtime::v1::SaveStateRequest* Arena::CreateMaybeMessa
 template<> ::dapr::proto::runtime::v1::SecretResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::SecretResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::SecretResponse_SecretsEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::SecretResponse_SecretsEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::SetMetadataRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::SetMetadataRequest>(Arena*);
+template<> ::dapr::proto::runtime::v1::StartWorkflowRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::StartWorkflowRequest>(Arena*);
+template<> ::dapr::proto::runtime::v1::StartWorkflowRequest_OptionsEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::StartWorkflowRequest_OptionsEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::SubscribeConfigurationRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::SubscribeConfigurationRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::SubscribeConfigurationRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::dapr::proto::runtime::v1::SubscribeConfigurationResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::SubscribeConfigurationResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::SubscribeConfigurationResponse_ItemsEntry_DoNotUse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::SubscribeConfigurationResponse_ItemsEntry_DoNotUse>(Arena*);
+template<> ::dapr::proto::runtime::v1::TerminateWorkflowRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TerminateWorkflowRequest>(Arena*);
+template<> ::dapr::proto::runtime::v1::TerminateWorkflowResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TerminateWorkflowResponse>(Arena*);
 template<> ::dapr::proto::runtime::v1::TransactionalActorStateOperation* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TransactionalActorStateOperation>(Arena*);
 template<> ::dapr::proto::runtime::v1::TransactionalStateOperation* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TransactionalStateOperation>(Arena*);
 template<> ::dapr::proto::runtime::v1::TryLockRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::TryLockRequest>(Arena*);
@@ -338,6 +409,7 @@ template<> ::dapr::proto::runtime::v1::UnregisterActorReminderRequest* Arena::Cr
 template<> ::dapr::proto::runtime::v1::UnregisterActorTimerRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::UnregisterActorTimerRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest>(Arena*);
 template<> ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>(Arena*);
+template<> ::dapr::proto::runtime::v1::WorkflowReference* Arena::CreateMaybeMessage<::dapr::proto::runtime::v1::WorkflowReference>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace dapr {
@@ -2417,6 +2489,595 @@ class PublishEventRequest : public ::google::protobuf::Message /* @@protoc_inser
 };
 // -------------------------------------------------------------------
 
+class BulkPublishRequest_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<BulkPublishRequest_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<BulkPublishRequest_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  BulkPublishRequest_MetadataEntry_DoNotUse();
+  BulkPublishRequest_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const BulkPublishRequest_MetadataEntry_DoNotUse& other);
+  static const BulkPublishRequest_MetadataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const BulkPublishRequest_MetadataEntry_DoNotUse*>(&_BulkPublishRequest_MetadataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
+class BulkPublishRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.BulkPublishRequest) */ {
+ public:
+  BulkPublishRequest();
+  virtual ~BulkPublishRequest();
+
+  BulkPublishRequest(const BulkPublishRequest& from);
+
+  inline BulkPublishRequest& operator=(const BulkPublishRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BulkPublishRequest(BulkPublishRequest&& from) noexcept
+    : BulkPublishRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline BulkPublishRequest& operator=(BulkPublishRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BulkPublishRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const BulkPublishRequest* internal_default_instance() {
+    return reinterpret_cast<const BulkPublishRequest*>(
+               &_BulkPublishRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    22;
+
+  void Swap(BulkPublishRequest* other);
+  friend void swap(BulkPublishRequest& a, BulkPublishRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BulkPublishRequest* New() const final {
+    return CreateMaybeMessage<BulkPublishRequest>(NULL);
+  }
+
+  BulkPublishRequest* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<BulkPublishRequest>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const BulkPublishRequest& from);
+  void MergeFrom(const BulkPublishRequest& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BulkPublishRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  // repeated .dapr.proto.runtime.v1.BulkPublishRequestEntry entries = 3;
+  int entries_size() const;
+  void clear_entries();
+  static const int kEntriesFieldNumber = 3;
+  ::dapr::proto::runtime::v1::BulkPublishRequestEntry* mutable_entries(int index);
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::BulkPublishRequestEntry >*
+      mutable_entries();
+  const ::dapr::proto::runtime::v1::BulkPublishRequestEntry& entries(int index) const;
+  ::dapr::proto::runtime::v1::BulkPublishRequestEntry* add_entries();
+  const ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::BulkPublishRequestEntry >&
+      entries() const;
+
+  // map<string, string> metadata = 4;
+  int metadata_size() const;
+  void clear_metadata();
+  static const int kMetadataFieldNumber = 4;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      metadata() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_metadata();
+
+  // string pubsub_name = 1;
+  void clear_pubsub_name();
+  static const int kPubsubNameFieldNumber = 1;
+  const ::std::string& pubsub_name() const;
+  void set_pubsub_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_pubsub_name(::std::string&& value);
+  #endif
+  void set_pubsub_name(const char* value);
+  void set_pubsub_name(const char* value, size_t size);
+  ::std::string* mutable_pubsub_name();
+  ::std::string* release_pubsub_name();
+  void set_allocated_pubsub_name(::std::string* pubsub_name);
+
+  // string topic = 2;
+  void clear_topic();
+  static const int kTopicFieldNumber = 2;
+  const ::std::string& topic() const;
+  void set_topic(const ::std::string& value);
+  #if LANG_CXX11
+  void set_topic(::std::string&& value);
+  #endif
+  void set_topic(const char* value);
+  void set_topic(const char* value, size_t size);
+  ::std::string* mutable_topic();
+  ::std::string* release_topic();
+  void set_allocated_topic(::std::string* topic);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.BulkPublishRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::BulkPublishRequestEntry > entries_;
+  ::google::protobuf::internal::MapField<
+      BulkPublishRequest_MetadataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      0 > metadata_;
+  ::google::protobuf::internal::ArenaStringPtr pubsub_name_;
+  ::google::protobuf::internal::ArenaStringPtr topic_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class BulkPublishRequestEntry_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<BulkPublishRequestEntry_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<BulkPublishRequestEntry_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  BulkPublishRequestEntry_MetadataEntry_DoNotUse();
+  BulkPublishRequestEntry_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const BulkPublishRequestEntry_MetadataEntry_DoNotUse& other);
+  static const BulkPublishRequestEntry_MetadataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const BulkPublishRequestEntry_MetadataEntry_DoNotUse*>(&_BulkPublishRequestEntry_MetadataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
+class BulkPublishRequestEntry : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.BulkPublishRequestEntry) */ {
+ public:
+  BulkPublishRequestEntry();
+  virtual ~BulkPublishRequestEntry();
+
+  BulkPublishRequestEntry(const BulkPublishRequestEntry& from);
+
+  inline BulkPublishRequestEntry& operator=(const BulkPublishRequestEntry& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BulkPublishRequestEntry(BulkPublishRequestEntry&& from) noexcept
+    : BulkPublishRequestEntry() {
+    *this = ::std::move(from);
+  }
+
+  inline BulkPublishRequestEntry& operator=(BulkPublishRequestEntry&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BulkPublishRequestEntry& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const BulkPublishRequestEntry* internal_default_instance() {
+    return reinterpret_cast<const BulkPublishRequestEntry*>(
+               &_BulkPublishRequestEntry_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    24;
+
+  void Swap(BulkPublishRequestEntry* other);
+  friend void swap(BulkPublishRequestEntry& a, BulkPublishRequestEntry& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BulkPublishRequestEntry* New() const final {
+    return CreateMaybeMessage<BulkPublishRequestEntry>(NULL);
+  }
+
+  BulkPublishRequestEntry* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<BulkPublishRequestEntry>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const BulkPublishRequestEntry& from);
+  void MergeFrom(const BulkPublishRequestEntry& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BulkPublishRequestEntry* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  // map<string, string> metadata = 4;
+  int metadata_size() const;
+  void clear_metadata();
+  static const int kMetadataFieldNumber = 4;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      metadata() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_metadata();
+
+  // string entry_id = 1;
+  void clear_entry_id();
+  static const int kEntryIdFieldNumber = 1;
+  const ::std::string& entry_id() const;
+  void set_entry_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_entry_id(::std::string&& value);
+  #endif
+  void set_entry_id(const char* value);
+  void set_entry_id(const char* value, size_t size);
+  ::std::string* mutable_entry_id();
+  ::std::string* release_entry_id();
+  void set_allocated_entry_id(::std::string* entry_id);
+
+  // bytes event = 2;
+  void clear_event();
+  static const int kEventFieldNumber = 2;
+  const ::std::string& event() const;
+  void set_event(const ::std::string& value);
+  #if LANG_CXX11
+  void set_event(::std::string&& value);
+  #endif
+  void set_event(const char* value);
+  void set_event(const void* value, size_t size);
+  ::std::string* mutable_event();
+  ::std::string* release_event();
+  void set_allocated_event(::std::string* event);
+
+  // string content_type = 3;
+  void clear_content_type();
+  static const int kContentTypeFieldNumber = 3;
+  const ::std::string& content_type() const;
+  void set_content_type(const ::std::string& value);
+  #if LANG_CXX11
+  void set_content_type(::std::string&& value);
+  #endif
+  void set_content_type(const char* value);
+  void set_content_type(const char* value, size_t size);
+  ::std::string* mutable_content_type();
+  ::std::string* release_content_type();
+  void set_allocated_content_type(::std::string* content_type);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.BulkPublishRequestEntry)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::MapField<
+      BulkPublishRequestEntry_MetadataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      0 > metadata_;
+  ::google::protobuf::internal::ArenaStringPtr entry_id_;
+  ::google::protobuf::internal::ArenaStringPtr event_;
+  ::google::protobuf::internal::ArenaStringPtr content_type_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class BulkPublishResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.BulkPublishResponse) */ {
+ public:
+  BulkPublishResponse();
+  virtual ~BulkPublishResponse();
+
+  BulkPublishResponse(const BulkPublishResponse& from);
+
+  inline BulkPublishResponse& operator=(const BulkPublishResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BulkPublishResponse(BulkPublishResponse&& from) noexcept
+    : BulkPublishResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline BulkPublishResponse& operator=(BulkPublishResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BulkPublishResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const BulkPublishResponse* internal_default_instance() {
+    return reinterpret_cast<const BulkPublishResponse*>(
+               &_BulkPublishResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    25;
+
+  void Swap(BulkPublishResponse* other);
+  friend void swap(BulkPublishResponse& a, BulkPublishResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BulkPublishResponse* New() const final {
+    return CreateMaybeMessage<BulkPublishResponse>(NULL);
+  }
+
+  BulkPublishResponse* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<BulkPublishResponse>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const BulkPublishResponse& from);
+  void MergeFrom(const BulkPublishResponse& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BulkPublishResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .dapr.proto.runtime.v1.BulkPublishResponseFailedEntry failedEntries = 1;
+  int failedentries_size() const;
+  void clear_failedentries();
+  static const int kFailedEntriesFieldNumber = 1;
+  ::dapr::proto::runtime::v1::BulkPublishResponseFailedEntry* mutable_failedentries(int index);
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::BulkPublishResponseFailedEntry >*
+      mutable_failedentries();
+  const ::dapr::proto::runtime::v1::BulkPublishResponseFailedEntry& failedentries(int index) const;
+  ::dapr::proto::runtime::v1::BulkPublishResponseFailedEntry* add_failedentries();
+  const ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::BulkPublishResponseFailedEntry >&
+      failedentries() const;
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.BulkPublishResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::BulkPublishResponseFailedEntry > failedentries_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class BulkPublishResponseFailedEntry : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry) */ {
+ public:
+  BulkPublishResponseFailedEntry();
+  virtual ~BulkPublishResponseFailedEntry();
+
+  BulkPublishResponseFailedEntry(const BulkPublishResponseFailedEntry& from);
+
+  inline BulkPublishResponseFailedEntry& operator=(const BulkPublishResponseFailedEntry& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  BulkPublishResponseFailedEntry(BulkPublishResponseFailedEntry&& from) noexcept
+    : BulkPublishResponseFailedEntry() {
+    *this = ::std::move(from);
+  }
+
+  inline BulkPublishResponseFailedEntry& operator=(BulkPublishResponseFailedEntry&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BulkPublishResponseFailedEntry& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const BulkPublishResponseFailedEntry* internal_default_instance() {
+    return reinterpret_cast<const BulkPublishResponseFailedEntry*>(
+               &_BulkPublishResponseFailedEntry_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    26;
+
+  void Swap(BulkPublishResponseFailedEntry* other);
+  friend void swap(BulkPublishResponseFailedEntry& a, BulkPublishResponseFailedEntry& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline BulkPublishResponseFailedEntry* New() const final {
+    return CreateMaybeMessage<BulkPublishResponseFailedEntry>(NULL);
+  }
+
+  BulkPublishResponseFailedEntry* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<BulkPublishResponseFailedEntry>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const BulkPublishResponseFailedEntry& from);
+  void MergeFrom(const BulkPublishResponseFailedEntry& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BulkPublishResponseFailedEntry* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string entry_id = 1;
+  void clear_entry_id();
+  static const int kEntryIdFieldNumber = 1;
+  const ::std::string& entry_id() const;
+  void set_entry_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_entry_id(::std::string&& value);
+  #endif
+  void set_entry_id(const char* value);
+  void set_entry_id(const char* value, size_t size);
+  ::std::string* mutable_entry_id();
+  ::std::string* release_entry_id();
+  void set_allocated_entry_id(::std::string* entry_id);
+
+  // string error = 2;
+  void clear_error();
+  static const int kErrorFieldNumber = 2;
+  const ::std::string& error() const;
+  void set_error(const ::std::string& value);
+  #if LANG_CXX11
+  void set_error(::std::string&& value);
+  #endif
+  void set_error(const char* value);
+  void set_error(const char* value, size_t size);
+  ::std::string* mutable_error();
+  ::std::string* release_error();
+  void set_allocated_error(::std::string* error);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr entry_id_;
+  ::google::protobuf::internal::ArenaStringPtr error_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class InvokeBindingRequest_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<InvokeBindingRequest_MetadataEntry_DoNotUse, 
     ::std::string, ::std::string,
     ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
@@ -2473,7 +3134,7 @@ class InvokeBindingRequest : public ::google::protobuf::Message /* @@protoc_inse
                &_InvokeBindingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    28;
 
   void Swap(InvokeBindingRequest* other);
   friend void swap(InvokeBindingRequest& a, InvokeBindingRequest& b) {
@@ -2651,7 +3312,7 @@ class InvokeBindingResponse : public ::google::protobuf::Message /* @@protoc_ins
                &_InvokeBindingResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    30;
 
   void Swap(InvokeBindingResponse* other);
   friend void swap(InvokeBindingResponse& a, InvokeBindingResponse& b) {
@@ -2799,7 +3460,7 @@ class GetSecretRequest : public ::google::protobuf::Message /* @@protoc_insertio
                &_GetSecretRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    32;
 
   void Swap(GetSecretRequest* other);
   friend void swap(GetSecretRequest& a, GetSecretRequest& b) {
@@ -2962,7 +3623,7 @@ class GetSecretResponse : public ::google::protobuf::Message /* @@protoc_inserti
                &_GetSecretResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    34;
 
   void Swap(GetSecretResponse* other);
   friend void swap(GetSecretResponse& a, GetSecretResponse& b) {
@@ -3095,7 +3756,7 @@ class GetBulkSecretRequest : public ::google::protobuf::Message /* @@protoc_inse
                &_GetBulkSecretRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    30;
+    36;
 
   void Swap(GetBulkSecretRequest* other);
   friend void swap(GetBulkSecretRequest& a, GetBulkSecretRequest& b) {
@@ -3243,7 +3904,7 @@ class SecretResponse : public ::google::protobuf::Message /* @@protoc_insertion_
                &_SecretResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    32;
+    38;
 
   void Swap(SecretResponse* other);
   friend void swap(SecretResponse& a, SecretResponse& b) {
@@ -3376,7 +4037,7 @@ class GetBulkSecretResponse : public ::google::protobuf::Message /* @@protoc_ins
                &_GetBulkSecretResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    40;
 
   void Swap(GetBulkSecretResponse* other);
   friend void swap(GetBulkSecretResponse& a, GetBulkSecretResponse& b) {
@@ -3488,7 +4149,7 @@ class TransactionalStateOperation : public ::google::protobuf::Message /* @@prot
                &_TransactionalStateOperation_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    35;
+    41;
 
   void Swap(TransactionalStateOperation* other);
   friend void swap(TransactionalStateOperation& a, TransactionalStateOperation& b) {
@@ -3633,7 +4294,7 @@ class ExecuteStateTransactionRequest : public ::google::protobuf::Message /* @@p
                &_ExecuteStateTransactionRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    37;
+    43;
 
   void Swap(ExecuteStateTransactionRequest* other);
   friend void swap(ExecuteStateTransactionRequest& a, ExecuteStateTransactionRequest& b) {
@@ -3773,7 +4434,7 @@ class RegisterActorTimerRequest : public ::google::protobuf::Message /* @@protoc
                &_RegisterActorTimerRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    38;
+    44;
 
   void Swap(RegisterActorTimerRequest* other);
   friend void swap(RegisterActorTimerRequest& a, RegisterActorTimerRequest& b) {
@@ -3989,7 +4650,7 @@ class UnregisterActorTimerRequest : public ::google::protobuf::Message /* @@prot
                &_UnregisterActorTimerRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    39;
+    45;
 
   void Swap(UnregisterActorTimerRequest* other);
   friend void swap(UnregisterActorTimerRequest& a, UnregisterActorTimerRequest& b) {
@@ -4130,7 +4791,7 @@ class RegisterActorReminderRequest : public ::google::protobuf::Message /* @@pro
                &_RegisterActorReminderRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    40;
+    46;
 
   void Swap(RegisterActorReminderRequest* other);
   friend void swap(RegisterActorReminderRequest& a, RegisterActorReminderRequest& b) {
@@ -4331,7 +4992,7 @@ class UnregisterActorReminderRequest : public ::google::protobuf::Message /* @@p
                &_UnregisterActorReminderRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    41;
+    47;
 
   void Swap(UnregisterActorReminderRequest* other);
   friend void swap(UnregisterActorReminderRequest& a, UnregisterActorReminderRequest& b) {
@@ -4472,7 +5133,7 @@ class RenameActorReminderRequest : public ::google::protobuf::Message /* @@proto
                &_RenameActorReminderRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    42;
+    48;
 
   void Swap(RenameActorReminderRequest* other);
   friend void swap(RenameActorReminderRequest& a, RenameActorReminderRequest& b) {
@@ -4628,7 +5289,7 @@ class GetActorStateRequest : public ::google::protobuf::Message /* @@protoc_inse
                &_GetActorStateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    43;
+    49;
 
   void Swap(GetActorStateRequest* other);
   friend void swap(GetActorStateRequest& a, GetActorStateRequest& b) {
@@ -4769,7 +5430,7 @@ class GetActorStateResponse : public ::google::protobuf::Message /* @@protoc_ins
                &_GetActorStateResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    44;
+    50;
 
   void Swap(GetActorStateResponse* other);
   friend void swap(GetActorStateResponse& a, GetActorStateResponse& b) {
@@ -4880,7 +5541,7 @@ class ExecuteActorStateTransactionRequest : public ::google::protobuf::Message /
                &_ExecuteActorStateTransactionRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    45;
+    51;
 
   void Swap(ExecuteActorStateTransactionRequest* other);
   friend void swap(ExecuteActorStateTransactionRequest& a, ExecuteActorStateTransactionRequest& b) {
@@ -5019,7 +5680,7 @@ class TransactionalActorStateOperation : public ::google::protobuf::Message /* @
                &_TransactionalActorStateOperation_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    46;
+    52;
 
   void Swap(TransactionalActorStateOperation* other);
   friend void swap(TransactionalActorStateOperation& a, TransactionalActorStateOperation& b) {
@@ -5179,7 +5840,7 @@ class InvokeActorRequest : public ::google::protobuf::Message /* @@protoc_insert
                &_InvokeActorRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    48;
+    54;
 
   void Swap(InvokeActorRequest* other);
   friend void swap(InvokeActorRequest& a, InvokeActorRequest& b) {
@@ -5351,7 +6012,7 @@ class InvokeActorResponse : public ::google::protobuf::Message /* @@protoc_inser
                &_InvokeActorResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    49;
+    55;
 
   void Swap(InvokeActorResponse* other);
   friend void swap(InvokeActorResponse& a, InvokeActorResponse& b) {
@@ -5483,7 +6144,7 @@ class GetMetadataResponse : public ::google::protobuf::Message /* @@protoc_inser
                &_GetMetadataResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    51;
+    57;
 
   void Swap(GetMetadataResponse* other);
   friend void swap(GetMetadataResponse& a, GetMetadataResponse& b) {
@@ -5569,6 +6230,18 @@ class GetMetadataResponse : public ::google::protobuf::Message /* @@protoc_inser
   ::google::protobuf::Map< ::std::string, ::std::string >*
       mutable_extended_metadata();
 
+  // repeated .dapr.proto.runtime.v1.PubsubSubscription subscriptions = 5;
+  int subscriptions_size() const;
+  void clear_subscriptions();
+  static const int kSubscriptionsFieldNumber = 5;
+  ::dapr::proto::runtime::v1::PubsubSubscription* mutable_subscriptions(int index);
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::PubsubSubscription >*
+      mutable_subscriptions();
+  const ::dapr::proto::runtime::v1::PubsubSubscription& subscriptions(int index) const;
+  ::dapr::proto::runtime::v1::PubsubSubscription* add_subscriptions();
+  const ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::PubsubSubscription >&
+      subscriptions() const;
+
   // string id = 1;
   void clear_id();
   static const int kIdFieldNumber = 1;
@@ -5595,6 +6268,7 @@ class GetMetadataResponse : public ::google::protobuf::Message /* @@protoc_inser
       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
       0 > extended_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::PubsubSubscription > subscriptions_;
   ::google::protobuf::internal::ArenaStringPtr id_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
@@ -5636,7 +6310,7 @@ class ActiveActorsCount : public ::google::protobuf::Message /* @@protoc_inserti
                &_ActiveActorsCount_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    52;
+    58;
 
   void Swap(ActiveActorsCount* other);
   friend void swap(ActiveActorsCount& a, ActiveActorsCount& b) {
@@ -5754,7 +6428,7 @@ class RegisteredComponents : public ::google::protobuf::Message /* @@protoc_inse
                &_RegisteredComponents_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    53;
+    59;
 
   void Swap(RegisteredComponents* other);
   friend void swap(RegisteredComponents& a, RegisteredComponents& b) {
@@ -5883,6 +6557,432 @@ class RegisteredComponents : public ::google::protobuf::Message /* @@protoc_inse
 };
 // -------------------------------------------------------------------
 
+class PubsubSubscription_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<PubsubSubscription_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<PubsubSubscription_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  PubsubSubscription_MetadataEntry_DoNotUse();
+  PubsubSubscription_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const PubsubSubscription_MetadataEntry_DoNotUse& other);
+  static const PubsubSubscription_MetadataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PubsubSubscription_MetadataEntry_DoNotUse*>(&_PubsubSubscription_MetadataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
+class PubsubSubscription : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.PubsubSubscription) */ {
+ public:
+  PubsubSubscription();
+  virtual ~PubsubSubscription();
+
+  PubsubSubscription(const PubsubSubscription& from);
+
+  inline PubsubSubscription& operator=(const PubsubSubscription& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  PubsubSubscription(PubsubSubscription&& from) noexcept
+    : PubsubSubscription() {
+    *this = ::std::move(from);
+  }
+
+  inline PubsubSubscription& operator=(PubsubSubscription&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PubsubSubscription& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PubsubSubscription* internal_default_instance() {
+    return reinterpret_cast<const PubsubSubscription*>(
+               &_PubsubSubscription_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    61;
+
+  void Swap(PubsubSubscription* other);
+  friend void swap(PubsubSubscription& a, PubsubSubscription& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PubsubSubscription* New() const final {
+    return CreateMaybeMessage<PubsubSubscription>(NULL);
+  }
+
+  PubsubSubscription* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PubsubSubscription>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const PubsubSubscription& from);
+  void MergeFrom(const PubsubSubscription& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PubsubSubscription* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  // map<string, string> metadata = 3;
+  int metadata_size() const;
+  void clear_metadata();
+  static const int kMetadataFieldNumber = 3;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      metadata() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_metadata();
+
+  // string pubsub_name = 1;
+  void clear_pubsub_name();
+  static const int kPubsubNameFieldNumber = 1;
+  const ::std::string& pubsub_name() const;
+  void set_pubsub_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_pubsub_name(::std::string&& value);
+  #endif
+  void set_pubsub_name(const char* value);
+  void set_pubsub_name(const char* value, size_t size);
+  ::std::string* mutable_pubsub_name();
+  ::std::string* release_pubsub_name();
+  void set_allocated_pubsub_name(::std::string* pubsub_name);
+
+  // string topic = 2;
+  void clear_topic();
+  static const int kTopicFieldNumber = 2;
+  const ::std::string& topic() const;
+  void set_topic(const ::std::string& value);
+  #if LANG_CXX11
+  void set_topic(::std::string&& value);
+  #endif
+  void set_topic(const char* value);
+  void set_topic(const char* value, size_t size);
+  ::std::string* mutable_topic();
+  ::std::string* release_topic();
+  void set_allocated_topic(::std::string* topic);
+
+  // string dead_letter_topic = 5;
+  void clear_dead_letter_topic();
+  static const int kDeadLetterTopicFieldNumber = 5;
+  const ::std::string& dead_letter_topic() const;
+  void set_dead_letter_topic(const ::std::string& value);
+  #if LANG_CXX11
+  void set_dead_letter_topic(::std::string&& value);
+  #endif
+  void set_dead_letter_topic(const char* value);
+  void set_dead_letter_topic(const char* value, size_t size);
+  ::std::string* mutable_dead_letter_topic();
+  ::std::string* release_dead_letter_topic();
+  void set_allocated_dead_letter_topic(::std::string* dead_letter_topic);
+
+  // .dapr.proto.runtime.v1.PubsubSubscriptionRules rules = 4;
+  bool has_rules() const;
+  void clear_rules();
+  static const int kRulesFieldNumber = 4;
+  private:
+  const ::dapr::proto::runtime::v1::PubsubSubscriptionRules& _internal_rules() const;
+  public:
+  const ::dapr::proto::runtime::v1::PubsubSubscriptionRules& rules() const;
+  ::dapr::proto::runtime::v1::PubsubSubscriptionRules* release_rules();
+  ::dapr::proto::runtime::v1::PubsubSubscriptionRules* mutable_rules();
+  void set_allocated_rules(::dapr::proto::runtime::v1::PubsubSubscriptionRules* rules);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.PubsubSubscription)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::MapField<
+      PubsubSubscription_MetadataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      0 > metadata_;
+  ::google::protobuf::internal::ArenaStringPtr pubsub_name_;
+  ::google::protobuf::internal::ArenaStringPtr topic_;
+  ::google::protobuf::internal::ArenaStringPtr dead_letter_topic_;
+  ::dapr::proto::runtime::v1::PubsubSubscriptionRules* rules_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class PubsubSubscriptionRules : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.PubsubSubscriptionRules) */ {
+ public:
+  PubsubSubscriptionRules();
+  virtual ~PubsubSubscriptionRules();
+
+  PubsubSubscriptionRules(const PubsubSubscriptionRules& from);
+
+  inline PubsubSubscriptionRules& operator=(const PubsubSubscriptionRules& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  PubsubSubscriptionRules(PubsubSubscriptionRules&& from) noexcept
+    : PubsubSubscriptionRules() {
+    *this = ::std::move(from);
+  }
+
+  inline PubsubSubscriptionRules& operator=(PubsubSubscriptionRules&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PubsubSubscriptionRules& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PubsubSubscriptionRules* internal_default_instance() {
+    return reinterpret_cast<const PubsubSubscriptionRules*>(
+               &_PubsubSubscriptionRules_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    62;
+
+  void Swap(PubsubSubscriptionRules* other);
+  friend void swap(PubsubSubscriptionRules& a, PubsubSubscriptionRules& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PubsubSubscriptionRules* New() const final {
+    return CreateMaybeMessage<PubsubSubscriptionRules>(NULL);
+  }
+
+  PubsubSubscriptionRules* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PubsubSubscriptionRules>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const PubsubSubscriptionRules& from);
+  void MergeFrom(const PubsubSubscriptionRules& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PubsubSubscriptionRules* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .dapr.proto.runtime.v1.PubsubSubscriptionRule rules = 1;
+  int rules_size() const;
+  void clear_rules();
+  static const int kRulesFieldNumber = 1;
+  ::dapr::proto::runtime::v1::PubsubSubscriptionRule* mutable_rules(int index);
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::PubsubSubscriptionRule >*
+      mutable_rules();
+  const ::dapr::proto::runtime::v1::PubsubSubscriptionRule& rules(int index) const;
+  ::dapr::proto::runtime::v1::PubsubSubscriptionRule* add_rules();
+  const ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::PubsubSubscriptionRule >&
+      rules() const;
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.PubsubSubscriptionRules)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::PubsubSubscriptionRule > rules_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class PubsubSubscriptionRule : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.PubsubSubscriptionRule) */ {
+ public:
+  PubsubSubscriptionRule();
+  virtual ~PubsubSubscriptionRule();
+
+  PubsubSubscriptionRule(const PubsubSubscriptionRule& from);
+
+  inline PubsubSubscriptionRule& operator=(const PubsubSubscriptionRule& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  PubsubSubscriptionRule(PubsubSubscriptionRule&& from) noexcept
+    : PubsubSubscriptionRule() {
+    *this = ::std::move(from);
+  }
+
+  inline PubsubSubscriptionRule& operator=(PubsubSubscriptionRule&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PubsubSubscriptionRule& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PubsubSubscriptionRule* internal_default_instance() {
+    return reinterpret_cast<const PubsubSubscriptionRule*>(
+               &_PubsubSubscriptionRule_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    63;
+
+  void Swap(PubsubSubscriptionRule* other);
+  friend void swap(PubsubSubscriptionRule& a, PubsubSubscriptionRule& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PubsubSubscriptionRule* New() const final {
+    return CreateMaybeMessage<PubsubSubscriptionRule>(NULL);
+  }
+
+  PubsubSubscriptionRule* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PubsubSubscriptionRule>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const PubsubSubscriptionRule& from);
+  void MergeFrom(const PubsubSubscriptionRule& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PubsubSubscriptionRule* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string match = 1;
+  void clear_match();
+  static const int kMatchFieldNumber = 1;
+  const ::std::string& match() const;
+  void set_match(const ::std::string& value);
+  #if LANG_CXX11
+  void set_match(::std::string&& value);
+  #endif
+  void set_match(const char* value);
+  void set_match(const char* value, size_t size);
+  ::std::string* mutable_match();
+  ::std::string* release_match();
+  void set_allocated_match(::std::string* match);
+
+  // string path = 2;
+  void clear_path();
+  static const int kPathFieldNumber = 2;
+  const ::std::string& path() const;
+  void set_path(const ::std::string& value);
+  #if LANG_CXX11
+  void set_path(::std::string&& value);
+  #endif
+  void set_path(const char* value);
+  void set_path(const char* value, size_t size);
+  ::std::string* mutable_path();
+  ::std::string* release_path();
+  void set_allocated_path(::std::string* path);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.PubsubSubscriptionRule)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr match_;
+  ::google::protobuf::internal::ArenaStringPtr path_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class SetMetadataRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.SetMetadataRequest) */ {
  public:
   SetMetadataRequest();
@@ -5918,7 +7018,7 @@ class SetMetadataRequest : public ::google::protobuf::Message /* @@protoc_insert
                &_SetMetadataRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    54;
+    64;
 
   void Swap(SetMetadataRequest* other);
   friend void swap(SetMetadataRequest& a, SetMetadataRequest& b) {
@@ -6065,7 +7165,7 @@ class GetConfigurationRequest : public ::google::protobuf::Message /* @@protoc_i
                &_GetConfigurationRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    56;
+    66;
 
   void Swap(GetConfigurationRequest* other);
   friend void swap(GetConfigurationRequest& a, GetConfigurationRequest& b) {
@@ -6236,7 +7336,7 @@ class GetConfigurationResponse : public ::google::protobuf::Message /* @@protoc_
                &_GetConfigurationResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    58;
+    68;
 
   void Swap(GetConfigurationResponse* other);
   friend void swap(GetConfigurationResponse& a, GetConfigurationResponse& b) {
@@ -6369,7 +7469,7 @@ class SubscribeConfigurationRequest : public ::google::protobuf::Message /* @@pr
                &_SubscribeConfigurationRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    60;
+    70;
 
   void Swap(SubscribeConfigurationRequest* other);
   friend void swap(SubscribeConfigurationRequest& a, SubscribeConfigurationRequest& b) {
@@ -6519,7 +7619,7 @@ class UnsubscribeConfigurationRequest : public ::google::protobuf::Message /* @@
                &_UnsubscribeConfigurationRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    61;
+    71;
 
   void Swap(UnsubscribeConfigurationRequest* other);
   friend void swap(UnsubscribeConfigurationRequest& a, UnsubscribeConfigurationRequest& b) {
@@ -6666,7 +7766,7 @@ class SubscribeConfigurationResponse : public ::google::protobuf::Message /* @@p
                &_SubscribeConfigurationResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    63;
+    73;
 
   void Swap(SubscribeConfigurationResponse* other);
   friend void swap(SubscribeConfigurationResponse& a, SubscribeConfigurationResponse& b) {
@@ -6793,7 +7893,7 @@ class UnsubscribeConfigurationResponse : public ::google::protobuf::Message /* @
                &_UnsubscribeConfigurationResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    64;
+    74;
 
   void Swap(UnsubscribeConfigurationResponse* other);
   friend void swap(UnsubscribeConfigurationResponse& a, UnsubscribeConfigurationResponse& b) {
@@ -6911,7 +8011,7 @@ class TryLockRequest : public ::google::protobuf::Message /* @@protoc_insertion_
                &_TryLockRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    65;
+    75;
 
   void Swap(TryLockRequest* other);
   friend void swap(TryLockRequest& a, TryLockRequest& b) {
@@ -7059,7 +8159,7 @@ class TryLockResponse : public ::google::protobuf::Message /* @@protoc_insertion
                &_TryLockResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    66;
+    76;
 
   void Swap(TryLockResponse* other);
   friend void swap(TryLockResponse& a, TryLockResponse& b) {
@@ -7162,7 +8262,7 @@ class UnlockRequest : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_UnlockRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    67;
+    77;
 
   void Swap(UnlockRequest* other);
   friend void swap(UnlockRequest& a, UnlockRequest& b) {
@@ -7303,7 +8403,7 @@ class UnlockResponse : public ::google::protobuf::Message /* @@protoc_insertion_
                &_UnlockResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    68;
+    78;
 
   void Swap(UnlockResponse* other);
   friend void swap(UnlockResponse& a, UnlockResponse& b) {
@@ -7396,6 +8496,828 @@ class UnlockResponse : public ::google::protobuf::Message /* @@protoc_insertion_
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   int status_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class WorkflowReference : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.WorkflowReference) */ {
+ public:
+  WorkflowReference();
+  virtual ~WorkflowReference();
+
+  WorkflowReference(const WorkflowReference& from);
+
+  inline WorkflowReference& operator=(const WorkflowReference& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  WorkflowReference(WorkflowReference&& from) noexcept
+    : WorkflowReference() {
+    *this = ::std::move(from);
+  }
+
+  inline WorkflowReference& operator=(WorkflowReference&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorkflowReference& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const WorkflowReference* internal_default_instance() {
+    return reinterpret_cast<const WorkflowReference*>(
+               &_WorkflowReference_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    79;
+
+  void Swap(WorkflowReference* other);
+  friend void swap(WorkflowReference& a, WorkflowReference& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline WorkflowReference* New() const final {
+    return CreateMaybeMessage<WorkflowReference>(NULL);
+  }
+
+  WorkflowReference* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<WorkflowReference>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const WorkflowReference& from);
+  void MergeFrom(const WorkflowReference& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(WorkflowReference* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string instance_id = 1;
+  void clear_instance_id();
+  static const int kInstanceIdFieldNumber = 1;
+  const ::std::string& instance_id() const;
+  void set_instance_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_instance_id(::std::string&& value);
+  #endif
+  void set_instance_id(const char* value);
+  void set_instance_id(const char* value, size_t size);
+  ::std::string* mutable_instance_id();
+  ::std::string* release_instance_id();
+  void set_allocated_instance_id(::std::string* instance_id);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.WorkflowReference)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr instance_id_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class GetWorkflowRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.GetWorkflowRequest) */ {
+ public:
+  GetWorkflowRequest();
+  virtual ~GetWorkflowRequest();
+
+  GetWorkflowRequest(const GetWorkflowRequest& from);
+
+  inline GetWorkflowRequest& operator=(const GetWorkflowRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetWorkflowRequest(GetWorkflowRequest&& from) noexcept
+    : GetWorkflowRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline GetWorkflowRequest& operator=(GetWorkflowRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetWorkflowRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GetWorkflowRequest* internal_default_instance() {
+    return reinterpret_cast<const GetWorkflowRequest*>(
+               &_GetWorkflowRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    80;
+
+  void Swap(GetWorkflowRequest* other);
+  friend void swap(GetWorkflowRequest& a, GetWorkflowRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetWorkflowRequest* New() const final {
+    return CreateMaybeMessage<GetWorkflowRequest>(NULL);
+  }
+
+  GetWorkflowRequest* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<GetWorkflowRequest>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const GetWorkflowRequest& from);
+  void MergeFrom(const GetWorkflowRequest& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetWorkflowRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string instance_id = 1;
+  void clear_instance_id();
+  static const int kInstanceIdFieldNumber = 1;
+  const ::std::string& instance_id() const;
+  void set_instance_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_instance_id(::std::string&& value);
+  #endif
+  void set_instance_id(const char* value);
+  void set_instance_id(const char* value, size_t size);
+  ::std::string* mutable_instance_id();
+  ::std::string* release_instance_id();
+  void set_allocated_instance_id(::std::string* instance_id);
+
+  // string workflow_type = 2;
+  void clear_workflow_type();
+  static const int kWorkflowTypeFieldNumber = 2;
+  const ::std::string& workflow_type() const;
+  void set_workflow_type(const ::std::string& value);
+  #if LANG_CXX11
+  void set_workflow_type(::std::string&& value);
+  #endif
+  void set_workflow_type(const char* value);
+  void set_workflow_type(const char* value, size_t size);
+  ::std::string* mutable_workflow_type();
+  ::std::string* release_workflow_type();
+  void set_allocated_workflow_type(::std::string* workflow_type);
+
+  // string workflow_component = 3;
+  void clear_workflow_component();
+  static const int kWorkflowComponentFieldNumber = 3;
+  const ::std::string& workflow_component() const;
+  void set_workflow_component(const ::std::string& value);
+  #if LANG_CXX11
+  void set_workflow_component(::std::string&& value);
+  #endif
+  void set_workflow_component(const char* value);
+  void set_workflow_component(const char* value, size_t size);
+  ::std::string* mutable_workflow_component();
+  ::std::string* release_workflow_component();
+  void set_allocated_workflow_component(::std::string* workflow_component);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.GetWorkflowRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr instance_id_;
+  ::google::protobuf::internal::ArenaStringPtr workflow_type_;
+  ::google::protobuf::internal::ArenaStringPtr workflow_component_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class GetWorkflowResponse_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<GetWorkflowResponse_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<GetWorkflowResponse_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  GetWorkflowResponse_MetadataEntry_DoNotUse();
+  GetWorkflowResponse_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const GetWorkflowResponse_MetadataEntry_DoNotUse& other);
+  static const GetWorkflowResponse_MetadataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const GetWorkflowResponse_MetadataEntry_DoNotUse*>(&_GetWorkflowResponse_MetadataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
+class GetWorkflowResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.GetWorkflowResponse) */ {
+ public:
+  GetWorkflowResponse();
+  virtual ~GetWorkflowResponse();
+
+  GetWorkflowResponse(const GetWorkflowResponse& from);
+
+  inline GetWorkflowResponse& operator=(const GetWorkflowResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetWorkflowResponse(GetWorkflowResponse&& from) noexcept
+    : GetWorkflowResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline GetWorkflowResponse& operator=(GetWorkflowResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GetWorkflowResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GetWorkflowResponse* internal_default_instance() {
+    return reinterpret_cast<const GetWorkflowResponse*>(
+               &_GetWorkflowResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    82;
+
+  void Swap(GetWorkflowResponse* other);
+  friend void swap(GetWorkflowResponse& a, GetWorkflowResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetWorkflowResponse* New() const final {
+    return CreateMaybeMessage<GetWorkflowResponse>(NULL);
+  }
+
+  GetWorkflowResponse* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<GetWorkflowResponse>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const GetWorkflowResponse& from);
+  void MergeFrom(const GetWorkflowResponse& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetWorkflowResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  // map<string, string> metadata = 3;
+  int metadata_size() const;
+  void clear_metadata();
+  static const int kMetadataFieldNumber = 3;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      metadata() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_metadata();
+
+  // string instance_id = 1;
+  void clear_instance_id();
+  static const int kInstanceIdFieldNumber = 1;
+  const ::std::string& instance_id() const;
+  void set_instance_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_instance_id(::std::string&& value);
+  #endif
+  void set_instance_id(const char* value);
+  void set_instance_id(const char* value, size_t size);
+  ::std::string* mutable_instance_id();
+  ::std::string* release_instance_id();
+  void set_allocated_instance_id(::std::string* instance_id);
+
+  // int64 start_time = 2;
+  void clear_start_time();
+  static const int kStartTimeFieldNumber = 2;
+  ::google::protobuf::int64 start_time() const;
+  void set_start_time(::google::protobuf::int64 value);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.GetWorkflowResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::MapField<
+      GetWorkflowResponse_MetadataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      0 > metadata_;
+  ::google::protobuf::internal::ArenaStringPtr instance_id_;
+  ::google::protobuf::int64 start_time_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class StartWorkflowRequest_OptionsEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<StartWorkflowRequest_OptionsEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<StartWorkflowRequest_OptionsEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  StartWorkflowRequest_OptionsEntry_DoNotUse();
+  StartWorkflowRequest_OptionsEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const StartWorkflowRequest_OptionsEntry_DoNotUse& other);
+  static const StartWorkflowRequest_OptionsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const StartWorkflowRequest_OptionsEntry_DoNotUse*>(&_StartWorkflowRequest_OptionsEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
+class StartWorkflowRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.StartWorkflowRequest) */ {
+ public:
+  StartWorkflowRequest();
+  virtual ~StartWorkflowRequest();
+
+  StartWorkflowRequest(const StartWorkflowRequest& from);
+
+  inline StartWorkflowRequest& operator=(const StartWorkflowRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  StartWorkflowRequest(StartWorkflowRequest&& from) noexcept
+    : StartWorkflowRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline StartWorkflowRequest& operator=(StartWorkflowRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const StartWorkflowRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const StartWorkflowRequest* internal_default_instance() {
+    return reinterpret_cast<const StartWorkflowRequest*>(
+               &_StartWorkflowRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    84;
+
+  void Swap(StartWorkflowRequest* other);
+  friend void swap(StartWorkflowRequest& a, StartWorkflowRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline StartWorkflowRequest* New() const final {
+    return CreateMaybeMessage<StartWorkflowRequest>(NULL);
+  }
+
+  StartWorkflowRequest* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<StartWorkflowRequest>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const StartWorkflowRequest& from);
+  void MergeFrom(const StartWorkflowRequest& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StartWorkflowRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  // map<string, string> options = 4;
+  int options_size() const;
+  void clear_options();
+  static const int kOptionsFieldNumber = 4;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      options() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_options();
+
+  // string instance_id = 1;
+  void clear_instance_id();
+  static const int kInstanceIdFieldNumber = 1;
+  const ::std::string& instance_id() const;
+  void set_instance_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_instance_id(::std::string&& value);
+  #endif
+  void set_instance_id(const char* value);
+  void set_instance_id(const char* value, size_t size);
+  ::std::string* mutable_instance_id();
+  ::std::string* release_instance_id();
+  void set_allocated_instance_id(::std::string* instance_id);
+
+  // string workflow_component = 2;
+  void clear_workflow_component();
+  static const int kWorkflowComponentFieldNumber = 2;
+  const ::std::string& workflow_component() const;
+  void set_workflow_component(const ::std::string& value);
+  #if LANG_CXX11
+  void set_workflow_component(::std::string&& value);
+  #endif
+  void set_workflow_component(const char* value);
+  void set_workflow_component(const char* value, size_t size);
+  ::std::string* mutable_workflow_component();
+  ::std::string* release_workflow_component();
+  void set_allocated_workflow_component(::std::string* workflow_component);
+
+  // string workflow_name = 3;
+  void clear_workflow_name();
+  static const int kWorkflowNameFieldNumber = 3;
+  const ::std::string& workflow_name() const;
+  void set_workflow_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_workflow_name(::std::string&& value);
+  #endif
+  void set_workflow_name(const char* value);
+  void set_workflow_name(const char* value, size_t size);
+  ::std::string* mutable_workflow_name();
+  ::std::string* release_workflow_name();
+  void set_allocated_workflow_name(::std::string* workflow_name);
+
+  // bytes input = 5;
+  void clear_input();
+  static const int kInputFieldNumber = 5;
+  const ::std::string& input() const;
+  void set_input(const ::std::string& value);
+  #if LANG_CXX11
+  void set_input(::std::string&& value);
+  #endif
+  void set_input(const char* value);
+  void set_input(const void* value, size_t size);
+  ::std::string* mutable_input();
+  ::std::string* release_input();
+  void set_allocated_input(::std::string* input);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.StartWorkflowRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::MapField<
+      StartWorkflowRequest_OptionsEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      0 > options_;
+  ::google::protobuf::internal::ArenaStringPtr instance_id_;
+  ::google::protobuf::internal::ArenaStringPtr workflow_component_;
+  ::google::protobuf::internal::ArenaStringPtr workflow_name_;
+  ::google::protobuf::internal::ArenaStringPtr input_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class TerminateWorkflowRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.TerminateWorkflowRequest) */ {
+ public:
+  TerminateWorkflowRequest();
+  virtual ~TerminateWorkflowRequest();
+
+  TerminateWorkflowRequest(const TerminateWorkflowRequest& from);
+
+  inline TerminateWorkflowRequest& operator=(const TerminateWorkflowRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  TerminateWorkflowRequest(TerminateWorkflowRequest&& from) noexcept
+    : TerminateWorkflowRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline TerminateWorkflowRequest& operator=(TerminateWorkflowRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TerminateWorkflowRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TerminateWorkflowRequest* internal_default_instance() {
+    return reinterpret_cast<const TerminateWorkflowRequest*>(
+               &_TerminateWorkflowRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    85;
+
+  void Swap(TerminateWorkflowRequest* other);
+  friend void swap(TerminateWorkflowRequest& a, TerminateWorkflowRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TerminateWorkflowRequest* New() const final {
+    return CreateMaybeMessage<TerminateWorkflowRequest>(NULL);
+  }
+
+  TerminateWorkflowRequest* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<TerminateWorkflowRequest>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const TerminateWorkflowRequest& from);
+  void MergeFrom(const TerminateWorkflowRequest& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TerminateWorkflowRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string instance_id = 1;
+  void clear_instance_id();
+  static const int kInstanceIdFieldNumber = 1;
+  const ::std::string& instance_id() const;
+  void set_instance_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_instance_id(::std::string&& value);
+  #endif
+  void set_instance_id(const char* value);
+  void set_instance_id(const char* value, size_t size);
+  ::std::string* mutable_instance_id();
+  ::std::string* release_instance_id();
+  void set_allocated_instance_id(::std::string* instance_id);
+
+  // string workflow_component = 2;
+  void clear_workflow_component();
+  static const int kWorkflowComponentFieldNumber = 2;
+  const ::std::string& workflow_component() const;
+  void set_workflow_component(const ::std::string& value);
+  #if LANG_CXX11
+  void set_workflow_component(::std::string&& value);
+  #endif
+  void set_workflow_component(const char* value);
+  void set_workflow_component(const char* value, size_t size);
+  ::std::string* mutable_workflow_component();
+  ::std::string* release_workflow_component();
+  void set_allocated_workflow_component(::std::string* workflow_component);
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.TerminateWorkflowRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr instance_id_;
+  ::google::protobuf::internal::ArenaStringPtr workflow_component_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class TerminateWorkflowResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:dapr.proto.runtime.v1.TerminateWorkflowResponse) */ {
+ public:
+  TerminateWorkflowResponse();
+  virtual ~TerminateWorkflowResponse();
+
+  TerminateWorkflowResponse(const TerminateWorkflowResponse& from);
+
+  inline TerminateWorkflowResponse& operator=(const TerminateWorkflowResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  TerminateWorkflowResponse(TerminateWorkflowResponse&& from) noexcept
+    : TerminateWorkflowResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline TerminateWorkflowResponse& operator=(TerminateWorkflowResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TerminateWorkflowResponse& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TerminateWorkflowResponse* internal_default_instance() {
+    return reinterpret_cast<const TerminateWorkflowResponse*>(
+               &_TerminateWorkflowResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    86;
+
+  void Swap(TerminateWorkflowResponse* other);
+  friend void swap(TerminateWorkflowResponse& a, TerminateWorkflowResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TerminateWorkflowResponse* New() const final {
+    return CreateMaybeMessage<TerminateWorkflowResponse>(NULL);
+  }
+
+  TerminateWorkflowResponse* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<TerminateWorkflowResponse>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const TerminateWorkflowResponse& from);
+  void MergeFrom(const TerminateWorkflowResponse& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TerminateWorkflowResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:dapr.proto.runtime.v1.TerminateWorkflowResponse)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fruntime_2fv1_2fdapr_2eproto::TableStruct;
 };
@@ -9296,6 +11218,493 @@ inline ::google::protobuf::Map< ::std::string, ::std::string >*
 PublishEventRequest::mutable_metadata() {
   // @@protoc_insertion_point(field_mutable_map:dapr.proto.runtime.v1.PublishEventRequest.metadata)
   return metadata_.MutableMap();
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// BulkPublishRequest
+
+// string pubsub_name = 1;
+inline void BulkPublishRequest::clear_pubsub_name() {
+  pubsub_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& BulkPublishRequest::pubsub_name() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.BulkPublishRequest.pubsub_name)
+  return pubsub_name_.GetNoArena();
+}
+inline void BulkPublishRequest::set_pubsub_name(const ::std::string& value) {
+  
+  pubsub_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.BulkPublishRequest.pubsub_name)
+}
+#if LANG_CXX11
+inline void BulkPublishRequest::set_pubsub_name(::std::string&& value) {
+  
+  pubsub_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.BulkPublishRequest.pubsub_name)
+}
+#endif
+inline void BulkPublishRequest::set_pubsub_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  pubsub_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.BulkPublishRequest.pubsub_name)
+}
+inline void BulkPublishRequest::set_pubsub_name(const char* value, size_t size) {
+  
+  pubsub_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.BulkPublishRequest.pubsub_name)
+}
+inline ::std::string* BulkPublishRequest::mutable_pubsub_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.BulkPublishRequest.pubsub_name)
+  return pubsub_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* BulkPublishRequest::release_pubsub_name() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.BulkPublishRequest.pubsub_name)
+  
+  return pubsub_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void BulkPublishRequest::set_allocated_pubsub_name(::std::string* pubsub_name) {
+  if (pubsub_name != NULL) {
+    
+  } else {
+    
+  }
+  pubsub_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), pubsub_name);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.BulkPublishRequest.pubsub_name)
+}
+
+// string topic = 2;
+inline void BulkPublishRequest::clear_topic() {
+  topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& BulkPublishRequest::topic() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.BulkPublishRequest.topic)
+  return topic_.GetNoArena();
+}
+inline void BulkPublishRequest::set_topic(const ::std::string& value) {
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.BulkPublishRequest.topic)
+}
+#if LANG_CXX11
+inline void BulkPublishRequest::set_topic(::std::string&& value) {
+  
+  topic_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.BulkPublishRequest.topic)
+}
+#endif
+inline void BulkPublishRequest::set_topic(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.BulkPublishRequest.topic)
+}
+inline void BulkPublishRequest::set_topic(const char* value, size_t size) {
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.BulkPublishRequest.topic)
+}
+inline ::std::string* BulkPublishRequest::mutable_topic() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.BulkPublishRequest.topic)
+  return topic_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* BulkPublishRequest::release_topic() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.BulkPublishRequest.topic)
+  
+  return topic_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void BulkPublishRequest::set_allocated_topic(::std::string* topic) {
+  if (topic != NULL) {
+    
+  } else {
+    
+  }
+  topic_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), topic);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.BulkPublishRequest.topic)
+}
+
+// repeated .dapr.proto.runtime.v1.BulkPublishRequestEntry entries = 3;
+inline int BulkPublishRequest::entries_size() const {
+  return entries_.size();
+}
+inline void BulkPublishRequest::clear_entries() {
+  entries_.Clear();
+}
+inline ::dapr::proto::runtime::v1::BulkPublishRequestEntry* BulkPublishRequest::mutable_entries(int index) {
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.BulkPublishRequest.entries)
+  return entries_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::BulkPublishRequestEntry >*
+BulkPublishRequest::mutable_entries() {
+  // @@protoc_insertion_point(field_mutable_list:dapr.proto.runtime.v1.BulkPublishRequest.entries)
+  return &entries_;
+}
+inline const ::dapr::proto::runtime::v1::BulkPublishRequestEntry& BulkPublishRequest::entries(int index) const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.BulkPublishRequest.entries)
+  return entries_.Get(index);
+}
+inline ::dapr::proto::runtime::v1::BulkPublishRequestEntry* BulkPublishRequest::add_entries() {
+  // @@protoc_insertion_point(field_add:dapr.proto.runtime.v1.BulkPublishRequest.entries)
+  return entries_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::BulkPublishRequestEntry >&
+BulkPublishRequest::entries() const {
+  // @@protoc_insertion_point(field_list:dapr.proto.runtime.v1.BulkPublishRequest.entries)
+  return entries_;
+}
+
+// map<string, string> metadata = 4;
+inline int BulkPublishRequest::metadata_size() const {
+  return metadata_.size();
+}
+inline void BulkPublishRequest::clear_metadata() {
+  metadata_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+BulkPublishRequest::metadata() const {
+  // @@protoc_insertion_point(field_map:dapr.proto.runtime.v1.BulkPublishRequest.metadata)
+  return metadata_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+BulkPublishRequest::mutable_metadata() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.runtime.v1.BulkPublishRequest.metadata)
+  return metadata_.MutableMap();
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// BulkPublishRequestEntry
+
+// string entry_id = 1;
+inline void BulkPublishRequestEntry::clear_entry_id() {
+  entry_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& BulkPublishRequestEntry::entry_id() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.BulkPublishRequestEntry.entry_id)
+  return entry_id_.GetNoArena();
+}
+inline void BulkPublishRequestEntry::set_entry_id(const ::std::string& value) {
+  
+  entry_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.BulkPublishRequestEntry.entry_id)
+}
+#if LANG_CXX11
+inline void BulkPublishRequestEntry::set_entry_id(::std::string&& value) {
+  
+  entry_id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.BulkPublishRequestEntry.entry_id)
+}
+#endif
+inline void BulkPublishRequestEntry::set_entry_id(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  entry_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.BulkPublishRequestEntry.entry_id)
+}
+inline void BulkPublishRequestEntry::set_entry_id(const char* value, size_t size) {
+  
+  entry_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.BulkPublishRequestEntry.entry_id)
+}
+inline ::std::string* BulkPublishRequestEntry::mutable_entry_id() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.BulkPublishRequestEntry.entry_id)
+  return entry_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* BulkPublishRequestEntry::release_entry_id() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.BulkPublishRequestEntry.entry_id)
+  
+  return entry_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void BulkPublishRequestEntry::set_allocated_entry_id(::std::string* entry_id) {
+  if (entry_id != NULL) {
+    
+  } else {
+    
+  }
+  entry_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), entry_id);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.BulkPublishRequestEntry.entry_id)
+}
+
+// bytes event = 2;
+inline void BulkPublishRequestEntry::clear_event() {
+  event_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& BulkPublishRequestEntry::event() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.BulkPublishRequestEntry.event)
+  return event_.GetNoArena();
+}
+inline void BulkPublishRequestEntry::set_event(const ::std::string& value) {
+  
+  event_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.BulkPublishRequestEntry.event)
+}
+#if LANG_CXX11
+inline void BulkPublishRequestEntry::set_event(::std::string&& value) {
+  
+  event_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.BulkPublishRequestEntry.event)
+}
+#endif
+inline void BulkPublishRequestEntry::set_event(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  event_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.BulkPublishRequestEntry.event)
+}
+inline void BulkPublishRequestEntry::set_event(const void* value, size_t size) {
+  
+  event_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.BulkPublishRequestEntry.event)
+}
+inline ::std::string* BulkPublishRequestEntry::mutable_event() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.BulkPublishRequestEntry.event)
+  return event_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* BulkPublishRequestEntry::release_event() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.BulkPublishRequestEntry.event)
+  
+  return event_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void BulkPublishRequestEntry::set_allocated_event(::std::string* event) {
+  if (event != NULL) {
+    
+  } else {
+    
+  }
+  event_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), event);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.BulkPublishRequestEntry.event)
+}
+
+// string content_type = 3;
+inline void BulkPublishRequestEntry::clear_content_type() {
+  content_type_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& BulkPublishRequestEntry::content_type() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.BulkPublishRequestEntry.content_type)
+  return content_type_.GetNoArena();
+}
+inline void BulkPublishRequestEntry::set_content_type(const ::std::string& value) {
+  
+  content_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.BulkPublishRequestEntry.content_type)
+}
+#if LANG_CXX11
+inline void BulkPublishRequestEntry::set_content_type(::std::string&& value) {
+  
+  content_type_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.BulkPublishRequestEntry.content_type)
+}
+#endif
+inline void BulkPublishRequestEntry::set_content_type(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  content_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.BulkPublishRequestEntry.content_type)
+}
+inline void BulkPublishRequestEntry::set_content_type(const char* value, size_t size) {
+  
+  content_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.BulkPublishRequestEntry.content_type)
+}
+inline ::std::string* BulkPublishRequestEntry::mutable_content_type() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.BulkPublishRequestEntry.content_type)
+  return content_type_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* BulkPublishRequestEntry::release_content_type() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.BulkPublishRequestEntry.content_type)
+  
+  return content_type_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void BulkPublishRequestEntry::set_allocated_content_type(::std::string* content_type) {
+  if (content_type != NULL) {
+    
+  } else {
+    
+  }
+  content_type_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), content_type);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.BulkPublishRequestEntry.content_type)
+}
+
+// map<string, string> metadata = 4;
+inline int BulkPublishRequestEntry::metadata_size() const {
+  return metadata_.size();
+}
+inline void BulkPublishRequestEntry::clear_metadata() {
+  metadata_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+BulkPublishRequestEntry::metadata() const {
+  // @@protoc_insertion_point(field_map:dapr.proto.runtime.v1.BulkPublishRequestEntry.metadata)
+  return metadata_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+BulkPublishRequestEntry::mutable_metadata() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.runtime.v1.BulkPublishRequestEntry.metadata)
+  return metadata_.MutableMap();
+}
+
+// -------------------------------------------------------------------
+
+// BulkPublishResponse
+
+// repeated .dapr.proto.runtime.v1.BulkPublishResponseFailedEntry failedEntries = 1;
+inline int BulkPublishResponse::failedentries_size() const {
+  return failedentries_.size();
+}
+inline void BulkPublishResponse::clear_failedentries() {
+  failedentries_.Clear();
+}
+inline ::dapr::proto::runtime::v1::BulkPublishResponseFailedEntry* BulkPublishResponse::mutable_failedentries(int index) {
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.BulkPublishResponse.failedEntries)
+  return failedentries_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::BulkPublishResponseFailedEntry >*
+BulkPublishResponse::mutable_failedentries() {
+  // @@protoc_insertion_point(field_mutable_list:dapr.proto.runtime.v1.BulkPublishResponse.failedEntries)
+  return &failedentries_;
+}
+inline const ::dapr::proto::runtime::v1::BulkPublishResponseFailedEntry& BulkPublishResponse::failedentries(int index) const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.BulkPublishResponse.failedEntries)
+  return failedentries_.Get(index);
+}
+inline ::dapr::proto::runtime::v1::BulkPublishResponseFailedEntry* BulkPublishResponse::add_failedentries() {
+  // @@protoc_insertion_point(field_add:dapr.proto.runtime.v1.BulkPublishResponse.failedEntries)
+  return failedentries_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::BulkPublishResponseFailedEntry >&
+BulkPublishResponse::failedentries() const {
+  // @@protoc_insertion_point(field_list:dapr.proto.runtime.v1.BulkPublishResponse.failedEntries)
+  return failedentries_;
+}
+
+// -------------------------------------------------------------------
+
+// BulkPublishResponseFailedEntry
+
+// string entry_id = 1;
+inline void BulkPublishResponseFailedEntry::clear_entry_id() {
+  entry_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& BulkPublishResponseFailedEntry::entry_id() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.entry_id)
+  return entry_id_.GetNoArena();
+}
+inline void BulkPublishResponseFailedEntry::set_entry_id(const ::std::string& value) {
+  
+  entry_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.entry_id)
+}
+#if LANG_CXX11
+inline void BulkPublishResponseFailedEntry::set_entry_id(::std::string&& value) {
+  
+  entry_id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.entry_id)
+}
+#endif
+inline void BulkPublishResponseFailedEntry::set_entry_id(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  entry_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.entry_id)
+}
+inline void BulkPublishResponseFailedEntry::set_entry_id(const char* value, size_t size) {
+  
+  entry_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.entry_id)
+}
+inline ::std::string* BulkPublishResponseFailedEntry::mutable_entry_id() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.entry_id)
+  return entry_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* BulkPublishResponseFailedEntry::release_entry_id() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.entry_id)
+  
+  return entry_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void BulkPublishResponseFailedEntry::set_allocated_entry_id(::std::string* entry_id) {
+  if (entry_id != NULL) {
+    
+  } else {
+    
+  }
+  entry_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), entry_id);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.entry_id)
+}
+
+// string error = 2;
+inline void BulkPublishResponseFailedEntry::clear_error() {
+  error_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& BulkPublishResponseFailedEntry::error() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.error)
+  return error_.GetNoArena();
+}
+inline void BulkPublishResponseFailedEntry::set_error(const ::std::string& value) {
+  
+  error_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.error)
+}
+#if LANG_CXX11
+inline void BulkPublishResponseFailedEntry::set_error(::std::string&& value) {
+  
+  error_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.error)
+}
+#endif
+inline void BulkPublishResponseFailedEntry::set_error(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  error_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.error)
+}
+inline void BulkPublishResponseFailedEntry::set_error(const char* value, size_t size) {
+  
+  error_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.error)
+}
+inline ::std::string* BulkPublishResponseFailedEntry::mutable_error() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.error)
+  return error_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* BulkPublishResponseFailedEntry::release_error() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.error)
+  
+  return error_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void BulkPublishResponseFailedEntry::set_allocated_error(::std::string* error) {
+  if (error != NULL) {
+    
+  } else {
+    
+  }
+  error_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), error);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.BulkPublishResponseFailedEntry.error)
 }
 
 // -------------------------------------------------------------------
@@ -12342,6 +14751,36 @@ GetMetadataResponse::mutable_extended_metadata() {
   return extended_metadata_.MutableMap();
 }
 
+// repeated .dapr.proto.runtime.v1.PubsubSubscription subscriptions = 5;
+inline int GetMetadataResponse::subscriptions_size() const {
+  return subscriptions_.size();
+}
+inline void GetMetadataResponse::clear_subscriptions() {
+  subscriptions_.Clear();
+}
+inline ::dapr::proto::runtime::v1::PubsubSubscription* GetMetadataResponse::mutable_subscriptions(int index) {
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.GetMetadataResponse.subscriptions)
+  return subscriptions_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::PubsubSubscription >*
+GetMetadataResponse::mutable_subscriptions() {
+  // @@protoc_insertion_point(field_mutable_list:dapr.proto.runtime.v1.GetMetadataResponse.subscriptions)
+  return &subscriptions_;
+}
+inline const ::dapr::proto::runtime::v1::PubsubSubscription& GetMetadataResponse::subscriptions(int index) const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.GetMetadataResponse.subscriptions)
+  return subscriptions_.Get(index);
+}
+inline ::dapr::proto::runtime::v1::PubsubSubscription* GetMetadataResponse::add_subscriptions() {
+  // @@protoc_insertion_point(field_add:dapr.proto.runtime.v1.GetMetadataResponse.subscriptions)
+  return subscriptions_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::PubsubSubscription >&
+GetMetadataResponse::subscriptions() const {
+  // @@protoc_insertion_point(field_list:dapr.proto.runtime.v1.GetMetadataResponse.subscriptions)
+  return subscriptions_;
+}
+
 // -------------------------------------------------------------------
 
 // ActiveActorsCount
@@ -12643,6 +15082,387 @@ inline ::google::protobuf::RepeatedPtrField< ::std::string>*
 RegisteredComponents::mutable_capabilities() {
   // @@protoc_insertion_point(field_mutable_list:dapr.proto.runtime.v1.RegisteredComponents.capabilities)
   return &capabilities_;
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// PubsubSubscription
+
+// string pubsub_name = 1;
+inline void PubsubSubscription::clear_pubsub_name() {
+  pubsub_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PubsubSubscription::pubsub_name() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.PubsubSubscription.pubsub_name)
+  return pubsub_name_.GetNoArena();
+}
+inline void PubsubSubscription::set_pubsub_name(const ::std::string& value) {
+  
+  pubsub_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.PubsubSubscription.pubsub_name)
+}
+#if LANG_CXX11
+inline void PubsubSubscription::set_pubsub_name(::std::string&& value) {
+  
+  pubsub_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.PubsubSubscription.pubsub_name)
+}
+#endif
+inline void PubsubSubscription::set_pubsub_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  pubsub_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.PubsubSubscription.pubsub_name)
+}
+inline void PubsubSubscription::set_pubsub_name(const char* value, size_t size) {
+  
+  pubsub_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.PubsubSubscription.pubsub_name)
+}
+inline ::std::string* PubsubSubscription::mutable_pubsub_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.PubsubSubscription.pubsub_name)
+  return pubsub_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PubsubSubscription::release_pubsub_name() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.PubsubSubscription.pubsub_name)
+  
+  return pubsub_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PubsubSubscription::set_allocated_pubsub_name(::std::string* pubsub_name) {
+  if (pubsub_name != NULL) {
+    
+  } else {
+    
+  }
+  pubsub_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), pubsub_name);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.PubsubSubscription.pubsub_name)
+}
+
+// string topic = 2;
+inline void PubsubSubscription::clear_topic() {
+  topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PubsubSubscription::topic() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.PubsubSubscription.topic)
+  return topic_.GetNoArena();
+}
+inline void PubsubSubscription::set_topic(const ::std::string& value) {
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.PubsubSubscription.topic)
+}
+#if LANG_CXX11
+inline void PubsubSubscription::set_topic(::std::string&& value) {
+  
+  topic_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.PubsubSubscription.topic)
+}
+#endif
+inline void PubsubSubscription::set_topic(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.PubsubSubscription.topic)
+}
+inline void PubsubSubscription::set_topic(const char* value, size_t size) {
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.PubsubSubscription.topic)
+}
+inline ::std::string* PubsubSubscription::mutable_topic() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.PubsubSubscription.topic)
+  return topic_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PubsubSubscription::release_topic() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.PubsubSubscription.topic)
+  
+  return topic_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PubsubSubscription::set_allocated_topic(::std::string* topic) {
+  if (topic != NULL) {
+    
+  } else {
+    
+  }
+  topic_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), topic);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.PubsubSubscription.topic)
+}
+
+// map<string, string> metadata = 3;
+inline int PubsubSubscription::metadata_size() const {
+  return metadata_.size();
+}
+inline void PubsubSubscription::clear_metadata() {
+  metadata_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+PubsubSubscription::metadata() const {
+  // @@protoc_insertion_point(field_map:dapr.proto.runtime.v1.PubsubSubscription.metadata)
+  return metadata_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+PubsubSubscription::mutable_metadata() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.runtime.v1.PubsubSubscription.metadata)
+  return metadata_.MutableMap();
+}
+
+// .dapr.proto.runtime.v1.PubsubSubscriptionRules rules = 4;
+inline bool PubsubSubscription::has_rules() const {
+  return this != internal_default_instance() && rules_ != NULL;
+}
+inline void PubsubSubscription::clear_rules() {
+  if (GetArenaNoVirtual() == NULL && rules_ != NULL) {
+    delete rules_;
+  }
+  rules_ = NULL;
+}
+inline const ::dapr::proto::runtime::v1::PubsubSubscriptionRules& PubsubSubscription::_internal_rules() const {
+  return *rules_;
+}
+inline const ::dapr::proto::runtime::v1::PubsubSubscriptionRules& PubsubSubscription::rules() const {
+  const ::dapr::proto::runtime::v1::PubsubSubscriptionRules* p = rules_;
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.PubsubSubscription.rules)
+  return p != NULL ? *p : *reinterpret_cast<const ::dapr::proto::runtime::v1::PubsubSubscriptionRules*>(
+      &::dapr::proto::runtime::v1::_PubsubSubscriptionRules_default_instance_);
+}
+inline ::dapr::proto::runtime::v1::PubsubSubscriptionRules* PubsubSubscription::release_rules() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.PubsubSubscription.rules)
+  
+  ::dapr::proto::runtime::v1::PubsubSubscriptionRules* temp = rules_;
+  rules_ = NULL;
+  return temp;
+}
+inline ::dapr::proto::runtime::v1::PubsubSubscriptionRules* PubsubSubscription::mutable_rules() {
+  
+  if (rules_ == NULL) {
+    auto* p = CreateMaybeMessage<::dapr::proto::runtime::v1::PubsubSubscriptionRules>(GetArenaNoVirtual());
+    rules_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.PubsubSubscription.rules)
+  return rules_;
+}
+inline void PubsubSubscription::set_allocated_rules(::dapr::proto::runtime::v1::PubsubSubscriptionRules* rules) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete rules_;
+  }
+  if (rules) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      rules = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, rules, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  rules_ = rules;
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.PubsubSubscription.rules)
+}
+
+// string dead_letter_topic = 5;
+inline void PubsubSubscription::clear_dead_letter_topic() {
+  dead_letter_topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PubsubSubscription::dead_letter_topic() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.PubsubSubscription.dead_letter_topic)
+  return dead_letter_topic_.GetNoArena();
+}
+inline void PubsubSubscription::set_dead_letter_topic(const ::std::string& value) {
+  
+  dead_letter_topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.PubsubSubscription.dead_letter_topic)
+}
+#if LANG_CXX11
+inline void PubsubSubscription::set_dead_letter_topic(::std::string&& value) {
+  
+  dead_letter_topic_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.PubsubSubscription.dead_letter_topic)
+}
+#endif
+inline void PubsubSubscription::set_dead_letter_topic(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  dead_letter_topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.PubsubSubscription.dead_letter_topic)
+}
+inline void PubsubSubscription::set_dead_letter_topic(const char* value, size_t size) {
+  
+  dead_letter_topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.PubsubSubscription.dead_letter_topic)
+}
+inline ::std::string* PubsubSubscription::mutable_dead_letter_topic() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.PubsubSubscription.dead_letter_topic)
+  return dead_letter_topic_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PubsubSubscription::release_dead_letter_topic() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.PubsubSubscription.dead_letter_topic)
+  
+  return dead_letter_topic_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PubsubSubscription::set_allocated_dead_letter_topic(::std::string* dead_letter_topic) {
+  if (dead_letter_topic != NULL) {
+    
+  } else {
+    
+  }
+  dead_letter_topic_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), dead_letter_topic);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.PubsubSubscription.dead_letter_topic)
+}
+
+// -------------------------------------------------------------------
+
+// PubsubSubscriptionRules
+
+// repeated .dapr.proto.runtime.v1.PubsubSubscriptionRule rules = 1;
+inline int PubsubSubscriptionRules::rules_size() const {
+  return rules_.size();
+}
+inline void PubsubSubscriptionRules::clear_rules() {
+  rules_.Clear();
+}
+inline ::dapr::proto::runtime::v1::PubsubSubscriptionRule* PubsubSubscriptionRules::mutable_rules(int index) {
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.PubsubSubscriptionRules.rules)
+  return rules_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::PubsubSubscriptionRule >*
+PubsubSubscriptionRules::mutable_rules() {
+  // @@protoc_insertion_point(field_mutable_list:dapr.proto.runtime.v1.PubsubSubscriptionRules.rules)
+  return &rules_;
+}
+inline const ::dapr::proto::runtime::v1::PubsubSubscriptionRule& PubsubSubscriptionRules::rules(int index) const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.PubsubSubscriptionRules.rules)
+  return rules_.Get(index);
+}
+inline ::dapr::proto::runtime::v1::PubsubSubscriptionRule* PubsubSubscriptionRules::add_rules() {
+  // @@protoc_insertion_point(field_add:dapr.proto.runtime.v1.PubsubSubscriptionRules.rules)
+  return rules_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::dapr::proto::runtime::v1::PubsubSubscriptionRule >&
+PubsubSubscriptionRules::rules() const {
+  // @@protoc_insertion_point(field_list:dapr.proto.runtime.v1.PubsubSubscriptionRules.rules)
+  return rules_;
+}
+
+// -------------------------------------------------------------------
+
+// PubsubSubscriptionRule
+
+// string match = 1;
+inline void PubsubSubscriptionRule::clear_match() {
+  match_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PubsubSubscriptionRule::match() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.PubsubSubscriptionRule.match)
+  return match_.GetNoArena();
+}
+inline void PubsubSubscriptionRule::set_match(const ::std::string& value) {
+  
+  match_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.PubsubSubscriptionRule.match)
+}
+#if LANG_CXX11
+inline void PubsubSubscriptionRule::set_match(::std::string&& value) {
+  
+  match_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.PubsubSubscriptionRule.match)
+}
+#endif
+inline void PubsubSubscriptionRule::set_match(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  match_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.PubsubSubscriptionRule.match)
+}
+inline void PubsubSubscriptionRule::set_match(const char* value, size_t size) {
+  
+  match_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.PubsubSubscriptionRule.match)
+}
+inline ::std::string* PubsubSubscriptionRule::mutable_match() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.PubsubSubscriptionRule.match)
+  return match_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PubsubSubscriptionRule::release_match() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.PubsubSubscriptionRule.match)
+  
+  return match_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PubsubSubscriptionRule::set_allocated_match(::std::string* match) {
+  if (match != NULL) {
+    
+  } else {
+    
+  }
+  match_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), match);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.PubsubSubscriptionRule.match)
+}
+
+// string path = 2;
+inline void PubsubSubscriptionRule::clear_path() {
+  path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PubsubSubscriptionRule::path() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.PubsubSubscriptionRule.path)
+  return path_.GetNoArena();
+}
+inline void PubsubSubscriptionRule::set_path(const ::std::string& value) {
+  
+  path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.PubsubSubscriptionRule.path)
+}
+#if LANG_CXX11
+inline void PubsubSubscriptionRule::set_path(::std::string&& value) {
+  
+  path_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.PubsubSubscriptionRule.path)
+}
+#endif
+inline void PubsubSubscriptionRule::set_path(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.PubsubSubscriptionRule.path)
+}
+inline void PubsubSubscriptionRule::set_path(const char* value, size_t size) {
+  
+  path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.PubsubSubscriptionRule.path)
+}
+inline ::std::string* PubsubSubscriptionRule::mutable_path() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.PubsubSubscriptionRule.path)
+  return path_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PubsubSubscriptionRule::release_path() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.PubsubSubscriptionRule.path)
+  
+  return path_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PubsubSubscriptionRule::set_allocated_path(::std::string* path) {
+  if (path != NULL) {
+    
+  } else {
+    
+  }
+  path_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), path);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.PubsubSubscriptionRule.path)
 }
 
 // -------------------------------------------------------------------
@@ -13699,9 +16519,706 @@ inline void UnlockResponse::set_status(::dapr::proto::runtime::v1::UnlockRespons
   // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.UnlockResponse.status)
 }
 
+// -------------------------------------------------------------------
+
+// WorkflowReference
+
+// string instance_id = 1;
+inline void WorkflowReference::clear_instance_id() {
+  instance_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& WorkflowReference::instance_id() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.WorkflowReference.instance_id)
+  return instance_id_.GetNoArena();
+}
+inline void WorkflowReference::set_instance_id(const ::std::string& value) {
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.WorkflowReference.instance_id)
+}
+#if LANG_CXX11
+inline void WorkflowReference::set_instance_id(::std::string&& value) {
+  
+  instance_id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.WorkflowReference.instance_id)
+}
+#endif
+inline void WorkflowReference::set_instance_id(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.WorkflowReference.instance_id)
+}
+inline void WorkflowReference::set_instance_id(const char* value, size_t size) {
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.WorkflowReference.instance_id)
+}
+inline ::std::string* WorkflowReference::mutable_instance_id() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.WorkflowReference.instance_id)
+  return instance_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* WorkflowReference::release_instance_id() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.WorkflowReference.instance_id)
+  
+  return instance_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void WorkflowReference::set_allocated_instance_id(::std::string* instance_id) {
+  if (instance_id != NULL) {
+    
+  } else {
+    
+  }
+  instance_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), instance_id);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.WorkflowReference.instance_id)
+}
+
+// -------------------------------------------------------------------
+
+// GetWorkflowRequest
+
+// string instance_id = 1;
+inline void GetWorkflowRequest::clear_instance_id() {
+  instance_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetWorkflowRequest::instance_id() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.GetWorkflowRequest.instance_id)
+  return instance_id_.GetNoArena();
+}
+inline void GetWorkflowRequest::set_instance_id(const ::std::string& value) {
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.GetWorkflowRequest.instance_id)
+}
+#if LANG_CXX11
+inline void GetWorkflowRequest::set_instance_id(::std::string&& value) {
+  
+  instance_id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.GetWorkflowRequest.instance_id)
+}
+#endif
+inline void GetWorkflowRequest::set_instance_id(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.GetWorkflowRequest.instance_id)
+}
+inline void GetWorkflowRequest::set_instance_id(const char* value, size_t size) {
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.GetWorkflowRequest.instance_id)
+}
+inline ::std::string* GetWorkflowRequest::mutable_instance_id() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.GetWorkflowRequest.instance_id)
+  return instance_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetWorkflowRequest::release_instance_id() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.GetWorkflowRequest.instance_id)
+  
+  return instance_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetWorkflowRequest::set_allocated_instance_id(::std::string* instance_id) {
+  if (instance_id != NULL) {
+    
+  } else {
+    
+  }
+  instance_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), instance_id);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.GetWorkflowRequest.instance_id)
+}
+
+// string workflow_type = 2;
+inline void GetWorkflowRequest::clear_workflow_type() {
+  workflow_type_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetWorkflowRequest::workflow_type() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_type)
+  return workflow_type_.GetNoArena();
+}
+inline void GetWorkflowRequest::set_workflow_type(const ::std::string& value) {
+  
+  workflow_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_type)
+}
+#if LANG_CXX11
+inline void GetWorkflowRequest::set_workflow_type(::std::string&& value) {
+  
+  workflow_type_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_type)
+}
+#endif
+inline void GetWorkflowRequest::set_workflow_type(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  workflow_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_type)
+}
+inline void GetWorkflowRequest::set_workflow_type(const char* value, size_t size) {
+  
+  workflow_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_type)
+}
+inline ::std::string* GetWorkflowRequest::mutable_workflow_type() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_type)
+  return workflow_type_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetWorkflowRequest::release_workflow_type() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_type)
+  
+  return workflow_type_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetWorkflowRequest::set_allocated_workflow_type(::std::string* workflow_type) {
+  if (workflow_type != NULL) {
+    
+  } else {
+    
+  }
+  workflow_type_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), workflow_type);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_type)
+}
+
+// string workflow_component = 3;
+inline void GetWorkflowRequest::clear_workflow_component() {
+  workflow_component_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetWorkflowRequest::workflow_component() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_component)
+  return workflow_component_.GetNoArena();
+}
+inline void GetWorkflowRequest::set_workflow_component(const ::std::string& value) {
+  
+  workflow_component_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_component)
+}
+#if LANG_CXX11
+inline void GetWorkflowRequest::set_workflow_component(::std::string&& value) {
+  
+  workflow_component_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_component)
+}
+#endif
+inline void GetWorkflowRequest::set_workflow_component(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  workflow_component_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_component)
+}
+inline void GetWorkflowRequest::set_workflow_component(const char* value, size_t size) {
+  
+  workflow_component_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_component)
+}
+inline ::std::string* GetWorkflowRequest::mutable_workflow_component() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_component)
+  return workflow_component_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetWorkflowRequest::release_workflow_component() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_component)
+  
+  return workflow_component_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetWorkflowRequest::set_allocated_workflow_component(::std::string* workflow_component) {
+  if (workflow_component != NULL) {
+    
+  } else {
+    
+  }
+  workflow_component_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), workflow_component);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.GetWorkflowRequest.workflow_component)
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// GetWorkflowResponse
+
+// string instance_id = 1;
+inline void GetWorkflowResponse::clear_instance_id() {
+  instance_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& GetWorkflowResponse::instance_id() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.GetWorkflowResponse.instance_id)
+  return instance_id_.GetNoArena();
+}
+inline void GetWorkflowResponse::set_instance_id(const ::std::string& value) {
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.GetWorkflowResponse.instance_id)
+}
+#if LANG_CXX11
+inline void GetWorkflowResponse::set_instance_id(::std::string&& value) {
+  
+  instance_id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.GetWorkflowResponse.instance_id)
+}
+#endif
+inline void GetWorkflowResponse::set_instance_id(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.GetWorkflowResponse.instance_id)
+}
+inline void GetWorkflowResponse::set_instance_id(const char* value, size_t size) {
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.GetWorkflowResponse.instance_id)
+}
+inline ::std::string* GetWorkflowResponse::mutable_instance_id() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.GetWorkflowResponse.instance_id)
+  return instance_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* GetWorkflowResponse::release_instance_id() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.GetWorkflowResponse.instance_id)
+  
+  return instance_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void GetWorkflowResponse::set_allocated_instance_id(::std::string* instance_id) {
+  if (instance_id != NULL) {
+    
+  } else {
+    
+  }
+  instance_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), instance_id);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.GetWorkflowResponse.instance_id)
+}
+
+// int64 start_time = 2;
+inline void GetWorkflowResponse::clear_start_time() {
+  start_time_ = GOOGLE_LONGLONG(0);
+}
+inline ::google::protobuf::int64 GetWorkflowResponse::start_time() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.GetWorkflowResponse.start_time)
+  return start_time_;
+}
+inline void GetWorkflowResponse::set_start_time(::google::protobuf::int64 value) {
+  
+  start_time_ = value;
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.GetWorkflowResponse.start_time)
+}
+
+// map<string, string> metadata = 3;
+inline int GetWorkflowResponse::metadata_size() const {
+  return metadata_.size();
+}
+inline void GetWorkflowResponse::clear_metadata() {
+  metadata_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+GetWorkflowResponse::metadata() const {
+  // @@protoc_insertion_point(field_map:dapr.proto.runtime.v1.GetWorkflowResponse.metadata)
+  return metadata_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+GetWorkflowResponse::mutable_metadata() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.runtime.v1.GetWorkflowResponse.metadata)
+  return metadata_.MutableMap();
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// StartWorkflowRequest
+
+// string instance_id = 1;
+inline void StartWorkflowRequest::clear_instance_id() {
+  instance_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& StartWorkflowRequest::instance_id() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.StartWorkflowRequest.instance_id)
+  return instance_id_.GetNoArena();
+}
+inline void StartWorkflowRequest::set_instance_id(const ::std::string& value) {
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.StartWorkflowRequest.instance_id)
+}
+#if LANG_CXX11
+inline void StartWorkflowRequest::set_instance_id(::std::string&& value) {
+  
+  instance_id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.StartWorkflowRequest.instance_id)
+}
+#endif
+inline void StartWorkflowRequest::set_instance_id(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.StartWorkflowRequest.instance_id)
+}
+inline void StartWorkflowRequest::set_instance_id(const char* value, size_t size) {
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.StartWorkflowRequest.instance_id)
+}
+inline ::std::string* StartWorkflowRequest::mutable_instance_id() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.StartWorkflowRequest.instance_id)
+  return instance_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StartWorkflowRequest::release_instance_id() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.StartWorkflowRequest.instance_id)
+  
+  return instance_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StartWorkflowRequest::set_allocated_instance_id(::std::string* instance_id) {
+  if (instance_id != NULL) {
+    
+  } else {
+    
+  }
+  instance_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), instance_id);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.StartWorkflowRequest.instance_id)
+}
+
+// string workflow_component = 2;
+inline void StartWorkflowRequest::clear_workflow_component() {
+  workflow_component_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& StartWorkflowRequest::workflow_component() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_component)
+  return workflow_component_.GetNoArena();
+}
+inline void StartWorkflowRequest::set_workflow_component(const ::std::string& value) {
+  
+  workflow_component_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_component)
+}
+#if LANG_CXX11
+inline void StartWorkflowRequest::set_workflow_component(::std::string&& value) {
+  
+  workflow_component_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_component)
+}
+#endif
+inline void StartWorkflowRequest::set_workflow_component(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  workflow_component_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_component)
+}
+inline void StartWorkflowRequest::set_workflow_component(const char* value, size_t size) {
+  
+  workflow_component_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_component)
+}
+inline ::std::string* StartWorkflowRequest::mutable_workflow_component() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_component)
+  return workflow_component_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StartWorkflowRequest::release_workflow_component() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_component)
+  
+  return workflow_component_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StartWorkflowRequest::set_allocated_workflow_component(::std::string* workflow_component) {
+  if (workflow_component != NULL) {
+    
+  } else {
+    
+  }
+  workflow_component_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), workflow_component);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_component)
+}
+
+// string workflow_name = 3;
+inline void StartWorkflowRequest::clear_workflow_name() {
+  workflow_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& StartWorkflowRequest::workflow_name() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_name)
+  return workflow_name_.GetNoArena();
+}
+inline void StartWorkflowRequest::set_workflow_name(const ::std::string& value) {
+  
+  workflow_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_name)
+}
+#if LANG_CXX11
+inline void StartWorkflowRequest::set_workflow_name(::std::string&& value) {
+  
+  workflow_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_name)
+}
+#endif
+inline void StartWorkflowRequest::set_workflow_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  workflow_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_name)
+}
+inline void StartWorkflowRequest::set_workflow_name(const char* value, size_t size) {
+  
+  workflow_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_name)
+}
+inline ::std::string* StartWorkflowRequest::mutable_workflow_name() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_name)
+  return workflow_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StartWorkflowRequest::release_workflow_name() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_name)
+  
+  return workflow_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StartWorkflowRequest::set_allocated_workflow_name(::std::string* workflow_name) {
+  if (workflow_name != NULL) {
+    
+  } else {
+    
+  }
+  workflow_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), workflow_name);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.StartWorkflowRequest.workflow_name)
+}
+
+// map<string, string> options = 4;
+inline int StartWorkflowRequest::options_size() const {
+  return options_.size();
+}
+inline void StartWorkflowRequest::clear_options() {
+  options_.Clear();
+}
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+StartWorkflowRequest::options() const {
+  // @@protoc_insertion_point(field_map:dapr.proto.runtime.v1.StartWorkflowRequest.options)
+  return options_.GetMap();
+}
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+StartWorkflowRequest::mutable_options() {
+  // @@protoc_insertion_point(field_mutable_map:dapr.proto.runtime.v1.StartWorkflowRequest.options)
+  return options_.MutableMap();
+}
+
+// bytes input = 5;
+inline void StartWorkflowRequest::clear_input() {
+  input_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& StartWorkflowRequest::input() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.StartWorkflowRequest.input)
+  return input_.GetNoArena();
+}
+inline void StartWorkflowRequest::set_input(const ::std::string& value) {
+  
+  input_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.StartWorkflowRequest.input)
+}
+#if LANG_CXX11
+inline void StartWorkflowRequest::set_input(::std::string&& value) {
+  
+  input_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.StartWorkflowRequest.input)
+}
+#endif
+inline void StartWorkflowRequest::set_input(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  input_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.StartWorkflowRequest.input)
+}
+inline void StartWorkflowRequest::set_input(const void* value, size_t size) {
+  
+  input_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.StartWorkflowRequest.input)
+}
+inline ::std::string* StartWorkflowRequest::mutable_input() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.StartWorkflowRequest.input)
+  return input_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StartWorkflowRequest::release_input() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.StartWorkflowRequest.input)
+  
+  return input_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StartWorkflowRequest::set_allocated_input(::std::string* input) {
+  if (input != NULL) {
+    
+  } else {
+    
+  }
+  input_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), input);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.StartWorkflowRequest.input)
+}
+
+// -------------------------------------------------------------------
+
+// TerminateWorkflowRequest
+
+// string instance_id = 1;
+inline void TerminateWorkflowRequest::clear_instance_id() {
+  instance_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TerminateWorkflowRequest::instance_id() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.TerminateWorkflowRequest.instance_id)
+  return instance_id_.GetNoArena();
+}
+inline void TerminateWorkflowRequest::set_instance_id(const ::std::string& value) {
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.TerminateWorkflowRequest.instance_id)
+}
+#if LANG_CXX11
+inline void TerminateWorkflowRequest::set_instance_id(::std::string&& value) {
+  
+  instance_id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.TerminateWorkflowRequest.instance_id)
+}
+#endif
+inline void TerminateWorkflowRequest::set_instance_id(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.TerminateWorkflowRequest.instance_id)
+}
+inline void TerminateWorkflowRequest::set_instance_id(const char* value, size_t size) {
+  
+  instance_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.TerminateWorkflowRequest.instance_id)
+}
+inline ::std::string* TerminateWorkflowRequest::mutable_instance_id() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.TerminateWorkflowRequest.instance_id)
+  return instance_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TerminateWorkflowRequest::release_instance_id() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.TerminateWorkflowRequest.instance_id)
+  
+  return instance_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TerminateWorkflowRequest::set_allocated_instance_id(::std::string* instance_id) {
+  if (instance_id != NULL) {
+    
+  } else {
+    
+  }
+  instance_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), instance_id);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TerminateWorkflowRequest.instance_id)
+}
+
+// string workflow_component = 2;
+inline void TerminateWorkflowRequest::clear_workflow_component() {
+  workflow_component_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TerminateWorkflowRequest::workflow_component() const {
+  // @@protoc_insertion_point(field_get:dapr.proto.runtime.v1.TerminateWorkflowRequest.workflow_component)
+  return workflow_component_.GetNoArena();
+}
+inline void TerminateWorkflowRequest::set_workflow_component(const ::std::string& value) {
+  
+  workflow_component_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:dapr.proto.runtime.v1.TerminateWorkflowRequest.workflow_component)
+}
+#if LANG_CXX11
+inline void TerminateWorkflowRequest::set_workflow_component(::std::string&& value) {
+  
+  workflow_component_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:dapr.proto.runtime.v1.TerminateWorkflowRequest.workflow_component)
+}
+#endif
+inline void TerminateWorkflowRequest::set_workflow_component(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  workflow_component_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:dapr.proto.runtime.v1.TerminateWorkflowRequest.workflow_component)
+}
+inline void TerminateWorkflowRequest::set_workflow_component(const char* value, size_t size) {
+  
+  workflow_component_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:dapr.proto.runtime.v1.TerminateWorkflowRequest.workflow_component)
+}
+inline ::std::string* TerminateWorkflowRequest::mutable_workflow_component() {
+  
+  // @@protoc_insertion_point(field_mutable:dapr.proto.runtime.v1.TerminateWorkflowRequest.workflow_component)
+  return workflow_component_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TerminateWorkflowRequest::release_workflow_component() {
+  // @@protoc_insertion_point(field_release:dapr.proto.runtime.v1.TerminateWorkflowRequest.workflow_component)
+  
+  return workflow_component_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TerminateWorkflowRequest::set_allocated_workflow_component(::std::string* workflow_component) {
+  if (workflow_component != NULL) {
+    
+  } else {
+    
+  }
+  workflow_component_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), workflow_component);
+  // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TerminateWorkflowRequest.workflow_component)
+}
+
+// -------------------------------------------------------------------
+
+// TerminateWorkflowResponse
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
