@@ -761,6 +761,156 @@ class AppCallbackHealthCheck final {
   typedef WithStreamedUnaryMethod_HealthCheck<Service > StreamedService;
 };
 
+// AppCallbackAlpha V1 is an optional extension to AppCallback V1 to opt
+// for Alpha RPCs.
+class AppCallbackAlpha final {
+ public:
+  static constexpr char const* service_full_name() {
+    return "dapr.proto.runtime.v1.AppCallbackAlpha";
+  }
+  class StubInterface {
+   public:
+    virtual ~StubInterface() {}
+    // Subscribes bulk events from Pubsub
+    virtual ::grpc::Status OnBulkTopicEventAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest& request, ::dapr::proto::runtime::v1::TopicEventBulkResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TopicEventBulkResponse>> AsyncOnBulkTopicEventAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TopicEventBulkResponse>>(AsyncOnBulkTopicEventAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TopicEventBulkResponse>> PrepareAsyncOnBulkTopicEventAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TopicEventBulkResponse>>(PrepareAsyncOnBulkTopicEventAlpha1Raw(context, request, cq));
+    }
+    class experimental_async_interface {
+     public:
+      virtual ~experimental_async_interface() {}
+      // Subscribes bulk events from Pubsub
+      virtual void OnBulkTopicEventAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest* request, ::dapr::proto::runtime::v1::TopicEventBulkResponse* response, std::function<void(::grpc::Status)>) = 0;
+    };
+    virtual class experimental_async_interface* experimental_async() { return nullptr; }
+  private:
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TopicEventBulkResponse>* AsyncOnBulkTopicEventAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TopicEventBulkResponse>* PrepareAsyncOnBulkTopicEventAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest& request, ::grpc::CompletionQueue* cq) = 0;
+  };
+  class Stub final : public StubInterface {
+   public:
+    Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel);
+    ::grpc::Status OnBulkTopicEventAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest& request, ::dapr::proto::runtime::v1::TopicEventBulkResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventBulkResponse>> AsyncOnBulkTopicEventAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventBulkResponse>>(AsyncOnBulkTopicEventAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventBulkResponse>> PrepareAsyncOnBulkTopicEventAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventBulkResponse>>(PrepareAsyncOnBulkTopicEventAlpha1Raw(context, request, cq));
+    }
+    class experimental_async final :
+      public StubInterface::experimental_async_interface {
+     public:
+      void OnBulkTopicEventAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest* request, ::dapr::proto::runtime::v1::TopicEventBulkResponse* response, std::function<void(::grpc::Status)>) override;
+     private:
+      friend class Stub;
+      explicit experimental_async(Stub* stub): stub_(stub) { }
+      Stub* stub() { return stub_; }
+      Stub* stub_;
+    };
+    class experimental_async_interface* experimental_async() override { return &async_stub_; }
+
+   private:
+    std::shared_ptr< ::grpc::ChannelInterface> channel_;
+    class experimental_async async_stub_{this};
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventBulkResponse>* AsyncOnBulkTopicEventAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventBulkResponse>* PrepareAsyncOnBulkTopicEventAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_OnBulkTopicEventAlpha1_;
+  };
+  static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+
+  class Service : public ::grpc::Service {
+   public:
+    Service();
+    virtual ~Service();
+    // Subscribes bulk events from Pubsub
+    virtual ::grpc::Status OnBulkTopicEventAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest* request, ::dapr::proto::runtime::v1::TopicEventBulkResponse* response);
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_OnBulkTopicEventAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_OnBulkTopicEventAlpha1() {
+      ::grpc::Service::MarkMethodAsync(0);
+    }
+    ~WithAsyncMethod_OnBulkTopicEventAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status OnBulkTopicEventAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest* request, ::dapr::proto::runtime::v1::TopicEventBulkResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestOnBulkTopicEventAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::TopicEventBulkRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::TopicEventBulkResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_OnBulkTopicEventAlpha1<Service > AsyncService;
+  template <class BaseClass>
+  class WithGenericMethod_OnBulkTopicEventAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_OnBulkTopicEventAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(0);
+    }
+    ~WithGenericMethod_OnBulkTopicEventAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status OnBulkTopicEventAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest* request, ::dapr::proto::runtime::v1::TopicEventBulkResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_OnBulkTopicEventAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_OnBulkTopicEventAlpha1() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_OnBulkTopicEventAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status OnBulkTopicEventAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest* request, ::dapr::proto::runtime::v1::TopicEventBulkResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestOnBulkTopicEventAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_OnBulkTopicEventAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_OnBulkTopicEventAlpha1() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::TopicEventBulkRequest, ::dapr::proto::runtime::v1::TopicEventBulkResponse>(std::bind(&WithStreamedUnaryMethod_OnBulkTopicEventAlpha1<BaseClass>::StreamedOnBulkTopicEventAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_OnBulkTopicEventAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status OnBulkTopicEventAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest* request, ::dapr::proto::runtime::v1::TopicEventBulkResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedOnBulkTopicEventAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::TopicEventBulkRequest,::dapr::proto::runtime::v1::TopicEventBulkResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_OnBulkTopicEventAlpha1<Service > StreamedUnaryService;
+  typedef Service SplitStreamedService;
+  typedef WithStreamedUnaryMethod_OnBulkTopicEventAlpha1<Service > StreamedService;
+};
+
 }  // namespace v1
 }  // namespace runtime
 }  // namespace proto

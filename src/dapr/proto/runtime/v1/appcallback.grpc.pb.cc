@@ -238,6 +238,55 @@ AppCallbackHealthCheck::Service::~Service() {
 }
 
 
+static const char* AppCallbackAlpha_method_names[] = {
+  "/dapr.proto.runtime.v1.AppCallbackAlpha/OnBulkTopicEventAlpha1",
+};
+
+std::unique_ptr< AppCallbackAlpha::Stub> AppCallbackAlpha::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
+  (void)options;
+  std::unique_ptr< AppCallbackAlpha::Stub> stub(new AppCallbackAlpha::Stub(channel));
+  return stub;
+}
+
+AppCallbackAlpha::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
+  : channel_(channel), rpcmethod_OnBulkTopicEventAlpha1_(AppCallbackAlpha_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  {}
+
+::grpc::Status AppCallbackAlpha::Stub::OnBulkTopicEventAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest& request, ::dapr::proto::runtime::v1::TopicEventBulkResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_OnBulkTopicEventAlpha1_, context, request, response);
+}
+
+void AppCallbackAlpha::Stub::experimental_async::OnBulkTopicEventAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest* request, ::dapr::proto::runtime::v1::TopicEventBulkResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_OnBulkTopicEventAlpha1_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventBulkResponse>* AppCallbackAlpha::Stub::AsyncOnBulkTopicEventAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::TopicEventBulkResponse>::Create(channel_.get(), cq, rpcmethod_OnBulkTopicEventAlpha1_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TopicEventBulkResponse>* AppCallbackAlpha::Stub::PrepareAsyncOnBulkTopicEventAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::TopicEventBulkResponse>::Create(channel_.get(), cq, rpcmethod_OnBulkTopicEventAlpha1_, context, request, false);
+}
+
+AppCallbackAlpha::Service::Service() {
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AppCallbackAlpha_method_names[0],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AppCallbackAlpha::Service, ::dapr::proto::runtime::v1::TopicEventBulkRequest, ::dapr::proto::runtime::v1::TopicEventBulkResponse>(
+          std::mem_fn(&AppCallbackAlpha::Service::OnBulkTopicEventAlpha1), this)));
+}
+
+AppCallbackAlpha::Service::~Service() {
+}
+
+::grpc::Status AppCallbackAlpha::Service::OnBulkTopicEventAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TopicEventBulkRequest* request, ::dapr::proto::runtime::v1::TopicEventBulkResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+
 }  // namespace dapr
 }  // namespace proto
 }  // namespace runtime
