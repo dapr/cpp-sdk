@@ -43,15 +43,31 @@ static const char* Dapr_method_names[] = {
   "/dapr.proto.runtime.v1.Dapr/ExecuteActorStateTransaction",
   "/dapr.proto.runtime.v1.Dapr/InvokeActor",
   "/dapr.proto.runtime.v1.Dapr/GetConfigurationAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/GetConfiguration",
   "/dapr.proto.runtime.v1.Dapr/SubscribeConfigurationAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/SubscribeConfiguration",
   "/dapr.proto.runtime.v1.Dapr/UnsubscribeConfigurationAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/UnsubscribeConfiguration",
   "/dapr.proto.runtime.v1.Dapr/TryLockAlpha1",
   "/dapr.proto.runtime.v1.Dapr/UnlockAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/EncryptAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/DecryptAlpha1",
   "/dapr.proto.runtime.v1.Dapr/GetMetadata",
   "/dapr.proto.runtime.v1.Dapr/SetMetadata",
+  "/dapr.proto.runtime.v1.Dapr/SubtleGetKeyAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/SubtleEncryptAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/SubtleDecryptAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/SubtleWrapKeyAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/SubtleUnwrapKeyAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/SubtleSignAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/SubtleVerifyAlpha1",
   "/dapr.proto.runtime.v1.Dapr/StartWorkflowAlpha1",
   "/dapr.proto.runtime.v1.Dapr/GetWorkflowAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/PurgeWorkflowAlpha1",
   "/dapr.proto.runtime.v1.Dapr/TerminateWorkflowAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/PauseWorkflowAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/ResumeWorkflowAlpha1",
+  "/dapr.proto.runtime.v1.Dapr/RaiseEventWorkflowAlpha1",
   "/dapr.proto.runtime.v1.Dapr/Shutdown",
 };
 
@@ -84,16 +100,32 @@ Dapr::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   , rpcmethod_ExecuteActorStateTransaction_(Dapr_method_names[19], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_InvokeActor_(Dapr_method_names[20], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetConfigurationAlpha1_(Dapr_method_names[21], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SubscribeConfigurationAlpha1_(Dapr_method_names[22], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
-  , rpcmethod_UnsubscribeConfigurationAlpha1_(Dapr_method_names[23], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_TryLockAlpha1_(Dapr_method_names[24], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_UnlockAlpha1_(Dapr_method_names[25], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetMetadata_(Dapr_method_names[26], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetMetadata_(Dapr_method_names[27], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_StartWorkflowAlpha1_(Dapr_method_names[28], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetWorkflowAlpha1_(Dapr_method_names[29], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_TerminateWorkflowAlpha1_(Dapr_method_names[30], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Shutdown_(Dapr_method_names[31], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetConfiguration_(Dapr_method_names[22], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubscribeConfigurationAlpha1_(Dapr_method_names[23], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SubscribeConfiguration_(Dapr_method_names[24], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_UnsubscribeConfigurationAlpha1_(Dapr_method_names[25], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_UnsubscribeConfiguration_(Dapr_method_names[26], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_TryLockAlpha1_(Dapr_method_names[27], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_UnlockAlpha1_(Dapr_method_names[28], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_EncryptAlpha1_(Dapr_method_names[29], ::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
+  , rpcmethod_DecryptAlpha1_(Dapr_method_names[30], ::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
+  , rpcmethod_GetMetadata_(Dapr_method_names[31], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetMetadata_(Dapr_method_names[32], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubtleGetKeyAlpha1_(Dapr_method_names[33], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubtleEncryptAlpha1_(Dapr_method_names[34], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubtleDecryptAlpha1_(Dapr_method_names[35], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubtleWrapKeyAlpha1_(Dapr_method_names[36], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubtleUnwrapKeyAlpha1_(Dapr_method_names[37], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubtleSignAlpha1_(Dapr_method_names[38], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubtleVerifyAlpha1_(Dapr_method_names[39], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_StartWorkflowAlpha1_(Dapr_method_names[40], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetWorkflowAlpha1_(Dapr_method_names[41], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PurgeWorkflowAlpha1_(Dapr_method_names[42], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_TerminateWorkflowAlpha1_(Dapr_method_names[43], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PauseWorkflowAlpha1_(Dapr_method_names[44], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ResumeWorkflowAlpha1_(Dapr_method_names[45], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RaiseEventWorkflowAlpha1_(Dapr_method_names[46], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Shutdown_(Dapr_method_names[47], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Dapr::Stub::InvokeService(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeServiceRequest& request, ::dapr::proto::common::v1::InvokeResponse* response) {
@@ -448,6 +480,22 @@ void Dapr::Stub::experimental_async::GetConfigurationAlpha1(::grpc::ClientContex
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::GetConfigurationResponse>::Create(channel_.get(), cq, rpcmethod_GetConfigurationAlpha1_, context, request, false);
 }
 
+::grpc::Status Dapr::Stub::GetConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetConfiguration_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::GetConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_GetConfiguration_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetConfigurationResponse>* Dapr::Stub::AsyncGetConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::GetConfigurationResponse>::Create(channel_.get(), cq, rpcmethod_GetConfiguration_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetConfigurationResponse>* Dapr::Stub::PrepareAsyncGetConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::GetConfigurationResponse>::Create(channel_.get(), cq, rpcmethod_GetConfiguration_, context, request, false);
+}
+
 ::grpc::ClientReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* Dapr::Stub::SubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request) {
   return ::grpc::internal::ClientReaderFactory< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>::Create(channel_.get(), rpcmethod_SubscribeConfigurationAlpha1_, context, request);
 }
@@ -458,6 +506,18 @@ void Dapr::Stub::experimental_async::GetConfigurationAlpha1(::grpc::ClientContex
 
 ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* Dapr::Stub::PrepareAsyncSubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncReaderFactory< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeConfigurationAlpha1_, context, request, false, nullptr);
+}
+
+::grpc::ClientReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* Dapr::Stub::SubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>::Create(channel_.get(), rpcmethod_SubscribeConfiguration_, context, request);
+}
+
+::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* Dapr::Stub::AsyncSubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeConfiguration_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* Dapr::Stub::PrepareAsyncSubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>::Create(channel_.get(), cq, rpcmethod_SubscribeConfiguration_, context, request, false, nullptr);
 }
 
 ::grpc::Status Dapr::Stub::UnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) {
@@ -474,6 +534,22 @@ void Dapr::Stub::experimental_async::UnsubscribeConfigurationAlpha1(::grpc::Clie
 
 ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* Dapr::Stub::PrepareAsyncUnsubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>::Create(channel_.get(), cq, rpcmethod_UnsubscribeConfigurationAlpha1_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::UnsubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_UnsubscribeConfiguration_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::UnsubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_UnsubscribeConfiguration_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* Dapr::Stub::AsyncUnsubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>::Create(channel_.get(), cq, rpcmethod_UnsubscribeConfiguration_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* Dapr::Stub::PrepareAsyncUnsubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>::Create(channel_.get(), cq, rpcmethod_UnsubscribeConfiguration_, context, request, false);
 }
 
 ::grpc::Status Dapr::Stub::TryLockAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TryLockRequest& request, ::dapr::proto::runtime::v1::TryLockResponse* response) {
@@ -508,6 +584,30 @@ void Dapr::Stub::experimental_async::UnlockAlpha1(::grpc::ClientContext* context
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::UnlockResponse>::Create(channel_.get(), cq, rpcmethod_UnlockAlpha1_, context, request, false);
 }
 
+::grpc::ClientReaderWriter< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>* Dapr::Stub::EncryptAlpha1Raw(::grpc::ClientContext* context) {
+  return ::grpc::internal::ClientReaderWriterFactory< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>::Create(channel_.get(), rpcmethod_EncryptAlpha1_, context);
+}
+
+::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>* Dapr::Stub::AsyncEncryptAlpha1Raw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>::Create(channel_.get(), cq, rpcmethod_EncryptAlpha1_, context, true, tag);
+}
+
+::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>* Dapr::Stub::PrepareAsyncEncryptAlpha1Raw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>::Create(channel_.get(), cq, rpcmethod_EncryptAlpha1_, context, false, nullptr);
+}
+
+::grpc::ClientReaderWriter< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>* Dapr::Stub::DecryptAlpha1Raw(::grpc::ClientContext* context) {
+  return ::grpc::internal::ClientReaderWriterFactory< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>::Create(channel_.get(), rpcmethod_DecryptAlpha1_, context);
+}
+
+::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>* Dapr::Stub::AsyncDecryptAlpha1Raw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>::Create(channel_.get(), cq, rpcmethod_DecryptAlpha1_, context, true, tag);
+}
+
+::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>* Dapr::Stub::PrepareAsyncDecryptAlpha1Raw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>::Create(channel_.get(), cq, rpcmethod_DecryptAlpha1_, context, false, nullptr);
+}
+
 ::grpc::Status Dapr::Stub::GetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::dapr::proto::runtime::v1::GetMetadataResponse* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_GetMetadata_, context, request, response);
 }
@@ -540,20 +640,132 @@ void Dapr::Stub::experimental_async::SetMetadata(::grpc::ClientContext* context,
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_SetMetadata_, context, request, false);
 }
 
-::grpc::Status Dapr::Stub::StartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::dapr::proto::runtime::v1::WorkflowReference* response) {
+::grpc::Status Dapr::Stub::SubtleGetKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest& request, ::dapr::proto::runtime::v1::SubtleGetKeyResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SubtleGetKeyAlpha1_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::SubtleGetKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest* request, ::dapr::proto::runtime::v1::SubtleGetKeyResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SubtleGetKeyAlpha1_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>* Dapr::Stub::AsyncSubtleGetKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>::Create(channel_.get(), cq, rpcmethod_SubtleGetKeyAlpha1_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>* Dapr::Stub::PrepareAsyncSubtleGetKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>::Create(channel_.get(), cq, rpcmethod_SubtleGetKeyAlpha1_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::SubtleEncryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest& request, ::dapr::proto::runtime::v1::SubtleEncryptResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SubtleEncryptAlpha1_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::SubtleEncryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest* request, ::dapr::proto::runtime::v1::SubtleEncryptResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SubtleEncryptAlpha1_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleEncryptResponse>* Dapr::Stub::AsyncSubtleEncryptAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleEncryptResponse>::Create(channel_.get(), cq, rpcmethod_SubtleEncryptAlpha1_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleEncryptResponse>* Dapr::Stub::PrepareAsyncSubtleEncryptAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleEncryptResponse>::Create(channel_.get(), cq, rpcmethod_SubtleEncryptAlpha1_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::SubtleDecryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest& request, ::dapr::proto::runtime::v1::SubtleDecryptResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SubtleDecryptAlpha1_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::SubtleDecryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest* request, ::dapr::proto::runtime::v1::SubtleDecryptResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SubtleDecryptAlpha1_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleDecryptResponse>* Dapr::Stub::AsyncSubtleDecryptAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleDecryptResponse>::Create(channel_.get(), cq, rpcmethod_SubtleDecryptAlpha1_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleDecryptResponse>* Dapr::Stub::PrepareAsyncSubtleDecryptAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleDecryptResponse>::Create(channel_.get(), cq, rpcmethod_SubtleDecryptAlpha1_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::SubtleWrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest& request, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SubtleWrapKeyAlpha1_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::SubtleWrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SubtleWrapKeyAlpha1_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>* Dapr::Stub::AsyncSubtleWrapKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>::Create(channel_.get(), cq, rpcmethod_SubtleWrapKeyAlpha1_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>* Dapr::Stub::PrepareAsyncSubtleWrapKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>::Create(channel_.get(), cq, rpcmethod_SubtleWrapKeyAlpha1_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::SubtleUnwrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest& request, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SubtleUnwrapKeyAlpha1_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::SubtleUnwrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SubtleUnwrapKeyAlpha1_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>* Dapr::Stub::AsyncSubtleUnwrapKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>::Create(channel_.get(), cq, rpcmethod_SubtleUnwrapKeyAlpha1_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>* Dapr::Stub::PrepareAsyncSubtleUnwrapKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>::Create(channel_.get(), cq, rpcmethod_SubtleUnwrapKeyAlpha1_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::SubtleSignAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest& request, ::dapr::proto::runtime::v1::SubtleSignResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SubtleSignAlpha1_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::SubtleSignAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest* request, ::dapr::proto::runtime::v1::SubtleSignResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SubtleSignAlpha1_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleSignResponse>* Dapr::Stub::AsyncSubtleSignAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleSignResponse>::Create(channel_.get(), cq, rpcmethod_SubtleSignAlpha1_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleSignResponse>* Dapr::Stub::PrepareAsyncSubtleSignAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleSignResponse>::Create(channel_.get(), cq, rpcmethod_SubtleSignAlpha1_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::SubtleVerifyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest& request, ::dapr::proto::runtime::v1::SubtleVerifyResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SubtleVerifyAlpha1_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::SubtleVerifyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest* request, ::dapr::proto::runtime::v1::SubtleVerifyResponse* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SubtleVerifyAlpha1_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleVerifyResponse>* Dapr::Stub::AsyncSubtleVerifyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleVerifyResponse>::Create(channel_.get(), cq, rpcmethod_SubtleVerifyAlpha1_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleVerifyResponse>* Dapr::Stub::PrepareAsyncSubtleVerifyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::SubtleVerifyResponse>::Create(channel_.get(), cq, rpcmethod_SubtleVerifyAlpha1_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::StartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::dapr::proto::runtime::v1::StartWorkflowResponse* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_StartWorkflowAlpha1_, context, request, response);
 }
 
-void Dapr::Stub::experimental_async::StartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::WorkflowReference* response, std::function<void(::grpc::Status)> f) {
+void Dapr::Stub::experimental_async::StartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::StartWorkflowResponse* response, std::function<void(::grpc::Status)> f) {
   return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_StartWorkflowAlpha1_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::WorkflowReference>* Dapr::Stub::AsyncStartWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::WorkflowReference>::Create(channel_.get(), cq, rpcmethod_StartWorkflowAlpha1_, context, request, true);
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::StartWorkflowResponse>* Dapr::Stub::AsyncStartWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::StartWorkflowResponse>::Create(channel_.get(), cq, rpcmethod_StartWorkflowAlpha1_, context, request, true);
 }
 
-::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::WorkflowReference>* Dapr::Stub::PrepareAsyncStartWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::WorkflowReference>::Create(channel_.get(), cq, rpcmethod_StartWorkflowAlpha1_, context, request, false);
+::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::StartWorkflowResponse>* Dapr::Stub::PrepareAsyncStartWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::StartWorkflowResponse>::Create(channel_.get(), cq, rpcmethod_StartWorkflowAlpha1_, context, request, false);
 }
 
 ::grpc::Status Dapr::Stub::GetWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest& request, ::dapr::proto::runtime::v1::GetWorkflowResponse* response) {
@@ -572,20 +784,84 @@ void Dapr::Stub::experimental_async::GetWorkflowAlpha1(::grpc::ClientContext* co
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::GetWorkflowResponse>::Create(channel_.get(), cq, rpcmethod_GetWorkflowAlpha1_, context, request, false);
 }
 
-::grpc::Status Dapr::Stub::TerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::dapr::proto::runtime::v1::TerminateWorkflowResponse* response) {
+::grpc::Status Dapr::Stub::PurgeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PurgeWorkflowAlpha1_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::PurgeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PurgeWorkflowAlpha1_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::AsyncPurgeWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_PurgeWorkflowAlpha1_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::PrepareAsyncPurgeWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_PurgeWorkflowAlpha1_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::TerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::google::protobuf::Empty* response) {
   return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_TerminateWorkflowAlpha1_, context, request, response);
 }
 
-void Dapr::Stub::experimental_async::TerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::dapr::proto::runtime::v1::TerminateWorkflowResponse* response, std::function<void(::grpc::Status)> f) {
+void Dapr::Stub::experimental_async::TerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
   return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_TerminateWorkflowAlpha1_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>* Dapr::Stub::AsyncTerminateWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>::Create(channel_.get(), cq, rpcmethod_TerminateWorkflowAlpha1_, context, request, true);
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::AsyncTerminateWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_TerminateWorkflowAlpha1_, context, request, true);
 }
 
-::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>* Dapr::Stub::PrepareAsyncTerminateWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>::Create(channel_.get(), cq, rpcmethod_TerminateWorkflowAlpha1_, context, request, false);
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::PrepareAsyncTerminateWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_TerminateWorkflowAlpha1_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::PauseWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_PauseWorkflowAlpha1_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::PauseWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_PauseWorkflowAlpha1_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::AsyncPauseWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_PauseWorkflowAlpha1_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::PrepareAsyncPauseWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_PauseWorkflowAlpha1_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::ResumeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_ResumeWorkflowAlpha1_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::ResumeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_ResumeWorkflowAlpha1_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::AsyncResumeWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_ResumeWorkflowAlpha1_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::PrepareAsyncResumeWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_ResumeWorkflowAlpha1_, context, request, false);
+}
+
+::grpc::Status Dapr::Stub::RaiseEventWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_RaiseEventWorkflowAlpha1_, context, request, response);
+}
+
+void Dapr::Stub::experimental_async::RaiseEventWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_RaiseEventWorkflowAlpha1_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::AsyncRaiseEventWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_RaiseEventWorkflowAlpha1_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* Dapr::Stub::PrepareAsyncRaiseEventWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::google::protobuf::Empty>::Create(channel_.get(), cq, rpcmethod_RaiseEventWorkflowAlpha1_, context, request, false);
 }
 
 ::grpc::Status Dapr::Stub::Shutdown(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::google::protobuf::Empty* response) {
@@ -717,51 +993,131 @@ Dapr::Service::Service() {
           std::mem_fn(&Dapr::Service::GetConfigurationAlpha1), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Dapr_method_names[22],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::GetConfigurationRequest, ::dapr::proto::runtime::v1::GetConfigurationResponse>(
+          std::mem_fn(&Dapr::Service::GetConfiguration), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[23],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< Dapr::Service, ::dapr::proto::runtime::v1::SubscribeConfigurationRequest, ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>(
           std::mem_fn(&Dapr::Service::SubscribeConfigurationAlpha1), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[23],
+      Dapr_method_names[24],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< Dapr::Service, ::dapr::proto::runtime::v1::SubscribeConfigurationRequest, ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>(
+          std::mem_fn(&Dapr::Service::SubscribeConfiguration), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[25],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>(
           std::mem_fn(&Dapr::Service::UnsubscribeConfigurationAlpha1), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[24],
+      Dapr_method_names[26],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>(
+          std::mem_fn(&Dapr::Service::UnsubscribeConfiguration), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[27],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::TryLockRequest, ::dapr::proto::runtime::v1::TryLockResponse>(
           std::mem_fn(&Dapr::Service::TryLockAlpha1), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[25],
+      Dapr_method_names[28],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::UnlockRequest, ::dapr::proto::runtime::v1::UnlockResponse>(
           std::mem_fn(&Dapr::Service::UnlockAlpha1), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[26],
+      Dapr_method_names[29],
+      ::grpc::internal::RpcMethod::BIDI_STREAMING,
+      new ::grpc::internal::BidiStreamingHandler< Dapr::Service, ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>(
+          std::mem_fn(&Dapr::Service::EncryptAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[30],
+      ::grpc::internal::RpcMethod::BIDI_STREAMING,
+      new ::grpc::internal::BidiStreamingHandler< Dapr::Service, ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>(
+          std::mem_fn(&Dapr::Service::DecryptAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[31],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::google::protobuf::Empty, ::dapr::proto::runtime::v1::GetMetadataResponse>(
           std::mem_fn(&Dapr::Service::GetMetadata), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[27],
+      Dapr_method_names[32],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::SetMetadataRequest, ::google::protobuf::Empty>(
           std::mem_fn(&Dapr::Service::SetMetadata), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[28],
+      Dapr_method_names[33],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::StartWorkflowRequest, ::dapr::proto::runtime::v1::WorkflowReference>(
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::SubtleGetKeyRequest, ::dapr::proto::runtime::v1::SubtleGetKeyResponse>(
+          std::mem_fn(&Dapr::Service::SubtleGetKeyAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[34],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::SubtleEncryptRequest, ::dapr::proto::runtime::v1::SubtleEncryptResponse>(
+          std::mem_fn(&Dapr::Service::SubtleEncryptAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[35],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::SubtleDecryptRequest, ::dapr::proto::runtime::v1::SubtleDecryptResponse>(
+          std::mem_fn(&Dapr::Service::SubtleDecryptAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[36],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::SubtleWrapKeyRequest, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>(
+          std::mem_fn(&Dapr::Service::SubtleWrapKeyAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[37],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>(
+          std::mem_fn(&Dapr::Service::SubtleUnwrapKeyAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[38],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::SubtleSignRequest, ::dapr::proto::runtime::v1::SubtleSignResponse>(
+          std::mem_fn(&Dapr::Service::SubtleSignAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[39],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::SubtleVerifyRequest, ::dapr::proto::runtime::v1::SubtleVerifyResponse>(
+          std::mem_fn(&Dapr::Service::SubtleVerifyAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[40],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::StartWorkflowRequest, ::dapr::proto::runtime::v1::StartWorkflowResponse>(
           std::mem_fn(&Dapr::Service::StartWorkflowAlpha1), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[29],
+      Dapr_method_names[41],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::GetWorkflowRequest, ::dapr::proto::runtime::v1::GetWorkflowResponse>(
           std::mem_fn(&Dapr::Service::GetWorkflowAlpha1), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[30],
+      Dapr_method_names[42],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::TerminateWorkflowRequest, ::dapr::proto::runtime::v1::TerminateWorkflowResponse>(
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::PurgeWorkflowRequest, ::google::protobuf::Empty>(
+          std::mem_fn(&Dapr::Service::PurgeWorkflowAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[43],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::TerminateWorkflowRequest, ::google::protobuf::Empty>(
           std::mem_fn(&Dapr::Service::TerminateWorkflowAlpha1), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Dapr_method_names[31],
+      Dapr_method_names[44],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::PauseWorkflowRequest, ::google::protobuf::Empty>(
+          std::mem_fn(&Dapr::Service::PauseWorkflowAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[45],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::ResumeWorkflowRequest, ::google::protobuf::Empty>(
+          std::mem_fn(&Dapr::Service::ResumeWorkflowAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[46],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest, ::google::protobuf::Empty>(
+          std::mem_fn(&Dapr::Service::RaiseEventWorkflowAlpha1), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Dapr_method_names[47],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Dapr::Service, ::google::protobuf::Empty, ::google::protobuf::Empty>(
           std::mem_fn(&Dapr::Service::Shutdown), this)));
@@ -924,6 +1280,13 @@ Dapr::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
+::grpc::Status Dapr::Service::GetConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
 ::grpc::Status Dapr::Service::SubscribeConfigurationAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* request, ::grpc::ServerWriter< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* writer) {
   (void) context;
   (void) request;
@@ -931,7 +1294,21 @@ Dapr::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
+::grpc::Status Dapr::Service::SubscribeConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* request, ::grpc::ServerWriter< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
 ::grpc::Status Dapr::Service::UnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::UnsubscribeConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) {
   (void) context;
   (void) request;
   (void) response;
@@ -952,6 +1329,18 @@ Dapr::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
+::grpc::Status Dapr::Service::EncryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::dapr::proto::runtime::v1::EncryptResponse, ::dapr::proto::runtime::v1::EncryptRequest>* stream) {
+  (void) context;
+  (void) stream;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::DecryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::dapr::proto::runtime::v1::DecryptResponse, ::dapr::proto::runtime::v1::DecryptRequest>* stream) {
+  (void) context;
+  (void) stream;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
 ::grpc::Status Dapr::Service::GetMetadata(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::GetMetadataResponse* response) {
   (void) context;
   (void) request;
@@ -966,7 +1355,56 @@ Dapr::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Dapr::Service::StartWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::WorkflowReference* response) {
+::grpc::Status Dapr::Service::SubtleGetKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest* request, ::dapr::proto::runtime::v1::SubtleGetKeyResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::SubtleEncryptAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest* request, ::dapr::proto::runtime::v1::SubtleEncryptResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::SubtleDecryptAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest* request, ::dapr::proto::runtime::v1::SubtleDecryptResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::SubtleWrapKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::SubtleUnwrapKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::SubtleSignAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest* request, ::dapr::proto::runtime::v1::SubtleSignResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::SubtleVerifyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest* request, ::dapr::proto::runtime::v1::SubtleVerifyResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::StartWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::StartWorkflowResponse* response) {
   (void) context;
   (void) request;
   (void) response;
@@ -980,7 +1418,35 @@ Dapr::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status Dapr::Service::TerminateWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::dapr::proto::runtime::v1::TerminateWorkflowResponse* response) {
+::grpc::Status Dapr::Service::PurgeWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::TerminateWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::PauseWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::ResumeWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Dapr::Service::RaiseEventWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest* request, ::google::protobuf::Empty* response) {
   (void) context;
   (void) request;
   (void) response;

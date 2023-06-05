@@ -229,6 +229,14 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetConfigurationResponse>> PrepareAsyncGetConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetConfigurationResponse>>(PrepareAsyncGetConfigurationAlpha1Raw(context, request, cq));
     }
+    // GetConfiguration gets configuration from configuration store.
+    virtual ::grpc::Status GetConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetConfigurationResponse>> AsyncGetConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetConfigurationResponse>>(AsyncGetConfigurationRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetConfigurationResponse>> PrepareAsyncGetConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetConfigurationResponse>>(PrepareAsyncGetConfigurationRaw(context, request, cq));
+    }
     // SubscribeConfiguration gets configuration from configuration store and subscribe the updates event by grpc stream
     std::unique_ptr< ::grpc::ClientReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>> SubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request) {
       return std::unique_ptr< ::grpc::ClientReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>>(SubscribeConfigurationAlpha1Raw(context, request));
@@ -239,6 +247,16 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>> PrepareAsyncSubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>>(PrepareAsyncSubscribeConfigurationAlpha1Raw(context, request, cq));
     }
+    // SubscribeConfiguration gets configuration from configuration store and subscribe the updates event by grpc stream
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>> SubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>>(SubscribeConfigurationRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>> AsyncSubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>>(AsyncSubscribeConfigurationRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>> PrepareAsyncSubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>>(PrepareAsyncSubscribeConfigurationRaw(context, request, cq));
+    }
     // UnSubscribeConfiguration unsubscribe the subscription of configuration
     virtual ::grpc::Status UnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>> AsyncUnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
@@ -246,6 +264,14 @@ class Dapr final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>> PrepareAsyncUnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>>(PrepareAsyncUnsubscribeConfigurationAlpha1Raw(context, request, cq));
+    }
+    // UnSubscribeConfiguration unsubscribe the subscription of configuration
+    virtual ::grpc::Status UnsubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>> AsyncUnsubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>>(AsyncUnsubscribeConfigurationRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>> PrepareAsyncUnsubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>>(PrepareAsyncUnsubscribeConfigurationRaw(context, request, cq));
     }
     // TryLockAlpha1 tries to get a lock with an expiry.
     virtual ::grpc::Status TryLockAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TryLockRequest& request, ::dapr::proto::runtime::v1::TryLockResponse* response) = 0;
@@ -263,6 +289,26 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnlockResponse>> PrepareAsyncUnlockAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnlockRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnlockResponse>>(PrepareAsyncUnlockAlpha1Raw(context, request, cq));
     }
+    // EncryptAlpha1 encrypts a message using the Dapr encryption scheme and a key stored in the vault.
+    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>> EncryptAlpha1(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>>(EncryptAlpha1Raw(context));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>> AsyncEncryptAlpha1(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>>(AsyncEncryptAlpha1Raw(context, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>> PrepareAsyncEncryptAlpha1(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>>(PrepareAsyncEncryptAlpha1Raw(context, cq));
+    }
+    // DecryptAlpha1 decrypts a message using the Dapr encryption scheme and a key stored in the vault.
+    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>> DecryptAlpha1(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>>(DecryptAlpha1Raw(context));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>> AsyncDecryptAlpha1(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>>(AsyncDecryptAlpha1Raw(context, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>> PrepareAsyncDecryptAlpha1(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>>(PrepareAsyncDecryptAlpha1Raw(context, cq));
+    }
     // Gets metadata of the sidecar
     virtual ::grpc::Status GetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::dapr::proto::runtime::v1::GetMetadataResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetMetadataResponse>> AsyncGetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
@@ -279,15 +325,71 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncSetMetadata(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SetMetadataRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncSetMetadataRaw(context, request, cq));
     }
-    // Start Workflow
-    virtual ::grpc::Status StartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::dapr::proto::runtime::v1::WorkflowReference* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::WorkflowReference>> AsyncStartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::WorkflowReference>>(AsyncStartWorkflowAlpha1Raw(context, request, cq));
+    // SubtleGetKeyAlpha1 returns the public part of an asymmetric key stored in the vault.
+    virtual ::grpc::Status SubtleGetKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest& request, ::dapr::proto::runtime::v1::SubtleGetKeyResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>> AsyncSubtleGetKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>>(AsyncSubtleGetKeyAlpha1Raw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::WorkflowReference>> PrepareAsyncStartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::WorkflowReference>>(PrepareAsyncStartWorkflowAlpha1Raw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>> PrepareAsyncSubtleGetKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>>(PrepareAsyncSubtleGetKeyAlpha1Raw(context, request, cq));
     }
-    // Get Workflow details
+    // SubtleEncryptAlpha1 encrypts a small message using a key stored in the vault.
+    virtual ::grpc::Status SubtleEncryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest& request, ::dapr::proto::runtime::v1::SubtleEncryptResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleEncryptResponse>> AsyncSubtleEncryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleEncryptResponse>>(AsyncSubtleEncryptAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleEncryptResponse>> PrepareAsyncSubtleEncryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleEncryptResponse>>(PrepareAsyncSubtleEncryptAlpha1Raw(context, request, cq));
+    }
+    // SubtleDecryptAlpha1 decrypts a small message using a key stored in the vault.
+    virtual ::grpc::Status SubtleDecryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest& request, ::dapr::proto::runtime::v1::SubtleDecryptResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleDecryptResponse>> AsyncSubtleDecryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleDecryptResponse>>(AsyncSubtleDecryptAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleDecryptResponse>> PrepareAsyncSubtleDecryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleDecryptResponse>>(PrepareAsyncSubtleDecryptAlpha1Raw(context, request, cq));
+    }
+    // SubtleWrapKeyAlpha1 wraps a key using a key stored in the vault.
+    virtual ::grpc::Status SubtleWrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest& request, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>> AsyncSubtleWrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>>(AsyncSubtleWrapKeyAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>> PrepareAsyncSubtleWrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>>(PrepareAsyncSubtleWrapKeyAlpha1Raw(context, request, cq));
+    }
+    // SubtleUnwrapKeyAlpha1 unwraps a key using a key stored in the vault.
+    virtual ::grpc::Status SubtleUnwrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest& request, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>> AsyncSubtleUnwrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>>(AsyncSubtleUnwrapKeyAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>> PrepareAsyncSubtleUnwrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>>(PrepareAsyncSubtleUnwrapKeyAlpha1Raw(context, request, cq));
+    }
+    // SubtleSignAlpha1 signs a message using a key stored in the vault.
+    virtual ::grpc::Status SubtleSignAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest& request, ::dapr::proto::runtime::v1::SubtleSignResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleSignResponse>> AsyncSubtleSignAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleSignResponse>>(AsyncSubtleSignAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleSignResponse>> PrepareAsyncSubtleSignAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleSignResponse>>(PrepareAsyncSubtleSignAlpha1Raw(context, request, cq));
+    }
+    // SubtleVerifyAlpha1 verifies the signature of a message using a key stored in the vault.
+    virtual ::grpc::Status SubtleVerifyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest& request, ::dapr::proto::runtime::v1::SubtleVerifyResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleVerifyResponse>> AsyncSubtleVerifyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleVerifyResponse>>(AsyncSubtleVerifyAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleVerifyResponse>> PrepareAsyncSubtleVerifyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleVerifyResponse>>(PrepareAsyncSubtleVerifyAlpha1Raw(context, request, cq));
+    }
+    // Starts a new instance of a workflow
+    virtual ::grpc::Status StartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::dapr::proto::runtime::v1::StartWorkflowResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::StartWorkflowResponse>> AsyncStartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::StartWorkflowResponse>>(AsyncStartWorkflowAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::StartWorkflowResponse>> PrepareAsyncStartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::StartWorkflowResponse>>(PrepareAsyncStartWorkflowAlpha1Raw(context, request, cq));
+    }
+    // Gets details about a started workflow instance
     virtual ::grpc::Status GetWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest& request, ::dapr::proto::runtime::v1::GetWorkflowResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetWorkflowResponse>> AsyncGetWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetWorkflowResponse>>(AsyncGetWorkflowAlpha1Raw(context, request, cq));
@@ -295,13 +397,45 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetWorkflowResponse>> PrepareAsyncGetWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetWorkflowResponse>>(PrepareAsyncGetWorkflowAlpha1Raw(context, request, cq));
     }
-    // Terminate Workflow
-    virtual ::grpc::Status TerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::dapr::proto::runtime::v1::TerminateWorkflowResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>> AsyncTerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>>(AsyncTerminateWorkflowAlpha1Raw(context, request, cq));
+    // Purge Workflow
+    virtual ::grpc::Status PurgeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncPurgeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncPurgeWorkflowAlpha1Raw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>> PrepareAsyncTerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>>(PrepareAsyncTerminateWorkflowAlpha1Raw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncPurgeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncPurgeWorkflowAlpha1Raw(context, request, cq));
+    }
+    // Terminates a running workflow instance
+    virtual ::grpc::Status TerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncTerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncTerminateWorkflowAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncTerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncTerminateWorkflowAlpha1Raw(context, request, cq));
+    }
+    // Pauses a running workflow instance
+    virtual ::grpc::Status PauseWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncPauseWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncPauseWorkflowAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncPauseWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncPauseWorkflowAlpha1Raw(context, request, cq));
+    }
+    // Resumes a paused workflow instance
+    virtual ::grpc::Status ResumeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncResumeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncResumeWorkflowAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncResumeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncResumeWorkflowAlpha1Raw(context, request, cq));
+    }
+    // Raise an event to a running workflow instance
+    virtual ::grpc::Status RaiseEventWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncRaiseEventWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncRaiseEventWorkflowAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncRaiseEventWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncRaiseEventWorkflowAlpha1Raw(context, request, cq));
     }
     // Shutdown the sidecar
     virtual ::grpc::Status Shutdown(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::google::protobuf::Empty* response) = 0;
@@ -359,23 +493,52 @@ class Dapr final {
       virtual void InvokeActor(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest* request, ::dapr::proto::runtime::v1::InvokeActorResponse* response, std::function<void(::grpc::Status)>) = 0;
       // GetConfiguration gets configuration from configuration store.
       virtual void GetConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // GetConfiguration gets configuration from configuration store.
+      virtual void GetConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // SubscribeConfiguration gets configuration from configuration store and subscribe the updates event by grpc stream
       // SubscribeConfiguration gets configuration from configuration store and subscribe the updates event by grpc stream
       // UnSubscribeConfiguration unsubscribe the subscription of configuration
       virtual void UnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // UnSubscribeConfiguration unsubscribe the subscription of configuration
+      virtual void UnsubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response, std::function<void(::grpc::Status)>) = 0;
       // TryLockAlpha1 tries to get a lock with an expiry.
       virtual void TryLockAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TryLockRequest* request, ::dapr::proto::runtime::v1::TryLockResponse* response, std::function<void(::grpc::Status)>) = 0;
       // UnlockAlpha1 unlocks a lock.
       virtual void UnlockAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnlockRequest* request, ::dapr::proto::runtime::v1::UnlockResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // EncryptAlpha1 encrypts a message using the Dapr encryption scheme and a key stored in the vault.
+      // DecryptAlpha1 decrypts a message using the Dapr encryption scheme and a key stored in the vault.
       // Gets metadata of the sidecar
       virtual void GetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::GetMetadataResponse* response, std::function<void(::grpc::Status)>) = 0;
       // Sets value in extended metadata of the sidecar
       virtual void SetMetadata(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SetMetadataRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
-      // Start Workflow
-      virtual void StartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::WorkflowReference* response, std::function<void(::grpc::Status)>) = 0;
-      // Get Workflow details
+      // SubtleGetKeyAlpha1 returns the public part of an asymmetric key stored in the vault.
+      virtual void SubtleGetKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest* request, ::dapr::proto::runtime::v1::SubtleGetKeyResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // SubtleEncryptAlpha1 encrypts a small message using a key stored in the vault.
+      virtual void SubtleEncryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest* request, ::dapr::proto::runtime::v1::SubtleEncryptResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // SubtleDecryptAlpha1 decrypts a small message using a key stored in the vault.
+      virtual void SubtleDecryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest* request, ::dapr::proto::runtime::v1::SubtleDecryptResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // SubtleWrapKeyAlpha1 wraps a key using a key stored in the vault.
+      virtual void SubtleWrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // SubtleUnwrapKeyAlpha1 unwraps a key using a key stored in the vault.
+      virtual void SubtleUnwrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // SubtleSignAlpha1 signs a message using a key stored in the vault.
+      virtual void SubtleSignAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest* request, ::dapr::proto::runtime::v1::SubtleSignResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // SubtleVerifyAlpha1 verifies the signature of a message using a key stored in the vault.
+      virtual void SubtleVerifyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest* request, ::dapr::proto::runtime::v1::SubtleVerifyResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // Starts a new instance of a workflow
+      virtual void StartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::StartWorkflowResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // Gets details about a started workflow instance
       virtual void GetWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest* request, ::dapr::proto::runtime::v1::GetWorkflowResponse* response, std::function<void(::grpc::Status)>) = 0;
-      // Terminate Workflow
-      virtual void TerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::dapr::proto::runtime::v1::TerminateWorkflowResponse* response, std::function<void(::grpc::Status)>) = 0;
+      // Purge Workflow
+      virtual void PurgeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      // Terminates a running workflow instance
+      virtual void TerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      // Pauses a running workflow instance
+      virtual void PauseWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      // Resumes a paused workflow instance
+      virtual void ResumeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      // Raise an event to a running workflow instance
+      virtual void RaiseEventWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
       // Shutdown the sidecar
       virtual void Shutdown(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
     };
@@ -425,25 +588,60 @@ class Dapr final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::InvokeActorResponse>* PrepareAsyncInvokeActorRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetConfigurationResponse>* AsyncGetConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetConfigurationResponse>* PrepareAsyncGetConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetConfigurationResponse>* AsyncGetConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetConfigurationResponse>* PrepareAsyncGetConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* SubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* AsyncSubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* PrepareAsyncSubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* SubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* AsyncSubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* PrepareAsyncSubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* AsyncUnsubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* PrepareAsyncUnsubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* AsyncUnsubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* PrepareAsyncUnsubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TryLockResponse>* AsyncTryLockAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TryLockRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TryLockResponse>* PrepareAsyncTryLockAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TryLockRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnlockResponse>* AsyncUnlockAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnlockRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::UnlockResponse>* PrepareAsyncUnlockAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnlockRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderWriterInterface< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>* EncryptAlpha1Raw(::grpc::ClientContext* context) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>* AsyncEncryptAlpha1Raw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>* PrepareAsyncEncryptAlpha1Raw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderWriterInterface< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>* DecryptAlpha1Raw(::grpc::ClientContext* context) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>* AsyncDecryptAlpha1Raw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>* PrepareAsyncDecryptAlpha1Raw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetMetadataResponse>* AsyncGetMetadataRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetMetadataResponse>* PrepareAsyncGetMetadataRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncSetMetadataRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SetMetadataRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncSetMetadataRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SetMetadataRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::WorkflowReference>* AsyncStartWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::WorkflowReference>* PrepareAsyncStartWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>* AsyncSubtleGetKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>* PrepareAsyncSubtleGetKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleEncryptResponse>* AsyncSubtleEncryptAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleEncryptResponse>* PrepareAsyncSubtleEncryptAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleDecryptResponse>* AsyncSubtleDecryptAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleDecryptResponse>* PrepareAsyncSubtleDecryptAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>* AsyncSubtleWrapKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>* PrepareAsyncSubtleWrapKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>* AsyncSubtleUnwrapKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>* PrepareAsyncSubtleUnwrapKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleSignResponse>* AsyncSubtleSignAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleSignResponse>* PrepareAsyncSubtleSignAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleVerifyResponse>* AsyncSubtleVerifyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::SubtleVerifyResponse>* PrepareAsyncSubtleVerifyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::StartWorkflowResponse>* AsyncStartWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::StartWorkflowResponse>* PrepareAsyncStartWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetWorkflowResponse>* AsyncGetWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::GetWorkflowResponse>* PrepareAsyncGetWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>* AsyncTerminateWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>* PrepareAsyncTerminateWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncPurgeWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncPurgeWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncTerminateWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncTerminateWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncPauseWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncPauseWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncResumeWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncResumeWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncRaiseEventWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncRaiseEventWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncShutdownRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncShutdownRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
   };
@@ -604,6 +802,13 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetConfigurationResponse>> PrepareAsyncGetConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetConfigurationResponse>>(PrepareAsyncGetConfigurationAlpha1Raw(context, request, cq));
     }
+    ::grpc::Status GetConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetConfigurationResponse>> AsyncGetConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetConfigurationResponse>>(AsyncGetConfigurationRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetConfigurationResponse>> PrepareAsyncGetConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetConfigurationResponse>>(PrepareAsyncGetConfigurationRaw(context, request, cq));
+    }
     std::unique_ptr< ::grpc::ClientReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>> SubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request) {
       return std::unique_ptr< ::grpc::ClientReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>>(SubscribeConfigurationAlpha1Raw(context, request));
     }
@@ -613,12 +818,28 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>> PrepareAsyncSubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>>(PrepareAsyncSubscribeConfigurationAlpha1Raw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>> SubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>>(SubscribeConfigurationRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>> AsyncSubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>>(AsyncSubscribeConfigurationRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>> PrepareAsyncSubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>>(PrepareAsyncSubscribeConfigurationRaw(context, request, cq));
+    }
     ::grpc::Status UnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>> AsyncUnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>>(AsyncUnsubscribeConfigurationAlpha1Raw(context, request, cq));
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>> PrepareAsyncUnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>>(PrepareAsyncUnsubscribeConfigurationAlpha1Raw(context, request, cq));
+    }
+    ::grpc::Status UnsubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>> AsyncUnsubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>>(AsyncUnsubscribeConfigurationRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>> PrepareAsyncUnsubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>>(PrepareAsyncUnsubscribeConfigurationRaw(context, request, cq));
     }
     ::grpc::Status TryLockAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TryLockRequest& request, ::dapr::proto::runtime::v1::TryLockResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TryLockResponse>> AsyncTryLockAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TryLockRequest& request, ::grpc::CompletionQueue* cq) {
@@ -634,6 +855,24 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnlockResponse>> PrepareAsyncUnlockAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnlockRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnlockResponse>>(PrepareAsyncUnlockAlpha1Raw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReaderWriter< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>> EncryptAlpha1(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriter< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>>(EncryptAlpha1Raw(context));
+    }
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>> AsyncEncryptAlpha1(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>>(AsyncEncryptAlpha1Raw(context, cq, tag));
+    }
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>> PrepareAsyncEncryptAlpha1(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>>(PrepareAsyncEncryptAlpha1Raw(context, cq));
+    }
+    std::unique_ptr< ::grpc::ClientReaderWriter< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>> DecryptAlpha1(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriter< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>>(DecryptAlpha1Raw(context));
+    }
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>> AsyncDecryptAlpha1(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>>(AsyncDecryptAlpha1Raw(context, cq, tag));
+    }
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>> PrepareAsyncDecryptAlpha1(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>>(PrepareAsyncDecryptAlpha1Raw(context, cq));
+    }
     ::grpc::Status GetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::dapr::proto::runtime::v1::GetMetadataResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetMetadataResponse>> AsyncGetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetMetadataResponse>>(AsyncGetMetadataRaw(context, request, cq));
@@ -648,12 +887,61 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncSetMetadata(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SetMetadataRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncSetMetadataRaw(context, request, cq));
     }
-    ::grpc::Status StartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::dapr::proto::runtime::v1::WorkflowReference* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::WorkflowReference>> AsyncStartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::WorkflowReference>>(AsyncStartWorkflowAlpha1Raw(context, request, cq));
+    ::grpc::Status SubtleGetKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest& request, ::dapr::proto::runtime::v1::SubtleGetKeyResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>> AsyncSubtleGetKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>>(AsyncSubtleGetKeyAlpha1Raw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::WorkflowReference>> PrepareAsyncStartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::WorkflowReference>>(PrepareAsyncStartWorkflowAlpha1Raw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>> PrepareAsyncSubtleGetKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>>(PrepareAsyncSubtleGetKeyAlpha1Raw(context, request, cq));
+    }
+    ::grpc::Status SubtleEncryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest& request, ::dapr::proto::runtime::v1::SubtleEncryptResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleEncryptResponse>> AsyncSubtleEncryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleEncryptResponse>>(AsyncSubtleEncryptAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleEncryptResponse>> PrepareAsyncSubtleEncryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleEncryptResponse>>(PrepareAsyncSubtleEncryptAlpha1Raw(context, request, cq));
+    }
+    ::grpc::Status SubtleDecryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest& request, ::dapr::proto::runtime::v1::SubtleDecryptResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleDecryptResponse>> AsyncSubtleDecryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleDecryptResponse>>(AsyncSubtleDecryptAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleDecryptResponse>> PrepareAsyncSubtleDecryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleDecryptResponse>>(PrepareAsyncSubtleDecryptAlpha1Raw(context, request, cq));
+    }
+    ::grpc::Status SubtleWrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest& request, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>> AsyncSubtleWrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>>(AsyncSubtleWrapKeyAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>> PrepareAsyncSubtleWrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>>(PrepareAsyncSubtleWrapKeyAlpha1Raw(context, request, cq));
+    }
+    ::grpc::Status SubtleUnwrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest& request, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>> AsyncSubtleUnwrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>>(AsyncSubtleUnwrapKeyAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>> PrepareAsyncSubtleUnwrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>>(PrepareAsyncSubtleUnwrapKeyAlpha1Raw(context, request, cq));
+    }
+    ::grpc::Status SubtleSignAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest& request, ::dapr::proto::runtime::v1::SubtleSignResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleSignResponse>> AsyncSubtleSignAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleSignResponse>>(AsyncSubtleSignAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleSignResponse>> PrepareAsyncSubtleSignAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleSignResponse>>(PrepareAsyncSubtleSignAlpha1Raw(context, request, cq));
+    }
+    ::grpc::Status SubtleVerifyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest& request, ::dapr::proto::runtime::v1::SubtleVerifyResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleVerifyResponse>> AsyncSubtleVerifyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleVerifyResponse>>(AsyncSubtleVerifyAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleVerifyResponse>> PrepareAsyncSubtleVerifyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleVerifyResponse>>(PrepareAsyncSubtleVerifyAlpha1Raw(context, request, cq));
+    }
+    ::grpc::Status StartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::dapr::proto::runtime::v1::StartWorkflowResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::StartWorkflowResponse>> AsyncStartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::StartWorkflowResponse>>(AsyncStartWorkflowAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::StartWorkflowResponse>> PrepareAsyncStartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::StartWorkflowResponse>>(PrepareAsyncStartWorkflowAlpha1Raw(context, request, cq));
     }
     ::grpc::Status GetWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest& request, ::dapr::proto::runtime::v1::GetWorkflowResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetWorkflowResponse>> AsyncGetWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
@@ -662,12 +950,40 @@ class Dapr final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetWorkflowResponse>> PrepareAsyncGetWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetWorkflowResponse>>(PrepareAsyncGetWorkflowAlpha1Raw(context, request, cq));
     }
-    ::grpc::Status TerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::dapr::proto::runtime::v1::TerminateWorkflowResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>> AsyncTerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>>(AsyncTerminateWorkflowAlpha1Raw(context, request, cq));
+    ::grpc::Status PurgeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncPurgeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncPurgeWorkflowAlpha1Raw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>> PrepareAsyncTerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>>(PrepareAsyncTerminateWorkflowAlpha1Raw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncPurgeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncPurgeWorkflowAlpha1Raw(context, request, cq));
+    }
+    ::grpc::Status TerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncTerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncTerminateWorkflowAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncTerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncTerminateWorkflowAlpha1Raw(context, request, cq));
+    }
+    ::grpc::Status PauseWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncPauseWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncPauseWorkflowAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncPauseWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncPauseWorkflowAlpha1Raw(context, request, cq));
+    }
+    ::grpc::Status ResumeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncResumeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncResumeWorkflowAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncResumeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncResumeWorkflowAlpha1Raw(context, request, cq));
+    }
+    ::grpc::Status RaiseEventWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncRaiseEventWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncRaiseEventWorkflowAlpha1Raw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncRaiseEventWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncRaiseEventWorkflowAlpha1Raw(context, request, cq));
     }
     ::grpc::Status Shutdown(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::google::protobuf::Empty* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncShutdown(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
@@ -701,14 +1017,27 @@ class Dapr final {
       void ExecuteActorStateTransaction(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ExecuteActorStateTransactionRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void InvokeActor(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest* request, ::dapr::proto::runtime::v1::InvokeActorResponse* response, std::function<void(::grpc::Status)>) override;
       void GetConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response, std::function<void(::grpc::Status)>) override;
       void UnsubscribeConfigurationAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response, std::function<void(::grpc::Status)>) override;
+      void UnsubscribeConfiguration(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response, std::function<void(::grpc::Status)>) override;
       void TryLockAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TryLockRequest* request, ::dapr::proto::runtime::v1::TryLockResponse* response, std::function<void(::grpc::Status)>) override;
       void UnlockAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnlockRequest* request, ::dapr::proto::runtime::v1::UnlockResponse* response, std::function<void(::grpc::Status)>) override;
       void GetMetadata(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::GetMetadataResponse* response, std::function<void(::grpc::Status)>) override;
       void SetMetadata(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SetMetadataRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
-      void StartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::WorkflowReference* response, std::function<void(::grpc::Status)>) override;
+      void SubtleGetKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest* request, ::dapr::proto::runtime::v1::SubtleGetKeyResponse* response, std::function<void(::grpc::Status)>) override;
+      void SubtleEncryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest* request, ::dapr::proto::runtime::v1::SubtleEncryptResponse* response, std::function<void(::grpc::Status)>) override;
+      void SubtleDecryptAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest* request, ::dapr::proto::runtime::v1::SubtleDecryptResponse* response, std::function<void(::grpc::Status)>) override;
+      void SubtleWrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse* response, std::function<void(::grpc::Status)>) override;
+      void SubtleUnwrapKeyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse* response, std::function<void(::grpc::Status)>) override;
+      void SubtleSignAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest* request, ::dapr::proto::runtime::v1::SubtleSignResponse* response, std::function<void(::grpc::Status)>) override;
+      void SubtleVerifyAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest* request, ::dapr::proto::runtime::v1::SubtleVerifyResponse* response, std::function<void(::grpc::Status)>) override;
+      void StartWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::StartWorkflowResponse* response, std::function<void(::grpc::Status)>) override;
       void GetWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest* request, ::dapr::proto::runtime::v1::GetWorkflowResponse* response, std::function<void(::grpc::Status)>) override;
-      void TerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::dapr::proto::runtime::v1::TerminateWorkflowResponse* response, std::function<void(::grpc::Status)>) override;
+      void PurgeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void TerminateWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void PauseWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void ResumeWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void RaiseEventWorkflowAlpha1(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void Shutdown(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
      private:
       friend class Stub;
@@ -765,25 +1094,60 @@ class Dapr final {
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::InvokeActorResponse>* PrepareAsyncInvokeActorRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetConfigurationResponse>* AsyncGetConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetConfigurationResponse>* PrepareAsyncGetConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetConfigurationResponse>* AsyncGetConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetConfigurationResponse>* PrepareAsyncGetConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* SubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request) override;
     ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* AsyncSubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* PrepareAsyncSubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* SubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request) override;
+    ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* AsyncSubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* PrepareAsyncSubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* AsyncUnsubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* PrepareAsyncUnsubscribeConfigurationAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* AsyncUnsubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* PrepareAsyncUnsubscribeConfigurationRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TryLockResponse>* AsyncTryLockAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TryLockRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TryLockResponse>* PrepareAsyncTryLockAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TryLockRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnlockResponse>* AsyncUnlockAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnlockRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::UnlockResponse>* PrepareAsyncUnlockAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::UnlockRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReaderWriter< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>* EncryptAlpha1Raw(::grpc::ClientContext* context) override;
+    ::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>* AsyncEncryptAlpha1Raw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::EncryptRequest, ::dapr::proto::runtime::v1::EncryptResponse>* PrepareAsyncEncryptAlpha1Raw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReaderWriter< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>* DecryptAlpha1Raw(::grpc::ClientContext* context) override;
+    ::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>* AsyncDecryptAlpha1Raw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReaderWriter< ::dapr::proto::runtime::v1::DecryptRequest, ::dapr::proto::runtime::v1::DecryptResponse>* PrepareAsyncDecryptAlpha1Raw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetMetadataResponse>* AsyncGetMetadataRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetMetadataResponse>* PrepareAsyncGetMetadataRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncSetMetadataRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SetMetadataRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncSetMetadataRaw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SetMetadataRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::WorkflowReference>* AsyncStartWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::WorkflowReference>* PrepareAsyncStartWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>* AsyncSubtleGetKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>* PrepareAsyncSubtleGetKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleEncryptResponse>* AsyncSubtleEncryptAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleEncryptResponse>* PrepareAsyncSubtleEncryptAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleDecryptResponse>* AsyncSubtleDecryptAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleDecryptResponse>* PrepareAsyncSubtleDecryptAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>* AsyncSubtleWrapKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>* PrepareAsyncSubtleWrapKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>* AsyncSubtleUnwrapKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>* PrepareAsyncSubtleUnwrapKeyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleSignResponse>* AsyncSubtleSignAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleSignResponse>* PrepareAsyncSubtleSignAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleVerifyResponse>* AsyncSubtleVerifyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::SubtleVerifyResponse>* PrepareAsyncSubtleVerifyAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::StartWorkflowResponse>* AsyncStartWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::StartWorkflowResponse>* PrepareAsyncStartWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetWorkflowResponse>* AsyncGetWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::GetWorkflowResponse>* PrepareAsyncGetWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>* AsyncTerminateWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>* PrepareAsyncTerminateWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncPurgeWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncPurgeWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncTerminateWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncTerminateWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncPauseWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncPauseWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncResumeWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncResumeWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncRaiseEventWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncRaiseEventWorkflowAlpha1Raw(::grpc::ClientContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncShutdownRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncShutdownRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_InvokeService_;
@@ -808,15 +1172,31 @@ class Dapr final {
     const ::grpc::internal::RpcMethod rpcmethod_ExecuteActorStateTransaction_;
     const ::grpc::internal::RpcMethod rpcmethod_InvokeActor_;
     const ::grpc::internal::RpcMethod rpcmethod_GetConfigurationAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetConfiguration_;
     const ::grpc::internal::RpcMethod rpcmethod_SubscribeConfigurationAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubscribeConfiguration_;
     const ::grpc::internal::RpcMethod rpcmethod_UnsubscribeConfigurationAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_UnsubscribeConfiguration_;
     const ::grpc::internal::RpcMethod rpcmethod_TryLockAlpha1_;
     const ::grpc::internal::RpcMethod rpcmethod_UnlockAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_EncryptAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_DecryptAlpha1_;
     const ::grpc::internal::RpcMethod rpcmethod_GetMetadata_;
     const ::grpc::internal::RpcMethod rpcmethod_SetMetadata_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubtleGetKeyAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubtleEncryptAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubtleDecryptAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubtleWrapKeyAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubtleUnwrapKeyAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubtleSignAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubtleVerifyAlpha1_;
     const ::grpc::internal::RpcMethod rpcmethod_StartWorkflowAlpha1_;
     const ::grpc::internal::RpcMethod rpcmethod_GetWorkflowAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_PurgeWorkflowAlpha1_;
     const ::grpc::internal::RpcMethod rpcmethod_TerminateWorkflowAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_PauseWorkflowAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_ResumeWorkflowAlpha1_;
+    const ::grpc::internal::RpcMethod rpcmethod_RaiseEventWorkflowAlpha1_;
     const ::grpc::internal::RpcMethod rpcmethod_Shutdown_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -870,24 +1250,56 @@ class Dapr final {
     virtual ::grpc::Status InvokeActor(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::InvokeActorRequest* request, ::dapr::proto::runtime::v1::InvokeActorResponse* response);
     // GetConfiguration gets configuration from configuration store.
     virtual ::grpc::Status GetConfigurationAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response);
+    // GetConfiguration gets configuration from configuration store.
+    virtual ::grpc::Status GetConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response);
     // SubscribeConfiguration gets configuration from configuration store and subscribe the updates event by grpc stream
     virtual ::grpc::Status SubscribeConfigurationAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* request, ::grpc::ServerWriter< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* writer);
+    // SubscribeConfiguration gets configuration from configuration store and subscribe the updates event by grpc stream
+    virtual ::grpc::Status SubscribeConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* request, ::grpc::ServerWriter< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* writer);
     // UnSubscribeConfiguration unsubscribe the subscription of configuration
     virtual ::grpc::Status UnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response);
+    // UnSubscribeConfiguration unsubscribe the subscription of configuration
+    virtual ::grpc::Status UnsubscribeConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response);
     // TryLockAlpha1 tries to get a lock with an expiry.
     virtual ::grpc::Status TryLockAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TryLockRequest* request, ::dapr::proto::runtime::v1::TryLockResponse* response);
     // UnlockAlpha1 unlocks a lock.
     virtual ::grpc::Status UnlockAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnlockRequest* request, ::dapr::proto::runtime::v1::UnlockResponse* response);
+    // EncryptAlpha1 encrypts a message using the Dapr encryption scheme and a key stored in the vault.
+    virtual ::grpc::Status EncryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::dapr::proto::runtime::v1::EncryptResponse, ::dapr::proto::runtime::v1::EncryptRequest>* stream);
+    // DecryptAlpha1 decrypts a message using the Dapr encryption scheme and a key stored in the vault.
+    virtual ::grpc::Status DecryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::dapr::proto::runtime::v1::DecryptResponse, ::dapr::proto::runtime::v1::DecryptRequest>* stream);
     // Gets metadata of the sidecar
     virtual ::grpc::Status GetMetadata(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::dapr::proto::runtime::v1::GetMetadataResponse* response);
     // Sets value in extended metadata of the sidecar
     virtual ::grpc::Status SetMetadata(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SetMetadataRequest* request, ::google::protobuf::Empty* response);
-    // Start Workflow
-    virtual ::grpc::Status StartWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::WorkflowReference* response);
-    // Get Workflow details
+    // SubtleGetKeyAlpha1 returns the public part of an asymmetric key stored in the vault.
+    virtual ::grpc::Status SubtleGetKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest* request, ::dapr::proto::runtime::v1::SubtleGetKeyResponse* response);
+    // SubtleEncryptAlpha1 encrypts a small message using a key stored in the vault.
+    virtual ::grpc::Status SubtleEncryptAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest* request, ::dapr::proto::runtime::v1::SubtleEncryptResponse* response);
+    // SubtleDecryptAlpha1 decrypts a small message using a key stored in the vault.
+    virtual ::grpc::Status SubtleDecryptAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest* request, ::dapr::proto::runtime::v1::SubtleDecryptResponse* response);
+    // SubtleWrapKeyAlpha1 wraps a key using a key stored in the vault.
+    virtual ::grpc::Status SubtleWrapKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse* response);
+    // SubtleUnwrapKeyAlpha1 unwraps a key using a key stored in the vault.
+    virtual ::grpc::Status SubtleUnwrapKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse* response);
+    // SubtleSignAlpha1 signs a message using a key stored in the vault.
+    virtual ::grpc::Status SubtleSignAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest* request, ::dapr::proto::runtime::v1::SubtleSignResponse* response);
+    // SubtleVerifyAlpha1 verifies the signature of a message using a key stored in the vault.
+    virtual ::grpc::Status SubtleVerifyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest* request, ::dapr::proto::runtime::v1::SubtleVerifyResponse* response);
+    // Starts a new instance of a workflow
+    virtual ::grpc::Status StartWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::StartWorkflowResponse* response);
+    // Gets details about a started workflow instance
     virtual ::grpc::Status GetWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetWorkflowRequest* request, ::dapr::proto::runtime::v1::GetWorkflowResponse* response);
-    // Terminate Workflow
-    virtual ::grpc::Status TerminateWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::dapr::proto::runtime::v1::TerminateWorkflowResponse* response);
+    // Purge Workflow
+    virtual ::grpc::Status PurgeWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest* request, ::google::protobuf::Empty* response);
+    // Terminates a running workflow instance
+    virtual ::grpc::Status TerminateWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::google::protobuf::Empty* response);
+    // Pauses a running workflow instance
+    virtual ::grpc::Status PauseWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest* request, ::google::protobuf::Empty* response);
+    // Resumes a paused workflow instance
+    virtual ::grpc::Status ResumeWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest* request, ::google::protobuf::Empty* response);
+    // Raise an event to a running workflow instance
+    virtual ::grpc::Status RaiseEventWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest* request, ::google::protobuf::Empty* response);
     // Shutdown the sidecar
     virtual ::grpc::Status Shutdown(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response);
   };
@@ -1332,12 +1744,32 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_GetConfiguration : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_GetConfiguration() {
+      ::grpc::Service::MarkMethodAsync(22);
+    }
+    ~WithAsyncMethod_GetConfiguration() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetConfiguration(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::GetConfigurationResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_SubscribeConfigurationAlpha1 : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_SubscribeConfigurationAlpha1() {
-      ::grpc::Service::MarkMethodAsync(22);
+      ::grpc::Service::MarkMethodAsync(23);
     }
     ~WithAsyncMethod_SubscribeConfigurationAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1348,7 +1780,27 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSubscribeConfigurationAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* request, ::grpc::ServerAsyncWriter< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncServerStreaming(22, context, request, writer, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncServerStreaming(23, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SubscribeConfiguration : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_SubscribeConfiguration() {
+      ::grpc::Service::MarkMethodAsync(24);
+    }
+    ~WithAsyncMethod_SubscribeConfiguration() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* request, ::grpc::ServerWriter< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* writer) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeConfiguration(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* request, ::grpc::ServerAsyncWriter< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(24, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1357,7 +1809,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_UnsubscribeConfigurationAlpha1() {
-      ::grpc::Service::MarkMethodAsync(23);
+      ::grpc::Service::MarkMethodAsync(25);
     }
     ~WithAsyncMethod_UnsubscribeConfigurationAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1368,7 +1820,27 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestUnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_UnsubscribeConfiguration : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_UnsubscribeConfiguration() {
+      ::grpc::Service::MarkMethodAsync(26);
+    }
+    ~WithAsyncMethod_UnsubscribeConfiguration() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnsubscribeConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUnsubscribeConfiguration(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1377,7 +1849,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_TryLockAlpha1() {
-      ::grpc::Service::MarkMethodAsync(24);
+      ::grpc::Service::MarkMethodAsync(27);
     }
     ~WithAsyncMethod_TryLockAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1388,7 +1860,7 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestTryLockAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::TryLockRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::TryLockResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(27, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1397,7 +1869,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_UnlockAlpha1() {
-      ::grpc::Service::MarkMethodAsync(25);
+      ::grpc::Service::MarkMethodAsync(28);
     }
     ~WithAsyncMethod_UnlockAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1408,7 +1880,47 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestUnlockAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::UnlockRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::UnlockResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(28, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_EncryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_EncryptAlpha1() {
+      ::grpc::Service::MarkMethodAsync(29);
+    }
+    ~WithAsyncMethod_EncryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status EncryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::dapr::proto::runtime::v1::EncryptResponse, ::dapr::proto::runtime::v1::EncryptRequest>* stream)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestEncryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::dapr::proto::runtime::v1::EncryptResponse, ::dapr::proto::runtime::v1::EncryptRequest>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncBidiStreaming(29, context, stream, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_DecryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_DecryptAlpha1() {
+      ::grpc::Service::MarkMethodAsync(30);
+    }
+    ~WithAsyncMethod_DecryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DecryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::dapr::proto::runtime::v1::DecryptResponse, ::dapr::proto::runtime::v1::DecryptRequest>* stream)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestDecryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::dapr::proto::runtime::v1::DecryptResponse, ::dapr::proto::runtime::v1::DecryptRequest>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncBidiStreaming(30, context, stream, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1417,7 +1929,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_GetMetadata() {
-      ::grpc::Service::MarkMethodAsync(26);
+      ::grpc::Service::MarkMethodAsync(31);
     }
     ~WithAsyncMethod_GetMetadata() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1428,7 +1940,7 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMetadata(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::GetMetadataResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(31, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1437,7 +1949,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_SetMetadata() {
-      ::grpc::Service::MarkMethodAsync(27);
+      ::grpc::Service::MarkMethodAsync(32);
     }
     ~WithAsyncMethod_SetMetadata() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1448,7 +1960,147 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetMetadata(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::SetMetadataRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(27, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(32, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SubtleGetKeyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_SubtleGetKeyAlpha1() {
+      ::grpc::Service::MarkMethodAsync(33);
+    }
+    ~WithAsyncMethod_SubtleGetKeyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleGetKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest* request, ::dapr::proto::runtime::v1::SubtleGetKeyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleGetKeyAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::SubtleGetKeyRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::SubtleGetKeyResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(33, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SubtleEncryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_SubtleEncryptAlpha1() {
+      ::grpc::Service::MarkMethodAsync(34);
+    }
+    ~WithAsyncMethod_SubtleEncryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleEncryptAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest* request, ::dapr::proto::runtime::v1::SubtleEncryptResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleEncryptAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::SubtleEncryptRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::SubtleEncryptResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(34, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SubtleDecryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_SubtleDecryptAlpha1() {
+      ::grpc::Service::MarkMethodAsync(35);
+    }
+    ~WithAsyncMethod_SubtleDecryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleDecryptAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest* request, ::dapr::proto::runtime::v1::SubtleDecryptResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleDecryptAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::SubtleDecryptRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::SubtleDecryptResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(35, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SubtleWrapKeyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_SubtleWrapKeyAlpha1() {
+      ::grpc::Service::MarkMethodAsync(36);
+    }
+    ~WithAsyncMethod_SubtleWrapKeyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleWrapKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleWrapKeyAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::SubtleWrapKeyRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(36, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SubtleUnwrapKeyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_SubtleUnwrapKeyAlpha1() {
+      ::grpc::Service::MarkMethodAsync(37);
+    }
+    ~WithAsyncMethod_SubtleUnwrapKeyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleUnwrapKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleUnwrapKeyAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(37, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SubtleSignAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_SubtleSignAlpha1() {
+      ::grpc::Service::MarkMethodAsync(38);
+    }
+    ~WithAsyncMethod_SubtleSignAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleSignAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest* request, ::dapr::proto::runtime::v1::SubtleSignResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleSignAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::SubtleSignRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::SubtleSignResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(38, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SubtleVerifyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_SubtleVerifyAlpha1() {
+      ::grpc::Service::MarkMethodAsync(39);
+    }
+    ~WithAsyncMethod_SubtleVerifyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleVerifyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest* request, ::dapr::proto::runtime::v1::SubtleVerifyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleVerifyAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::SubtleVerifyRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::SubtleVerifyResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(39, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1457,18 +2109,18 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_StartWorkflowAlpha1() {
-      ::grpc::Service::MarkMethodAsync(28);
+      ::grpc::Service::MarkMethodAsync(40);
     }
     ~WithAsyncMethod_StartWorkflowAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StartWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::WorkflowReference* response) override {
+    ::grpc::Status StartWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::StartWorkflowResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestStartWorkflowAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::WorkflowReference>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(28, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestStartWorkflowAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::StartWorkflowResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(40, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1477,7 +2129,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_GetWorkflowAlpha1() {
-      ::grpc::Service::MarkMethodAsync(29);
+      ::grpc::Service::MarkMethodAsync(41);
     }
     ~WithAsyncMethod_GetWorkflowAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1488,7 +2140,27 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetWorkflowAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::GetWorkflowRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::GetWorkflowResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(29, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(41, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_PurgeWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_PurgeWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodAsync(42);
+    }
+    ~WithAsyncMethod_PurgeWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status PurgeWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestPurgeWorkflowAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::PurgeWorkflowRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(42, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1497,18 +2169,78 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_TerminateWorkflowAlpha1() {
-      ::grpc::Service::MarkMethodAsync(30);
+      ::grpc::Service::MarkMethodAsync(43);
     }
     ~WithAsyncMethod_TerminateWorkflowAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TerminateWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::dapr::proto::runtime::v1::TerminateWorkflowResponse* response) override {
+    ::grpc::Status TerminateWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestTerminateWorkflowAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::grpc::ServerAsyncResponseWriter< ::dapr::proto::runtime::v1::TerminateWorkflowResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(30, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestTerminateWorkflowAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(43, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_PauseWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_PauseWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodAsync(44);
+    }
+    ~WithAsyncMethod_PauseWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status PauseWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestPauseWorkflowAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::PauseWorkflowRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(44, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_ResumeWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_ResumeWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodAsync(45);
+    }
+    ~WithAsyncMethod_ResumeWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ResumeWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestResumeWorkflowAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::ResumeWorkflowRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(45, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_RaiseEventWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_RaiseEventWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodAsync(46);
+    }
+    ~WithAsyncMethod_RaiseEventWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RaiseEventWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRaiseEventWorkflowAlpha1(::grpc::ServerContext* context, ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(46, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1517,7 +2249,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithAsyncMethod_Shutdown() {
-      ::grpc::Service::MarkMethodAsync(31);
+      ::grpc::Service::MarkMethodAsync(47);
     }
     ~WithAsyncMethod_Shutdown() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1528,10 +2260,10 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestShutdown(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(31, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(47, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_InvokeService<WithAsyncMethod_GetState<WithAsyncMethod_GetBulkState<WithAsyncMethod_SaveState<WithAsyncMethod_QueryStateAlpha1<WithAsyncMethod_DeleteState<WithAsyncMethod_DeleteBulkState<WithAsyncMethod_ExecuteStateTransaction<WithAsyncMethod_PublishEvent<WithAsyncMethod_BulkPublishEventAlpha1<WithAsyncMethod_InvokeBinding<WithAsyncMethod_GetSecret<WithAsyncMethod_GetBulkSecret<WithAsyncMethod_RegisterActorTimer<WithAsyncMethod_UnregisterActorTimer<WithAsyncMethod_RegisterActorReminder<WithAsyncMethod_UnregisterActorReminder<WithAsyncMethod_RenameActorReminder<WithAsyncMethod_GetActorState<WithAsyncMethod_ExecuteActorStateTransaction<WithAsyncMethod_InvokeActor<WithAsyncMethod_GetConfigurationAlpha1<WithAsyncMethod_SubscribeConfigurationAlpha1<WithAsyncMethod_UnsubscribeConfigurationAlpha1<WithAsyncMethod_TryLockAlpha1<WithAsyncMethod_UnlockAlpha1<WithAsyncMethod_GetMetadata<WithAsyncMethod_SetMetadata<WithAsyncMethod_StartWorkflowAlpha1<WithAsyncMethod_GetWorkflowAlpha1<WithAsyncMethod_TerminateWorkflowAlpha1<WithAsyncMethod_Shutdown<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_InvokeService<WithAsyncMethod_GetState<WithAsyncMethod_GetBulkState<WithAsyncMethod_SaveState<WithAsyncMethod_QueryStateAlpha1<WithAsyncMethod_DeleteState<WithAsyncMethod_DeleteBulkState<WithAsyncMethod_ExecuteStateTransaction<WithAsyncMethod_PublishEvent<WithAsyncMethod_BulkPublishEventAlpha1<WithAsyncMethod_InvokeBinding<WithAsyncMethod_GetSecret<WithAsyncMethod_GetBulkSecret<WithAsyncMethod_RegisterActorTimer<WithAsyncMethod_UnregisterActorTimer<WithAsyncMethod_RegisterActorReminder<WithAsyncMethod_UnregisterActorReminder<WithAsyncMethod_RenameActorReminder<WithAsyncMethod_GetActorState<WithAsyncMethod_ExecuteActorStateTransaction<WithAsyncMethod_InvokeActor<WithAsyncMethod_GetConfigurationAlpha1<WithAsyncMethod_GetConfiguration<WithAsyncMethod_SubscribeConfigurationAlpha1<WithAsyncMethod_SubscribeConfiguration<WithAsyncMethod_UnsubscribeConfigurationAlpha1<WithAsyncMethod_UnsubscribeConfiguration<WithAsyncMethod_TryLockAlpha1<WithAsyncMethod_UnlockAlpha1<WithAsyncMethod_EncryptAlpha1<WithAsyncMethod_DecryptAlpha1<WithAsyncMethod_GetMetadata<WithAsyncMethod_SetMetadata<WithAsyncMethod_SubtleGetKeyAlpha1<WithAsyncMethod_SubtleEncryptAlpha1<WithAsyncMethod_SubtleDecryptAlpha1<WithAsyncMethod_SubtleWrapKeyAlpha1<WithAsyncMethod_SubtleUnwrapKeyAlpha1<WithAsyncMethod_SubtleSignAlpha1<WithAsyncMethod_SubtleVerifyAlpha1<WithAsyncMethod_StartWorkflowAlpha1<WithAsyncMethod_GetWorkflowAlpha1<WithAsyncMethod_PurgeWorkflowAlpha1<WithAsyncMethod_TerminateWorkflowAlpha1<WithAsyncMethod_PauseWorkflowAlpha1<WithAsyncMethod_ResumeWorkflowAlpha1<WithAsyncMethod_RaiseEventWorkflowAlpha1<WithAsyncMethod_Shutdown<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithGenericMethod_InvokeService : public BaseClass {
    private:
@@ -1907,12 +2639,29 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_GetConfiguration : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_GetConfiguration() {
+      ::grpc::Service::MarkMethodGeneric(22);
+    }
+    ~WithGenericMethod_GetConfiguration() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_SubscribeConfigurationAlpha1 : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_SubscribeConfigurationAlpha1() {
-      ::grpc::Service::MarkMethodGeneric(22);
+      ::grpc::Service::MarkMethodGeneric(23);
     }
     ~WithGenericMethod_SubscribeConfigurationAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1924,12 +2673,29 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_SubscribeConfiguration : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_SubscribeConfiguration() {
+      ::grpc::Service::MarkMethodGeneric(24);
+    }
+    ~WithGenericMethod_SubscribeConfiguration() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* request, ::grpc::ServerWriter< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* writer) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_UnsubscribeConfigurationAlpha1 : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_UnsubscribeConfigurationAlpha1() {
-      ::grpc::Service::MarkMethodGeneric(23);
+      ::grpc::Service::MarkMethodGeneric(25);
     }
     ~WithGenericMethod_UnsubscribeConfigurationAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1941,12 +2707,29 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_UnsubscribeConfiguration : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_UnsubscribeConfiguration() {
+      ::grpc::Service::MarkMethodGeneric(26);
+    }
+    ~WithGenericMethod_UnsubscribeConfiguration() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnsubscribeConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_TryLockAlpha1 : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_TryLockAlpha1() {
-      ::grpc::Service::MarkMethodGeneric(24);
+      ::grpc::Service::MarkMethodGeneric(27);
     }
     ~WithGenericMethod_TryLockAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1963,7 +2746,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_UnlockAlpha1() {
-      ::grpc::Service::MarkMethodGeneric(25);
+      ::grpc::Service::MarkMethodGeneric(28);
     }
     ~WithGenericMethod_UnlockAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1975,12 +2758,46 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_EncryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_EncryptAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(29);
+    }
+    ~WithGenericMethod_EncryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status EncryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::dapr::proto::runtime::v1::EncryptResponse, ::dapr::proto::runtime::v1::EncryptRequest>* stream)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_DecryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_DecryptAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(30);
+    }
+    ~WithGenericMethod_DecryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DecryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::dapr::proto::runtime::v1::DecryptResponse, ::dapr::proto::runtime::v1::DecryptRequest>* stream)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_GetMetadata : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_GetMetadata() {
-      ::grpc::Service::MarkMethodGeneric(26);
+      ::grpc::Service::MarkMethodGeneric(31);
     }
     ~WithGenericMethod_GetMetadata() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1997,7 +2814,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_SetMetadata() {
-      ::grpc::Service::MarkMethodGeneric(27);
+      ::grpc::Service::MarkMethodGeneric(32);
     }
     ~WithGenericMethod_SetMetadata() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2009,18 +2826,137 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_SubtleGetKeyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_SubtleGetKeyAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(33);
+    }
+    ~WithGenericMethod_SubtleGetKeyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleGetKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest* request, ::dapr::proto::runtime::v1::SubtleGetKeyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubtleEncryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_SubtleEncryptAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(34);
+    }
+    ~WithGenericMethod_SubtleEncryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleEncryptAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest* request, ::dapr::proto::runtime::v1::SubtleEncryptResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubtleDecryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_SubtleDecryptAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(35);
+    }
+    ~WithGenericMethod_SubtleDecryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleDecryptAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest* request, ::dapr::proto::runtime::v1::SubtleDecryptResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubtleWrapKeyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_SubtleWrapKeyAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(36);
+    }
+    ~WithGenericMethod_SubtleWrapKeyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleWrapKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubtleUnwrapKeyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_SubtleUnwrapKeyAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(37);
+    }
+    ~WithGenericMethod_SubtleUnwrapKeyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleUnwrapKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubtleSignAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_SubtleSignAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(38);
+    }
+    ~WithGenericMethod_SubtleSignAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleSignAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest* request, ::dapr::proto::runtime::v1::SubtleSignResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubtleVerifyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_SubtleVerifyAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(39);
+    }
+    ~WithGenericMethod_SubtleVerifyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleVerifyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest* request, ::dapr::proto::runtime::v1::SubtleVerifyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_StartWorkflowAlpha1 : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_StartWorkflowAlpha1() {
-      ::grpc::Service::MarkMethodGeneric(28);
+      ::grpc::Service::MarkMethodGeneric(40);
     }
     ~WithGenericMethod_StartWorkflowAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StartWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::WorkflowReference* response) override {
+    ::grpc::Status StartWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::StartWorkflowResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -2031,7 +2967,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_GetWorkflowAlpha1() {
-      ::grpc::Service::MarkMethodGeneric(29);
+      ::grpc::Service::MarkMethodGeneric(41);
     }
     ~WithGenericMethod_GetWorkflowAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2043,18 +2979,86 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_PurgeWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_PurgeWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(42);
+    }
+    ~WithGenericMethod_PurgeWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status PurgeWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_TerminateWorkflowAlpha1 : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_TerminateWorkflowAlpha1() {
-      ::grpc::Service::MarkMethodGeneric(30);
+      ::grpc::Service::MarkMethodGeneric(43);
     }
     ~WithGenericMethod_TerminateWorkflowAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TerminateWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::dapr::proto::runtime::v1::TerminateWorkflowResponse* response) override {
+    ::grpc::Status TerminateWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_PauseWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_PauseWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(44);
+    }
+    ~WithGenericMethod_PauseWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status PauseWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_ResumeWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_ResumeWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(45);
+    }
+    ~WithGenericMethod_ResumeWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ResumeWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_RaiseEventWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_RaiseEventWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodGeneric(46);
+    }
+    ~WithGenericMethod_RaiseEventWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RaiseEventWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -2065,7 +3069,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithGenericMethod_Shutdown() {
-      ::grpc::Service::MarkMethodGeneric(31);
+      ::grpc::Service::MarkMethodGeneric(47);
     }
     ~WithGenericMethod_Shutdown() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2517,12 +3521,32 @@ class Dapr final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_GetConfiguration : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_GetConfiguration() {
+      ::grpc::Service::MarkMethodRaw(22);
+    }
+    ~WithRawMethod_GetConfiguration() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetConfiguration(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_SubscribeConfigurationAlpha1 : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_SubscribeConfigurationAlpha1() {
-      ::grpc::Service::MarkMethodRaw(22);
+      ::grpc::Service::MarkMethodRaw(23);
     }
     ~WithRawMethod_SubscribeConfigurationAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2533,7 +3557,27 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSubscribeConfigurationAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncServerStreaming(22, context, request, writer, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncServerStreaming(23, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SubscribeConfiguration : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_SubscribeConfiguration() {
+      ::grpc::Service::MarkMethodRaw(24);
+    }
+    ~WithRawMethod_SubscribeConfiguration() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubscribeConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* request, ::grpc::ServerWriter< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* writer) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribeConfiguration(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(24, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2542,7 +3586,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_UnsubscribeConfigurationAlpha1() {
-      ::grpc::Service::MarkMethodRaw(23);
+      ::grpc::Service::MarkMethodRaw(25);
     }
     ~WithRawMethod_UnsubscribeConfigurationAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2553,7 +3597,27 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestUnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_UnsubscribeConfiguration : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_UnsubscribeConfiguration() {
+      ::grpc::Service::MarkMethodRaw(26);
+    }
+    ~WithRawMethod_UnsubscribeConfiguration() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnsubscribeConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUnsubscribeConfiguration(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2562,7 +3626,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_TryLockAlpha1() {
-      ::grpc::Service::MarkMethodRaw(24);
+      ::grpc::Service::MarkMethodRaw(27);
     }
     ~WithRawMethod_TryLockAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2573,7 +3637,7 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestTryLockAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(27, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2582,7 +3646,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_UnlockAlpha1() {
-      ::grpc::Service::MarkMethodRaw(25);
+      ::grpc::Service::MarkMethodRaw(28);
     }
     ~WithRawMethod_UnlockAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2593,7 +3657,47 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestUnlockAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(28, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_EncryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_EncryptAlpha1() {
+      ::grpc::Service::MarkMethodRaw(29);
+    }
+    ~WithRawMethod_EncryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status EncryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::dapr::proto::runtime::v1::EncryptResponse, ::dapr::proto::runtime::v1::EncryptRequest>* stream)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestEncryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncBidiStreaming(29, context, stream, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_DecryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_DecryptAlpha1() {
+      ::grpc::Service::MarkMethodRaw(30);
+    }
+    ~WithRawMethod_DecryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DecryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::dapr::proto::runtime::v1::DecryptResponse, ::dapr::proto::runtime::v1::DecryptRequest>* stream)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestDecryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncBidiStreaming(30, context, stream, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2602,7 +3706,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_GetMetadata() {
-      ::grpc::Service::MarkMethodRaw(26);
+      ::grpc::Service::MarkMethodRaw(31);
     }
     ~WithRawMethod_GetMetadata() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2613,7 +3717,7 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMetadata(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(31, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2622,7 +3726,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_SetMetadata() {
-      ::grpc::Service::MarkMethodRaw(27);
+      ::grpc::Service::MarkMethodRaw(32);
     }
     ~WithRawMethod_SetMetadata() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2633,7 +3737,147 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetMetadata(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(27, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(32, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SubtleGetKeyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_SubtleGetKeyAlpha1() {
+      ::grpc::Service::MarkMethodRaw(33);
+    }
+    ~WithRawMethod_SubtleGetKeyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleGetKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest* request, ::dapr::proto::runtime::v1::SubtleGetKeyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleGetKeyAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(33, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SubtleEncryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_SubtleEncryptAlpha1() {
+      ::grpc::Service::MarkMethodRaw(34);
+    }
+    ~WithRawMethod_SubtleEncryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleEncryptAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest* request, ::dapr::proto::runtime::v1::SubtleEncryptResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleEncryptAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(34, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SubtleDecryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_SubtleDecryptAlpha1() {
+      ::grpc::Service::MarkMethodRaw(35);
+    }
+    ~WithRawMethod_SubtleDecryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleDecryptAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest* request, ::dapr::proto::runtime::v1::SubtleDecryptResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleDecryptAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(35, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SubtleWrapKeyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_SubtleWrapKeyAlpha1() {
+      ::grpc::Service::MarkMethodRaw(36);
+    }
+    ~WithRawMethod_SubtleWrapKeyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleWrapKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleWrapKeyAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(36, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SubtleUnwrapKeyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_SubtleUnwrapKeyAlpha1() {
+      ::grpc::Service::MarkMethodRaw(37);
+    }
+    ~WithRawMethod_SubtleUnwrapKeyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleUnwrapKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleUnwrapKeyAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(37, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SubtleSignAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_SubtleSignAlpha1() {
+      ::grpc::Service::MarkMethodRaw(38);
+    }
+    ~WithRawMethod_SubtleSignAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleSignAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest* request, ::dapr::proto::runtime::v1::SubtleSignResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleSignAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(38, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SubtleVerifyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_SubtleVerifyAlpha1() {
+      ::grpc::Service::MarkMethodRaw(39);
+    }
+    ~WithRawMethod_SubtleVerifyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubtleVerifyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest* request, ::dapr::proto::runtime::v1::SubtleVerifyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubtleVerifyAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(39, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2642,18 +3886,18 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_StartWorkflowAlpha1() {
-      ::grpc::Service::MarkMethodRaw(28);
+      ::grpc::Service::MarkMethodRaw(40);
     }
     ~WithRawMethod_StartWorkflowAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StartWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::WorkflowReference* response) override {
+    ::grpc::Status StartWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::StartWorkflowResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestStartWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(28, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(40, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2662,7 +3906,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_GetWorkflowAlpha1() {
-      ::grpc::Service::MarkMethodRaw(29);
+      ::grpc::Service::MarkMethodRaw(41);
     }
     ~WithRawMethod_GetWorkflowAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2673,7 +3917,27 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(29, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(41, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_PurgeWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_PurgeWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodRaw(42);
+    }
+    ~WithRawMethod_PurgeWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status PurgeWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestPurgeWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(42, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2682,18 +3946,78 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_TerminateWorkflowAlpha1() {
-      ::grpc::Service::MarkMethodRaw(30);
+      ::grpc::Service::MarkMethodRaw(43);
     }
     ~WithRawMethod_TerminateWorkflowAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TerminateWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::dapr::proto::runtime::v1::TerminateWorkflowResponse* response) override {
+    ::grpc::Status TerminateWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestTerminateWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(30, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(43, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_PauseWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_PauseWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodRaw(44);
+    }
+    ~WithRawMethod_PauseWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status PauseWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestPauseWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(44, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_ResumeWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_ResumeWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodRaw(45);
+    }
+    ~WithRawMethod_ResumeWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ResumeWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestResumeWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(45, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_RaiseEventWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_RaiseEventWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodRaw(46);
+    }
+    ~WithRawMethod_RaiseEventWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RaiseEventWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRaiseEventWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(46, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2702,7 +4026,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithRawMethod_Shutdown() {
-      ::grpc::Service::MarkMethodRaw(31);
+      ::grpc::Service::MarkMethodRaw(47);
     }
     ~WithRawMethod_Shutdown() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2713,7 +4037,7 @@ class Dapr final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestShutdown(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(31, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(47, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3157,12 +4481,32 @@ class Dapr final {
     virtual ::grpc::Status StreamedGetConfigurationAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::GetConfigurationRequest,::dapr::proto::runtime::v1::GetConfigurationResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_GetConfiguration : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_GetConfiguration() {
+      ::grpc::Service::MarkMethodStreamed(22,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::GetConfigurationRequest, ::dapr::proto::runtime::v1::GetConfigurationResponse>(std::bind(&WithStreamedUnaryMethod_GetConfiguration<BaseClass>::StreamedGetConfiguration, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_GetConfiguration() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::GetConfigurationRequest* request, ::dapr::proto::runtime::v1::GetConfigurationResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetConfiguration(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::GetConfigurationRequest,::dapr::proto::runtime::v1::GetConfigurationResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1 : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1() {
-      ::grpc::Service::MarkMethodStreamed(23,
+      ::grpc::Service::MarkMethodStreamed(25,
         new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>(std::bind(&WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1<BaseClass>::StreamedUnsubscribeConfigurationAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1() override {
@@ -3177,12 +4521,32 @@ class Dapr final {
     virtual ::grpc::Status StreamedUnsubscribeConfigurationAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest,::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_UnsubscribeConfiguration : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_UnsubscribeConfiguration() {
+      ::grpc::Service::MarkMethodStreamed(26,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>(std::bind(&WithStreamedUnaryMethod_UnsubscribeConfiguration<BaseClass>::StreamedUnsubscribeConfiguration, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_UnsubscribeConfiguration() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status UnsubscribeConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest* request, ::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedUnsubscribeConfiguration(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::UnsubscribeConfigurationRequest,::dapr::proto::runtime::v1::UnsubscribeConfigurationResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_TryLockAlpha1 : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_TryLockAlpha1() {
-      ::grpc::Service::MarkMethodStreamed(24,
+      ::grpc::Service::MarkMethodStreamed(27,
         new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::TryLockRequest, ::dapr::proto::runtime::v1::TryLockResponse>(std::bind(&WithStreamedUnaryMethod_TryLockAlpha1<BaseClass>::StreamedTryLockAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_TryLockAlpha1() override {
@@ -3202,7 +4566,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_UnlockAlpha1() {
-      ::grpc::Service::MarkMethodStreamed(25,
+      ::grpc::Service::MarkMethodStreamed(28,
         new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::UnlockRequest, ::dapr::proto::runtime::v1::UnlockResponse>(std::bind(&WithStreamedUnaryMethod_UnlockAlpha1<BaseClass>::StreamedUnlockAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_UnlockAlpha1() override {
@@ -3222,7 +4586,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_GetMetadata() {
-      ::grpc::Service::MarkMethodStreamed(26,
+      ::grpc::Service::MarkMethodStreamed(31,
         new ::grpc::internal::StreamedUnaryHandler< ::google::protobuf::Empty, ::dapr::proto::runtime::v1::GetMetadataResponse>(std::bind(&WithStreamedUnaryMethod_GetMetadata<BaseClass>::StreamedGetMetadata, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetMetadata() override {
@@ -3242,7 +4606,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_SetMetadata() {
-      ::grpc::Service::MarkMethodStreamed(27,
+      ::grpc::Service::MarkMethodStreamed(32,
         new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::SetMetadataRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_SetMetadata<BaseClass>::StreamedSetMetadata, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_SetMetadata() override {
@@ -3257,24 +4621,164 @@ class Dapr final {
     virtual ::grpc::Status StreamedSetMetadata(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::SetMetadataRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_SubtleGetKeyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_SubtleGetKeyAlpha1() {
+      ::grpc::Service::MarkMethodStreamed(33,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::SubtleGetKeyRequest, ::dapr::proto::runtime::v1::SubtleGetKeyResponse>(std::bind(&WithStreamedUnaryMethod_SubtleGetKeyAlpha1<BaseClass>::StreamedSubtleGetKeyAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_SubtleGetKeyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubtleGetKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleGetKeyRequest* request, ::dapr::proto::runtime::v1::SubtleGetKeyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSubtleGetKeyAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::SubtleGetKeyRequest,::dapr::proto::runtime::v1::SubtleGetKeyResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SubtleEncryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_SubtleEncryptAlpha1() {
+      ::grpc::Service::MarkMethodStreamed(34,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::SubtleEncryptRequest, ::dapr::proto::runtime::v1::SubtleEncryptResponse>(std::bind(&WithStreamedUnaryMethod_SubtleEncryptAlpha1<BaseClass>::StreamedSubtleEncryptAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_SubtleEncryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubtleEncryptAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleEncryptRequest* request, ::dapr::proto::runtime::v1::SubtleEncryptResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSubtleEncryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::SubtleEncryptRequest,::dapr::proto::runtime::v1::SubtleEncryptResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SubtleDecryptAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_SubtleDecryptAlpha1() {
+      ::grpc::Service::MarkMethodStreamed(35,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::SubtleDecryptRequest, ::dapr::proto::runtime::v1::SubtleDecryptResponse>(std::bind(&WithStreamedUnaryMethod_SubtleDecryptAlpha1<BaseClass>::StreamedSubtleDecryptAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_SubtleDecryptAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubtleDecryptAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleDecryptRequest* request, ::dapr::proto::runtime::v1::SubtleDecryptResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSubtleDecryptAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::SubtleDecryptRequest,::dapr::proto::runtime::v1::SubtleDecryptResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SubtleWrapKeyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_SubtleWrapKeyAlpha1() {
+      ::grpc::Service::MarkMethodStreamed(36,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::SubtleWrapKeyRequest, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse>(std::bind(&WithStreamedUnaryMethod_SubtleWrapKeyAlpha1<BaseClass>::StreamedSubtleWrapKeyAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_SubtleWrapKeyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubtleWrapKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleWrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleWrapKeyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSubtleWrapKeyAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::SubtleWrapKeyRequest,::dapr::proto::runtime::v1::SubtleWrapKeyResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SubtleUnwrapKeyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_SubtleUnwrapKeyAlpha1() {
+      ::grpc::Service::MarkMethodStreamed(37,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>(std::bind(&WithStreamedUnaryMethod_SubtleUnwrapKeyAlpha1<BaseClass>::StreamedSubtleUnwrapKeyAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_SubtleUnwrapKeyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubtleUnwrapKeyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest* request, ::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSubtleUnwrapKeyAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::SubtleUnwrapKeyRequest,::dapr::proto::runtime::v1::SubtleUnwrapKeyResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SubtleSignAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_SubtleSignAlpha1() {
+      ::grpc::Service::MarkMethodStreamed(38,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::SubtleSignRequest, ::dapr::proto::runtime::v1::SubtleSignResponse>(std::bind(&WithStreamedUnaryMethod_SubtleSignAlpha1<BaseClass>::StreamedSubtleSignAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_SubtleSignAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubtleSignAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleSignRequest* request, ::dapr::proto::runtime::v1::SubtleSignResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSubtleSignAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::SubtleSignRequest,::dapr::proto::runtime::v1::SubtleSignResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SubtleVerifyAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_SubtleVerifyAlpha1() {
+      ::grpc::Service::MarkMethodStreamed(39,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::SubtleVerifyRequest, ::dapr::proto::runtime::v1::SubtleVerifyResponse>(std::bind(&WithStreamedUnaryMethod_SubtleVerifyAlpha1<BaseClass>::StreamedSubtleVerifyAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_SubtleVerifyAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubtleVerifyAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubtleVerifyRequest* request, ::dapr::proto::runtime::v1::SubtleVerifyResponse* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSubtleVerifyAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::SubtleVerifyRequest,::dapr::proto::runtime::v1::SubtleVerifyResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_StartWorkflowAlpha1 : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_StartWorkflowAlpha1() {
-      ::grpc::Service::MarkMethodStreamed(28,
-        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::StartWorkflowRequest, ::dapr::proto::runtime::v1::WorkflowReference>(std::bind(&WithStreamedUnaryMethod_StartWorkflowAlpha1<BaseClass>::StreamedStartWorkflowAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+      ::grpc::Service::MarkMethodStreamed(40,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::StartWorkflowRequest, ::dapr::proto::runtime::v1::StartWorkflowResponse>(std::bind(&WithStreamedUnaryMethod_StartWorkflowAlpha1<BaseClass>::StreamedStartWorkflowAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_StartWorkflowAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status StartWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::WorkflowReference* response) override {
+    ::grpc::Status StartWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::StartWorkflowRequest* request, ::dapr::proto::runtime::v1::StartWorkflowResponse* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedStartWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::StartWorkflowRequest,::dapr::proto::runtime::v1::WorkflowReference>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedStartWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::StartWorkflowRequest,::dapr::proto::runtime::v1::StartWorkflowResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_GetWorkflowAlpha1 : public BaseClass {
@@ -3282,7 +4786,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_GetWorkflowAlpha1() {
-      ::grpc::Service::MarkMethodStreamed(29,
+      ::grpc::Service::MarkMethodStreamed(41,
         new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::GetWorkflowRequest, ::dapr::proto::runtime::v1::GetWorkflowResponse>(std::bind(&WithStreamedUnaryMethod_GetWorkflowAlpha1<BaseClass>::StreamedGetWorkflowAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_GetWorkflowAlpha1() override {
@@ -3297,24 +4801,104 @@ class Dapr final {
     virtual ::grpc::Status StreamedGetWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::GetWorkflowRequest,::dapr::proto::runtime::v1::GetWorkflowResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_PurgeWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_PurgeWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodStreamed(42,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::PurgeWorkflowRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_PurgeWorkflowAlpha1<BaseClass>::StreamedPurgeWorkflowAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_PurgeWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status PurgeWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::PurgeWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedPurgeWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::PurgeWorkflowRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_TerminateWorkflowAlpha1 : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_TerminateWorkflowAlpha1() {
-      ::grpc::Service::MarkMethodStreamed(30,
-        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::TerminateWorkflowRequest, ::dapr::proto::runtime::v1::TerminateWorkflowResponse>(std::bind(&WithStreamedUnaryMethod_TerminateWorkflowAlpha1<BaseClass>::StreamedTerminateWorkflowAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+      ::grpc::Service::MarkMethodStreamed(43,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::TerminateWorkflowRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_TerminateWorkflowAlpha1<BaseClass>::StreamedTerminateWorkflowAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_TerminateWorkflowAlpha1() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status TerminateWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::dapr::proto::runtime::v1::TerminateWorkflowResponse* response) override {
+    ::grpc::Status TerminateWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::TerminateWorkflowRequest* request, ::google::protobuf::Empty* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedTerminateWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::TerminateWorkflowRequest,::dapr::proto::runtime::v1::TerminateWorkflowResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedTerminateWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::TerminateWorkflowRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_PauseWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_PauseWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodStreamed(44,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::PauseWorkflowRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_PauseWorkflowAlpha1<BaseClass>::StreamedPauseWorkflowAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_PauseWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status PauseWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::PauseWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedPauseWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::PauseWorkflowRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_ResumeWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_ResumeWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodStreamed(45,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::ResumeWorkflowRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_ResumeWorkflowAlpha1<BaseClass>::StreamedResumeWorkflowAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_ResumeWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status ResumeWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::ResumeWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedResumeWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::ResumeWorkflowRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_RaiseEventWorkflowAlpha1 : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_RaiseEventWorkflowAlpha1() {
+      ::grpc::Service::MarkMethodStreamed(46,
+        new ::grpc::internal::StreamedUnaryHandler< ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_RaiseEventWorkflowAlpha1<BaseClass>::StreamedRaiseEventWorkflowAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_RaiseEventWorkflowAlpha1() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status RaiseEventWorkflowAlpha1(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest* request, ::google::protobuf::Empty* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedRaiseEventWorkflowAlpha1(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::dapr::proto::runtime::v1::RaiseEventWorkflowRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_Shutdown : public BaseClass {
@@ -3322,7 +4906,7 @@ class Dapr final {
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithStreamedUnaryMethod_Shutdown() {
-      ::grpc::Service::MarkMethodStreamed(31,
+      ::grpc::Service::MarkMethodStreamed(47,
         new ::grpc::internal::StreamedUnaryHandler< ::google::protobuf::Empty, ::google::protobuf::Empty>(std::bind(&WithStreamedUnaryMethod_Shutdown<BaseClass>::StreamedShutdown, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_Shutdown() override {
@@ -3336,14 +4920,14 @@ class Dapr final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedShutdown(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_InvokeService<WithStreamedUnaryMethod_GetState<WithStreamedUnaryMethod_GetBulkState<WithStreamedUnaryMethod_SaveState<WithStreamedUnaryMethod_QueryStateAlpha1<WithStreamedUnaryMethod_DeleteState<WithStreamedUnaryMethod_DeleteBulkState<WithStreamedUnaryMethod_ExecuteStateTransaction<WithStreamedUnaryMethod_PublishEvent<WithStreamedUnaryMethod_BulkPublishEventAlpha1<WithStreamedUnaryMethod_InvokeBinding<WithStreamedUnaryMethod_GetSecret<WithStreamedUnaryMethod_GetBulkSecret<WithStreamedUnaryMethod_RegisterActorTimer<WithStreamedUnaryMethod_UnregisterActorTimer<WithStreamedUnaryMethod_RegisterActorReminder<WithStreamedUnaryMethod_UnregisterActorReminder<WithStreamedUnaryMethod_RenameActorReminder<WithStreamedUnaryMethod_GetActorState<WithStreamedUnaryMethod_ExecuteActorStateTransaction<WithStreamedUnaryMethod_InvokeActor<WithStreamedUnaryMethod_GetConfigurationAlpha1<WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1<WithStreamedUnaryMethod_TryLockAlpha1<WithStreamedUnaryMethod_UnlockAlpha1<WithStreamedUnaryMethod_GetMetadata<WithStreamedUnaryMethod_SetMetadata<WithStreamedUnaryMethod_StartWorkflowAlpha1<WithStreamedUnaryMethod_GetWorkflowAlpha1<WithStreamedUnaryMethod_TerminateWorkflowAlpha1<WithStreamedUnaryMethod_Shutdown<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_InvokeService<WithStreamedUnaryMethod_GetState<WithStreamedUnaryMethod_GetBulkState<WithStreamedUnaryMethod_SaveState<WithStreamedUnaryMethod_QueryStateAlpha1<WithStreamedUnaryMethod_DeleteState<WithStreamedUnaryMethod_DeleteBulkState<WithStreamedUnaryMethod_ExecuteStateTransaction<WithStreamedUnaryMethod_PublishEvent<WithStreamedUnaryMethod_BulkPublishEventAlpha1<WithStreamedUnaryMethod_InvokeBinding<WithStreamedUnaryMethod_GetSecret<WithStreamedUnaryMethod_GetBulkSecret<WithStreamedUnaryMethod_RegisterActorTimer<WithStreamedUnaryMethod_UnregisterActorTimer<WithStreamedUnaryMethod_RegisterActorReminder<WithStreamedUnaryMethod_UnregisterActorReminder<WithStreamedUnaryMethod_RenameActorReminder<WithStreamedUnaryMethod_GetActorState<WithStreamedUnaryMethod_ExecuteActorStateTransaction<WithStreamedUnaryMethod_InvokeActor<WithStreamedUnaryMethod_GetConfigurationAlpha1<WithStreamedUnaryMethod_GetConfiguration<WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1<WithStreamedUnaryMethod_UnsubscribeConfiguration<WithStreamedUnaryMethod_TryLockAlpha1<WithStreamedUnaryMethod_UnlockAlpha1<WithStreamedUnaryMethod_GetMetadata<WithStreamedUnaryMethod_SetMetadata<WithStreamedUnaryMethod_SubtleGetKeyAlpha1<WithStreamedUnaryMethod_SubtleEncryptAlpha1<WithStreamedUnaryMethod_SubtleDecryptAlpha1<WithStreamedUnaryMethod_SubtleWrapKeyAlpha1<WithStreamedUnaryMethod_SubtleUnwrapKeyAlpha1<WithStreamedUnaryMethod_SubtleSignAlpha1<WithStreamedUnaryMethod_SubtleVerifyAlpha1<WithStreamedUnaryMethod_StartWorkflowAlpha1<WithStreamedUnaryMethod_GetWorkflowAlpha1<WithStreamedUnaryMethod_PurgeWorkflowAlpha1<WithStreamedUnaryMethod_TerminateWorkflowAlpha1<WithStreamedUnaryMethod_PauseWorkflowAlpha1<WithStreamedUnaryMethod_ResumeWorkflowAlpha1<WithStreamedUnaryMethod_RaiseEventWorkflowAlpha1<WithStreamedUnaryMethod_Shutdown<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_SubscribeConfigurationAlpha1 : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
     WithSplitStreamingMethod_SubscribeConfigurationAlpha1() {
-      ::grpc::Service::MarkMethodStreamed(22,
+      ::grpc::Service::MarkMethodStreamed(23,
         new ::grpc::internal::SplitServerStreamingHandler< ::dapr::proto::runtime::v1::SubscribeConfigurationRequest, ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>(std::bind(&WithSplitStreamingMethod_SubscribeConfigurationAlpha1<BaseClass>::StreamedSubscribeConfigurationAlpha1, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithSplitStreamingMethod_SubscribeConfigurationAlpha1() override {
@@ -3357,8 +4941,28 @@ class Dapr final {
     // replace default version of method with split streamed
     virtual ::grpc::Status StreamedSubscribeConfigurationAlpha1(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::dapr::proto::runtime::v1::SubscribeConfigurationRequest,::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_SubscribeConfigurationAlpha1<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_InvokeService<WithStreamedUnaryMethod_GetState<WithStreamedUnaryMethod_GetBulkState<WithStreamedUnaryMethod_SaveState<WithStreamedUnaryMethod_QueryStateAlpha1<WithStreamedUnaryMethod_DeleteState<WithStreamedUnaryMethod_DeleteBulkState<WithStreamedUnaryMethod_ExecuteStateTransaction<WithStreamedUnaryMethod_PublishEvent<WithStreamedUnaryMethod_BulkPublishEventAlpha1<WithStreamedUnaryMethod_InvokeBinding<WithStreamedUnaryMethod_GetSecret<WithStreamedUnaryMethod_GetBulkSecret<WithStreamedUnaryMethod_RegisterActorTimer<WithStreamedUnaryMethod_UnregisterActorTimer<WithStreamedUnaryMethod_RegisterActorReminder<WithStreamedUnaryMethod_UnregisterActorReminder<WithStreamedUnaryMethod_RenameActorReminder<WithStreamedUnaryMethod_GetActorState<WithStreamedUnaryMethod_ExecuteActorStateTransaction<WithStreamedUnaryMethod_InvokeActor<WithStreamedUnaryMethod_GetConfigurationAlpha1<WithSplitStreamingMethod_SubscribeConfigurationAlpha1<WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1<WithStreamedUnaryMethod_TryLockAlpha1<WithStreamedUnaryMethod_UnlockAlpha1<WithStreamedUnaryMethod_GetMetadata<WithStreamedUnaryMethod_SetMetadata<WithStreamedUnaryMethod_StartWorkflowAlpha1<WithStreamedUnaryMethod_GetWorkflowAlpha1<WithStreamedUnaryMethod_TerminateWorkflowAlpha1<WithStreamedUnaryMethod_Shutdown<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_SubscribeConfiguration : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithSplitStreamingMethod_SubscribeConfiguration() {
+      ::grpc::Service::MarkMethodStreamed(24,
+        new ::grpc::internal::SplitServerStreamingHandler< ::dapr::proto::runtime::v1::SubscribeConfigurationRequest, ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>(std::bind(&WithSplitStreamingMethod_SubscribeConfiguration<BaseClass>::StreamedSubscribeConfiguration, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithSplitStreamingMethod_SubscribeConfiguration() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubscribeConfiguration(::grpc::ServerContext* context, const ::dapr::proto::runtime::v1::SubscribeConfigurationRequest* request, ::grpc::ServerWriter< ::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* writer) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedSubscribeConfiguration(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::dapr::proto::runtime::v1::SubscribeConfigurationRequest,::dapr::proto::runtime::v1::SubscribeConfigurationResponse>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_SubscribeConfigurationAlpha1<WithSplitStreamingMethod_SubscribeConfiguration<Service > > SplitStreamedService;
+  typedef WithStreamedUnaryMethod_InvokeService<WithStreamedUnaryMethod_GetState<WithStreamedUnaryMethod_GetBulkState<WithStreamedUnaryMethod_SaveState<WithStreamedUnaryMethod_QueryStateAlpha1<WithStreamedUnaryMethod_DeleteState<WithStreamedUnaryMethod_DeleteBulkState<WithStreamedUnaryMethod_ExecuteStateTransaction<WithStreamedUnaryMethod_PublishEvent<WithStreamedUnaryMethod_BulkPublishEventAlpha1<WithStreamedUnaryMethod_InvokeBinding<WithStreamedUnaryMethod_GetSecret<WithStreamedUnaryMethod_GetBulkSecret<WithStreamedUnaryMethod_RegisterActorTimer<WithStreamedUnaryMethod_UnregisterActorTimer<WithStreamedUnaryMethod_RegisterActorReminder<WithStreamedUnaryMethod_UnregisterActorReminder<WithStreamedUnaryMethod_RenameActorReminder<WithStreamedUnaryMethod_GetActorState<WithStreamedUnaryMethod_ExecuteActorStateTransaction<WithStreamedUnaryMethod_InvokeActor<WithStreamedUnaryMethod_GetConfigurationAlpha1<WithStreamedUnaryMethod_GetConfiguration<WithSplitStreamingMethod_SubscribeConfigurationAlpha1<WithSplitStreamingMethod_SubscribeConfiguration<WithStreamedUnaryMethod_UnsubscribeConfigurationAlpha1<WithStreamedUnaryMethod_UnsubscribeConfiguration<WithStreamedUnaryMethod_TryLockAlpha1<WithStreamedUnaryMethod_UnlockAlpha1<WithStreamedUnaryMethod_GetMetadata<WithStreamedUnaryMethod_SetMetadata<WithStreamedUnaryMethod_SubtleGetKeyAlpha1<WithStreamedUnaryMethod_SubtleEncryptAlpha1<WithStreamedUnaryMethod_SubtleDecryptAlpha1<WithStreamedUnaryMethod_SubtleWrapKeyAlpha1<WithStreamedUnaryMethod_SubtleUnwrapKeyAlpha1<WithStreamedUnaryMethod_SubtleSignAlpha1<WithStreamedUnaryMethod_SubtleVerifyAlpha1<WithStreamedUnaryMethod_StartWorkflowAlpha1<WithStreamedUnaryMethod_GetWorkflowAlpha1<WithStreamedUnaryMethod_PurgeWorkflowAlpha1<WithStreamedUnaryMethod_TerminateWorkflowAlpha1<WithStreamedUnaryMethod_PauseWorkflowAlpha1<WithStreamedUnaryMethod_ResumeWorkflowAlpha1<WithStreamedUnaryMethod_RaiseEventWorkflowAlpha1<WithStreamedUnaryMethod_Shutdown<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace v1
