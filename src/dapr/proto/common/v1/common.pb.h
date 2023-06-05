@@ -719,18 +719,18 @@ class StreamPayload : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::std::string* release_data();
   void set_allocated_data(::std::string* data);
 
-  // uint32 seq = 2;
+  // uint64 seq = 2;
   void clear_seq();
   static const int kSeqFieldNumber = 2;
-  ::google::protobuf::uint32 seq() const;
-  void set_seq(::google::protobuf::uint32 value);
+  ::google::protobuf::uint64 seq() const;
+  void set_seq(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:dapr.proto.common.v1.StreamPayload)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr data_;
-  ::google::protobuf::uint32 seq_;
+  ::google::protobuf::uint64 seq_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::TableStruct;
 };
@@ -1815,15 +1815,15 @@ inline void StreamPayload::set_allocated_data(::std::string* data) {
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.common.v1.StreamPayload.data)
 }
 
-// uint32 seq = 2;
+// uint64 seq = 2;
 inline void StreamPayload::clear_seq() {
-  seq_ = 0u;
+  seq_ = GOOGLE_ULONGLONG(0);
 }
-inline ::google::protobuf::uint32 StreamPayload::seq() const {
+inline ::google::protobuf::uint64 StreamPayload::seq() const {
   // @@protoc_insertion_point(field_get:dapr.proto.common.v1.StreamPayload.seq)
   return seq_;
 }
-inline void StreamPayload::set_seq(::google::protobuf::uint32 value) {
+inline void StreamPayload::set_seq(::google::protobuf::uint64 value) {
   
   seq_ = value;
   // @@protoc_insertion_point(field_set:dapr.proto.common.v1.StreamPayload.seq)

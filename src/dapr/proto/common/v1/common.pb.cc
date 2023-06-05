@@ -391,7 +391,7 @@ void AddDescriptorsImpl() {
       "xtension\"J\n\016InvokeResponse\022\"\n\004data\030\001 \001(\013"
       "2\024.google.protobuf.Any\022\024\n\014content_type\030\002"
       " \001(\t\"*\n\rStreamPayload\022\014\n\004data\030\001 \001(\014\022\013\n\003s"
-      "eq\030\002 \001(\r\"\370\001\n\tStateItem\022\013\n\003key\030\001 \001(\t\022\r\n\005v"
+      "eq\030\002 \001(\004\"\370\001\n\tStateItem\022\013\n\003key\030\001 \001(\t\022\r\n\005v"
       "alue\030\002 \001(\014\022(\n\004etag\030\003 \001(\0132\032.dapr.proto.co"
       "mmon.v1.Etag\022\?\n\010metadata\030\004 \003(\0132-.dapr.pr"
       "oto.common.v1.StateItem.MetadataEntry\0223\n"
@@ -1540,7 +1540,7 @@ StreamPayload::StreamPayload(const StreamPayload& from)
 
 void StreamPayload::SharedCtor() {
   data_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  seq_ = 0u;
+  seq_ = GOOGLE_ULONGLONG(0);
 }
 
 StreamPayload::~StreamPayload() {
@@ -1573,7 +1573,7 @@ void StreamPayload::Clear() {
   (void) cached_has_bits;
 
   data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  seq_ = 0u;
+  seq_ = GOOGLE_ULONGLONG(0);
   _internal_metadata_.Clear();
 }
 
@@ -1599,13 +1599,13 @@ bool StreamPayload::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 seq = 2;
+      // uint64 seq = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &seq_)));
         } else {
           goto handle_unusual;
@@ -1645,9 +1645,9 @@ void StreamPayload::SerializeWithCachedSizes(
       1, this->data(), output);
   }
 
-  // uint32 seq = 2;
+  // uint64 seq = 2;
   if (this->seq() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->seq(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->seq(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1671,9 +1671,9 @@ void StreamPayload::SerializeWithCachedSizes(
         1, this->data(), target);
   }
 
-  // uint32 seq = 2;
+  // uint64 seq = 2;
   if (this->seq() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->seq(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->seq(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1700,10 +1700,10 @@ size_t StreamPayload::ByteSizeLong() const {
         this->data());
   }
 
-  // uint32 seq = 2;
+  // uint64 seq = 2;
   if (this->seq() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->seq());
   }
 
