@@ -10,6 +10,16 @@ Alpha quality.
 2. Install [VSCode](https://code.visualstudio.com/download)
 3. Install [VSCode Remote - Container extension](https://code.visualstudio.com/docs/remote/containers)
 
+Alternatively, you can build the image yourself, based on the Dockerfile in the repository:
+```bash
+docker build -t cppsdk .
+```
+
+Then you can access the container's shell and execute commands in it:
+```bash
+docker run -it -v $(pwd):/sdk cppsdk /bin/bash
+```
+
 ### To refresh .proto files from upstream dapr
 
 1. Rebuild and commit generated API
