@@ -4,828 +4,925 @@
 #include "dapr/proto/runtime/v1/appcallback.pb.h"
 
 #include <algorithm>
-
-#include <google/protobuf/stubs/common.h>
-#include <google/protobuf/stubs/port.h>
-#include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/wire_format_lite_inl.h>
-#include <google/protobuf/descriptor.h>
-#include <google/protobuf/generated_message_reflection.h>
-#include <google/protobuf/reflection_ops.h>
-#include <google/protobuf/wire_format.h>
-// This is a temporary google only hack
-#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
-#include "third_party/protobuf/version.h"
-#endif
+#include "google/protobuf/io/coded_stream.h"
+#include "google/protobuf/extension_set.h"
+#include "google/protobuf/wire_format_lite.h"
+#include "google/protobuf/descriptor.h"
+#include "google/protobuf/generated_message_reflection.h"
+#include "google/protobuf/reflection_ops.h"
+#include "google/protobuf/wire_format.h"
+#include "google/protobuf/generated_message_tctable_impl.h"
 // @@protoc_insertion_point(includes)
 
-namespace protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto ::google::protobuf::internal::SCCInfo<3> scc_info_StateItem;
-}  // namespace protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto
-namespace protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_BindingEventRequest_MetadataEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_BulkSubscribeConfig;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_TopicEventBulkRequestEntry_MetadataEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_TopicEventBulkRequest_MetadataEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_TopicEventBulkResponseEntry;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_TopicRule;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_TopicSubscription_MetadataEntry_DoNotUse;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_TopicEventCERequest;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_TopicRoutes;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_TopicEventBulkRequestEntry;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto ::google::protobuf::internal::SCCInfo<3> scc_info_TopicSubscription;
-}  // namespace protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto
-namespace protobuf_google_2fprotobuf_2fstruct_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_google_2fprotobuf_2fstruct_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_ListValue;
-}  // namespace protobuf_google_2fprotobuf_2fstruct_2eproto
+// Must be included last.
+#include "google/protobuf/port_def.inc"
+PROTOBUF_PRAGMA_INIT_SEG
+namespace _pb = ::google::protobuf;
+namespace _pbi = ::google::protobuf::internal;
+namespace _fl = ::google::protobuf::internal::field_layout;
 namespace dapr {
 namespace proto {
 namespace runtime {
 namespace v1 {
-class TopicEventRequestDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TopicEventRequest>
-      _instance;
-} _TopicEventRequest_default_instance_;
-class TopicEventResponseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TopicEventResponse>
-      _instance;
-} _TopicEventResponse_default_instance_;
-class TopicEventCERequestDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TopicEventCERequest>
-      _instance;
-} _TopicEventCERequest_default_instance_;
-class TopicEventBulkRequestEntry_MetadataEntry_DoNotUseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TopicEventBulkRequestEntry_MetadataEntry_DoNotUse>
-      _instance;
-} _TopicEventBulkRequestEntry_MetadataEntry_DoNotUse_default_instance_;
-class TopicEventBulkRequestEntryDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TopicEventBulkRequestEntry>
-      _instance;
-  ::google::protobuf::internal::ArenaStringPtr bytes_;
-  const ::dapr::proto::runtime::v1::TopicEventCERequest* cloud_event_;
-} _TopicEventBulkRequestEntry_default_instance_;
-class TopicEventBulkRequest_MetadataEntry_DoNotUseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TopicEventBulkRequest_MetadataEntry_DoNotUse>
-      _instance;
-} _TopicEventBulkRequest_MetadataEntry_DoNotUse_default_instance_;
-class TopicEventBulkRequestDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TopicEventBulkRequest>
-      _instance;
-} _TopicEventBulkRequest_default_instance_;
-class TopicEventBulkResponseEntryDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TopicEventBulkResponseEntry>
-      _instance;
-} _TopicEventBulkResponseEntry_default_instance_;
-class TopicEventBulkResponseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TopicEventBulkResponse>
-      _instance;
-} _TopicEventBulkResponse_default_instance_;
-class BindingEventRequest_MetadataEntry_DoNotUseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<BindingEventRequest_MetadataEntry_DoNotUse>
-      _instance;
-} _BindingEventRequest_MetadataEntry_DoNotUse_default_instance_;
-class BindingEventRequestDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<BindingEventRequest>
-      _instance;
-} _BindingEventRequest_default_instance_;
-class BindingEventResponseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<BindingEventResponse>
-      _instance;
-} _BindingEventResponse_default_instance_;
-class ListTopicSubscriptionsResponseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<ListTopicSubscriptionsResponse>
-      _instance;
-} _ListTopicSubscriptionsResponse_default_instance_;
-class TopicSubscription_MetadataEntry_DoNotUseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TopicSubscription_MetadataEntry_DoNotUse>
-      _instance;
-} _TopicSubscription_MetadataEntry_DoNotUse_default_instance_;
-class TopicSubscriptionDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TopicSubscription>
-      _instance;
-} _TopicSubscription_default_instance_;
-class TopicRoutesDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TopicRoutes>
-      _instance;
-} _TopicRoutes_default_instance_;
-class TopicRuleDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TopicRule>
-      _instance;
-} _TopicRule_default_instance_;
-class BulkSubscribeConfigDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<BulkSubscribeConfig>
-      _instance;
-} _BulkSubscribeConfig_default_instance_;
-class ListInputBindingsResponseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<ListInputBindingsResponse>
-      _instance;
-} _ListInputBindingsResponse_default_instance_;
-class HealthCheckResponseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<HealthCheckResponse>
-      _instance;
-} _HealthCheckResponse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR TopicEventRequest::TopicEventRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.source_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.type_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.spec_version_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.data_content_type_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.topic_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.data_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.pubsub_name_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.path_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.extensions_)*/ nullptr,
+    } {}
+struct TopicEventRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TopicEventRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TopicEventRequestDefaultTypeInternal() {}
+  union {
+    TopicEventRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TopicEventRequestDefaultTypeInternal _TopicEventRequest_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR TopicEventResponse::TopicEventResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.status_)*/ 0,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct TopicEventResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TopicEventResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TopicEventResponseDefaultTypeInternal() {}
+  union {
+    TopicEventResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TopicEventResponseDefaultTypeInternal _TopicEventResponse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR TopicEventCERequest::TopicEventCERequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.source_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.type_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.spec_version_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.data_content_type_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.data_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.extensions_)*/ nullptr,
+    } {}
+struct TopicEventCERequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TopicEventCERequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TopicEventCERequestDefaultTypeInternal() {}
+  union {
+    TopicEventCERequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TopicEventCERequestDefaultTypeInternal _TopicEventCERequest_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR TopicEventBulkRequestEntry_MetadataEntry_DoNotUse::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse(::_pbi::ConstantInitialized) {}
+struct TopicEventBulkRequestEntry_MetadataEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TopicEventBulkRequestEntry_MetadataEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TopicEventBulkRequestEntry_MetadataEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    TopicEventBulkRequestEntry_MetadataEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TopicEventBulkRequestEntry_MetadataEntry_DoNotUseDefaultTypeInternal _TopicEventBulkRequestEntry_MetadataEntry_DoNotUse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR TopicEventBulkRequestEntry::TopicEventBulkRequestEntry(::_pbi::ConstantInitialized)
+    : _impl_{
+      /* decltype(_impl_.metadata_) */ {},
+      /*decltype(_impl_.entry_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.content_type_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.event_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_._oneof_case_)*/ {},
+    } {}
+struct TopicEventBulkRequestEntryDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TopicEventBulkRequestEntryDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TopicEventBulkRequestEntryDefaultTypeInternal() {}
+  union {
+    TopicEventBulkRequestEntry _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TopicEventBulkRequestEntryDefaultTypeInternal _TopicEventBulkRequestEntry_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR TopicEventBulkRequest_MetadataEntry_DoNotUse::TopicEventBulkRequest_MetadataEntry_DoNotUse(::_pbi::ConstantInitialized) {}
+struct TopicEventBulkRequest_MetadataEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TopicEventBulkRequest_MetadataEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TopicEventBulkRequest_MetadataEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    TopicEventBulkRequest_MetadataEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TopicEventBulkRequest_MetadataEntry_DoNotUseDefaultTypeInternal _TopicEventBulkRequest_MetadataEntry_DoNotUse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR TopicEventBulkRequest::TopicEventBulkRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.entries_)*/ {},
+      /* decltype(_impl_.metadata_) */ {},
+      /*decltype(_impl_.id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.topic_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.pubsub_name_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.type_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.path_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct TopicEventBulkRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TopicEventBulkRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TopicEventBulkRequestDefaultTypeInternal() {}
+  union {
+    TopicEventBulkRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TopicEventBulkRequestDefaultTypeInternal _TopicEventBulkRequest_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR TopicEventBulkResponseEntry::TopicEventBulkResponseEntry(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.entry_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.status_)*/ 0,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct TopicEventBulkResponseEntryDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TopicEventBulkResponseEntryDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TopicEventBulkResponseEntryDefaultTypeInternal() {}
+  union {
+    TopicEventBulkResponseEntry _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TopicEventBulkResponseEntryDefaultTypeInternal _TopicEventBulkResponseEntry_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR TopicEventBulkResponse::TopicEventBulkResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.statuses_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct TopicEventBulkResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TopicEventBulkResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TopicEventBulkResponseDefaultTypeInternal() {}
+  union {
+    TopicEventBulkResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TopicEventBulkResponseDefaultTypeInternal _TopicEventBulkResponse_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR BindingEventRequest_MetadataEntry_DoNotUse::BindingEventRequest_MetadataEntry_DoNotUse(::_pbi::ConstantInitialized) {}
+struct BindingEventRequest_MetadataEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR BindingEventRequest_MetadataEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~BindingEventRequest_MetadataEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    BindingEventRequest_MetadataEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BindingEventRequest_MetadataEntry_DoNotUseDefaultTypeInternal _BindingEventRequest_MetadataEntry_DoNotUse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR BindingEventRequest::BindingEventRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /* decltype(_impl_.metadata_) */ {},
+      /*decltype(_impl_.name_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.data_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct BindingEventRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR BindingEventRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~BindingEventRequestDefaultTypeInternal() {}
+  union {
+    BindingEventRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BindingEventRequestDefaultTypeInternal _BindingEventRequest_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR BindingEventResponse::BindingEventResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.states_)*/ {},
+      /*decltype(_impl_.to_)*/ {},
+      /*decltype(_impl_.store_name_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.data_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.concurrency_)*/ 0,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct BindingEventResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR BindingEventResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~BindingEventResponseDefaultTypeInternal() {}
+  union {
+    BindingEventResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BindingEventResponseDefaultTypeInternal _BindingEventResponse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR ListTopicSubscriptionsResponse::ListTopicSubscriptionsResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.subscriptions_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct ListTopicSubscriptionsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ListTopicSubscriptionsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ListTopicSubscriptionsResponseDefaultTypeInternal() {}
+  union {
+    ListTopicSubscriptionsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ListTopicSubscriptionsResponseDefaultTypeInternal _ListTopicSubscriptionsResponse_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR TopicSubscription_MetadataEntry_DoNotUse::TopicSubscription_MetadataEntry_DoNotUse(::_pbi::ConstantInitialized) {}
+struct TopicSubscription_MetadataEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TopicSubscription_MetadataEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TopicSubscription_MetadataEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    TopicSubscription_MetadataEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TopicSubscription_MetadataEntry_DoNotUseDefaultTypeInternal _TopicSubscription_MetadataEntry_DoNotUse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR TopicSubscription::TopicSubscription(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /* decltype(_impl_.metadata_) */ {},
+      /*decltype(_impl_.pubsub_name_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.topic_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.dead_letter_topic_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.routes_)*/ nullptr,
+      /*decltype(_impl_.bulk_subscribe_)*/ nullptr,
+    } {}
+struct TopicSubscriptionDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TopicSubscriptionDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TopicSubscriptionDefaultTypeInternal() {}
+  union {
+    TopicSubscription _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TopicSubscriptionDefaultTypeInternal _TopicSubscription_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR TopicRoutes::TopicRoutes(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.rules_)*/ {},
+      /*decltype(_impl_.default__)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct TopicRoutesDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TopicRoutesDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TopicRoutesDefaultTypeInternal() {}
+  union {
+    TopicRoutes _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TopicRoutesDefaultTypeInternal _TopicRoutes_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR TopicRule::TopicRule(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.match_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.path_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct TopicRuleDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TopicRuleDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TopicRuleDefaultTypeInternal() {}
+  union {
+    TopicRule _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TopicRuleDefaultTypeInternal _TopicRule_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR BulkSubscribeConfig::BulkSubscribeConfig(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.enabled_)*/ false,
+      /*decltype(_impl_.max_messages_count_)*/ 0,
+      /*decltype(_impl_.max_await_duration_ms_)*/ 0,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct BulkSubscribeConfigDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR BulkSubscribeConfigDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~BulkSubscribeConfigDefaultTypeInternal() {}
+  union {
+    BulkSubscribeConfig _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BulkSubscribeConfigDefaultTypeInternal _BulkSubscribeConfig_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR ListInputBindingsResponse::ListInputBindingsResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.bindings_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct ListInputBindingsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ListInputBindingsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ListInputBindingsResponseDefaultTypeInternal() {}
+  union {
+    ListInputBindingsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ListInputBindingsResponseDefaultTypeInternal _ListInputBindingsResponse_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR HealthCheckResponse::HealthCheckResponse(::_pbi::ConstantInitialized) {}
+struct HealthCheckResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR HealthCheckResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~HealthCheckResponseDefaultTypeInternal() {}
+  union {
+    HealthCheckResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HealthCheckResponseDefaultTypeInternal _HealthCheckResponse_default_instance_;
 }  // namespace v1
 }  // namespace runtime
 }  // namespace proto
 }  // namespace dapr
-namespace protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto {
-static void InitDefaultsTopicEventRequest() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_TopicEventRequest_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::TopicEventRequest();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::TopicEventRequest::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_TopicEventRequest =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsTopicEventRequest}, {
-      &protobuf_google_2fprotobuf_2fstruct_2eproto::scc_info_ListValue.base,}};
-
-static void InitDefaultsTopicEventResponse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_TopicEventResponse_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::TopicEventResponse();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::TopicEventResponse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_TopicEventResponse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTopicEventResponse}, {}};
-
-static void InitDefaultsTopicEventCERequest() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_TopicEventCERequest_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::TopicEventCERequest();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::TopicEventCERequest::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_TopicEventCERequest =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsTopicEventCERequest}, {
-      &protobuf_google_2fprotobuf_2fstruct_2eproto::scc_info_ListValue.base,}};
-
-static void InitDefaultsTopicEventBulkRequestEntry_MetadataEntry_DoNotUse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_TopicEventBulkRequestEntry_MetadataEntry_DoNotUse_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse();
-  }
-  ::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_TopicEventBulkRequestEntry_MetadataEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTopicEventBulkRequestEntry_MetadataEntry_DoNotUse}, {}};
-
-static void InitDefaultsTopicEventBulkRequestEntry() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_TopicEventBulkRequestEntry_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::TopicEventBulkRequestEntry();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::TopicEventBulkRequestEntry::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<2> scc_info_TopicEventBulkRequestEntry =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsTopicEventBulkRequestEntry}, {
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventCERequest.base,
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventBulkRequestEntry_MetadataEntry_DoNotUse.base,}};
-
-static void InitDefaultsTopicEventBulkRequest_MetadataEntry_DoNotUse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_TopicEventBulkRequest_MetadataEntry_DoNotUse_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse();
-  }
-  ::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_TopicEventBulkRequest_MetadataEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTopicEventBulkRequest_MetadataEntry_DoNotUse}, {}};
-
-static void InitDefaultsTopicEventBulkRequest() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_TopicEventBulkRequest_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::TopicEventBulkRequest();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::TopicEventBulkRequest::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<2> scc_info_TopicEventBulkRequest =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsTopicEventBulkRequest}, {
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventBulkRequestEntry.base,
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventBulkRequest_MetadataEntry_DoNotUse.base,}};
-
-static void InitDefaultsTopicEventBulkResponseEntry() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_TopicEventBulkResponseEntry_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::TopicEventBulkResponseEntry();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::TopicEventBulkResponseEntry::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_TopicEventBulkResponseEntry =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTopicEventBulkResponseEntry}, {}};
-
-static void InitDefaultsTopicEventBulkResponse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_TopicEventBulkResponse_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::TopicEventBulkResponse();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::TopicEventBulkResponse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_TopicEventBulkResponse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsTopicEventBulkResponse}, {
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventBulkResponseEntry.base,}};
-
-static void InitDefaultsBindingEventRequest_MetadataEntry_DoNotUse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_BindingEventRequest_MetadataEntry_DoNotUse_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse();
-  }
-  ::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_BindingEventRequest_MetadataEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsBindingEventRequest_MetadataEntry_DoNotUse}, {}};
-
-static void InitDefaultsBindingEventRequest() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_BindingEventRequest_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::BindingEventRequest();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::BindingEventRequest::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_BindingEventRequest =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsBindingEventRequest}, {
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_BindingEventRequest_MetadataEntry_DoNotUse.base,}};
-
-static void InitDefaultsBindingEventResponse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_BindingEventResponse_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::BindingEventResponse();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::BindingEventResponse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_BindingEventResponse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsBindingEventResponse}, {
-      &protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::scc_info_StateItem.base,}};
-
-static void InitDefaultsListTopicSubscriptionsResponse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_ListTopicSubscriptionsResponse_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_ListTopicSubscriptionsResponse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsListTopicSubscriptionsResponse}, {
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicSubscription.base,}};
-
-static void InitDefaultsTopicSubscription_MetadataEntry_DoNotUse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_TopicSubscription_MetadataEntry_DoNotUse_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse();
-  }
-  ::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_TopicSubscription_MetadataEntry_DoNotUse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTopicSubscription_MetadataEntry_DoNotUse}, {}};
-
-static void InitDefaultsTopicSubscription() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_TopicSubscription_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::TopicSubscription();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::TopicSubscription::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<3> scc_info_TopicSubscription =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 3, InitDefaultsTopicSubscription}, {
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicSubscription_MetadataEntry_DoNotUse.base,
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicRoutes.base,
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_BulkSubscribeConfig.base,}};
-
-static void InitDefaultsTopicRoutes() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_TopicRoutes_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::TopicRoutes();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::TopicRoutes::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_TopicRoutes =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsTopicRoutes}, {
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicRule.base,}};
-
-static void InitDefaultsTopicRule() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_TopicRule_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::TopicRule();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::TopicRule::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_TopicRule =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTopicRule}, {}};
-
-static void InitDefaultsBulkSubscribeConfig() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_BulkSubscribeConfig_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::BulkSubscribeConfig();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::BulkSubscribeConfig::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_BulkSubscribeConfig =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsBulkSubscribeConfig}, {}};
-
-static void InitDefaultsListInputBindingsResponse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_ListInputBindingsResponse_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::ListInputBindingsResponse();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::ListInputBindingsResponse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_ListInputBindingsResponse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsListInputBindingsResponse}, {}};
-
-static void InitDefaultsHealthCheckResponse() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::dapr::proto::runtime::v1::_HealthCheckResponse_default_instance_;
-    new (ptr) ::dapr::proto::runtime::v1::HealthCheckResponse();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::dapr::proto::runtime::v1::HealthCheckResponse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_HealthCheckResponse =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsHealthCheckResponse}, {}};
-
-void InitDefaults() {
-  ::google::protobuf::internal::InitSCC(&scc_info_TopicEventRequest.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TopicEventResponse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TopicEventCERequest.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TopicEventBulkRequestEntry_MetadataEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TopicEventBulkRequestEntry.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TopicEventBulkRequest_MetadataEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TopicEventBulkRequest.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TopicEventBulkResponseEntry.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TopicEventBulkResponse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_BindingEventRequest_MetadataEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_BindingEventRequest.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_BindingEventResponse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_ListTopicSubscriptionsResponse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TopicSubscription_MetadataEntry_DoNotUse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TopicSubscription.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TopicRoutes.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TopicRule.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_BulkSubscribeConfig.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_ListInputBindingsResponse.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_HealthCheckResponse.base);
-}
-
-::google::protobuf::Metadata file_level_metadata[20];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
-
-const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, source_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, spec_version_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, data_content_type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, data_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, topic_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, pubsub_name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, path_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, extensions_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventResponse, status_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, source_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, spec_version_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, data_content_type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, data_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, extensions_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse, value_),
-  0,
-  1,
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry, _internal_metadata_),
-  ~0u,  // no _extensions_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry, _oneof_case_[0]),
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry, entry_id_),
-  offsetof(::dapr::proto::runtime::v1::TopicEventBulkRequestEntryDefaultTypeInternal, bytes_),
-  offsetof(::dapr::proto::runtime::v1::TopicEventBulkRequestEntryDefaultTypeInternal, cloud_event_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry, content_type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry, metadata_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry, event_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse, value_),
-  0,
-  1,
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, entries_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, metadata_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, topic_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, pubsub_name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, path_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkResponseEntry, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkResponseEntry, entry_id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkResponseEntry, status_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkResponse, statuses_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse, value_),
-  0,
-  1,
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest, data_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest, metadata_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventResponse, store_name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventResponse, states_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventResponse, to_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventResponse, data_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventResponse, concurrency_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse, subscriptions_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse, key_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse, value_),
-  0,
-  1,
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, pubsub_name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, topic_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, metadata_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, routes_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, dead_letter_topic_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, bulk_subscribe_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicRoutes, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicRoutes, rules_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicRoutes, default__),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicRule, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicRule, match_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicRule, path_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BulkSubscribeConfig, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BulkSubscribeConfig, enabled_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BulkSubscribeConfig, max_messages_count_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::BulkSubscribeConfig, max_await_duration_ms_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::ListInputBindingsResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::ListInputBindingsResponse, bindings_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::dapr::proto::runtime::v1::HealthCheckResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-};
-static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::dapr::proto::runtime::v1::TopicEventRequest)},
-  { 15, -1, sizeof(::dapr::proto::runtime::v1::TopicEventResponse)},
-  { 21, -1, sizeof(::dapr::proto::runtime::v1::TopicEventCERequest)},
-  { 33, 40, sizeof(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse)},
-  { 42, -1, sizeof(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry)},
-  { 53, 60, sizeof(::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse)},
-  { 62, -1, sizeof(::dapr::proto::runtime::v1::TopicEventBulkRequest)},
-  { 74, -1, sizeof(::dapr::proto::runtime::v1::TopicEventBulkResponseEntry)},
-  { 81, -1, sizeof(::dapr::proto::runtime::v1::TopicEventBulkResponse)},
-  { 87, 94, sizeof(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse)},
-  { 96, -1, sizeof(::dapr::proto::runtime::v1::BindingEventRequest)},
-  { 104, -1, sizeof(::dapr::proto::runtime::v1::BindingEventResponse)},
-  { 114, -1, sizeof(::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse)},
-  { 120, 127, sizeof(::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse)},
-  { 129, -1, sizeof(::dapr::proto::runtime::v1::TopicSubscription)},
-  { 140, -1, sizeof(::dapr::proto::runtime::v1::TopicRoutes)},
-  { 147, -1, sizeof(::dapr::proto::runtime::v1::TopicRule)},
-  { 154, -1, sizeof(::dapr::proto::runtime::v1::BulkSubscribeConfig)},
-  { 162, -1, sizeof(::dapr::proto::runtime::v1::ListInputBindingsResponse)},
-  { 168, -1, sizeof(::dapr::proto::runtime::v1::HealthCheckResponse)},
+static ::_pb::Metadata file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[20];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[2];
+static constexpr const ::_pb::ServiceDescriptor**
+    file_level_service_descriptors_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto = nullptr;
+const ::uint32_t TableStruct_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
+    protodesc_cold) = {
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, _impl_.id_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, _impl_.source_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, _impl_.type_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, _impl_.spec_version_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, _impl_.data_content_type_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, _impl_.data_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, _impl_.topic_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, _impl_.pubsub_name_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, _impl_.path_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventRequest, _impl_.extensions_),
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    0,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventResponse, _impl_.status_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, _impl_.id_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, _impl_.source_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, _impl_.type_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, _impl_.spec_version_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, _impl_.data_content_type_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, _impl_.data_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventCERequest, _impl_.extensions_),
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    ~0u,
+    0,
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse, _has_bits_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse, key_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse, value_),
+    0,
+    1,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry, _internal_metadata_),
+    ~0u,  // no _extensions_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry, _impl_._oneof_case_[0]),
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry, _impl_.entry_id_),
+    ::_pbi::kInvalidFieldOffsetTag,
+    ::_pbi::kInvalidFieldOffsetTag,
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry, _impl_.content_type_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry, _impl_.metadata_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry, _impl_.event_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse, _has_bits_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse, key_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse, value_),
+    0,
+    1,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, _impl_.id_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, _impl_.entries_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, _impl_.metadata_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, _impl_.topic_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, _impl_.pubsub_name_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, _impl_.type_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequest, _impl_.path_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkResponseEntry, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkResponseEntry, _impl_.entry_id_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkResponseEntry, _impl_.status_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkResponse, _impl_.statuses_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse, _has_bits_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse, key_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse, value_),
+    0,
+    1,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest, _impl_.name_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest, _impl_.data_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventRequest, _impl_.metadata_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventResponse, _impl_.store_name_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventResponse, _impl_.states_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventResponse, _impl_.to_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventResponse, _impl_.data_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BindingEventResponse, _impl_.concurrency_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse, _impl_.subscriptions_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse, _has_bits_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse, key_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse, value_),
+    0,
+    1,
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, _impl_.pubsub_name_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, _impl_.topic_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, _impl_.metadata_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, _impl_.routes_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, _impl_.dead_letter_topic_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicSubscription, _impl_.bulk_subscribe_),
+    ~0u,
+    ~0u,
+    ~0u,
+    0,
+    ~0u,
+    1,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicRoutes, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicRoutes, _impl_.rules_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicRoutes, _impl_.default__),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicRule, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicRule, _impl_.match_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicRule, _impl_.path_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BulkSubscribeConfig, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BulkSubscribeConfig, _impl_.enabled_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BulkSubscribeConfig, _impl_.max_messages_count_),
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::BulkSubscribeConfig, _impl_.max_await_duration_ms_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::ListInputBindingsResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::ListInputBindingsResponse, _impl_.bindings_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::HealthCheckResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
 };
 
-static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicEventRequest_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicEventResponse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicEventCERequest_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicEventBulkRequestEntry_MetadataEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicEventBulkRequestEntry_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicEventBulkRequest_MetadataEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicEventBulkRequest_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicEventBulkResponseEntry_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicEventBulkResponse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_BindingEventRequest_MetadataEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_BindingEventRequest_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_BindingEventResponse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_ListTopicSubscriptionsResponse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicSubscription_MetadataEntry_DoNotUse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicSubscription_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicRoutes_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_TopicRule_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_BulkSubscribeConfig_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_ListInputBindingsResponse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::dapr::proto::runtime::v1::_HealthCheckResponse_default_instance_),
+static const ::_pbi::MigrationSchema
+    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+        {0, 18, -1, sizeof(::dapr::proto::runtime::v1::TopicEventRequest)},
+        {28, -1, -1, sizeof(::dapr::proto::runtime::v1::TopicEventResponse)},
+        {37, 52, -1, sizeof(::dapr::proto::runtime::v1::TopicEventCERequest)},
+        {59, 69, -1, sizeof(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse)},
+        {71, -1, -1, sizeof(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry)},
+        {85, 95, -1, sizeof(::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse)},
+        {97, -1, -1, sizeof(::dapr::proto::runtime::v1::TopicEventBulkRequest)},
+        {112, -1, -1, sizeof(::dapr::proto::runtime::v1::TopicEventBulkResponseEntry)},
+        {122, -1, -1, sizeof(::dapr::proto::runtime::v1::TopicEventBulkResponse)},
+        {131, 141, -1, sizeof(::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse)},
+        {143, -1, -1, sizeof(::dapr::proto::runtime::v1::BindingEventRequest)},
+        {154, -1, -1, sizeof(::dapr::proto::runtime::v1::BindingEventResponse)},
+        {167, -1, -1, sizeof(::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse)},
+        {176, 186, -1, sizeof(::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse)},
+        {188, 202, -1, sizeof(::dapr::proto::runtime::v1::TopicSubscription)},
+        {208, -1, -1, sizeof(::dapr::proto::runtime::v1::TopicRoutes)},
+        {218, -1, -1, sizeof(::dapr::proto::runtime::v1::TopicRule)},
+        {228, -1, -1, sizeof(::dapr::proto::runtime::v1::BulkSubscribeConfig)},
+        {239, -1, -1, sizeof(::dapr::proto::runtime::v1::ListInputBindingsResponse)},
+        {248, -1, -1, sizeof(::dapr::proto::runtime::v1::HealthCheckResponse)},
 };
 
-void protobuf_AssignDescriptors() {
-  AddDescriptors();
-  AssignDescriptors(
-      "dapr/proto/runtime/v1/appcallback.proto", schemas, file_default_instances, TableStruct::offsets,
-      file_level_metadata, file_level_enum_descriptors, NULL);
-}
+static const ::_pb::Message* const file_default_instances[] = {
+    &::dapr::proto::runtime::v1::_TopicEventRequest_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_TopicEventResponse_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_TopicEventCERequest_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_TopicEventBulkRequestEntry_MetadataEntry_DoNotUse_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_TopicEventBulkRequestEntry_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_TopicEventBulkRequest_MetadataEntry_DoNotUse_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_TopicEventBulkRequest_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_TopicEventBulkResponseEntry_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_TopicEventBulkResponse_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_BindingEventRequest_MetadataEntry_DoNotUse_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_BindingEventRequest_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_BindingEventResponse_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_ListTopicSubscriptionsResponse_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_TopicSubscription_MetadataEntry_DoNotUse_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_TopicSubscription_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_TopicRoutes_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_TopicRule_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_BulkSubscribeConfig_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_ListInputBindingsResponse_default_instance_._instance,
+    &::dapr::proto::runtime::v1::_HealthCheckResponse_default_instance_._instance,
+};
+const char descriptor_table_protodef_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+    "\n\'dapr/proto/runtime/v1/appcallback.prot"
+    "o\022\025dapr.proto.runtime.v1\032\033google/protobu"
+    "f/empty.proto\032!dapr/proto/common/v1/comm"
+    "on.proto\032\034google/protobuf/struct.proto\"\333"
+    "\001\n\021TopicEventRequest\022\n\n\002id\030\001 \001(\t\022\016\n\006sour"
+    "ce\030\002 \001(\t\022\014\n\004type\030\003 \001(\t\022\024\n\014spec_version\030\004"
+    " \001(\t\022\031\n\021data_content_type\030\005 \001(\t\022\014\n\004data\030"
+    "\007 \001(\014\022\r\n\005topic\030\006 \001(\t\022\023\n\013pubsub_name\030\010 \001("
+    "\t\022\014\n\004path\030\t \001(\t\022+\n\nextensions\030\n \001(\0132\027.go"
+    "ogle.protobuf.Struct\"\246\001\n\022TopicEventRespo"
+    "nse\022R\n\006status\030\001 \001(\0162B.dapr.proto.runtime"
+    ".v1.TopicEventResponse.TopicEventRespons"
+    "eStatus\"<\n\030TopicEventResponseStatus\022\013\n\007S"
+    "UCCESS\020\000\022\t\n\005RETRY\020\001\022\010\n\004DROP\020\002\"\253\001\n\023TopicE"
+    "ventCERequest\022\n\n\002id\030\001 \001(\t\022\016\n\006source\030\002 \001("
+    "\t\022\014\n\004type\030\003 \001(\t\022\024\n\014spec_version\030\004 \001(\t\022\031\n"
+    "\021data_content_type\030\005 \001(\t\022\014\n\004data\030\006 \001(\014\022+"
+    "\n\nextensions\030\007 \001(\0132\027.google.protobuf.Str"
+    "uct\"\245\002\n\032TopicEventBulkRequestEntry\022\020\n\010en"
+    "try_id\030\001 \001(\t\022\017\n\005bytes\030\002 \001(\014H\000\022A\n\013cloud_e"
+    "vent\030\003 \001(\0132*.dapr.proto.runtime.v1.Topic"
+    "EventCERequestH\000\022\024\n\014content_type\030\004 \001(\t\022Q"
+    "\n\010metadata\030\005 \003(\0132\?.dapr.proto.runtime.v1"
+    ".TopicEventBulkRequestEntry.MetadataEntr"
+    "y\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value"
+    "\030\002 \001(\t:\0028\001B\007\n\005event\"\246\002\n\025TopicEventBulkRe"
+    "quest\022\n\n\002id\030\001 \001(\t\022B\n\007entries\030\002 \003(\01321.dap"
+    "r.proto.runtime.v1.TopicEventBulkRequest"
+    "Entry\022L\n\010metadata\030\003 \003(\0132:.dapr.proto.run"
+    "time.v1.TopicEventBulkRequest.MetadataEn"
+    "try\022\r\n\005topic\030\004 \001(\t\022\023\n\013pubsub_name\030\005 \001(\t\022"
+    "\014\n\004type\030\006 \001(\t\022\014\n\004path\030\007 \001(\t\032/\n\rMetadataE"
+    "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\203\001\n"
+    "\033TopicEventBulkResponseEntry\022\020\n\010entry_id"
+    "\030\001 \001(\t\022R\n\006status\030\002 \001(\0162B.dapr.proto.runt"
+    "ime.v1.TopicEventResponse.TopicEventResp"
+    "onseStatus\"^\n\026TopicEventBulkResponse\022D\n\010"
+    "statuses\030\001 \003(\01322.dapr.proto.runtime.v1.T"
+    "opicEventBulkResponseEntry\"\256\001\n\023BindingEv"
+    "entRequest\022\014\n\004name\030\001 \001(\t\022\014\n\004data\030\002 \001(\014\022J"
+    "\n\010metadata\030\003 \003(\01328.dapr.proto.runtime.v1"
+    ".BindingEventRequest.MetadataEntry\032/\n\rMe"
+    "tadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:"
+    "\0028\001\"\210\002\n\024BindingEventResponse\022\022\n\nstore_na"
+    "me\030\001 \001(\t\022/\n\006states\030\002 \003(\0132\037.dapr.proto.co"
+    "mmon.v1.StateItem\022\n\n\002to\030\003 \003(\t\022\014\n\004data\030\004 "
+    "\001(\014\022X\n\013concurrency\030\005 \001(\0162C.dapr.proto.ru"
+    "ntime.v1.BindingEventResponse.BindingEve"
+    "ntConcurrency\"7\n\027BindingEventConcurrency"
+    "\022\016\n\nSEQUENTIAL\020\000\022\014\n\010PARALLEL\020\001\"a\n\036ListTo"
+    "picSubscriptionsResponse\022\?\n\rsubscription"
+    "s\030\001 \003(\0132(.dapr.proto.runtime.v1.TopicSub"
+    "scription\"\305\002\n\021TopicSubscription\022\023\n\013pubsu"
+    "b_name\030\001 \001(\t\022\r\n\005topic\030\002 \001(\t\022H\n\010metadata\030"
+    "\003 \003(\01326.dapr.proto.runtime.v1.TopicSubsc"
+    "ription.MetadataEntry\0222\n\006routes\030\005 \001(\0132\"."
+    "dapr.proto.runtime.v1.TopicRoutes\022\031\n\021dea"
+    "d_letter_topic\030\006 \001(\t\022B\n\016bulk_subscribe\030\007"
+    " \001(\0132*.dapr.proto.runtime.v1.BulkSubscri"
+    "beConfig\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r"
+    "\n\005value\030\002 \001(\t:\0028\001\"O\n\013TopicRoutes\022/\n\005rule"
+    "s\030\001 \003(\0132 .dapr.proto.runtime.v1.TopicRul"
+    "e\022\017\n\007default\030\002 \001(\t\"(\n\tTopicRule\022\r\n\005match"
+    "\030\001 \001(\t\022\014\n\004path\030\002 \001(\t\"a\n\023BulkSubscribeCon"
+    "fig\022\017\n\007enabled\030\001 \001(\010\022\032\n\022max_messages_cou"
+    "nt\030\002 \001(\005\022\035\n\025max_await_duration_ms\030\003 \001(\005\""
+    "-\n\031ListInputBindingsResponse\022\020\n\010bindings"
+    "\030\001 \003(\t\"\025\n\023HealthCheckResponse2\206\004\n\013AppCal"
+    "lback\022W\n\010OnInvoke\022#.dapr.proto.common.v1"
+    ".InvokeRequest\032$.dapr.proto.common.v1.In"
+    "vokeResponse\"\000\022i\n\026ListTopicSubscriptions"
+    "\022\026.google.protobuf.Empty\0325.dapr.proto.ru"
+    "ntime.v1.ListTopicSubscriptionsResponse\""
+    "\000\022e\n\014OnTopicEvent\022(.dapr.proto.runtime.v"
+    "1.TopicEventRequest\032).dapr.proto.runtime"
+    ".v1.TopicEventResponse\"\000\022_\n\021ListInputBin"
+    "dings\022\026.google.protobuf.Empty\0320.dapr.pro"
+    "to.runtime.v1.ListInputBindingsResponse\""
+    "\000\022k\n\016OnBindingEvent\022*.dapr.proto.runtime"
+    ".v1.BindingEventRequest\032+.dapr.proto.run"
+    "time.v1.BindingEventResponse\"\0002m\n\026AppCal"
+    "lbackHealthCheck\022S\n\013HealthCheck\022\026.google"
+    ".protobuf.Empty\032*.dapr.proto.runtime.v1."
+    "HealthCheckResponse\"\0002\213\001\n\020AppCallbackAlp"
+    "ha\022w\n\026OnBulkTopicEventAlpha1\022,.dapr.prot"
+    "o.runtime.v1.TopicEventBulkRequest\032-.dap"
+    "r.proto.runtime.v1.TopicEventBulkRespons"
+    "e\"\000By\n\nio.dapr.v1B\025DaprAppCallbackProtos"
+    "Z1github.com/dapr/dapr/pkg/proto/runtime"
+    "/v1;runtime\252\002 Dapr.AppCallback.Autogen.G"
+    "rpc.v1b\006proto3"
+};
+static const ::_pbi::DescriptorTable* const descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_deps[3] =
+    {
+        &::descriptor_table_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto,
+        &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
+        &::descriptor_table_google_2fprotobuf_2fstruct_2eproto,
+};
+static ::absl::once_flag descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto = {
+    false,
+    false,
+    3614,
+    descriptor_table_protodef_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto,
+    "dapr/proto/runtime/v1/appcallback.proto",
+    &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+    descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_deps,
+    3,
+    20,
+    schemas,
+    file_default_instances,
+    TableStruct_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::offsets,
+    file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto,
+    file_level_enum_descriptors_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto,
+    file_level_service_descriptors_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto,
+};
 
-void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
+// This function exists to be marked as weak.
+// It can significantly speed up compilation by breaking up LLVM's SCC
+// in the .pb.cc translation units. Large translation units see a
+// reduction of more than 35% of walltime for optimized builds. Without
+// the weak attribute all the messages in the file, including all the
+// vtables and everything they use become part of the same SCC through
+// a cycle like:
+// GetMetadata -> descriptor table -> default instances ->
+//   vtables -> GetMetadata
+// By adding a weak function here we break the connection from the
+// individual vtables back into the descriptor table.
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter() {
+  return &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto;
 }
-
-void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
-void protobuf_RegisterTypes(const ::std::string&) {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 20);
-}
-
-void AddDescriptorsImpl() {
-  InitDefaults();
-  static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\'dapr/proto/runtime/v1/appcallback.prot"
-      "o\022\025dapr.proto.runtime.v1\032\033google/protobu"
-      "f/empty.proto\032!dapr/proto/common/v1/comm"
-      "on.proto\032\034google/protobuf/struct.proto\"\333"
-      "\001\n\021TopicEventRequest\022\n\n\002id\030\001 \001(\t\022\016\n\006sour"
-      "ce\030\002 \001(\t\022\014\n\004type\030\003 \001(\t\022\024\n\014spec_version\030\004"
-      " \001(\t\022\031\n\021data_content_type\030\005 \001(\t\022\014\n\004data\030"
-      "\007 \001(\014\022\r\n\005topic\030\006 \001(\t\022\023\n\013pubsub_name\030\010 \001("
-      "\t\022\014\n\004path\030\t \001(\t\022+\n\nextensions\030\n \001(\0132\027.go"
-      "ogle.protobuf.Struct\"\246\001\n\022TopicEventRespo"
-      "nse\022R\n\006status\030\001 \001(\0162B.dapr.proto.runtime"
-      ".v1.TopicEventResponse.TopicEventRespons"
-      "eStatus\"<\n\030TopicEventResponseStatus\022\013\n\007S"
-      "UCCESS\020\000\022\t\n\005RETRY\020\001\022\010\n\004DROP\020\002\"\253\001\n\023TopicE"
-      "ventCERequest\022\n\n\002id\030\001 \001(\t\022\016\n\006source\030\002 \001("
-      "\t\022\014\n\004type\030\003 \001(\t\022\024\n\014spec_version\030\004 \001(\t\022\031\n"
-      "\021data_content_type\030\005 \001(\t\022\014\n\004data\030\006 \001(\014\022+"
-      "\n\nextensions\030\007 \001(\0132\027.google.protobuf.Str"
-      "uct\"\245\002\n\032TopicEventBulkRequestEntry\022\020\n\010en"
-      "try_id\030\001 \001(\t\022\017\n\005bytes\030\002 \001(\014H\000\022A\n\013cloud_e"
-      "vent\030\003 \001(\0132*.dapr.proto.runtime.v1.Topic"
-      "EventCERequestH\000\022\024\n\014content_type\030\004 \001(\t\022Q"
-      "\n\010metadata\030\005 \003(\0132\?.dapr.proto.runtime.v1"
-      ".TopicEventBulkRequestEntry.MetadataEntr"
-      "y\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value"
-      "\030\002 \001(\t:\0028\001B\007\n\005event\"\246\002\n\025TopicEventBulkRe"
-      "quest\022\n\n\002id\030\001 \001(\t\022B\n\007entries\030\002 \003(\01321.dap"
-      "r.proto.runtime.v1.TopicEventBulkRequest"
-      "Entry\022L\n\010metadata\030\003 \003(\0132:.dapr.proto.run"
-      "time.v1.TopicEventBulkRequest.MetadataEn"
-      "try\022\r\n\005topic\030\004 \001(\t\022\023\n\013pubsub_name\030\005 \001(\t\022"
-      "\014\n\004type\030\006 \001(\t\022\014\n\004path\030\007 \001(\t\032/\n\rMetadataE"
-      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\203\001\n"
-      "\033TopicEventBulkResponseEntry\022\020\n\010entry_id"
-      "\030\001 \001(\t\022R\n\006status\030\002 \001(\0162B.dapr.proto.runt"
-      "ime.v1.TopicEventResponse.TopicEventResp"
-      "onseStatus\"^\n\026TopicEventBulkResponse\022D\n\010"
-      "statuses\030\001 \003(\01322.dapr.proto.runtime.v1.T"
-      "opicEventBulkResponseEntry\"\256\001\n\023BindingEv"
-      "entRequest\022\014\n\004name\030\001 \001(\t\022\014\n\004data\030\002 \001(\014\022J"
-      "\n\010metadata\030\003 \003(\01328.dapr.proto.runtime.v1"
-      ".BindingEventRequest.MetadataEntry\032/\n\rMe"
-      "tadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:"
-      "\0028\001\"\210\002\n\024BindingEventResponse\022\022\n\nstore_na"
-      "me\030\001 \001(\t\022/\n\006states\030\002 \003(\0132\037.dapr.proto.co"
-      "mmon.v1.StateItem\022\n\n\002to\030\003 \003(\t\022\014\n\004data\030\004 "
-      "\001(\014\022X\n\013concurrency\030\005 \001(\0162C.dapr.proto.ru"
-      "ntime.v1.BindingEventResponse.BindingEve"
-      "ntConcurrency\"7\n\027BindingEventConcurrency"
-      "\022\016\n\nSEQUENTIAL\020\000\022\014\n\010PARALLEL\020\001\"a\n\036ListTo"
-      "picSubscriptionsResponse\022\?\n\rsubscription"
-      "s\030\001 \003(\0132(.dapr.proto.runtime.v1.TopicSub"
-      "scription\"\305\002\n\021TopicSubscription\022\023\n\013pubsu"
-      "b_name\030\001 \001(\t\022\r\n\005topic\030\002 \001(\t\022H\n\010metadata\030"
-      "\003 \003(\01326.dapr.proto.runtime.v1.TopicSubsc"
-      "ription.MetadataEntry\0222\n\006routes\030\005 \001(\0132\"."
-      "dapr.proto.runtime.v1.TopicRoutes\022\031\n\021dea"
-      "d_letter_topic\030\006 \001(\t\022B\n\016bulk_subscribe\030\007"
-      " \001(\0132*.dapr.proto.runtime.v1.BulkSubscri"
-      "beConfig\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r"
-      "\n\005value\030\002 \001(\t:\0028\001\"O\n\013TopicRoutes\022/\n\005rule"
-      "s\030\001 \003(\0132 .dapr.proto.runtime.v1.TopicRul"
-      "e\022\017\n\007default\030\002 \001(\t\"(\n\tTopicRule\022\r\n\005match"
-      "\030\001 \001(\t\022\014\n\004path\030\002 \001(\t\"a\n\023BulkSubscribeCon"
-      "fig\022\017\n\007enabled\030\001 \001(\010\022\032\n\022max_messages_cou"
-      "nt\030\002 \001(\005\022\035\n\025max_await_duration_ms\030\003 \001(\005\""
-      "-\n\031ListInputBindingsResponse\022\020\n\010bindings"
-      "\030\001 \003(\t\"\025\n\023HealthCheckResponse2\206\004\n\013AppCal"
-      "lback\022W\n\010OnInvoke\022#.dapr.proto.common.v1"
-      ".InvokeRequest\032$.dapr.proto.common.v1.In"
-      "vokeResponse\"\000\022i\n\026ListTopicSubscriptions"
-      "\022\026.google.protobuf.Empty\0325.dapr.proto.ru"
-      "ntime.v1.ListTopicSubscriptionsResponse\""
-      "\000\022e\n\014OnTopicEvent\022(.dapr.proto.runtime.v"
-      "1.TopicEventRequest\032).dapr.proto.runtime"
-      ".v1.TopicEventResponse\"\000\022_\n\021ListInputBin"
-      "dings\022\026.google.protobuf.Empty\0320.dapr.pro"
-      "to.runtime.v1.ListInputBindingsResponse\""
-      "\000\022k\n\016OnBindingEvent\022*.dapr.proto.runtime"
-      ".v1.BindingEventRequest\032+.dapr.proto.run"
-      "time.v1.BindingEventResponse\"\0002m\n\026AppCal"
-      "lbackHealthCheck\022S\n\013HealthCheck\022\026.google"
-      ".protobuf.Empty\032*.dapr.proto.runtime.v1."
-      "HealthCheckResponse\"\0002\213\001\n\020AppCallbackAlp"
-      "ha\022w\n\026OnBulkTopicEventAlpha1\022,.dapr.prot"
-      "o.runtime.v1.TopicEventBulkRequest\032-.dap"
-      "r.proto.runtime.v1.TopicEventBulkRespons"
-      "e\"\000By\n\nio.dapr.v1B\025DaprAppCallbackProtos"
-      "Z1github.com/dapr/dapr/pkg/proto/runtime"
-      "/v1;runtime\252\002 Dapr.AppCallback.Autogen.G"
-      "rpc.v1b\006proto3"
-  };
-  ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3614);
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
-    "dapr/proto/runtime/v1/appcallback.proto", &protobuf_RegisterTypes);
-  ::protobuf_google_2fprotobuf_2fempty_2eproto::AddDescriptors();
-  ::protobuf_dapr_2fproto_2fcommon_2fv1_2fcommon_2eproto::AddDescriptors();
-  ::protobuf_google_2fprotobuf_2fstruct_2eproto::AddDescriptors();
-}
-
-void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
-}
-// Force AddDescriptors() to be called at dynamic initialization time.
-struct StaticDescriptorInitializer {
-  StaticDescriptorInitializer() {
-    AddDescriptors();
-  }
-} static_descriptor_initializer;
-}  // namespace protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto
+// Force running AddDescriptors() at dynamic initialization time.
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
+static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto(&descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto);
 namespace dapr {
 namespace proto {
 namespace runtime {
 namespace v1 {
 const ::google::protobuf::EnumDescriptor* TopicEventResponse_TopicEventResponseStatus_descriptor() {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_enum_descriptors[0];
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto);
+  return file_level_enum_descriptors_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[0];
 }
 bool TopicEventResponse_TopicEventResponseStatus_IsValid(int value) {
   switch (value) {
@@ -837,18 +934,21 @@ bool TopicEventResponse_TopicEventResponseStatus_IsValid(int value) {
       return false;
   }
 }
+#if (__cplusplus < 201703) && \
+  (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const TopicEventResponse_TopicEventResponseStatus TopicEventResponse::SUCCESS;
-const TopicEventResponse_TopicEventResponseStatus TopicEventResponse::RETRY;
-const TopicEventResponse_TopicEventResponseStatus TopicEventResponse::DROP;
-const TopicEventResponse_TopicEventResponseStatus TopicEventResponse::TopicEventResponseStatus_MIN;
-const TopicEventResponse_TopicEventResponseStatus TopicEventResponse::TopicEventResponseStatus_MAX;
-const int TopicEventResponse::TopicEventResponseStatus_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+constexpr TopicEventResponse_TopicEventResponseStatus TopicEventResponse::SUCCESS;
+constexpr TopicEventResponse_TopicEventResponseStatus TopicEventResponse::RETRY;
+constexpr TopicEventResponse_TopicEventResponseStatus TopicEventResponse::DROP;
+constexpr TopicEventResponse_TopicEventResponseStatus TopicEventResponse::TopicEventResponseStatus_MIN;
+constexpr TopicEventResponse_TopicEventResponseStatus TopicEventResponse::TopicEventResponseStatus_MAX;
+constexpr int TopicEventResponse::TopicEventResponseStatus_ARRAYSIZE;
+
+#endif  // (__cplusplus < 201703) &&
+        // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 const ::google::protobuf::EnumDescriptor* BindingEventResponse_BindingEventConcurrency_descriptor() {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_enum_descriptors[1];
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto);
+  return file_level_enum_descriptors_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[1];
 }
 bool BindingEventResponse_BindingEventConcurrency_IsValid(int value) {
   switch (value) {
@@ -859,718 +959,550 @@ bool BindingEventResponse_BindingEventConcurrency_IsValid(int value) {
       return false;
   }
 }
+#if (__cplusplus < 201703) && \
+  (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const BindingEventResponse_BindingEventConcurrency BindingEventResponse::SEQUENTIAL;
-const BindingEventResponse_BindingEventConcurrency BindingEventResponse::PARALLEL;
-const BindingEventResponse_BindingEventConcurrency BindingEventResponse::BindingEventConcurrency_MIN;
-const BindingEventResponse_BindingEventConcurrency BindingEventResponse::BindingEventConcurrency_MAX;
-const int BindingEventResponse::BindingEventConcurrency_ARRAYSIZE;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+constexpr BindingEventResponse_BindingEventConcurrency BindingEventResponse::SEQUENTIAL;
+constexpr BindingEventResponse_BindingEventConcurrency BindingEventResponse::PARALLEL;
+constexpr BindingEventResponse_BindingEventConcurrency BindingEventResponse::BindingEventConcurrency_MIN;
+constexpr BindingEventResponse_BindingEventConcurrency BindingEventResponse::BindingEventConcurrency_MAX;
+constexpr int BindingEventResponse::BindingEventConcurrency_ARRAYSIZE;
 
+#endif  // (__cplusplus < 201703) &&
+        // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 // ===================================================================
 
-void TopicEventRequest::InitAsDefaultInstance() {
-  ::dapr::proto::runtime::v1::_TopicEventRequest_default_instance_._instance.get_mutable()->extensions_ = const_cast< ::google::protobuf::Struct*>(
-      ::google::protobuf::Struct::internal_default_instance());
+class TopicEventRequest::_Internal {
+ public:
+  using HasBits = decltype(std::declval<TopicEventRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_._has_bits_);
+  static const ::google::protobuf::Struct& extensions(const TopicEventRequest* msg);
+  static void set_has_extensions(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::google::protobuf::Struct& TopicEventRequest::_Internal::extensions(const TopicEventRequest* msg) {
+  return *msg->_impl_.extensions_;
 }
 void TopicEventRequest::clear_extensions() {
-  if (GetArenaNoVirtual() == NULL && extensions_ != NULL) {
-    delete extensions_;
-  }
-  extensions_ = NULL;
+  if (_impl_.extensions_ != nullptr) _impl_.extensions_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TopicEventRequest::kIdFieldNumber;
-const int TopicEventRequest::kSourceFieldNumber;
-const int TopicEventRequest::kTypeFieldNumber;
-const int TopicEventRequest::kSpecVersionFieldNumber;
-const int TopicEventRequest::kDataContentTypeFieldNumber;
-const int TopicEventRequest::kDataFieldNumber;
-const int TopicEventRequest::kTopicFieldNumber;
-const int TopicEventRequest::kPubsubNameFieldNumber;
-const int TopicEventRequest::kPathFieldNumber;
-const int TopicEventRequest::kExtensionsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+TopicEventRequest::TopicEventRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.TopicEventRequest)
+}
+TopicEventRequest::TopicEventRequest(const TopicEventRequest& from) : ::google::protobuf::Message() {
+  TopicEventRequest* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.id_){},
+      decltype(_impl_.source_){},
+      decltype(_impl_.type_){},
+      decltype(_impl_.spec_version_){},
+      decltype(_impl_.data_content_type_){},
+      decltype(_impl_.topic_){},
+      decltype(_impl_.data_){},
+      decltype(_impl_.pubsub_name_){},
+      decltype(_impl_.path_){},
+      decltype(_impl_.extensions_){nullptr},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_id().empty()) {
+    _this->_impl_.id_.Set(from._internal_id(), _this->GetArenaForAllocation());
+  }
+  _impl_.source_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.source_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_source().empty()) {
+    _this->_impl_.source_.Set(from._internal_source(), _this->GetArenaForAllocation());
+  }
+  _impl_.type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_type().empty()) {
+    _this->_impl_.type_.Set(from._internal_type(), _this->GetArenaForAllocation());
+  }
+  _impl_.spec_version_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.spec_version_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_spec_version().empty()) {
+    _this->_impl_.spec_version_.Set(from._internal_spec_version(), _this->GetArenaForAllocation());
+  }
+  _impl_.data_content_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.data_content_type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_data_content_type().empty()) {
+    _this->_impl_.data_content_type_.Set(from._internal_data_content_type(), _this->GetArenaForAllocation());
+  }
+  _impl_.topic_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.topic_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_topic().empty()) {
+    _this->_impl_.topic_.Set(from._internal_topic(), _this->GetArenaForAllocation());
+  }
+  _impl_.data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.data_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_data().empty()) {
+    _this->_impl_.data_.Set(from._internal_data(), _this->GetArenaForAllocation());
+  }
+  _impl_.pubsub_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.pubsub_name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_pubsub_name().empty()) {
+    _this->_impl_.pubsub_name_.Set(from._internal_pubsub_name(), _this->GetArenaForAllocation());
+  }
+  _impl_.path_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.path_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_path().empty()) {
+    _this->_impl_.path_.Set(from._internal_path(), _this->GetArenaForAllocation());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.extensions_ = new ::google::protobuf::Struct(*from._impl_.extensions_);
+  }
 
-TopicEventRequest::TopicEventRequest()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventRequest.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.TopicEventRequest)
-}
-TopicEventRequest::TopicEventRequest(const TopicEventRequest& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.id().size() > 0) {
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
-  }
-  source_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.source().size() > 0) {
-    source_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.source_);
-  }
-  type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.type().size() > 0) {
-    type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.type_);
-  }
-  spec_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.spec_version().size() > 0) {
-    spec_version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.spec_version_);
-  }
-  data_content_type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.data_content_type().size() > 0) {
-    data_content_type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_content_type_);
-  }
-  topic_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.topic().size() > 0) {
-    topic_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.topic_);
-  }
-  data_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.data().size() > 0) {
-    data_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_);
-  }
-  pubsub_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.pubsub_name().size() > 0) {
-    pubsub_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.pubsub_name_);
-  }
-  path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.path().size() > 0) {
-    path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.path_);
-  }
-  if (from.has_extensions()) {
-    extensions_ = new ::google::protobuf::Struct(*from.extensions_);
-  } else {
-    extensions_ = NULL;
-  }
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.TopicEventRequest)
 }
-
-void TopicEventRequest::SharedCtor() {
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  source_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  spec_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_content_type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  topic_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  pubsub_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  extensions_ = NULL;
+inline void TopicEventRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.id_){},
+      decltype(_impl_.source_){},
+      decltype(_impl_.type_){},
+      decltype(_impl_.spec_version_){},
+      decltype(_impl_.data_content_type_){},
+      decltype(_impl_.topic_){},
+      decltype(_impl_.data_){},
+      decltype(_impl_.pubsub_name_){},
+      decltype(_impl_.path_){},
+      decltype(_impl_.extensions_){nullptr},
+  };
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.source_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.source_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.spec_version_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.spec_version_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.data_content_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.data_content_type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.topic_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.topic_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.data_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.pubsub_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.pubsub_name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.path_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.path_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 TopicEventRequest::~TopicEventRequest() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.TopicEventRequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void TopicEventRequest::SharedDtor() {
-  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  source_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  type_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  spec_version_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_content_type_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  topic_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  pubsub_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete extensions_;
+inline void TopicEventRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.id_.Destroy();
+  _impl_.source_.Destroy();
+  _impl_.type_.Destroy();
+  _impl_.spec_version_.Destroy();
+  _impl_.data_content_type_.Destroy();
+  _impl_.topic_.Destroy();
+  _impl_.data_.Destroy();
+  _impl_.pubsub_name_.Destroy();
+  _impl_.path_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.extensions_;
 }
-
 void TopicEventRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* TopicEventRequest::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const TopicEventRequest& TopicEventRequest::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventRequest.base);
-  return *internal_default_instance();
-}
-
-
-void TopicEventRequest::Clear() {
+PROTOBUF_NOINLINE void TopicEventRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.TopicEventRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  source_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  type_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  spec_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_content_type_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  pubsub_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (GetArenaNoVirtual() == NULL && extensions_ != NULL) {
-    delete extensions_;
+  _impl_.id_.ClearToEmpty();
+  _impl_.source_.ClearToEmpty();
+  _impl_.type_.ClearToEmpty();
+  _impl_.spec_version_.ClearToEmpty();
+  _impl_.data_content_type_.ClearToEmpty();
+  _impl_.topic_.ClearToEmpty();
+  _impl_.data_.ClearToEmpty();
+  _impl_.pubsub_name_.ClearToEmpty();
+  _impl_.path_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.extensions_ != nullptr);
+    _impl_.extensions_->Clear();
   }
-  extensions_ = NULL;
-  _internal_metadata_.Clear();
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool TopicEventRequest::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.TopicEventRequest)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->id().data(), static_cast<int>(this->id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventRequest.id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string source = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_source()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->source().data(), static_cast<int>(this->source().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventRequest.source"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string type = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_type()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->type().data(), static_cast<int>(this->type().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventRequest.type"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string spec_version = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_spec_version()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->spec_version().data(), static_cast<int>(this->spec_version().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventRequest.spec_version"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string data_content_type = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_data_content_type()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->data_content_type().data(), static_cast<int>(this->data_content_type().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventRequest.data_content_type"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string topic = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_topic()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->topic().data(), static_cast<int>(this->topic().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventRequest.topic"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // bytes data = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_data()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string pubsub_name = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(66u /* 66 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_pubsub_name()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->pubsub_name().data(), static_cast<int>(this->pubsub_name().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventRequest.pubsub_name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string path = 9;
-      case 9: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(74u /* 74 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_path()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->path().data(), static_cast<int>(this->path().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventRequest.path"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .google.protobuf.Struct extensions = 10;
-      case 10: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(82u /* 82 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_extensions()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.TopicEventRequest)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.TopicEventRequest)
-  return false;
-#undef DO_
+const char* TopicEventRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void TopicEventRequest::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.TopicEventRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // string id = 1;
-  if (this->id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->id(), output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<4, 10, 1, 117, 2> TopicEventRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    10, 120,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294966272,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    10,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_TopicEventRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.id_)}},
+    // string source = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.source_)}},
+    // string type = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.type_)}},
+    // string spec_version = 4;
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.spec_version_)}},
+    // string data_content_type = 5;
+    {::_pbi::TcParser::FastUS1,
+     {42, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.data_content_type_)}},
+    // string topic = 6;
+    {::_pbi::TcParser::FastUS1,
+     {50, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.topic_)}},
+    // bytes data = 7;
+    {::_pbi::TcParser::FastBS1,
+     {58, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.data_)}},
+    // string pubsub_name = 8;
+    {::_pbi::TcParser::FastUS1,
+     {66, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.pubsub_name_)}},
+    // string path = 9;
+    {::_pbi::TcParser::FastUS1,
+     {74, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.path_)}},
+    // .google.protobuf.Struct extensions = 10;
+    {::_pbi::TcParser::FastMtS1,
+     {82, 0, 0, PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.extensions_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string id = 1;
+    {PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.id_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string source = 2;
+    {PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.source_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string type = 3;
+    {PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.type_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string spec_version = 4;
+    {PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.spec_version_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string data_content_type = 5;
+    {PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.data_content_type_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string topic = 6;
+    {PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.topic_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bytes data = 7;
+    {PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.data_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // string pubsub_name = 8;
+    {PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.pubsub_name_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string path = 9;
+    {PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.path_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .google.protobuf.Struct extensions = 10;
+    {PROTOBUF_FIELD_OFFSET(TopicEventRequest, _impl_.extensions_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::google::protobuf::Struct>()},
+  }}, {{
+    "\47\2\6\4\14\21\5\0\13\4\0\0\0\0\0\0"
+    "dapr.proto.runtime.v1.TopicEventRequest"
+    "id"
+    "source"
+    "type"
+    "spec_version"
+    "data_content_type"
+    "topic"
+    "pubsub_name"
+    "path"
+  }},
+};
 
-  // string source = 2;
-  if (this->source().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->source().data(), static_cast<int>(this->source().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.source");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->source(), output);
-  }
-
-  // string type = 3;
-  if (this->type().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->type().data(), static_cast<int>(this->type().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.type");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->type(), output);
-  }
-
-  // string spec_version = 4;
-  if (this->spec_version().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->spec_version().data(), static_cast<int>(this->spec_version().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.spec_version");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->spec_version(), output);
-  }
-
-  // string data_content_type = 5;
-  if (this->data_content_type().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->data_content_type().data(), static_cast<int>(this->data_content_type().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.data_content_type");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->data_content_type(), output);
-  }
-
-  // string topic = 6;
-  if (this->topic().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->topic().data(), static_cast<int>(this->topic().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.topic");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->topic(), output);
-  }
-
-  // bytes data = 7;
-  if (this->data().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      7, this->data(), output);
-  }
-
-  // string pubsub_name = 8;
-  if (this->pubsub_name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->pubsub_name().data(), static_cast<int>(this->pubsub_name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.pubsub_name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      8, this->pubsub_name(), output);
-  }
-
-  // string path = 9;
-  if (this->path().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->path().data(), static_cast<int>(this->path().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.path");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      9, this->path(), output);
-  }
-
-  // .google.protobuf.Struct extensions = 10;
-  if (this->has_extensions()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      10, this->_internal_extensions(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.TopicEventRequest)
-}
-
-::google::protobuf::uint8* TopicEventRequest::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* TopicEventRequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.TopicEventRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string id = 1;
-  if (this->id().size() > 0) {
+  if (!this->_internal_id().empty()) {
+    const std::string& _s = this->_internal_id();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->id(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventRequest.id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string source = 2;
-  if (this->source().size() > 0) {
+  if (!this->_internal_source().empty()) {
+    const std::string& _s = this->_internal_source();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->source().data(), static_cast<int>(this->source().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.source");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->source(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventRequest.source");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // string type = 3;
-  if (this->type().size() > 0) {
+  if (!this->_internal_type().empty()) {
+    const std::string& _s = this->_internal_type();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->type().data(), static_cast<int>(this->type().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.type");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->type(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventRequest.type");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
   }
 
   // string spec_version = 4;
-  if (this->spec_version().size() > 0) {
+  if (!this->_internal_spec_version().empty()) {
+    const std::string& _s = this->_internal_spec_version();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->spec_version().data(), static_cast<int>(this->spec_version().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.spec_version");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->spec_version(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventRequest.spec_version");
+    target = stream->WriteStringMaybeAliased(4, _s, target);
   }
 
   // string data_content_type = 5;
-  if (this->data_content_type().size() > 0) {
+  if (!this->_internal_data_content_type().empty()) {
+    const std::string& _s = this->_internal_data_content_type();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->data_content_type().data(), static_cast<int>(this->data_content_type().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.data_content_type");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->data_content_type(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventRequest.data_content_type");
+    target = stream->WriteStringMaybeAliased(5, _s, target);
   }
 
   // string topic = 6;
-  if (this->topic().size() > 0) {
+  if (!this->_internal_topic().empty()) {
+    const std::string& _s = this->_internal_topic();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->topic().data(), static_cast<int>(this->topic().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.topic");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->topic(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventRequest.topic");
+    target = stream->WriteStringMaybeAliased(6, _s, target);
   }
 
   // bytes data = 7;
-  if (this->data().size() > 0) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        7, this->data(), target);
+  if (!this->_internal_data().empty()) {
+    const std::string& _s = this->_internal_data();
+    target = stream->WriteBytesMaybeAliased(7, _s, target);
   }
 
   // string pubsub_name = 8;
-  if (this->pubsub_name().size() > 0) {
+  if (!this->_internal_pubsub_name().empty()) {
+    const std::string& _s = this->_internal_pubsub_name();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->pubsub_name().data(), static_cast<int>(this->pubsub_name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.pubsub_name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        8, this->pubsub_name(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventRequest.pubsub_name");
+    target = stream->WriteStringMaybeAliased(8, _s, target);
   }
 
   // string path = 9;
-  if (this->path().size() > 0) {
+  if (!this->_internal_path().empty()) {
+    const std::string& _s = this->_internal_path();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->path().data(), static_cast<int>(this->path().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventRequest.path");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        9, this->path(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventRequest.path");
+    target = stream->WriteStringMaybeAliased(9, _s, target);
   }
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Struct extensions = 10;
-  if (this->has_extensions()) {
+  if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        10, this->_internal_extensions(), deterministic, target);
+      InternalWriteMessage(10, _Internal::extensions(this),
+        _Internal::extensions(this).GetCachedSize(), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.TopicEventRequest)
   return target;
 }
 
-size_t TopicEventRequest::ByteSizeLong() const {
+::size_t TopicEventRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.TopicEventRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // string id = 1;
-  if (this->id().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->id());
+  if (!this->_internal_id().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_id());
   }
 
   // string source = 2;
-  if (this->source().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->source());
+  if (!this->_internal_source().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_source());
   }
 
   // string type = 3;
-  if (this->type().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->type());
+  if (!this->_internal_type().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_type());
   }
 
   // string spec_version = 4;
-  if (this->spec_version().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->spec_version());
+  if (!this->_internal_spec_version().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_spec_version());
   }
 
   // string data_content_type = 5;
-  if (this->data_content_type().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->data_content_type());
+  if (!this->_internal_data_content_type().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_data_content_type());
   }
 
   // string topic = 6;
-  if (this->topic().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->topic());
+  if (!this->_internal_topic().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_topic());
   }
 
   // bytes data = 7;
-  if (this->data().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->data());
+  if (!this->_internal_data().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_data());
   }
 
   // string pubsub_name = 8;
-  if (this->pubsub_name().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->pubsub_name());
+  if (!this->_internal_pubsub_name().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_pubsub_name());
   }
 
   // string path = 9;
-  if (this->path().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->path());
+  if (!this->_internal_path().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_path());
   }
 
   // .google.protobuf.Struct extensions = 10;
-  if (this->has_extensions()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *extensions_);
+        *_impl_.extensions_);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void TopicEventRequest::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.TopicEventRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TopicEventRequest* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TopicEventRequest>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.TopicEventRequest)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.TopicEventRequest)
-    MergeFrom(*source);
-  }
-}
+const ::google::protobuf::Message::ClassData TopicEventRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    TopicEventRequest::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*TopicEventRequest::GetClassData() const { return &_class_data_; }
 
-void TopicEventRequest::MergeFrom(const TopicEventRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+
+void TopicEventRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<TopicEventRequest*>(&to_msg);
+  auto& from = static_cast<const TopicEventRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.id().size() > 0) {
-
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  if (!from._internal_id().empty()) {
+    _this->_internal_set_id(from._internal_id());
   }
-  if (from.source().size() > 0) {
-
-    source_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.source_);
+  if (!from._internal_source().empty()) {
+    _this->_internal_set_source(from._internal_source());
   }
-  if (from.type().size() > 0) {
-
-    type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.type_);
+  if (!from._internal_type().empty()) {
+    _this->_internal_set_type(from._internal_type());
   }
-  if (from.spec_version().size() > 0) {
-
-    spec_version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.spec_version_);
+  if (!from._internal_spec_version().empty()) {
+    _this->_internal_set_spec_version(from._internal_spec_version());
   }
-  if (from.data_content_type().size() > 0) {
-
-    data_content_type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_content_type_);
+  if (!from._internal_data_content_type().empty()) {
+    _this->_internal_set_data_content_type(from._internal_data_content_type());
   }
-  if (from.topic().size() > 0) {
-
-    topic_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.topic_);
+  if (!from._internal_topic().empty()) {
+    _this->_internal_set_topic(from._internal_topic());
   }
-  if (from.data().size() > 0) {
-
-    data_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_);
+  if (!from._internal_data().empty()) {
+    _this->_internal_set_data(from._internal_data());
   }
-  if (from.pubsub_name().size() > 0) {
-
-    pubsub_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.pubsub_name_);
+  if (!from._internal_pubsub_name().empty()) {
+    _this->_internal_set_pubsub_name(from._internal_pubsub_name());
   }
-  if (from.path().size() > 0) {
-
-    path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.path_);
+  if (!from._internal_path().empty()) {
+    _this->_internal_set_path(from._internal_path());
   }
-  if (from.has_extensions()) {
-    mutable_extensions()->::google::protobuf::Struct::MergeFrom(from.extensions());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_extensions()->::google::protobuf::Struct::MergeFrom(
+        from._internal_extensions());
   }
-}
-
-void TopicEventRequest::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.TopicEventRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void TopicEventRequest::CopyFrom(const TopicEventRequest& from) {
@@ -1580,240 +1512,184 @@ void TopicEventRequest::CopyFrom(const TopicEventRequest& from) {
   MergeFrom(from);
 }
 
-bool TopicEventRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool TopicEventRequest::IsInitialized() const {
   return true;
 }
 
-void TopicEventRequest::Swap(TopicEventRequest* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TopicEventRequest::InternalSwap(TopicEventRequest* other) {
   using std::swap;
-  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  source_.Swap(&other->source_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  type_.Swap(&other->type_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  spec_version_.Swap(&other->spec_version_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  data_content_type_.Swap(&other->data_content_type_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  topic_.Swap(&other->topic_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  data_.Swap(&other->data_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  pubsub_name_.Swap(&other->pubsub_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  path_.Swap(&other->path_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(extensions_, other->extensions_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, lhs_arena,
+                                       &other->_impl_.id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.source_, lhs_arena,
+                                       &other->_impl_.source_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.type_, lhs_arena,
+                                       &other->_impl_.type_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.spec_version_, lhs_arena,
+                                       &other->_impl_.spec_version_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.data_content_type_, lhs_arena,
+                                       &other->_impl_.data_content_type_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.topic_, lhs_arena,
+                                       &other->_impl_.topic_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.data_, lhs_arena,
+                                       &other->_impl_.data_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.pubsub_name_, lhs_arena,
+                                       &other->_impl_.pubsub_name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.path_, lhs_arena,
+                                       &other->_impl_.path_, rhs_arena);
+  swap(_impl_.extensions_, other->_impl_.extensions_);
 }
 
 ::google::protobuf::Metadata TopicEventRequest::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[0]);
 }
-
-
 // ===================================================================
 
-void TopicEventResponse::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TopicEventResponse::kStatusFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TopicEventResponse::_Internal {
+ public:
+};
 
-TopicEventResponse::TopicEventResponse()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventResponse.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.TopicEventResponse)
+TopicEventResponse::TopicEventResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.TopicEventResponse)
 }
 TopicEventResponse::TopicEventResponse(const TopicEventResponse& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  status_ = from.status_;
+    : ::google::protobuf::Message(), _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.TopicEventResponse)
 }
-
-void TopicEventResponse::SharedCtor() {
-  status_ = 0;
+inline void TopicEventResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.status_){0},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
 }
-
 TopicEventResponse::~TopicEventResponse() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.TopicEventResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void TopicEventResponse::SharedDtor() {
+inline void TopicEventResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
 }
-
 void TopicEventResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* TopicEventResponse::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const TopicEventResponse& TopicEventResponse::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventResponse.base);
-  return *internal_default_instance();
-}
-
-
-void TopicEventResponse::Clear() {
+PROTOBUF_NOINLINE void TopicEventResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.TopicEventResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  status_ = 0;
-  _internal_metadata_.Clear();
+  _impl_.status_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool TopicEventResponse::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.TopicEventResponse)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_status(static_cast< ::dapr::proto::runtime::v1::TopicEventResponse_TopicEventResponseStatus >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.TopicEventResponse)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.TopicEventResponse)
-  return false;
-#undef DO_
+const char* TopicEventResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void TopicEventResponse::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.TopicEventResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 1;
-  if (this->status() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      1, this->status(), output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> TopicEventResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_TopicEventResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(TopicEventResponse, _impl_.status_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventResponse, _impl_.status_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 1;
+    {PROTOBUF_FIELD_OFFSET(TopicEventResponse, _impl_.status_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.TopicEventResponse)
-}
-
-::google::protobuf::uint8* TopicEventResponse::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* TopicEventResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.TopicEventResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 1;
-  if (this->status() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      1, this->status(), target);
+  if (this->_internal_status() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+        1, this->_internal_status(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.TopicEventResponse)
   return target;
 }
 
-size_t TopicEventResponse::ByteSizeLong() const {
+::size_t TopicEventResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.TopicEventResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 1;
-  if (this->status() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->status());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void TopicEventResponse::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.TopicEventResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TopicEventResponse* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TopicEventResponse>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.TopicEventResponse)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.TopicEventResponse)
-    MergeFrom(*source);
-  }
-}
-
-void TopicEventResponse::MergeFrom(const TopicEventResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (from.status() != 0) {
-    set_status(from.status());
+  // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 1;
+  if (this->_internal_status() != 0) {
+    total_size += 1 +
+                  ::_pbi::WireFormatLite::EnumSize(this->_internal_status());
   }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void TopicEventResponse::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.TopicEventResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+const ::google::protobuf::Message::ClassData TopicEventResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    TopicEventResponse::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*TopicEventResponse::GetClassData() const { return &_class_data_; }
+
+
+void TopicEventResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<TopicEventResponse*>(&to_msg);
+  auto& from = static_cast<const TopicEventResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_status() != 0) {
+    _this->_internal_set_status(from._internal_status());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void TopicEventResponse::CopyFrom(const TopicEventResponse& from) {
@@ -1823,561 +1699,432 @@ void TopicEventResponse::CopyFrom(const TopicEventResponse& from) {
   MergeFrom(from);
 }
 
-bool TopicEventResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool TopicEventResponse::IsInitialized() const {
   return true;
 }
 
-void TopicEventResponse::Swap(TopicEventResponse* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TopicEventResponse::InternalSwap(TopicEventResponse* other) {
   using std::swap;
-  swap(status_, other->status_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::google::protobuf::Metadata TopicEventResponse::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[1]);
 }
-
-
 // ===================================================================
 
-void TopicEventCERequest::InitAsDefaultInstance() {
-  ::dapr::proto::runtime::v1::_TopicEventCERequest_default_instance_._instance.get_mutable()->extensions_ = const_cast< ::google::protobuf::Struct*>(
-      ::google::protobuf::Struct::internal_default_instance());
+class TopicEventCERequest::_Internal {
+ public:
+  using HasBits = decltype(std::declval<TopicEventCERequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_._has_bits_);
+  static const ::google::protobuf::Struct& extensions(const TopicEventCERequest* msg);
+  static void set_has_extensions(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::google::protobuf::Struct& TopicEventCERequest::_Internal::extensions(const TopicEventCERequest* msg) {
+  return *msg->_impl_.extensions_;
 }
 void TopicEventCERequest::clear_extensions() {
-  if (GetArenaNoVirtual() == NULL && extensions_ != NULL) {
-    delete extensions_;
-  }
-  extensions_ = NULL;
+  if (_impl_.extensions_ != nullptr) _impl_.extensions_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TopicEventCERequest::kIdFieldNumber;
-const int TopicEventCERequest::kSourceFieldNumber;
-const int TopicEventCERequest::kTypeFieldNumber;
-const int TopicEventCERequest::kSpecVersionFieldNumber;
-const int TopicEventCERequest::kDataContentTypeFieldNumber;
-const int TopicEventCERequest::kDataFieldNumber;
-const int TopicEventCERequest::kExtensionsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+TopicEventCERequest::TopicEventCERequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.TopicEventCERequest)
+}
+TopicEventCERequest::TopicEventCERequest(const TopicEventCERequest& from) : ::google::protobuf::Message() {
+  TopicEventCERequest* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.id_){},
+      decltype(_impl_.source_){},
+      decltype(_impl_.type_){},
+      decltype(_impl_.spec_version_){},
+      decltype(_impl_.data_content_type_){},
+      decltype(_impl_.data_){},
+      decltype(_impl_.extensions_){nullptr},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_id().empty()) {
+    _this->_impl_.id_.Set(from._internal_id(), _this->GetArenaForAllocation());
+  }
+  _impl_.source_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.source_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_source().empty()) {
+    _this->_impl_.source_.Set(from._internal_source(), _this->GetArenaForAllocation());
+  }
+  _impl_.type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_type().empty()) {
+    _this->_impl_.type_.Set(from._internal_type(), _this->GetArenaForAllocation());
+  }
+  _impl_.spec_version_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.spec_version_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_spec_version().empty()) {
+    _this->_impl_.spec_version_.Set(from._internal_spec_version(), _this->GetArenaForAllocation());
+  }
+  _impl_.data_content_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.data_content_type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_data_content_type().empty()) {
+    _this->_impl_.data_content_type_.Set(from._internal_data_content_type(), _this->GetArenaForAllocation());
+  }
+  _impl_.data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.data_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_data().empty()) {
+    _this->_impl_.data_.Set(from._internal_data(), _this->GetArenaForAllocation());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.extensions_ = new ::google::protobuf::Struct(*from._impl_.extensions_);
+  }
 
-TopicEventCERequest::TopicEventCERequest()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventCERequest.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.TopicEventCERequest)
-}
-TopicEventCERequest::TopicEventCERequest(const TopicEventCERequest& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.id().size() > 0) {
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
-  }
-  source_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.source().size() > 0) {
-    source_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.source_);
-  }
-  type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.type().size() > 0) {
-    type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.type_);
-  }
-  spec_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.spec_version().size() > 0) {
-    spec_version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.spec_version_);
-  }
-  data_content_type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.data_content_type().size() > 0) {
-    data_content_type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_content_type_);
-  }
-  data_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.data().size() > 0) {
-    data_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_);
-  }
-  if (from.has_extensions()) {
-    extensions_ = new ::google::protobuf::Struct(*from.extensions_);
-  } else {
-    extensions_ = NULL;
-  }
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.TopicEventCERequest)
 }
-
-void TopicEventCERequest::SharedCtor() {
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  source_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  spec_version_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_content_type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  extensions_ = NULL;
+inline void TopicEventCERequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.id_){},
+      decltype(_impl_.source_){},
+      decltype(_impl_.type_){},
+      decltype(_impl_.spec_version_){},
+      decltype(_impl_.data_content_type_){},
+      decltype(_impl_.data_){},
+      decltype(_impl_.extensions_){nullptr},
+  };
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.source_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.source_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.spec_version_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.spec_version_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.data_content_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.data_content_type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.data_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 TopicEventCERequest::~TopicEventCERequest() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.TopicEventCERequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void TopicEventCERequest::SharedDtor() {
-  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  source_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  type_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  spec_version_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_content_type_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete extensions_;
+inline void TopicEventCERequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.id_.Destroy();
+  _impl_.source_.Destroy();
+  _impl_.type_.Destroy();
+  _impl_.spec_version_.Destroy();
+  _impl_.data_content_type_.Destroy();
+  _impl_.data_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.extensions_;
 }
-
 void TopicEventCERequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* TopicEventCERequest::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const TopicEventCERequest& TopicEventCERequest::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventCERequest.base);
-  return *internal_default_instance();
-}
-
-
-void TopicEventCERequest::Clear() {
+PROTOBUF_NOINLINE void TopicEventCERequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.TopicEventCERequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  source_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  type_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  spec_version_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_content_type_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (GetArenaNoVirtual() == NULL && extensions_ != NULL) {
-    delete extensions_;
+  _impl_.id_.ClearToEmpty();
+  _impl_.source_.ClearToEmpty();
+  _impl_.type_.ClearToEmpty();
+  _impl_.spec_version_.ClearToEmpty();
+  _impl_.data_content_type_.ClearToEmpty();
+  _impl_.data_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.extensions_ != nullptr);
+    _impl_.extensions_->Clear();
   }
-  extensions_ = NULL;
-  _internal_metadata_.Clear();
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool TopicEventCERequest::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.TopicEventCERequest)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->id().data(), static_cast<int>(this->id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventCERequest.id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string source = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_source()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->source().data(), static_cast<int>(this->source().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventCERequest.source"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string type = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_type()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->type().data(), static_cast<int>(this->type().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventCERequest.type"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string spec_version = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_spec_version()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->spec_version().data(), static_cast<int>(this->spec_version().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventCERequest.spec_version"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string data_content_type = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_data_content_type()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->data_content_type().data(), static_cast<int>(this->data_content_type().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventCERequest.data_content_type"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // bytes data = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_data()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .google.protobuf.Struct extensions = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_extensions()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.TopicEventCERequest)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.TopicEventCERequest)
-  return false;
-#undef DO_
+const char* TopicEventCERequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void TopicEventCERequest::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.TopicEventCERequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // string id = 1;
-  if (this->id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventCERequest.id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->id(), output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 7, 1, 91, 2> TopicEventCERequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_._has_bits_),
+    0, // no _extensions_
+    7, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967168,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    7,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_TopicEventCERequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.id_)}},
+    // string source = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.source_)}},
+    // string type = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.type_)}},
+    // string spec_version = 4;
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.spec_version_)}},
+    // string data_content_type = 5;
+    {::_pbi::TcParser::FastUS1,
+     {42, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.data_content_type_)}},
+    // bytes data = 6;
+    {::_pbi::TcParser::FastBS1,
+     {50, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.data_)}},
+    // .google.protobuf.Struct extensions = 7;
+    {::_pbi::TcParser::FastMtS1,
+     {58, 0, 0, PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.extensions_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string id = 1;
+    {PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.id_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string source = 2;
+    {PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.source_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string type = 3;
+    {PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.type_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string spec_version = 4;
+    {PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.spec_version_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string data_content_type = 5;
+    {PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.data_content_type_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bytes data = 6;
+    {PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.data_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // .google.protobuf.Struct extensions = 7;
+    {PROTOBUF_FIELD_OFFSET(TopicEventCERequest, _impl_.extensions_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::google::protobuf::Struct>()},
+  }}, {{
+    "\51\2\6\4\14\21\0\0"
+    "dapr.proto.runtime.v1.TopicEventCERequest"
+    "id"
+    "source"
+    "type"
+    "spec_version"
+    "data_content_type"
+  }},
+};
 
-  // string source = 2;
-  if (this->source().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->source().data(), static_cast<int>(this->source().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventCERequest.source");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->source(), output);
-  }
-
-  // string type = 3;
-  if (this->type().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->type().data(), static_cast<int>(this->type().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventCERequest.type");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->type(), output);
-  }
-
-  // string spec_version = 4;
-  if (this->spec_version().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->spec_version().data(), static_cast<int>(this->spec_version().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventCERequest.spec_version");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->spec_version(), output);
-  }
-
-  // string data_content_type = 5;
-  if (this->data_content_type().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->data_content_type().data(), static_cast<int>(this->data_content_type().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventCERequest.data_content_type");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->data_content_type(), output);
-  }
-
-  // bytes data = 6;
-  if (this->data().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      6, this->data(), output);
-  }
-
-  // .google.protobuf.Struct extensions = 7;
-  if (this->has_extensions()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7, this->_internal_extensions(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.TopicEventCERequest)
-}
-
-::google::protobuf::uint8* TopicEventCERequest::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* TopicEventCERequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.TopicEventCERequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string id = 1;
-  if (this->id().size() > 0) {
+  if (!this->_internal_id().empty()) {
+    const std::string& _s = this->_internal_id();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventCERequest.id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->id(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventCERequest.id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string source = 2;
-  if (this->source().size() > 0) {
+  if (!this->_internal_source().empty()) {
+    const std::string& _s = this->_internal_source();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->source().data(), static_cast<int>(this->source().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventCERequest.source");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->source(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventCERequest.source");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // string type = 3;
-  if (this->type().size() > 0) {
+  if (!this->_internal_type().empty()) {
+    const std::string& _s = this->_internal_type();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->type().data(), static_cast<int>(this->type().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventCERequest.type");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->type(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventCERequest.type");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
   }
 
   // string spec_version = 4;
-  if (this->spec_version().size() > 0) {
+  if (!this->_internal_spec_version().empty()) {
+    const std::string& _s = this->_internal_spec_version();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->spec_version().data(), static_cast<int>(this->spec_version().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventCERequest.spec_version");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->spec_version(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventCERequest.spec_version");
+    target = stream->WriteStringMaybeAliased(4, _s, target);
   }
 
   // string data_content_type = 5;
-  if (this->data_content_type().size() > 0) {
+  if (!this->_internal_data_content_type().empty()) {
+    const std::string& _s = this->_internal_data_content_type();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->data_content_type().data(), static_cast<int>(this->data_content_type().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventCERequest.data_content_type");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->data_content_type(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventCERequest.data_content_type");
+    target = stream->WriteStringMaybeAliased(5, _s, target);
   }
 
   // bytes data = 6;
-  if (this->data().size() > 0) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        6, this->data(), target);
+  if (!this->_internal_data().empty()) {
+    const std::string& _s = this->_internal_data();
+    target = stream->WriteBytesMaybeAliased(6, _s, target);
   }
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Struct extensions = 7;
-  if (this->has_extensions()) {
+  if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        7, this->_internal_extensions(), deterministic, target);
+      InternalWriteMessage(7, _Internal::extensions(this),
+        _Internal::extensions(this).GetCachedSize(), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.TopicEventCERequest)
   return target;
 }
 
-size_t TopicEventCERequest::ByteSizeLong() const {
+::size_t TopicEventCERequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.TopicEventCERequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // string id = 1;
-  if (this->id().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->id());
+  if (!this->_internal_id().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_id());
   }
 
   // string source = 2;
-  if (this->source().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->source());
+  if (!this->_internal_source().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_source());
   }
 
   // string type = 3;
-  if (this->type().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->type());
+  if (!this->_internal_type().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_type());
   }
 
   // string spec_version = 4;
-  if (this->spec_version().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->spec_version());
+  if (!this->_internal_spec_version().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_spec_version());
   }
 
   // string data_content_type = 5;
-  if (this->data_content_type().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->data_content_type());
+  if (!this->_internal_data_content_type().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_data_content_type());
   }
 
   // bytes data = 6;
-  if (this->data().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->data());
+  if (!this->_internal_data().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_data());
   }
 
   // .google.protobuf.Struct extensions = 7;
-  if (this->has_extensions()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *extensions_);
+        *_impl_.extensions_);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void TopicEventCERequest::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.TopicEventCERequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TopicEventCERequest* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TopicEventCERequest>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.TopicEventCERequest)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.TopicEventCERequest)
-    MergeFrom(*source);
-  }
-}
+const ::google::protobuf::Message::ClassData TopicEventCERequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    TopicEventCERequest::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*TopicEventCERequest::GetClassData() const { return &_class_data_; }
 
-void TopicEventCERequest::MergeFrom(const TopicEventCERequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventCERequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+
+void TopicEventCERequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<TopicEventCERequest*>(&to_msg);
+  auto& from = static_cast<const TopicEventCERequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventCERequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.id().size() > 0) {
-
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  if (!from._internal_id().empty()) {
+    _this->_internal_set_id(from._internal_id());
   }
-  if (from.source().size() > 0) {
-
-    source_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.source_);
+  if (!from._internal_source().empty()) {
+    _this->_internal_set_source(from._internal_source());
   }
-  if (from.type().size() > 0) {
-
-    type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.type_);
+  if (!from._internal_type().empty()) {
+    _this->_internal_set_type(from._internal_type());
   }
-  if (from.spec_version().size() > 0) {
-
-    spec_version_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.spec_version_);
+  if (!from._internal_spec_version().empty()) {
+    _this->_internal_set_spec_version(from._internal_spec_version());
   }
-  if (from.data_content_type().size() > 0) {
-
-    data_content_type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_content_type_);
+  if (!from._internal_data_content_type().empty()) {
+    _this->_internal_set_data_content_type(from._internal_data_content_type());
   }
-  if (from.data().size() > 0) {
-
-    data_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_);
+  if (!from._internal_data().empty()) {
+    _this->_internal_set_data(from._internal_data());
   }
-  if (from.has_extensions()) {
-    mutable_extensions()->::google::protobuf::Struct::MergeFrom(from.extensions());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_extensions()->::google::protobuf::Struct::MergeFrom(
+        from._internal_extensions());
   }
-}
-
-void TopicEventCERequest::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.TopicEventCERequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void TopicEventCERequest::CopyFrom(const TopicEventCERequest& from) {
@@ -2387,618 +2134,418 @@ void TopicEventCERequest::CopyFrom(const TopicEventCERequest& from) {
   MergeFrom(from);
 }
 
-bool TopicEventCERequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool TopicEventCERequest::IsInitialized() const {
   return true;
 }
 
-void TopicEventCERequest::Swap(TopicEventCERequest* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TopicEventCERequest::InternalSwap(TopicEventCERequest* other) {
   using std::swap;
-  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  source_.Swap(&other->source_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  type_.Swap(&other->type_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  spec_version_.Swap(&other->spec_version_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  data_content_type_.Swap(&other->data_content_type_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  data_.Swap(&other->data_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(extensions_, other->extensions_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, lhs_arena,
+                                       &other->_impl_.id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.source_, lhs_arena,
+                                       &other->_impl_.source_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.type_, lhs_arena,
+                                       &other->_impl_.type_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.spec_version_, lhs_arena,
+                                       &other->_impl_.spec_version_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.data_content_type_, lhs_arena,
+                                       &other->_impl_.data_content_type_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.data_, lhs_arena,
+                                       &other->_impl_.data_, rhs_arena);
+  swap(_impl_.extensions_, other->_impl_.extensions_);
 }
 
 ::google::protobuf::Metadata TopicEventCERequest::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[2]);
 }
-
-
 // ===================================================================
 
 TopicEventBulkRequestEntry_MetadataEntry_DoNotUse::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse() {}
-TopicEventBulkRequestEntry_MetadataEntry_DoNotUse::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+TopicEventBulkRequestEntry_MetadataEntry_DoNotUse::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena)
+    : SuperType(arena) {}
 void TopicEventBulkRequestEntry_MetadataEntry_DoNotUse::MergeFrom(const TopicEventBulkRequestEntry_MetadataEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
 ::google::protobuf::Metadata TopicEventBulkRequestEntry_MetadataEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[3];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[3]);
 }
-void TopicEventBulkRequestEntry_MetadataEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
-}
-
-
 // ===================================================================
 
-void TopicEventBulkRequestEntry::InitAsDefaultInstance() {
-  ::dapr::proto::runtime::v1::_TopicEventBulkRequestEntry_default_instance_.bytes_.UnsafeSetDefault(
-      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::dapr::proto::runtime::v1::_TopicEventBulkRequestEntry_default_instance_.cloud_event_ = const_cast< ::dapr::proto::runtime::v1::TopicEventCERequest*>(
-      ::dapr::proto::runtime::v1::TopicEventCERequest::internal_default_instance());
+class TopicEventBulkRequestEntry::_Internal {
+ public:
+  static constexpr ::int32_t kOneofCaseOffset =
+    PROTOBUF_FIELD_OFFSET(::dapr::proto::runtime::v1::TopicEventBulkRequestEntry, _impl_._oneof_case_);
+  static const ::dapr::proto::runtime::v1::TopicEventCERequest& cloud_event(const TopicEventBulkRequestEntry* msg);
+};
+
+const ::dapr::proto::runtime::v1::TopicEventCERequest& TopicEventBulkRequestEntry::_Internal::cloud_event(const TopicEventBulkRequestEntry* msg) {
+  return *msg->_impl_.event_.cloud_event_;
 }
 void TopicEventBulkRequestEntry::set_allocated_cloud_event(::dapr::proto::runtime::v1::TopicEventCERequest* cloud_event) {
-  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
   clear_event();
   if (cloud_event) {
-    ::google::protobuf::Arena* submessage_arena = NULL;
+    ::google::protobuf::Arena* submessage_arena =
+      ::google::protobuf::Arena::InternalGetOwningArena(cloud_event);
     if (message_arena != submessage_arena) {
       cloud_event = ::google::protobuf::internal::GetOwnedMessage(
           message_arena, cloud_event, submessage_arena);
     }
     set_has_cloud_event();
-    event_.cloud_event_ = cloud_event;
+    _impl_.event_.cloud_event_ = cloud_event;
   }
   // @@protoc_insertion_point(field_set_allocated:dapr.proto.runtime.v1.TopicEventBulkRequestEntry.cloud_event)
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TopicEventBulkRequestEntry::kEntryIdFieldNumber;
-const int TopicEventBulkRequestEntry::kBytesFieldNumber;
-const int TopicEventBulkRequestEntry::kCloudEventFieldNumber;
-const int TopicEventBulkRequestEntry::kContentTypeFieldNumber;
-const int TopicEventBulkRequestEntry::kMetadataFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-TopicEventBulkRequestEntry::TopicEventBulkRequestEntry()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventBulkRequestEntry.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
+TopicEventBulkRequestEntry::TopicEventBulkRequestEntry(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
 }
-TopicEventBulkRequestEntry::TopicEventBulkRequestEntry(const TopicEventBulkRequestEntry& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  metadata_.MergeFrom(from.metadata_);
-  entry_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.entry_id().size() > 0) {
-    entry_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.entry_id_);
+TopicEventBulkRequestEntry::TopicEventBulkRequestEntry(const TopicEventBulkRequestEntry& from) : ::google::protobuf::Message() {
+  TopicEventBulkRequestEntry* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      /* decltype(_impl_.metadata_) */ {},
+      decltype(_impl_.entry_id_){},
+      decltype(_impl_.content_type_){},
+      decltype(_impl_.event_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_._oneof_case_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _this->_impl_.metadata_.MergeFrom(from._impl_.metadata_);
+  _impl_.entry_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.entry_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_entry_id().empty()) {
+    _this->_impl_.entry_id_.Set(from._internal_entry_id(), _this->GetArenaForAllocation());
   }
-  content_type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.content_type().size() > 0) {
-    content_type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.content_type_);
+  _impl_.content_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.content_type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_content_type().empty()) {
+    _this->_impl_.content_type_.Set(from._internal_content_type(), _this->GetArenaForAllocation());
   }
   clear_has_event();
   switch (from.event_case()) {
     case kBytes: {
-      set_bytes(from.bytes());
+      _this->_internal_set_bytes(from._internal_bytes());
       break;
     }
     case kCloudEvent: {
-      mutable_cloud_event()->::dapr::proto::runtime::v1::TopicEventCERequest::MergeFrom(from.cloud_event());
+      _this->_internal_mutable_cloud_event()->::dapr::proto::runtime::v1::TopicEventCERequest::MergeFrom(
+          from._internal_cloud_event());
       break;
     }
     case EVENT_NOT_SET: {
       break;
     }
   }
+
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
 }
-
-void TopicEventBulkRequestEntry::SharedCtor() {
-  entry_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  content_type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void TopicEventBulkRequestEntry::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      /* decltype(_impl_.metadata_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
+      decltype(_impl_.entry_id_){},
+      decltype(_impl_.content_type_){},
+      decltype(_impl_.event_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_._oneof_case_)*/ {},
+  };
+  _impl_.entry_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.entry_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.content_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.content_type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   clear_has_event();
 }
-
 TopicEventBulkRequestEntry::~TopicEventBulkRequestEntry() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void TopicEventBulkRequestEntry::SharedDtor() {
-  entry_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  content_type_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void TopicEventBulkRequestEntry::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.metadata_.~MapField();
+  _impl_.entry_id_.Destroy();
+  _impl_.content_type_.Destroy();
   if (has_event()) {
     clear_event();
   }
 }
-
 void TopicEventBulkRequestEntry::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* TopicEventBulkRequestEntry::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const TopicEventBulkRequestEntry& TopicEventBulkRequestEntry::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventBulkRequestEntry.base);
-  return *internal_default_instance();
-}
-
 
 void TopicEventBulkRequestEntry::clear_event() {
 // @@protoc_insertion_point(one_of_clear_start:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
   switch (event_case()) {
     case kBytes: {
-      event_.bytes_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+      _impl_.event_.bytes_.Destroy();
       break;
     }
     case kCloudEvent: {
-      delete event_.cloud_event_;
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.event_.cloud_event_;
+      }
       break;
     }
     case EVENT_NOT_SET: {
       break;
     }
   }
-  _oneof_case_[0] = EVENT_NOT_SET;
+  _impl_._oneof_case_[0] = EVENT_NOT_SET;
 }
 
 
-void TopicEventBulkRequestEntry::Clear() {
+PROTOBUF_NOINLINE void TopicEventBulkRequestEntry::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  metadata_.Clear();
-  entry_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  content_type_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _impl_.metadata_.Clear();
+  _impl_.entry_id_.ClearToEmpty();
+  _impl_.content_type_.ClearToEmpty();
   clear_event();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool TopicEventBulkRequestEntry::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string entry_id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_entry_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->entry_id().data(), static_cast<int>(this->entry_id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.entry_id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // bytes bytes = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_bytes()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .dapr.proto.runtime.v1.TopicEventCERequest cloud_event = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_cloud_event()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string content_type = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_content_type()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->content_type().data(), static_cast<int>(this->content_type().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.content_type"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // map<string, string> metadata = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          TopicEventBulkRequestEntry_MetadataEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              TopicEventBulkRequestEntry_MetadataEntry_DoNotUse,
-              ::std::string, ::std::string,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::std::string > > parser(&metadata_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.MetadataEntry.key"));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.value().data(), static_cast<int>(parser.value().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.MetadataEntry.value"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
-  return false;
-#undef DO_
+const char* TopicEventBulkRequestEntry::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void TopicEventBulkRequestEntry::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // string entry_id = 1;
-  if (this->entry_id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->entry_id().data(), static_cast<int>(this->entry_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.entry_id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->entry_id(), output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 5, 2, 85, 2> TopicEventBulkRequestEntry::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    5, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    2,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_TopicEventBulkRequestEntry_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string content_type = 4;
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventBulkRequestEntry, _impl_.content_type_)}},
+    // string entry_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventBulkRequestEntry, _impl_.entry_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string entry_id = 1;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkRequestEntry, _impl_.entry_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bytes bytes = 2;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkRequestEntry, _impl_.event_.bytes_), _Internal::kOneofCaseOffset + 0, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kBytes | ::_fl::kRepAString)},
+    // .dapr.proto.runtime.v1.TopicEventCERequest cloud_event = 3;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkRequestEntry, _impl_.event_.cloud_event_), _Internal::kOneofCaseOffset + 0, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string content_type = 4;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkRequestEntry, _impl_.content_type_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // map<string, string> metadata = 5;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkRequestEntry, _impl_.metadata_), 0, 1,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::dapr::proto::runtime::v1::TopicEventCERequest>()},
+    {::_pbi::TcParser::GetMapAuxInfo<decltype(TopicEventBulkRequestEntry()._impl_.metadata_)>(1, 0, 0)},
+  }}, {{
+    "\60\10\0\0\14\10\0\0"
+    "dapr.proto.runtime.v1.TopicEventBulkRequestEntry"
+    "entry_id"
+    "content_type"
+    "metadata"
+  }},
+};
 
-  // bytes bytes = 2;
-  if (has_bytes()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      2, this->bytes(), output);
-  }
-
-  // .dapr.proto.runtime.v1.TopicEventCERequest cloud_event = 3;
-  if (has_cloud_event()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->_internal_cloud_event(), output);
-  }
-
-  // string content_type = 4;
-  if (this->content_type().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->content_type().data(), static_cast<int>(this->content_type().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.content_type");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->content_type(), output);
-  }
-
-  // map<string, string> metadata = 5;
-  if (!this->metadata().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.MetadataEntry.key");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->second.data(), static_cast<int>(p->second.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.MetadataEntry.value");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->metadata().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->metadata().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<TopicEventBulkRequestEntry_MetadataEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(metadata_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            5, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<TopicEventBulkRequestEntry_MetadataEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it) {
-        entry.reset(metadata_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            5, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
-}
-
-::google::protobuf::uint8* TopicEventBulkRequestEntry::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* TopicEventBulkRequestEntry::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string entry_id = 1;
-  if (this->entry_id().size() > 0) {
+  if (!this->_internal_entry_id().empty()) {
+    const std::string& _s = this->_internal_entry_id();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->entry_id().data(), static_cast<int>(this->entry_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.entry_id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->entry_id(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.entry_id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
-  // bytes bytes = 2;
-  if (has_bytes()) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        2, this->bytes(), target);
+  switch (event_case()) {
+    case kBytes: {
+      const std::string& _s = this->_internal_bytes();
+      target = stream->WriteBytesMaybeAliased(2, _s, target);
+      break;
+    }
+    case kCloudEvent: {
+      target = ::google::protobuf::internal::WireFormatLite::
+        InternalWriteMessage(3, _Internal::cloud_event(this),
+          _Internal::cloud_event(this).GetCachedSize(), target, stream);
+      break;
+    }
+    default:
+      break;
   }
-
-  // .dapr.proto.runtime.v1.TopicEventCERequest cloud_event = 3;
-  if (has_cloud_event()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        3, this->_internal_cloud_event(), deterministic, target);
-  }
-
   // string content_type = 4;
-  if (this->content_type().size() > 0) {
+  if (!this->_internal_content_type().empty()) {
+    const std::string& _s = this->_internal_content_type();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->content_type().data(), static_cast<int>(this->content_type().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.content_type");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->content_type(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.content_type");
+    target = stream->WriteStringMaybeAliased(4, _s, target);
   }
 
   // map<string, string> metadata = 5;
-  if (!this->metadata().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.MetadataEntry.key");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->second.data(), static_cast<int>(p->second.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.MetadataEntry.value");
-      }
-    };
+  if (!_internal_metadata().empty()) {
+    using MapType = ::google::protobuf::Map<std::string, std::string>;
+    using WireHelper = TopicEventBulkRequestEntry_MetadataEntry_DoNotUse::Funcs;
+    const auto& field = _internal_metadata();
 
-    if (deterministic &&
-        this->metadata().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->metadata().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<TopicEventBulkRequestEntry_MetadataEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(metadata_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       5, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+    if (stream->IsSerializationDeterministic() && field.size() > 1) {
+      for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+        target = WireHelper::InternalSerialize(
+            5, entry.first, entry.second, target, stream);
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.metadata");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.metadata");
       }
     } else {
-      ::std::unique_ptr<TopicEventBulkRequestEntry_MetadataEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it) {
-        entry.reset(metadata_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       5, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (const auto& entry : field) {
+        target = WireHelper::InternalSerialize(
+            5, entry.first, entry.second, target, stream);
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.metadata");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequestEntry.metadata");
       }
     }
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
   return target;
 }
 
-size_t TopicEventBulkRequestEntry::ByteSizeLong() const {
+::size_t TopicEventBulkRequestEntry::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // map<string, string> metadata = 5;
-  total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->metadata_size());
-  {
-    ::std::unique_ptr<TopicEventBulkRequestEntry_MetadataEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-        it = this->metadata().begin();
-        it != this->metadata().end(); ++it) {
-      entry.reset(metadata_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_metadata_size());
+  for (const auto& entry : _internal_metadata()) {
+    total_size += TopicEventBulkRequestEntry_MetadataEntry_DoNotUse::Funcs::ByteSizeLong(entry.first, entry.second);
   }
-
   // string entry_id = 1;
-  if (this->entry_id().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->entry_id());
+  if (!this->_internal_entry_id().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_entry_id());
   }
 
   // string content_type = 4;
-  if (this->content_type().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->content_type());
+  if (!this->_internal_content_type().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_content_type());
   }
 
   switch (event_case()) {
     // bytes bytes = 2;
     case kBytes: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::BytesSize(
-          this->bytes());
+      total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                      this->_internal_bytes());
       break;
     }
     // .dapr.proto.runtime.v1.TopicEventCERequest cloud_event = 3;
     case kCloudEvent: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *event_.cloud_event_);
+          *_impl_.event_.cloud_event_);
       break;
     }
     case EVENT_NOT_SET: {
       break;
     }
   }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void TopicEventBulkRequestEntry::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TopicEventBulkRequestEntry* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TopicEventBulkRequestEntry>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
-    MergeFrom(*source);
-  }
-}
+const ::google::protobuf::Message::ClassData TopicEventBulkRequestEntry::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    TopicEventBulkRequestEntry::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*TopicEventBulkRequestEntry::GetClassData() const { return &_class_data_; }
 
-void TopicEventBulkRequestEntry::MergeFrom(const TopicEventBulkRequestEntry& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+
+void TopicEventBulkRequestEntry::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<TopicEventBulkRequestEntry*>(&to_msg);
+  auto& from = static_cast<const TopicEventBulkRequestEntry&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  metadata_.MergeFrom(from.metadata_);
-  if (from.entry_id().size() > 0) {
-
-    entry_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.entry_id_);
+  _this->_impl_.metadata_.MergeFrom(from._impl_.metadata_);
+  if (!from._internal_entry_id().empty()) {
+    _this->_internal_set_entry_id(from._internal_entry_id());
   }
-  if (from.content_type().size() > 0) {
-
-    content_type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.content_type_);
+  if (!from._internal_content_type().empty()) {
+    _this->_internal_set_content_type(from._internal_content_type());
   }
   switch (from.event_case()) {
     case kBytes: {
-      set_bytes(from.bytes());
+      _this->_internal_set_bytes(from._internal_bytes());
       break;
     }
     case kCloudEvent: {
-      mutable_cloud_event()->::dapr::proto::runtime::v1::TopicEventCERequest::MergeFrom(from.cloud_event());
+      _this->_internal_mutable_cloud_event()->::dapr::proto::runtime::v1::TopicEventCERequest::MergeFrom(
+          from._internal_cloud_event());
       break;
     }
     case EVENT_NOT_SET: {
       break;
     }
   }
-}
-
-void TopicEventBulkRequestEntry::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.TopicEventBulkRequestEntry)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void TopicEventBulkRequestEntry::CopyFrom(const TopicEventBulkRequestEntry& from) {
@@ -3008,684 +2555,436 @@ void TopicEventBulkRequestEntry::CopyFrom(const TopicEventBulkRequestEntry& from
   MergeFrom(from);
 }
 
-bool TopicEventBulkRequestEntry::IsInitialized() const {
+PROTOBUF_NOINLINE bool TopicEventBulkRequestEntry::IsInitialized() const {
   return true;
 }
 
-void TopicEventBulkRequestEntry::Swap(TopicEventBulkRequestEntry* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TopicEventBulkRequestEntry::InternalSwap(TopicEventBulkRequestEntry* other) {
   using std::swap;
-  metadata_.Swap(&other->metadata_);
-  entry_id_.Swap(&other->entry_id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  content_type_.Swap(&other->content_type_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(event_, other->event_);
-  swap(_oneof_case_[0], other->_oneof_case_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.metadata_.InternalSwap(&other->_impl_.metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.entry_id_, lhs_arena,
+                                       &other->_impl_.entry_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_type_, lhs_arena,
+                                       &other->_impl_.content_type_, rhs_arena);
+  swap(_impl_.event_, other->_impl_.event_);
+  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 
 ::google::protobuf::Metadata TopicEventBulkRequestEntry::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[4]);
 }
-
-
 // ===================================================================
 
 TopicEventBulkRequest_MetadataEntry_DoNotUse::TopicEventBulkRequest_MetadataEntry_DoNotUse() {}
-TopicEventBulkRequest_MetadataEntry_DoNotUse::TopicEventBulkRequest_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+TopicEventBulkRequest_MetadataEntry_DoNotUse::TopicEventBulkRequest_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena)
+    : SuperType(arena) {}
 void TopicEventBulkRequest_MetadataEntry_DoNotUse::MergeFrom(const TopicEventBulkRequest_MetadataEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
 ::google::protobuf::Metadata TopicEventBulkRequest_MetadataEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[5];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[5]);
 }
-void TopicEventBulkRequest_MetadataEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
-}
-
-
 // ===================================================================
 
-void TopicEventBulkRequest::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TopicEventBulkRequest::kIdFieldNumber;
-const int TopicEventBulkRequest::kEntriesFieldNumber;
-const int TopicEventBulkRequest::kMetadataFieldNumber;
-const int TopicEventBulkRequest::kTopicFieldNumber;
-const int TopicEventBulkRequest::kPubsubNameFieldNumber;
-const int TopicEventBulkRequest::kTypeFieldNumber;
-const int TopicEventBulkRequest::kPathFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TopicEventBulkRequest::_Internal {
+ public:
+};
 
-TopicEventBulkRequest::TopicEventBulkRequest()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventBulkRequest.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.TopicEventBulkRequest)
+TopicEventBulkRequest::TopicEventBulkRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.TopicEventBulkRequest)
 }
-TopicEventBulkRequest::TopicEventBulkRequest(const TopicEventBulkRequest& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      entries_(from.entries_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  metadata_.MergeFrom(from.metadata_);
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.id().size() > 0) {
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+TopicEventBulkRequest::TopicEventBulkRequest(const TopicEventBulkRequest& from) : ::google::protobuf::Message() {
+  TopicEventBulkRequest* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.entries_){from._impl_.entries_},
+      /* decltype(_impl_.metadata_) */ {},
+      decltype(_impl_.id_){},
+      decltype(_impl_.topic_){},
+      decltype(_impl_.pubsub_name_){},
+      decltype(_impl_.type_){},
+      decltype(_impl_.path_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _this->_impl_.metadata_.MergeFrom(from._impl_.metadata_);
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_id().empty()) {
+    _this->_impl_.id_.Set(from._internal_id(), _this->GetArenaForAllocation());
   }
-  topic_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.topic().size() > 0) {
-    topic_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.topic_);
+  _impl_.topic_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.topic_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_topic().empty()) {
+    _this->_impl_.topic_.Set(from._internal_topic(), _this->GetArenaForAllocation());
   }
-  pubsub_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.pubsub_name().size() > 0) {
-    pubsub_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.pubsub_name_);
+  _impl_.pubsub_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.pubsub_name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_pubsub_name().empty()) {
+    _this->_impl_.pubsub_name_.Set(from._internal_pubsub_name(), _this->GetArenaForAllocation());
   }
-  type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.type().size() > 0) {
-    type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.type_);
+  _impl_.type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_type().empty()) {
+    _this->_impl_.type_.Set(from._internal_type(), _this->GetArenaForAllocation());
   }
-  path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.path().size() > 0) {
-    path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.path_);
+  _impl_.path_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.path_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_path().empty()) {
+    _this->_impl_.path_.Set(from._internal_path(), _this->GetArenaForAllocation());
   }
+
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.TopicEventBulkRequest)
 }
-
-void TopicEventBulkRequest::SharedCtor() {
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  topic_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  pubsub_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void TopicEventBulkRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.entries_){arena},
+      /* decltype(_impl_.metadata_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
+      decltype(_impl_.id_){},
+      decltype(_impl_.topic_){},
+      decltype(_impl_.pubsub_name_){},
+      decltype(_impl_.type_){},
+      decltype(_impl_.path_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.topic_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.topic_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.pubsub_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.pubsub_name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.type_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.path_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.path_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 TopicEventBulkRequest::~TopicEventBulkRequest() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.TopicEventBulkRequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void TopicEventBulkRequest::SharedDtor() {
-  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  topic_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  pubsub_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  type_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void TopicEventBulkRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.entries_.~RepeatedPtrField();
+  _impl_.metadata_.~MapField();
+  _impl_.id_.Destroy();
+  _impl_.topic_.Destroy();
+  _impl_.pubsub_name_.Destroy();
+  _impl_.type_.Destroy();
+  _impl_.path_.Destroy();
 }
-
 void TopicEventBulkRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* TopicEventBulkRequest::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const TopicEventBulkRequest& TopicEventBulkRequest::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventBulkRequest.base);
-  return *internal_default_instance();
-}
-
-
-void TopicEventBulkRequest::Clear() {
+PROTOBUF_NOINLINE void TopicEventBulkRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.TopicEventBulkRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  entries_.Clear();
-  metadata_.Clear();
-  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  pubsub_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  type_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
+  _internal_mutable_entries()->Clear();
+  _impl_.metadata_.Clear();
+  _impl_.id_.ClearToEmpty();
+  _impl_.topic_.ClearToEmpty();
+  _impl_.pubsub_name_.ClearToEmpty();
+  _impl_.type_.ClearToEmpty();
+  _impl_.path_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool TopicEventBulkRequest::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.TopicEventBulkRequest)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->id().data(), static_cast<int>(this->id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventBulkRequest.id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated .dapr.proto.runtime.v1.TopicEventBulkRequestEntry entries = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_entries()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // map<string, string> metadata = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          TopicEventBulkRequest_MetadataEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              TopicEventBulkRequest_MetadataEntry_DoNotUse,
-              ::std::string, ::std::string,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::std::string > > parser(&metadata_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventBulkRequest.MetadataEntry.key"));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.value().data(), static_cast<int>(parser.value().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventBulkRequest.MetadataEntry.value"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string topic = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_topic()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->topic().data(), static_cast<int>(this->topic().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventBulkRequest.topic"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string pubsub_name = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_pubsub_name()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->pubsub_name().data(), static_cast<int>(this->pubsub_name().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventBulkRequest.pubsub_name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string type = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_type()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->type().data(), static_cast<int>(this->type().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventBulkRequest.type"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string path = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_path()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->path().data(), static_cast<int>(this->path().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventBulkRequest.path"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.TopicEventBulkRequest)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.TopicEventBulkRequest)
-  return false;
-#undef DO_
+const char* TopicEventBulkRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void TopicEventBulkRequest::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.TopicEventBulkRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // string id = 1;
-  if (this->id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequest.id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->id(), output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 7, 2, 86, 2> TopicEventBulkRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    7, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967168,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    7,  // num_field_entries
+    2,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_TopicEventBulkRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventBulkRequest, _impl_.id_)}},
+    // repeated .dapr.proto.runtime.v1.TopicEventBulkRequestEntry entries = 2;
+    {::_pbi::TcParser::FastMtR1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventBulkRequest, _impl_.entries_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    // string topic = 4;
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventBulkRequest, _impl_.topic_)}},
+    // string pubsub_name = 5;
+    {::_pbi::TcParser::FastUS1,
+     {42, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventBulkRequest, _impl_.pubsub_name_)}},
+    // string type = 6;
+    {::_pbi::TcParser::FastUS1,
+     {50, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventBulkRequest, _impl_.type_)}},
+    // string path = 7;
+    {::_pbi::TcParser::FastUS1,
+     {58, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventBulkRequest, _impl_.path_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string id = 1;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkRequest, _impl_.id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // repeated .dapr.proto.runtime.v1.TopicEventBulkRequestEntry entries = 2;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkRequest, _impl_.entries_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // map<string, string> metadata = 3;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkRequest, _impl_.metadata_), 0, 1,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+    // string topic = 4;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkRequest, _impl_.topic_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string pubsub_name = 5;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkRequest, _impl_.pubsub_name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string type = 6;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkRequest, _impl_.type_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string path = 7;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkRequest, _impl_.path_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::dapr::proto::runtime::v1::TopicEventBulkRequestEntry>()},
+    {::_pbi::TcParser::GetMapAuxInfo<decltype(TopicEventBulkRequest()._impl_.metadata_)>(1, 0, 0)},
+  }}, {{
+    "\53\2\0\10\5\13\4\4"
+    "dapr.proto.runtime.v1.TopicEventBulkRequest"
+    "id"
+    "metadata"
+    "topic"
+    "pubsub_name"
+    "type"
+    "path"
+  }},
+};
 
-  // repeated .dapr.proto.runtime.v1.TopicEventBulkRequestEntry entries = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->entries_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
-      this->entries(static_cast<int>(i)),
-      output);
-  }
-
-  // map<string, string> metadata = 3;
-  if (!this->metadata().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.TopicEventBulkRequest.MetadataEntry.key");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->second.data(), static_cast<int>(p->second.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.TopicEventBulkRequest.MetadataEntry.value");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->metadata().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->metadata().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<TopicEventBulkRequest_MetadataEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(metadata_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            3, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<TopicEventBulkRequest_MetadataEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it) {
-        entry.reset(metadata_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            3, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  // string topic = 4;
-  if (this->topic().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->topic().data(), static_cast<int>(this->topic().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequest.topic");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->topic(), output);
-  }
-
-  // string pubsub_name = 5;
-  if (this->pubsub_name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->pubsub_name().data(), static_cast<int>(this->pubsub_name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequest.pubsub_name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->pubsub_name(), output);
-  }
-
-  // string type = 6;
-  if (this->type().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->type().data(), static_cast<int>(this->type().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequest.type");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->type(), output);
-  }
-
-  // string path = 7;
-  if (this->path().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->path().data(), static_cast<int>(this->path().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequest.path");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      7, this->path(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.TopicEventBulkRequest)
-}
-
-::google::protobuf::uint8* TopicEventBulkRequest::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* TopicEventBulkRequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.TopicEventBulkRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string id = 1;
-  if (this->id().size() > 0) {
+  if (!this->_internal_id().empty()) {
+    const std::string& _s = this->_internal_id();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequest.id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->id(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequest.id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // repeated .dapr.proto.runtime.v1.TopicEventBulkRequestEntry entries = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->entries_size()); i < n; i++) {
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_entries_size()); i < n; i++) {
+    const auto& repfield = this->_internal_entries().Get(i);
     target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->entries(static_cast<int>(i)), deterministic, target);
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   // map<string, string> metadata = 3;
-  if (!this->metadata().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.TopicEventBulkRequest.MetadataEntry.key");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->second.data(), static_cast<int>(p->second.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.TopicEventBulkRequest.MetadataEntry.value");
-      }
-    };
+  if (!_internal_metadata().empty()) {
+    using MapType = ::google::protobuf::Map<std::string, std::string>;
+    using WireHelper = TopicEventBulkRequest_MetadataEntry_DoNotUse::Funcs;
+    const auto& field = _internal_metadata();
 
-    if (deterministic &&
-        this->metadata().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->metadata().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<TopicEventBulkRequest_MetadataEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(metadata_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       3, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+    if (stream->IsSerializationDeterministic() && field.size() > 1) {
+      for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+        target = WireHelper::InternalSerialize(
+            3, entry.first, entry.second, target, stream);
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequest.metadata");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequest.metadata");
       }
     } else {
-      ::std::unique_ptr<TopicEventBulkRequest_MetadataEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it) {
-        entry.reset(metadata_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       3, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (const auto& entry : field) {
+        target = WireHelper::InternalSerialize(
+            3, entry.first, entry.second, target, stream);
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequest.metadata");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequest.metadata");
       }
     }
   }
 
   // string topic = 4;
-  if (this->topic().size() > 0) {
+  if (!this->_internal_topic().empty()) {
+    const std::string& _s = this->_internal_topic();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->topic().data(), static_cast<int>(this->topic().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequest.topic");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->topic(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequest.topic");
+    target = stream->WriteStringMaybeAliased(4, _s, target);
   }
 
   // string pubsub_name = 5;
-  if (this->pubsub_name().size() > 0) {
+  if (!this->_internal_pubsub_name().empty()) {
+    const std::string& _s = this->_internal_pubsub_name();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->pubsub_name().data(), static_cast<int>(this->pubsub_name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequest.pubsub_name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->pubsub_name(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequest.pubsub_name");
+    target = stream->WriteStringMaybeAliased(5, _s, target);
   }
 
   // string type = 6;
-  if (this->type().size() > 0) {
+  if (!this->_internal_type().empty()) {
+    const std::string& _s = this->_internal_type();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->type().data(), static_cast<int>(this->type().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequest.type");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->type(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequest.type");
+    target = stream->WriteStringMaybeAliased(6, _s, target);
   }
 
   // string path = 7;
-  if (this->path().size() > 0) {
+  if (!this->_internal_path().empty()) {
+    const std::string& _s = this->_internal_path();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->path().data(), static_cast<int>(this->path().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkRequest.path");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        7, this->path(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkRequest.path");
+    target = stream->WriteStringMaybeAliased(7, _s, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.TopicEventBulkRequest)
   return target;
 }
 
-size_t TopicEventBulkRequest::ByteSizeLong() const {
+::size_t TopicEventBulkRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.TopicEventBulkRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .dapr.proto.runtime.v1.TopicEventBulkRequestEntry entries = 2;
-  {
-    unsigned int count = static_cast<unsigned int>(this->entries_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->entries(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_entries_size();
+  for (const auto& msg : this->_internal_entries()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
   }
-
   // map<string, string> metadata = 3;
-  total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->metadata_size());
-  {
-    ::std::unique_ptr<TopicEventBulkRequest_MetadataEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-        it = this->metadata().begin();
-        it != this->metadata().end(); ++it) {
-      entry.reset(metadata_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_metadata_size());
+  for (const auto& entry : _internal_metadata()) {
+    total_size += TopicEventBulkRequest_MetadataEntry_DoNotUse::Funcs::ByteSizeLong(entry.first, entry.second);
   }
-
   // string id = 1;
-  if (this->id().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->id());
+  if (!this->_internal_id().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_id());
   }
 
   // string topic = 4;
-  if (this->topic().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->topic());
+  if (!this->_internal_topic().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_topic());
   }
 
   // string pubsub_name = 5;
-  if (this->pubsub_name().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->pubsub_name());
+  if (!this->_internal_pubsub_name().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_pubsub_name());
   }
 
   // string type = 6;
-  if (this->type().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->type());
+  if (!this->_internal_type().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_type());
   }
 
   // string path = 7;
-  if (this->path().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->path());
+  if (!this->_internal_path().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_path());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void TopicEventBulkRequest::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.TopicEventBulkRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TopicEventBulkRequest* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TopicEventBulkRequest>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.TopicEventBulkRequest)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.TopicEventBulkRequest)
-    MergeFrom(*source);
-  }
-}
+const ::google::protobuf::Message::ClassData TopicEventBulkRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    TopicEventBulkRequest::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*TopicEventBulkRequest::GetClassData() const { return &_class_data_; }
 
-void TopicEventBulkRequest::MergeFrom(const TopicEventBulkRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventBulkRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+
+void TopicEventBulkRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<TopicEventBulkRequest*>(&to_msg);
+  auto& from = static_cast<const TopicEventBulkRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventBulkRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  entries_.MergeFrom(from.entries_);
-  metadata_.MergeFrom(from.metadata_);
-  if (from.id().size() > 0) {
-
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  _this->_internal_mutable_entries()->MergeFrom(from._internal_entries());
+  _this->_impl_.metadata_.MergeFrom(from._impl_.metadata_);
+  if (!from._internal_id().empty()) {
+    _this->_internal_set_id(from._internal_id());
   }
-  if (from.topic().size() > 0) {
-
-    topic_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.topic_);
+  if (!from._internal_topic().empty()) {
+    _this->_internal_set_topic(from._internal_topic());
   }
-  if (from.pubsub_name().size() > 0) {
-
-    pubsub_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.pubsub_name_);
+  if (!from._internal_pubsub_name().empty()) {
+    _this->_internal_set_pubsub_name(from._internal_pubsub_name());
   }
-  if (from.type().size() > 0) {
-
-    type_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.type_);
+  if (!from._internal_type().empty()) {
+    _this->_internal_set_type(from._internal_type());
   }
-  if (from.path().size() > 0) {
-
-    path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.path_);
+  if (!from._internal_path().empty()) {
+    _this->_internal_set_path(from._internal_path());
   }
-}
-
-void TopicEventBulkRequest::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.TopicEventBulkRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void TopicEventBulkRequest::CopyFrom(const TopicEventBulkRequest& from) {
@@ -3695,289 +2994,224 @@ void TopicEventBulkRequest::CopyFrom(const TopicEventBulkRequest& from) {
   MergeFrom(from);
 }
 
-bool TopicEventBulkRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool TopicEventBulkRequest::IsInitialized() const {
   return true;
 }
 
-void TopicEventBulkRequest::Swap(TopicEventBulkRequest* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TopicEventBulkRequest::InternalSwap(TopicEventBulkRequest* other) {
   using std::swap;
-  CastToBase(&entries_)->InternalSwap(CastToBase(&other->entries_));
-  metadata_.Swap(&other->metadata_);
-  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  topic_.Swap(&other->topic_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  pubsub_name_.Swap(&other->pubsub_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  type_.Swap(&other->type_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  path_.Swap(&other->path_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.entries_.InternalSwap(&other->_impl_.entries_);
+  _impl_.metadata_.InternalSwap(&other->_impl_.metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, lhs_arena,
+                                       &other->_impl_.id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.topic_, lhs_arena,
+                                       &other->_impl_.topic_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.pubsub_name_, lhs_arena,
+                                       &other->_impl_.pubsub_name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.type_, lhs_arena,
+                                       &other->_impl_.type_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.path_, lhs_arena,
+                                       &other->_impl_.path_, rhs_arena);
 }
 
 ::google::protobuf::Metadata TopicEventBulkRequest::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[6]);
 }
-
-
 // ===================================================================
 
-void TopicEventBulkResponseEntry::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TopicEventBulkResponseEntry::kEntryIdFieldNumber;
-const int TopicEventBulkResponseEntry::kStatusFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TopicEventBulkResponseEntry::_Internal {
+ public:
+};
 
-TopicEventBulkResponseEntry::TopicEventBulkResponseEntry()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventBulkResponseEntry.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
+TopicEventBulkResponseEntry::TopicEventBulkResponseEntry(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
 }
-TopicEventBulkResponseEntry::TopicEventBulkResponseEntry(const TopicEventBulkResponseEntry& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  entry_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.entry_id().size() > 0) {
-    entry_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.entry_id_);
+TopicEventBulkResponseEntry::TopicEventBulkResponseEntry(const TopicEventBulkResponseEntry& from) : ::google::protobuf::Message() {
+  TopicEventBulkResponseEntry* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.entry_id_){},
+      decltype(_impl_.status_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.entry_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.entry_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_entry_id().empty()) {
+    _this->_impl_.entry_id_.Set(from._internal_entry_id(), _this->GetArenaForAllocation());
   }
-  status_ = from.status_;
+  _this->_impl_.status_ = from._impl_.status_;
+
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
 }
-
-void TopicEventBulkResponseEntry::SharedCtor() {
-  entry_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  status_ = 0;
+inline void TopicEventBulkResponseEntry::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.entry_id_){},
+      decltype(_impl_.status_){0},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.entry_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.entry_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 TopicEventBulkResponseEntry::~TopicEventBulkResponseEntry() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void TopicEventBulkResponseEntry::SharedDtor() {
-  entry_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void TopicEventBulkResponseEntry::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.entry_id_.Destroy();
 }
-
 void TopicEventBulkResponseEntry::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* TopicEventBulkResponseEntry::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const TopicEventBulkResponseEntry& TopicEventBulkResponseEntry::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventBulkResponseEntry.base);
-  return *internal_default_instance();
-}
-
-
-void TopicEventBulkResponseEntry::Clear() {
+PROTOBUF_NOINLINE void TopicEventBulkResponseEntry::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  entry_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  status_ = 0;
-  _internal_metadata_.Clear();
+  _impl_.entry_id_.ClearToEmpty();
+  _impl_.status_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool TopicEventBulkResponseEntry::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string entry_id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_entry_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->entry_id().data(), static_cast<int>(this->entry_id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicEventBulkResponseEntry.entry_id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_status(static_cast< ::dapr::proto::runtime::v1::TopicEventResponse_TopicEventResponseStatus >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
-  return false;
-#undef DO_
+const char* TopicEventBulkResponseEntry::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void TopicEventBulkResponseEntry::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // string entry_id = 1;
-  if (this->entry_id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->entry_id().data(), static_cast<int>(this->entry_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkResponseEntry.entry_id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->entry_id(), output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 66, 2> TopicEventBulkResponseEntry::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_TopicEventBulkResponseEntry_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(TopicEventBulkResponseEntry, _impl_.status_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventBulkResponseEntry, _impl_.status_)}},
+    // string entry_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventBulkResponseEntry, _impl_.entry_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string entry_id = 1;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkResponseEntry, _impl_.entry_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 2;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkResponseEntry, _impl_.status_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+  }},
+  // no aux_entries
+  {{
+    "\61\10\0\0\0\0\0\0"
+    "dapr.proto.runtime.v1.TopicEventBulkResponseEntry"
+    "entry_id"
+  }},
+};
 
-  // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 2;
-  if (this->status() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      2, this->status(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
-}
-
-::google::protobuf::uint8* TopicEventBulkResponseEntry::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* TopicEventBulkResponseEntry::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string entry_id = 1;
-  if (this->entry_id().size() > 0) {
+  if (!this->_internal_entry_id().empty()) {
+    const std::string& _s = this->_internal_entry_id();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->entry_id().data(), static_cast<int>(this->entry_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicEventBulkResponseEntry.entry_id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->entry_id(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicEventBulkResponseEntry.entry_id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 2;
-  if (this->status() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      2, this->status(), target);
+  if (this->_internal_status() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+        2, this->_internal_status(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
   return target;
 }
 
-size_t TopicEventBulkResponseEntry::ByteSizeLong() const {
+::size_t TopicEventBulkResponseEntry::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // string entry_id = 1;
-  if (this->entry_id().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->entry_id());
+  if (!this->_internal_entry_id().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_entry_id());
   }
 
   // .dapr.proto.runtime.v1.TopicEventResponse.TopicEventResponseStatus status = 2;
-  if (this->status() != 0) {
+  if (this->_internal_status() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->status());
+                  ::_pbi::WireFormatLite::EnumSize(this->_internal_status());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void TopicEventBulkResponseEntry::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TopicEventBulkResponseEntry* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TopicEventBulkResponseEntry>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
-    MergeFrom(*source);
-  }
-}
+const ::google::protobuf::Message::ClassData TopicEventBulkResponseEntry::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    TopicEventBulkResponseEntry::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*TopicEventBulkResponseEntry::GetClassData() const { return &_class_data_; }
 
-void TopicEventBulkResponseEntry::MergeFrom(const TopicEventBulkResponseEntry& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+
+void TopicEventBulkResponseEntry::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<TopicEventBulkResponseEntry*>(&to_msg);
+  auto& from = static_cast<const TopicEventBulkResponseEntry&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.entry_id().size() > 0) {
-
-    entry_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.entry_id_);
+  if (!from._internal_entry_id().empty()) {
+    _this->_internal_set_entry_id(from._internal_entry_id());
   }
-  if (from.status() != 0) {
-    set_status(from.status());
+  if (from._internal_status() != 0) {
+    _this->_internal_set_status(from._internal_status());
   }
-}
-
-void TopicEventBulkResponseEntry::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.TopicEventBulkResponseEntry)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void TopicEventBulkResponseEntry::CopyFrom(const TopicEventBulkResponseEntry& from) {
@@ -3987,228 +3221,173 @@ void TopicEventBulkResponseEntry::CopyFrom(const TopicEventBulkResponseEntry& fr
   MergeFrom(from);
 }
 
-bool TopicEventBulkResponseEntry::IsInitialized() const {
+PROTOBUF_NOINLINE bool TopicEventBulkResponseEntry::IsInitialized() const {
   return true;
 }
 
-void TopicEventBulkResponseEntry::Swap(TopicEventBulkResponseEntry* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TopicEventBulkResponseEntry::InternalSwap(TopicEventBulkResponseEntry* other) {
   using std::swap;
-  entry_id_.Swap(&other->entry_id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(status_, other->status_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.entry_id_, lhs_arena,
+                                       &other->_impl_.entry_id_, rhs_arena);
+  swap(_impl_.status_, other->_impl_.status_);
 }
 
 ::google::protobuf::Metadata TopicEventBulkResponseEntry::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[7]);
 }
-
-
 // ===================================================================
 
-void TopicEventBulkResponse::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TopicEventBulkResponse::kStatusesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TopicEventBulkResponse::_Internal {
+ public:
+};
 
-TopicEventBulkResponse::TopicEventBulkResponse()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventBulkResponse.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.TopicEventBulkResponse)
+TopicEventBulkResponse::TopicEventBulkResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.TopicEventBulkResponse)
 }
-TopicEventBulkResponse::TopicEventBulkResponse(const TopicEventBulkResponse& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      statuses_(from.statuses_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+TopicEventBulkResponse::TopicEventBulkResponse(const TopicEventBulkResponse& from) : ::google::protobuf::Message() {
+  TopicEventBulkResponse* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.statuses_){from._impl_.statuses_},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.TopicEventBulkResponse)
 }
-
-void TopicEventBulkResponse::SharedCtor() {
+inline void TopicEventBulkResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.statuses_){arena},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
 }
-
 TopicEventBulkResponse::~TopicEventBulkResponse() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.TopicEventBulkResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void TopicEventBulkResponse::SharedDtor() {
+inline void TopicEventBulkResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.statuses_.~RepeatedPtrField();
 }
-
 void TopicEventBulkResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* TopicEventBulkResponse::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const TopicEventBulkResponse& TopicEventBulkResponse::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicEventBulkResponse.base);
-  return *internal_default_instance();
-}
-
-
-void TopicEventBulkResponse::Clear() {
+PROTOBUF_NOINLINE void TopicEventBulkResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.TopicEventBulkResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  statuses_.Clear();
-  _internal_metadata_.Clear();
+  _internal_mutable_statuses()->Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool TopicEventBulkResponse::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.TopicEventBulkResponse)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .dapr.proto.runtime.v1.TopicEventBulkResponseEntry statuses = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_statuses()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.TopicEventBulkResponse)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.TopicEventBulkResponse)
-  return false;
-#undef DO_
+const char* TopicEventBulkResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void TopicEventBulkResponse::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.TopicEventBulkResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // repeated .dapr.proto.runtime.v1.TopicEventBulkResponseEntry statuses = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->statuses_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->statuses(static_cast<int>(i)),
-      output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> TopicEventBulkResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_TopicEventBulkResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // repeated .dapr.proto.runtime.v1.TopicEventBulkResponseEntry statuses = 1;
+    {::_pbi::TcParser::FastMtR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TopicEventBulkResponse, _impl_.statuses_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .dapr.proto.runtime.v1.TopicEventBulkResponseEntry statuses = 1;
+    {PROTOBUF_FIELD_OFFSET(TopicEventBulkResponse, _impl_.statuses_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::dapr::proto::runtime::v1::TopicEventBulkResponseEntry>()},
+  }}, {{
+  }},
+};
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.TopicEventBulkResponse)
-}
-
-::google::protobuf::uint8* TopicEventBulkResponse::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* TopicEventBulkResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.TopicEventBulkResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // repeated .dapr.proto.runtime.v1.TopicEventBulkResponseEntry statuses = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->statuses_size()); i < n; i++) {
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_statuses_size()); i < n; i++) {
+    const auto& repfield = this->_internal_statuses().Get(i);
     target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->statuses(static_cast<int>(i)), deterministic, target);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.TopicEventBulkResponse)
   return target;
 }
 
-size_t TopicEventBulkResponse::ByteSizeLong() const {
+::size_t TopicEventBulkResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.TopicEventBulkResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // repeated .dapr.proto.runtime.v1.TopicEventBulkResponseEntry statuses = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->statuses_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->statuses(static_cast<int>(i)));
-    }
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void TopicEventBulkResponse::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.TopicEventBulkResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TopicEventBulkResponse* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TopicEventBulkResponse>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.TopicEventBulkResponse)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.TopicEventBulkResponse)
-    MergeFrom(*source);
-  }
-}
-
-void TopicEventBulkResponse::MergeFrom(const TopicEventBulkResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventBulkResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  statuses_.MergeFrom(from.statuses_);
+  // repeated .dapr.proto.runtime.v1.TopicEventBulkResponseEntry statuses = 1;
+  total_size += 1UL * this->_internal_statuses_size();
+  for (const auto& msg : this->_internal_statuses()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void TopicEventBulkResponse::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.TopicEventBulkResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+const ::google::protobuf::Message::ClassData TopicEventBulkResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    TopicEventBulkResponse::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*TopicEventBulkResponse::GetClassData() const { return &_class_data_; }
+
+
+void TopicEventBulkResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<TopicEventBulkResponse*>(&to_msg);
+  auto& from = static_cast<const TopicEventBulkResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicEventBulkResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_statuses()->MergeFrom(from._internal_statuses());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void TopicEventBulkResponse::CopyFrom(const TopicEventBulkResponse& from) {
@@ -4218,454 +3397,280 @@ void TopicEventBulkResponse::CopyFrom(const TopicEventBulkResponse& from) {
   MergeFrom(from);
 }
 
-bool TopicEventBulkResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool TopicEventBulkResponse::IsInitialized() const {
   return true;
 }
 
-void TopicEventBulkResponse::Swap(TopicEventBulkResponse* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TopicEventBulkResponse::InternalSwap(TopicEventBulkResponse* other) {
   using std::swap;
-  CastToBase(&statuses_)->InternalSwap(CastToBase(&other->statuses_));
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.statuses_.InternalSwap(&other->_impl_.statuses_);
 }
 
 ::google::protobuf::Metadata TopicEventBulkResponse::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[8]);
 }
-
-
 // ===================================================================
 
 BindingEventRequest_MetadataEntry_DoNotUse::BindingEventRequest_MetadataEntry_DoNotUse() {}
-BindingEventRequest_MetadataEntry_DoNotUse::BindingEventRequest_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+BindingEventRequest_MetadataEntry_DoNotUse::BindingEventRequest_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena)
+    : SuperType(arena) {}
 void BindingEventRequest_MetadataEntry_DoNotUse::MergeFrom(const BindingEventRequest_MetadataEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
 ::google::protobuf::Metadata BindingEventRequest_MetadataEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[9];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[9]);
 }
-void BindingEventRequest_MetadataEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
-}
-
-
 // ===================================================================
 
-void BindingEventRequest::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int BindingEventRequest::kNameFieldNumber;
-const int BindingEventRequest::kDataFieldNumber;
-const int BindingEventRequest::kMetadataFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class BindingEventRequest::_Internal {
+ public:
+};
 
-BindingEventRequest::BindingEventRequest()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_BindingEventRequest.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.BindingEventRequest)
+BindingEventRequest::BindingEventRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.BindingEventRequest)
 }
-BindingEventRequest::BindingEventRequest(const BindingEventRequest& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  metadata_.MergeFrom(from.metadata_);
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+BindingEventRequest::BindingEventRequest(const BindingEventRequest& from) : ::google::protobuf::Message() {
+  BindingEventRequest* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      /* decltype(_impl_.metadata_) */ {},
+      decltype(_impl_.name_){},
+      decltype(_impl_.data_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _this->_impl_.metadata_.MergeFrom(from._impl_.metadata_);
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_name().empty()) {
+    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
   }
-  data_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.data().size() > 0) {
-    data_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_);
+  _impl_.data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.data_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_data().empty()) {
+    _this->_impl_.data_.Set(from._internal_data(), _this->GetArenaForAllocation());
   }
+
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.BindingEventRequest)
 }
-
-void BindingEventRequest::SharedCtor() {
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void BindingEventRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      /* decltype(_impl_.metadata_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
+      decltype(_impl_.name_){},
+      decltype(_impl_.data_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.data_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 BindingEventRequest::~BindingEventRequest() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.BindingEventRequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void BindingEventRequest::SharedDtor() {
-  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void BindingEventRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.metadata_.~MapField();
+  _impl_.name_.Destroy();
+  _impl_.data_.Destroy();
 }
-
 void BindingEventRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* BindingEventRequest::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const BindingEventRequest& BindingEventRequest::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_BindingEventRequest.base);
-  return *internal_default_instance();
-}
-
-
-void BindingEventRequest::Clear() {
+PROTOBUF_NOINLINE void BindingEventRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.BindingEventRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  metadata_.Clear();
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
+  _impl_.metadata_.Clear();
+  _impl_.name_.ClearToEmpty();
+  _impl_.data_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool BindingEventRequest::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.BindingEventRequest)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string name = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.BindingEventRequest.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // bytes data = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_data()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // map<string, string> metadata = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          BindingEventRequest_MetadataEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              BindingEventRequest_MetadataEntry_DoNotUse,
-              ::std::string, ::std::string,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::std::string > > parser(&metadata_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.BindingEventRequest.MetadataEntry.key"));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.value().data(), static_cast<int>(parser.value().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.BindingEventRequest.MetadataEntry.value"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.BindingEventRequest)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.BindingEventRequest)
-  return false;
-#undef DO_
+const char* BindingEventRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void BindingEventRequest::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.BindingEventRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // string name = 1;
-  if (this->name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.BindingEventRequest.name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->name(), output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 3, 1, 62, 2> BindingEventRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_BindingEventRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // bytes data = 2;
+    {::_pbi::TcParser::FastBS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(BindingEventRequest, _impl_.data_)}},
+    // string name = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(BindingEventRequest, _impl_.name_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string name = 1;
+    {PROTOBUF_FIELD_OFFSET(BindingEventRequest, _impl_.name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bytes data = 2;
+    {PROTOBUF_FIELD_OFFSET(BindingEventRequest, _impl_.data_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // map<string, string> metadata = 3;
+    {PROTOBUF_FIELD_OFFSET(BindingEventRequest, _impl_.metadata_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+  }}, {{
+    {::_pbi::TcParser::GetMapAuxInfo<decltype(BindingEventRequest()._impl_.metadata_)>(1, 0, 0)},
+  }}, {{
+    "\51\4\0\10\0\0\0\0"
+    "dapr.proto.runtime.v1.BindingEventRequest"
+    "name"
+    "metadata"
+  }},
+};
 
-  // bytes data = 2;
-  if (this->data().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      2, this->data(), output);
-  }
-
-  // map<string, string> metadata = 3;
-  if (!this->metadata().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.BindingEventRequest.MetadataEntry.key");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->second.data(), static_cast<int>(p->second.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.BindingEventRequest.MetadataEntry.value");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->metadata().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->metadata().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<BindingEventRequest_MetadataEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(metadata_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            3, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<BindingEventRequest_MetadataEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it) {
-        entry.reset(metadata_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            3, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.BindingEventRequest)
-}
-
-::google::protobuf::uint8* BindingEventRequest::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* BindingEventRequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.BindingEventRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string name = 1;
-  if (this->name().size() > 0) {
+  if (!this->_internal_name().empty()) {
+    const std::string& _s = this->_internal_name();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.BindingEventRequest.name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.BindingEventRequest.name");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // bytes data = 2;
-  if (this->data().size() > 0) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        2, this->data(), target);
+  if (!this->_internal_data().empty()) {
+    const std::string& _s = this->_internal_data();
+    target = stream->WriteBytesMaybeAliased(2, _s, target);
   }
 
   // map<string, string> metadata = 3;
-  if (!this->metadata().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.BindingEventRequest.MetadataEntry.key");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->second.data(), static_cast<int>(p->second.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.BindingEventRequest.MetadataEntry.value");
-      }
-    };
+  if (!_internal_metadata().empty()) {
+    using MapType = ::google::protobuf::Map<std::string, std::string>;
+    using WireHelper = BindingEventRequest_MetadataEntry_DoNotUse::Funcs;
+    const auto& field = _internal_metadata();
 
-    if (deterministic &&
-        this->metadata().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->metadata().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<BindingEventRequest_MetadataEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(metadata_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       3, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+    if (stream->IsSerializationDeterministic() && field.size() > 1) {
+      for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+        target = WireHelper::InternalSerialize(
+            3, entry.first, entry.second, target, stream);
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.BindingEventRequest.metadata");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.BindingEventRequest.metadata");
       }
     } else {
-      ::std::unique_ptr<BindingEventRequest_MetadataEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it) {
-        entry.reset(metadata_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       3, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (const auto& entry : field) {
+        target = WireHelper::InternalSerialize(
+            3, entry.first, entry.second, target, stream);
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.BindingEventRequest.metadata");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.BindingEventRequest.metadata");
       }
     }
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.BindingEventRequest)
   return target;
 }
 
-size_t BindingEventRequest::ByteSizeLong() const {
+::size_t BindingEventRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.BindingEventRequest)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // map<string, string> metadata = 3;
-  total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->metadata_size());
-  {
-    ::std::unique_ptr<BindingEventRequest_MetadataEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-        it = this->metadata().begin();
-        it != this->metadata().end(); ++it) {
-      entry.reset(metadata_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_metadata_size());
+  for (const auto& entry : _internal_metadata()) {
+    total_size += BindingEventRequest_MetadataEntry_DoNotUse::Funcs::ByteSizeLong(entry.first, entry.second);
   }
-
   // string name = 1;
-  if (this->name().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->name());
+  if (!this->_internal_name().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_name());
   }
 
   // bytes data = 2;
-  if (this->data().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->data());
+  if (!this->_internal_data().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_data());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void BindingEventRequest::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.BindingEventRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  const BindingEventRequest* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const BindingEventRequest>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.BindingEventRequest)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.BindingEventRequest)
-    MergeFrom(*source);
-  }
-}
+const ::google::protobuf::Message::ClassData BindingEventRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    BindingEventRequest::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*BindingEventRequest::GetClassData() const { return &_class_data_; }
 
-void BindingEventRequest::MergeFrom(const BindingEventRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.BindingEventRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+
+void BindingEventRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<BindingEventRequest*>(&to_msg);
+  auto& from = static_cast<const BindingEventRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.BindingEventRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  metadata_.MergeFrom(from.metadata_);
-  if (from.name().size() > 0) {
-
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  _this->_impl_.metadata_.MergeFrom(from._impl_.metadata_);
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
   }
-  if (from.data().size() > 0) {
-
-    data_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_);
+  if (!from._internal_data().empty()) {
+    _this->_internal_set_data(from._internal_data());
   }
-}
-
-void BindingEventRequest::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.BindingEventRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void BindingEventRequest::CopyFrom(const BindingEventRequest& from) {
@@ -4675,422 +3680,310 @@ void BindingEventRequest::CopyFrom(const BindingEventRequest& from) {
   MergeFrom(from);
 }
 
-bool BindingEventRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool BindingEventRequest::IsInitialized() const {
   return true;
 }
 
-void BindingEventRequest::Swap(BindingEventRequest* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void BindingEventRequest::InternalSwap(BindingEventRequest* other) {
   using std::swap;
-  metadata_.Swap(&other->metadata_);
-  name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  data_.Swap(&other->data_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.metadata_.InternalSwap(&other->_impl_.metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
+                                       &other->_impl_.name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.data_, lhs_arena,
+                                       &other->_impl_.data_, rhs_arena);
 }
 
 ::google::protobuf::Metadata BindingEventRequest::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[10]);
 }
-
-
 // ===================================================================
 
-void BindingEventResponse::InitAsDefaultInstance() {
-}
-void BindingEventResponse::clear_states() {
-  states_.Clear();
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int BindingEventResponse::kStoreNameFieldNumber;
-const int BindingEventResponse::kStatesFieldNumber;
-const int BindingEventResponse::kToFieldNumber;
-const int BindingEventResponse::kDataFieldNumber;
-const int BindingEventResponse::kConcurrencyFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class BindingEventResponse::_Internal {
+ public:
+};
 
-BindingEventResponse::BindingEventResponse()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_BindingEventResponse.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.BindingEventResponse)
+void BindingEventResponse::clear_states() {
+  _internal_mutable_states()->Clear();
 }
-BindingEventResponse::BindingEventResponse(const BindingEventResponse& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      states_(from.states_),
-      to_(from.to_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  store_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.store_name().size() > 0) {
-    store_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.store_name_);
+BindingEventResponse::BindingEventResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.BindingEventResponse)
+}
+BindingEventResponse::BindingEventResponse(const BindingEventResponse& from) : ::google::protobuf::Message() {
+  BindingEventResponse* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.states_){from._impl_.states_},
+      decltype(_impl_.to_){from._impl_.to_},
+      decltype(_impl_.store_name_){},
+      decltype(_impl_.data_){},
+      decltype(_impl_.concurrency_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.store_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.store_name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_store_name().empty()) {
+    _this->_impl_.store_name_.Set(from._internal_store_name(), _this->GetArenaForAllocation());
   }
-  data_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.data().size() > 0) {
-    data_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_);
+  _impl_.data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.data_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_data().empty()) {
+    _this->_impl_.data_.Set(from._internal_data(), _this->GetArenaForAllocation());
   }
-  concurrency_ = from.concurrency_;
+  _this->_impl_.concurrency_ = from._impl_.concurrency_;
+
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.BindingEventResponse)
 }
-
-void BindingEventResponse::SharedCtor() {
-  store_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  concurrency_ = 0;
+inline void BindingEventResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.states_){arena},
+      decltype(_impl_.to_){arena},
+      decltype(_impl_.store_name_){},
+      decltype(_impl_.data_){},
+      decltype(_impl_.concurrency_){0},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.store_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.store_name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.data_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 BindingEventResponse::~BindingEventResponse() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.BindingEventResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void BindingEventResponse::SharedDtor() {
-  store_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void BindingEventResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.states_.~RepeatedPtrField();
+  _internal_mutable_to()->~RepeatedPtrField();
+  _impl_.store_name_.Destroy();
+  _impl_.data_.Destroy();
 }
-
 void BindingEventResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* BindingEventResponse::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const BindingEventResponse& BindingEventResponse::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_BindingEventResponse.base);
-  return *internal_default_instance();
-}
-
-
-void BindingEventResponse::Clear() {
+PROTOBUF_NOINLINE void BindingEventResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.BindingEventResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  states_.Clear();
-  to_.Clear();
-  store_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  concurrency_ = 0;
-  _internal_metadata_.Clear();
+  _internal_mutable_states()->Clear();
+  _internal_mutable_to()->Clear();
+  _impl_.store_name_.ClearToEmpty();
+  _impl_.data_.ClearToEmpty();
+  _impl_.concurrency_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool BindingEventResponse::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.BindingEventResponse)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string store_name = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_store_name()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->store_name().data(), static_cast<int>(this->store_name().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.BindingEventResponse.store_name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated .dapr.proto.common.v1.StateItem states = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_states()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated string to = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_to()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->to(this->to_size() - 1).data(),
-            static_cast<int>(this->to(this->to_size() - 1).length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.BindingEventResponse.to"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // bytes data = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_data()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .dapr.proto.runtime.v1.BindingEventResponse.BindingEventConcurrency concurrency = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_concurrency(static_cast< ::dapr::proto::runtime::v1::BindingEventResponse_BindingEventConcurrency >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.BindingEventResponse)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.BindingEventResponse)
-  return false;
-#undef DO_
+const char* BindingEventResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void BindingEventResponse::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.BindingEventResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // string store_name = 1;
-  if (this->store_name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->store_name().data(), static_cast<int>(this->store_name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.BindingEventResponse.store_name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->store_name(), output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 1, 63, 2> BindingEventResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_BindingEventResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string store_name = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(BindingEventResponse, _impl_.store_name_)}},
+    // repeated .dapr.proto.common.v1.StateItem states = 2;
+    {::_pbi::TcParser::FastMtR1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(BindingEventResponse, _impl_.states_)}},
+    // repeated string to = 3;
+    {::_pbi::TcParser::FastUR1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(BindingEventResponse, _impl_.to_)}},
+    // bytes data = 4;
+    {::_pbi::TcParser::FastBS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(BindingEventResponse, _impl_.data_)}},
+    // .dapr.proto.runtime.v1.BindingEventResponse.BindingEventConcurrency concurrency = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(BindingEventResponse, _impl_.concurrency_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(BindingEventResponse, _impl_.concurrency_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string store_name = 1;
+    {PROTOBUF_FIELD_OFFSET(BindingEventResponse, _impl_.store_name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // repeated .dapr.proto.common.v1.StateItem states = 2;
+    {PROTOBUF_FIELD_OFFSET(BindingEventResponse, _impl_.states_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // repeated string to = 3;
+    {PROTOBUF_FIELD_OFFSET(BindingEventResponse, _impl_.to_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+    // bytes data = 4;
+    {PROTOBUF_FIELD_OFFSET(BindingEventResponse, _impl_.data_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // .dapr.proto.runtime.v1.BindingEventResponse.BindingEventConcurrency concurrency = 5;
+    {PROTOBUF_FIELD_OFFSET(BindingEventResponse, _impl_.concurrency_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::dapr::proto::common::v1::StateItem>()},
+  }}, {{
+    "\52\12\0\2\0\0\0\0"
+    "dapr.proto.runtime.v1.BindingEventResponse"
+    "store_name"
+    "to"
+  }},
+};
 
-  // repeated .dapr.proto.common.v1.StateItem states = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->states_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
-      this->states(static_cast<int>(i)),
-      output);
-  }
-
-  // repeated string to = 3;
-  for (int i = 0, n = this->to_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->to(i).data(), static_cast<int>(this->to(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.BindingEventResponse.to");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->to(i), output);
-  }
-
-  // bytes data = 4;
-  if (this->data().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      4, this->data(), output);
-  }
-
-  // .dapr.proto.runtime.v1.BindingEventResponse.BindingEventConcurrency concurrency = 5;
-  if (this->concurrency() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      5, this->concurrency(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.BindingEventResponse)
-}
-
-::google::protobuf::uint8* BindingEventResponse::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* BindingEventResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.BindingEventResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string store_name = 1;
-  if (this->store_name().size() > 0) {
+  if (!this->_internal_store_name().empty()) {
+    const std::string& _s = this->_internal_store_name();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->store_name().data(), static_cast<int>(this->store_name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.BindingEventResponse.store_name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->store_name(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.BindingEventResponse.store_name");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // repeated .dapr.proto.common.v1.StateItem states = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->states_size()); i < n; i++) {
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_states_size()); i < n; i++) {
+    const auto& repfield = this->_internal_states().Get(i);
     target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->states(static_cast<int>(i)), deterministic, target);
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   // repeated string to = 3;
-  for (int i = 0, n = this->to_size(); i < n; i++) {
+  for (int i = 0, n = this->_internal_to_size(); i < n; ++i) {
+    const auto& s = this->_internal_to().Get(i);
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->to(i).data(), static_cast<int>(this->to(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.BindingEventResponse.to");
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(3, this->to(i), target);
+        s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.BindingEventResponse.to");
+    target = stream->WriteString(3, s, target);
   }
 
   // bytes data = 4;
-  if (this->data().size() > 0) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        4, this->data(), target);
+  if (!this->_internal_data().empty()) {
+    const std::string& _s = this->_internal_data();
+    target = stream->WriteBytesMaybeAliased(4, _s, target);
   }
 
   // .dapr.proto.runtime.v1.BindingEventResponse.BindingEventConcurrency concurrency = 5;
-  if (this->concurrency() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      5, this->concurrency(), target);
+  if (this->_internal_concurrency() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+        5, this->_internal_concurrency(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.BindingEventResponse)
   return target;
 }
 
-size_t BindingEventResponse::ByteSizeLong() const {
+::size_t BindingEventResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.BindingEventResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // repeated .dapr.proto.common.v1.StateItem states = 2;
-  {
-    unsigned int count = static_cast<unsigned int>(this->states_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->states(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_states_size();
+  for (const auto& msg : this->_internal_states()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
   }
-
   // repeated string to = 3;
-  total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->to_size());
-  for (int i = 0, n = this->to_size(); i < n; i++) {
+  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_to().size());
+  for (int i = 0, n = _internal_to().size(); i < n; ++i) {
     total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->to(i));
+        _internal_to().Get(i));
   }
-
   // string store_name = 1;
-  if (this->store_name().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->store_name());
+  if (!this->_internal_store_name().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_store_name());
   }
 
   // bytes data = 4;
-  if (this->data().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::BytesSize(
-        this->data());
+  if (!this->_internal_data().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                    this->_internal_data());
   }
 
   // .dapr.proto.runtime.v1.BindingEventResponse.BindingEventConcurrency concurrency = 5;
-  if (this->concurrency() != 0) {
+  if (this->_internal_concurrency() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->concurrency());
+                  ::_pbi::WireFormatLite::EnumSize(this->_internal_concurrency());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void BindingEventResponse::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.BindingEventResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const BindingEventResponse* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const BindingEventResponse>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.BindingEventResponse)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.BindingEventResponse)
-    MergeFrom(*source);
-  }
-}
+const ::google::protobuf::Message::ClassData BindingEventResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    BindingEventResponse::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*BindingEventResponse::GetClassData() const { return &_class_data_; }
 
-void BindingEventResponse::MergeFrom(const BindingEventResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.BindingEventResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+
+void BindingEventResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<BindingEventResponse*>(&to_msg);
+  auto& from = static_cast<const BindingEventResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.BindingEventResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  states_.MergeFrom(from.states_);
-  to_.MergeFrom(from.to_);
-  if (from.store_name().size() > 0) {
-
-    store_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.store_name_);
+  _this->_internal_mutable_states()->MergeFrom(from._internal_states());
+  _this->_internal_mutable_to()->MergeFrom(from._internal_to());
+  if (!from._internal_store_name().empty()) {
+    _this->_internal_set_store_name(from._internal_store_name());
   }
-  if (from.data().size() > 0) {
-
-    data_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_);
+  if (!from._internal_data().empty()) {
+    _this->_internal_set_data(from._internal_data());
   }
-  if (from.concurrency() != 0) {
-    set_concurrency(from.concurrency());
+  if (from._internal_concurrency() != 0) {
+    _this->_internal_set_concurrency(from._internal_concurrency());
   }
-}
-
-void BindingEventResponse::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.BindingEventResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void BindingEventResponse::CopyFrom(const BindingEventResponse& from) {
@@ -5100,232 +3993,177 @@ void BindingEventResponse::CopyFrom(const BindingEventResponse& from) {
   MergeFrom(from);
 }
 
-bool BindingEventResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool BindingEventResponse::IsInitialized() const {
   return true;
 }
 
-void BindingEventResponse::Swap(BindingEventResponse* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void BindingEventResponse::InternalSwap(BindingEventResponse* other) {
   using std::swap;
-  CastToBase(&states_)->InternalSwap(CastToBase(&other->states_));
-  to_.InternalSwap(CastToBase(&other->to_));
-  store_name_.Swap(&other->store_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  data_.Swap(&other->data_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(concurrency_, other->concurrency_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.states_.InternalSwap(&other->_impl_.states_);
+  _impl_.to_.InternalSwap(&other->_impl_.to_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.store_name_, lhs_arena,
+                                       &other->_impl_.store_name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.data_, lhs_arena,
+                                       &other->_impl_.data_, rhs_arena);
+  swap(_impl_.concurrency_, other->_impl_.concurrency_);
 }
 
 ::google::protobuf::Metadata BindingEventResponse::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[11]);
 }
-
-
 // ===================================================================
 
-void ListTopicSubscriptionsResponse::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ListTopicSubscriptionsResponse::kSubscriptionsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class ListTopicSubscriptionsResponse::_Internal {
+ public:
+};
 
-ListTopicSubscriptionsResponse::ListTopicSubscriptionsResponse()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_ListTopicSubscriptionsResponse.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
+ListTopicSubscriptionsResponse::ListTopicSubscriptionsResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
 }
-ListTopicSubscriptionsResponse::ListTopicSubscriptionsResponse(const ListTopicSubscriptionsResponse& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      subscriptions_(from.subscriptions_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+ListTopicSubscriptionsResponse::ListTopicSubscriptionsResponse(const ListTopicSubscriptionsResponse& from) : ::google::protobuf::Message() {
+  ListTopicSubscriptionsResponse* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.subscriptions_){from._impl_.subscriptions_},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
 }
-
-void ListTopicSubscriptionsResponse::SharedCtor() {
+inline void ListTopicSubscriptionsResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.subscriptions_){arena},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
 }
-
 ListTopicSubscriptionsResponse::~ListTopicSubscriptionsResponse() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void ListTopicSubscriptionsResponse::SharedDtor() {
+inline void ListTopicSubscriptionsResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.subscriptions_.~RepeatedPtrField();
 }
-
 void ListTopicSubscriptionsResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* ListTopicSubscriptionsResponse::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const ListTopicSubscriptionsResponse& ListTopicSubscriptionsResponse::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_ListTopicSubscriptionsResponse.base);
-  return *internal_default_instance();
-}
-
-
-void ListTopicSubscriptionsResponse::Clear() {
+PROTOBUF_NOINLINE void ListTopicSubscriptionsResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  subscriptions_.Clear();
-  _internal_metadata_.Clear();
+  _internal_mutable_subscriptions()->Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool ListTopicSubscriptionsResponse::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .dapr.proto.runtime.v1.TopicSubscription subscriptions = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_subscriptions()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
-  return false;
-#undef DO_
+const char* ListTopicSubscriptionsResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void ListTopicSubscriptionsResponse::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // repeated .dapr.proto.runtime.v1.TopicSubscription subscriptions = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->subscriptions_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->subscriptions(static_cast<int>(i)),
-      output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ListTopicSubscriptionsResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ListTopicSubscriptionsResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // repeated .dapr.proto.runtime.v1.TopicSubscription subscriptions = 1;
+    {::_pbi::TcParser::FastMtR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ListTopicSubscriptionsResponse, _impl_.subscriptions_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .dapr.proto.runtime.v1.TopicSubscription subscriptions = 1;
+    {PROTOBUF_FIELD_OFFSET(ListTopicSubscriptionsResponse, _impl_.subscriptions_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::dapr::proto::runtime::v1::TopicSubscription>()},
+  }}, {{
+  }},
+};
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
-}
-
-::google::protobuf::uint8* ListTopicSubscriptionsResponse::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* ListTopicSubscriptionsResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // repeated .dapr.proto.runtime.v1.TopicSubscription subscriptions = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->subscriptions_size()); i < n; i++) {
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_subscriptions_size()); i < n; i++) {
+    const auto& repfield = this->_internal_subscriptions().Get(i);
     target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->subscriptions(static_cast<int>(i)), deterministic, target);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
   return target;
 }
 
-size_t ListTopicSubscriptionsResponse::ByteSizeLong() const {
+::size_t ListTopicSubscriptionsResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // repeated .dapr.proto.runtime.v1.TopicSubscription subscriptions = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->subscriptions_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->subscriptions(static_cast<int>(i)));
-    }
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void ListTopicSubscriptionsResponse::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ListTopicSubscriptionsResponse* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const ListTopicSubscriptionsResponse>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
-    MergeFrom(*source);
-  }
-}
-
-void ListTopicSubscriptionsResponse::MergeFrom(const ListTopicSubscriptionsResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  subscriptions_.MergeFrom(from.subscriptions_);
+  // repeated .dapr.proto.runtime.v1.TopicSubscription subscriptions = 1;
+  total_size += 1UL * this->_internal_subscriptions_size();
+  for (const auto& msg : this->_internal_subscriptions()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ListTopicSubscriptionsResponse::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+const ::google::protobuf::Message::ClassData ListTopicSubscriptionsResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    ListTopicSubscriptionsResponse::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*ListTopicSubscriptionsResponse::GetClassData() const { return &_class_data_; }
+
+
+void ListTopicSubscriptionsResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ListTopicSubscriptionsResponse*>(&to_msg);
+  auto& from = static_cast<const ListTopicSubscriptionsResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.ListTopicSubscriptionsResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_subscriptions()->MergeFrom(from._internal_subscriptions());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ListTopicSubscriptionsResponse::CopyFrom(const ListTopicSubscriptionsResponse& from) {
@@ -5335,621 +4173,425 @@ void ListTopicSubscriptionsResponse::CopyFrom(const ListTopicSubscriptionsRespon
   MergeFrom(from);
 }
 
-bool ListTopicSubscriptionsResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool ListTopicSubscriptionsResponse::IsInitialized() const {
   return true;
 }
 
-void ListTopicSubscriptionsResponse::Swap(ListTopicSubscriptionsResponse* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void ListTopicSubscriptionsResponse::InternalSwap(ListTopicSubscriptionsResponse* other) {
   using std::swap;
-  CastToBase(&subscriptions_)->InternalSwap(CastToBase(&other->subscriptions_));
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.subscriptions_.InternalSwap(&other->_impl_.subscriptions_);
 }
 
 ::google::protobuf::Metadata ListTopicSubscriptionsResponse::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[12]);
 }
-
-
 // ===================================================================
 
 TopicSubscription_MetadataEntry_DoNotUse::TopicSubscription_MetadataEntry_DoNotUse() {}
-TopicSubscription_MetadataEntry_DoNotUse::TopicSubscription_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+TopicSubscription_MetadataEntry_DoNotUse::TopicSubscription_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena)
+    : SuperType(arena) {}
 void TopicSubscription_MetadataEntry_DoNotUse::MergeFrom(const TopicSubscription_MetadataEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
 ::google::protobuf::Metadata TopicSubscription_MetadataEntry_DoNotUse::GetMetadata() const {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[13];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[13]);
 }
-void TopicSubscription_MetadataEntry_DoNotUse::MergeFrom(
-    const ::google::protobuf::Message& other) {
-  ::google::protobuf::Message::MergeFrom(other);
-}
-
-
 // ===================================================================
 
-void TopicSubscription::InitAsDefaultInstance() {
-  ::dapr::proto::runtime::v1::_TopicSubscription_default_instance_._instance.get_mutable()->routes_ = const_cast< ::dapr::proto::runtime::v1::TopicRoutes*>(
-      ::dapr::proto::runtime::v1::TopicRoutes::internal_default_instance());
-  ::dapr::proto::runtime::v1::_TopicSubscription_default_instance_._instance.get_mutable()->bulk_subscribe_ = const_cast< ::dapr::proto::runtime::v1::BulkSubscribeConfig*>(
-      ::dapr::proto::runtime::v1::BulkSubscribeConfig::internal_default_instance());
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TopicSubscription::kPubsubNameFieldNumber;
-const int TopicSubscription::kTopicFieldNumber;
-const int TopicSubscription::kMetadataFieldNumber;
-const int TopicSubscription::kRoutesFieldNumber;
-const int TopicSubscription::kDeadLetterTopicFieldNumber;
-const int TopicSubscription::kBulkSubscribeFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TopicSubscription::_Internal {
+ public:
+  using HasBits = decltype(std::declval<TopicSubscription>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_._has_bits_);
+  static const ::dapr::proto::runtime::v1::TopicRoutes& routes(const TopicSubscription* msg);
+  static void set_has_routes(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::dapr::proto::runtime::v1::BulkSubscribeConfig& bulk_subscribe(const TopicSubscription* msg);
+  static void set_has_bulk_subscribe(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+};
 
-TopicSubscription::TopicSubscription()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicSubscription.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.TopicSubscription)
+const ::dapr::proto::runtime::v1::TopicRoutes& TopicSubscription::_Internal::routes(const TopicSubscription* msg) {
+  return *msg->_impl_.routes_;
 }
-TopicSubscription::TopicSubscription(const TopicSubscription& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  metadata_.MergeFrom(from.metadata_);
-  pubsub_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.pubsub_name().size() > 0) {
-    pubsub_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.pubsub_name_);
+const ::dapr::proto::runtime::v1::BulkSubscribeConfig& TopicSubscription::_Internal::bulk_subscribe(const TopicSubscription* msg) {
+  return *msg->_impl_.bulk_subscribe_;
+}
+TopicSubscription::TopicSubscription(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.TopicSubscription)
+}
+TopicSubscription::TopicSubscription(const TopicSubscription& from) : ::google::protobuf::Message() {
+  TopicSubscription* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /* decltype(_impl_.metadata_) */ {},
+      decltype(_impl_.pubsub_name_){},
+      decltype(_impl_.topic_){},
+      decltype(_impl_.dead_letter_topic_){},
+      decltype(_impl_.routes_){nullptr},
+      decltype(_impl_.bulk_subscribe_){nullptr},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _this->_impl_.metadata_.MergeFrom(from._impl_.metadata_);
+  _impl_.pubsub_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.pubsub_name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_pubsub_name().empty()) {
+    _this->_impl_.pubsub_name_.Set(from._internal_pubsub_name(), _this->GetArenaForAllocation());
   }
-  topic_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.topic().size() > 0) {
-    topic_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.topic_);
+  _impl_.topic_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.topic_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_topic().empty()) {
+    _this->_impl_.topic_.Set(from._internal_topic(), _this->GetArenaForAllocation());
   }
-  dead_letter_topic_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dead_letter_topic().size() > 0) {
-    dead_letter_topic_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dead_letter_topic_);
+  _impl_.dead_letter_topic_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.dead_letter_topic_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_dead_letter_topic().empty()) {
+    _this->_impl_.dead_letter_topic_.Set(from._internal_dead_letter_topic(), _this->GetArenaForAllocation());
   }
-  if (from.has_routes()) {
-    routes_ = new ::dapr::proto::runtime::v1::TopicRoutes(*from.routes_);
-  } else {
-    routes_ = NULL;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.routes_ = new ::dapr::proto::runtime::v1::TopicRoutes(*from._impl_.routes_);
   }
-  if (from.has_bulk_subscribe()) {
-    bulk_subscribe_ = new ::dapr::proto::runtime::v1::BulkSubscribeConfig(*from.bulk_subscribe_);
-  } else {
-    bulk_subscribe_ = NULL;
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.bulk_subscribe_ = new ::dapr::proto::runtime::v1::BulkSubscribeConfig(*from._impl_.bulk_subscribe_);
   }
+
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.TopicSubscription)
 }
-
-void TopicSubscription::SharedCtor() {
-  pubsub_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  topic_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  dead_letter_topic_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&routes_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&bulk_subscribe_) -
-      reinterpret_cast<char*>(&routes_)) + sizeof(bulk_subscribe_));
+inline void TopicSubscription::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /* decltype(_impl_.metadata_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
+      decltype(_impl_.pubsub_name_){},
+      decltype(_impl_.topic_){},
+      decltype(_impl_.dead_letter_topic_){},
+      decltype(_impl_.routes_){nullptr},
+      decltype(_impl_.bulk_subscribe_){nullptr},
+  };
+  _impl_.pubsub_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.pubsub_name_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.topic_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.topic_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.dead_letter_topic_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.dead_letter_topic_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 TopicSubscription::~TopicSubscription() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.TopicSubscription)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void TopicSubscription::SharedDtor() {
-  pubsub_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  topic_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  dead_letter_topic_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete routes_;
-  if (this != internal_default_instance()) delete bulk_subscribe_;
+inline void TopicSubscription::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.metadata_.~MapField();
+  _impl_.pubsub_name_.Destroy();
+  _impl_.topic_.Destroy();
+  _impl_.dead_letter_topic_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.routes_;
+  if (this != internal_default_instance()) delete _impl_.bulk_subscribe_;
 }
-
 void TopicSubscription::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* TopicSubscription::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const TopicSubscription& TopicSubscription::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicSubscription.base);
-  return *internal_default_instance();
-}
-
-
-void TopicSubscription::Clear() {
+PROTOBUF_NOINLINE void TopicSubscription::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.TopicSubscription)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  metadata_.Clear();
-  pubsub_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  dead_letter_topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (GetArenaNoVirtual() == NULL && routes_ != NULL) {
-    delete routes_;
-  }
-  routes_ = NULL;
-  if (GetArenaNoVirtual() == NULL && bulk_subscribe_ != NULL) {
-    delete bulk_subscribe_;
-  }
-  bulk_subscribe_ = NULL;
-  _internal_metadata_.Clear();
-}
-
-bool TopicSubscription::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.TopicSubscription)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string pubsub_name = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_pubsub_name()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->pubsub_name().data(), static_cast<int>(this->pubsub_name().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicSubscription.pubsub_name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string topic = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_topic()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->topic().data(), static_cast<int>(this->topic().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicSubscription.topic"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // map<string, string> metadata = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
-          TopicSubscription_MetadataEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
-              TopicSubscription_MetadataEntry_DoNotUse,
-              ::std::string, ::std::string,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
-              0 >,
-            ::google::protobuf::Map< ::std::string, ::std::string > > parser(&metadata_);
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-              input, &parser));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.key().data(), static_cast<int>(parser.key().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicSubscription.MetadataEntry.key"));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            parser.value().data(), static_cast<int>(parser.value().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicSubscription.MetadataEntry.value"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .dapr.proto.runtime.v1.TopicRoutes routes = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_routes()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string dead_letter_topic = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_dead_letter_topic()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->dead_letter_topic().data(), static_cast<int>(this->dead_letter_topic().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicSubscription.dead_letter_topic"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .dapr.proto.runtime.v1.BulkSubscribeConfig bulk_subscribe = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_bulk_subscribe()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
+  _impl_.metadata_.Clear();
+  _impl_.pubsub_name_.ClearToEmpty();
+  _impl_.topic_.ClearToEmpty();
+  _impl_.dead_letter_topic_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.routes_ != nullptr);
+      _impl_.routes_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.bulk_subscribe_ != nullptr);
+      _impl_.bulk_subscribe_->Clear();
     }
   }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.TopicSubscription)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.TopicSubscription)
-  return false;
-#undef DO_
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-void TopicSubscription::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.TopicSubscription)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string pubsub_name = 1;
-  if (this->pubsub_name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->pubsub_name().data(), static_cast<int>(this->pubsub_name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicSubscription.pubsub_name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->pubsub_name(), output);
-  }
-
-  // string topic = 2;
-  if (this->topic().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->topic().data(), static_cast<int>(this->topic().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicSubscription.topic");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->topic(), output);
-  }
-
-  // map<string, string> metadata = 3;
-  if (!this->metadata().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.TopicSubscription.MetadataEntry.key");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->second.data(), static_cast<int>(p->second.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.TopicSubscription.MetadataEntry.value");
-      }
-    };
-
-    if (output->IsSerializationDeterministic() &&
-        this->metadata().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->metadata().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<TopicSubscription_MetadataEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(metadata_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            3, *entry, output);
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
-      }
-    } else {
-      ::std::unique_ptr<TopicSubscription_MetadataEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it) {
-        entry.reset(metadata_.NewEntryWrapper(
-            it->first, it->second));
-        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-            3, *entry, output);
-        Utf8Check::Check(&*it);
-      }
-    }
-  }
-
-  // .dapr.proto.runtime.v1.TopicRoutes routes = 5;
-  if (this->has_routes()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->_internal_routes(), output);
-  }
-
-  // string dead_letter_topic = 6;
-  if (this->dead_letter_topic().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->dead_letter_topic().data(), static_cast<int>(this->dead_letter_topic().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicSubscription.dead_letter_topic");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->dead_letter_topic(), output);
-  }
-
-  // .dapr.proto.runtime.v1.BulkSubscribeConfig bulk_subscribe = 7;
-  if (this->has_bulk_subscribe()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7, this->_internal_bulk_subscribe(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.TopicSubscription)
+const char* TopicSubscription::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-::google::protobuf::uint8* TopicSubscription::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 6, 3, 89, 2> TopicSubscription::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_._has_bits_),
+    0, // no _extensions_
+    7, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967176,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    6,  // num_field_entries
+    3,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_TopicSubscription_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string pubsub_name = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_.pubsub_name_)}},
+    // string topic = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_.topic_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    // .dapr.proto.runtime.v1.TopicRoutes routes = 5;
+    {::_pbi::TcParser::FastMtS1,
+     {42, 0, 1, PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_.routes_)}},
+    // string dead_letter_topic = 6;
+    {::_pbi::TcParser::FastUS1,
+     {50, 63, 0, PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_.dead_letter_topic_)}},
+    // .dapr.proto.runtime.v1.BulkSubscribeConfig bulk_subscribe = 7;
+    {::_pbi::TcParser::FastMtS1,
+     {58, 1, 2, PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_.bulk_subscribe_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string pubsub_name = 1;
+    {PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_.pubsub_name_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string topic = 2;
+    {PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_.topic_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // map<string, string> metadata = 3;
+    {PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_.metadata_), -1, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+    // .dapr.proto.runtime.v1.TopicRoutes routes = 5;
+    {PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_.routes_), _Internal::kHasBitsOffset + 0, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string dead_letter_topic = 6;
+    {PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_.dead_letter_topic_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .dapr.proto.runtime.v1.BulkSubscribeConfig bulk_subscribe = 7;
+    {PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_.bulk_subscribe_), _Internal::kHasBitsOffset + 1, 2,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetMapAuxInfo<decltype(TopicSubscription()._impl_.metadata_)>(1, 0, 0)},
+    {::_pbi::TcParser::GetTable<::dapr::proto::runtime::v1::TopicRoutes>()},
+    {::_pbi::TcParser::GetTable<::dapr::proto::runtime::v1::BulkSubscribeConfig>()},
+  }}, {{
+    "\47\13\5\10\0\21\0\0"
+    "dapr.proto.runtime.v1.TopicSubscription"
+    "pubsub_name"
+    "topic"
+    "metadata"
+    "dead_letter_topic"
+  }},
+};
+
+::uint8_t* TopicSubscription::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.TopicSubscription)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string pubsub_name = 1;
-  if (this->pubsub_name().size() > 0) {
+  if (!this->_internal_pubsub_name().empty()) {
+    const std::string& _s = this->_internal_pubsub_name();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->pubsub_name().data(), static_cast<int>(this->pubsub_name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicSubscription.pubsub_name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->pubsub_name(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicSubscription.pubsub_name");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string topic = 2;
-  if (this->topic().size() > 0) {
+  if (!this->_internal_topic().empty()) {
+    const std::string& _s = this->_internal_topic();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->topic().data(), static_cast<int>(this->topic().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicSubscription.topic");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->topic(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicSubscription.topic");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // map<string, string> metadata = 3;
-  if (!this->metadata().empty()) {
-    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
-        ConstPtr;
-    typedef ConstPtr SortItem;
-    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
-    struct Utf8Check {
-      static void Check(ConstPtr p) {
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->first.data(), static_cast<int>(p->first.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.TopicSubscription.MetadataEntry.key");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          p->second.data(), static_cast<int>(p->second.length()),
-          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-          "dapr.proto.runtime.v1.TopicSubscription.MetadataEntry.value");
-      }
-    };
+  if (!_internal_metadata().empty()) {
+    using MapType = ::google::protobuf::Map<std::string, std::string>;
+    using WireHelper = TopicSubscription_MetadataEntry_DoNotUse::Funcs;
+    const auto& field = _internal_metadata();
 
-    if (deterministic &&
-        this->metadata().size() > 1) {
-      ::std::unique_ptr<SortItem[]> items(
-          new SortItem[this->metadata().size()]);
-      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
-      size_type n = 0;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it, ++n) {
-        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
-      }
-      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
-      ::std::unique_ptr<TopicSubscription_MetadataEntry_DoNotUse> entry;
-      for (size_type i = 0; i < n; i++) {
-        entry.reset(metadata_.NewEntryWrapper(
-            items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       3, *entry, deterministic, target);
-;
-        Utf8Check::Check(items[static_cast<ptrdiff_t>(i)]);
+    if (stream->IsSerializationDeterministic() && field.size() > 1) {
+      for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+        target = WireHelper::InternalSerialize(
+            3, entry.first, entry.second, target, stream);
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicSubscription.metadata");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicSubscription.metadata");
       }
     } else {
-      ::std::unique_ptr<TopicSubscription_MetadataEntry_DoNotUse> entry;
-      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-          it = this->metadata().begin();
-          it != this->metadata().end(); ++it) {
-        entry.reset(metadata_.NewEntryWrapper(
-            it->first, it->second));
-        target = ::google::protobuf::internal::WireFormatLite::
-                   InternalWriteMessageNoVirtualToArray(
-                       3, *entry, deterministic, target);
-;
-        Utf8Check::Check(&*it);
+      for (const auto& entry : field) {
+        target = WireHelper::InternalSerialize(
+            3, entry.first, entry.second, target, stream);
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicSubscription.metadata");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            entry.second.data(), static_cast<int>(entry.second.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicSubscription.metadata");
       }
     }
   }
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .dapr.proto.runtime.v1.TopicRoutes routes = 5;
-  if (this->has_routes()) {
+  if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        5, this->_internal_routes(), deterministic, target);
+      InternalWriteMessage(5, _Internal::routes(this),
+        _Internal::routes(this).GetCachedSize(), target, stream);
   }
 
   // string dead_letter_topic = 6;
-  if (this->dead_letter_topic().size() > 0) {
+  if (!this->_internal_dead_letter_topic().empty()) {
+    const std::string& _s = this->_internal_dead_letter_topic();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->dead_letter_topic().data(), static_cast<int>(this->dead_letter_topic().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicSubscription.dead_letter_topic");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->dead_letter_topic(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicSubscription.dead_letter_topic");
+    target = stream->WriteStringMaybeAliased(6, _s, target);
   }
 
   // .dapr.proto.runtime.v1.BulkSubscribeConfig bulk_subscribe = 7;
-  if (this->has_bulk_subscribe()) {
+  if (cached_has_bits & 0x00000002u) {
     target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        7, this->_internal_bulk_subscribe(), deterministic, target);
+      InternalWriteMessage(7, _Internal::bulk_subscribe(this),
+        _Internal::bulk_subscribe(this).GetCachedSize(), target, stream);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.TopicSubscription)
   return target;
 }
 
-size_t TopicSubscription::ByteSizeLong() const {
+::size_t TopicSubscription::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.TopicSubscription)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // map<string, string> metadata = 3;
-  total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->metadata_size());
-  {
-    ::std::unique_ptr<TopicSubscription_MetadataEntry_DoNotUse> entry;
-    for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
-        it = this->metadata().begin();
-        it != this->metadata().end(); ++it) {
-      entry.reset(metadata_.NewEntryWrapper(it->first, it->second));
-      total_size += ::google::protobuf::internal::WireFormatLite::
-          MessageSizeNoVirtual(*entry);
-    }
+  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_metadata_size());
+  for (const auto& entry : _internal_metadata()) {
+    total_size += TopicSubscription_MetadataEntry_DoNotUse::Funcs::ByteSizeLong(entry.first, entry.second);
   }
-
   // string pubsub_name = 1;
-  if (this->pubsub_name().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->pubsub_name());
+  if (!this->_internal_pubsub_name().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_pubsub_name());
   }
 
   // string topic = 2;
-  if (this->topic().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->topic());
+  if (!this->_internal_topic().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_topic());
   }
 
   // string dead_letter_topic = 6;
-  if (this->dead_letter_topic().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->dead_letter_topic());
+  if (!this->_internal_dead_letter_topic().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_dead_letter_topic());
   }
 
-  // .dapr.proto.runtime.v1.TopicRoutes routes = 5;
-  if (this->has_routes()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *routes_);
-  }
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // .dapr.proto.runtime.v1.TopicRoutes routes = 5;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *_impl_.routes_);
+    }
 
-  // .dapr.proto.runtime.v1.BulkSubscribeConfig bulk_subscribe = 7;
-  if (this->has_bulk_subscribe()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *bulk_subscribe_);
-  }
+    // .dapr.proto.runtime.v1.BulkSubscribeConfig bulk_subscribe = 7;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *_impl_.bulk_subscribe_);
+    }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void TopicSubscription::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.TopicSubscription)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TopicSubscription* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TopicSubscription>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.TopicSubscription)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.TopicSubscription)
-    MergeFrom(*source);
-  }
-}
+const ::google::protobuf::Message::ClassData TopicSubscription::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    TopicSubscription::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*TopicSubscription::GetClassData() const { return &_class_data_; }
 
-void TopicSubscription::MergeFrom(const TopicSubscription& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicSubscription)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+
+void TopicSubscription::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<TopicSubscription*>(&to_msg);
+  auto& from = static_cast<const TopicSubscription&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicSubscription)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  metadata_.MergeFrom(from.metadata_);
-  if (from.pubsub_name().size() > 0) {
-
-    pubsub_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.pubsub_name_);
+  _this->_impl_.metadata_.MergeFrom(from._impl_.metadata_);
+  if (!from._internal_pubsub_name().empty()) {
+    _this->_internal_set_pubsub_name(from._internal_pubsub_name());
   }
-  if (from.topic().size() > 0) {
-
-    topic_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.topic_);
+  if (!from._internal_topic().empty()) {
+    _this->_internal_set_topic(from._internal_topic());
   }
-  if (from.dead_letter_topic().size() > 0) {
-
-    dead_letter_topic_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dead_letter_topic_);
+  if (!from._internal_dead_letter_topic().empty()) {
+    _this->_internal_set_dead_letter_topic(from._internal_dead_letter_topic());
   }
-  if (from.has_routes()) {
-    mutable_routes()->::dapr::proto::runtime::v1::TopicRoutes::MergeFrom(from.routes());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_mutable_routes()->::dapr::proto::runtime::v1::TopicRoutes::MergeFrom(
+          from._internal_routes());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_bulk_subscribe()->::dapr::proto::runtime::v1::BulkSubscribeConfig::MergeFrom(
+          from._internal_bulk_subscribe());
+    }
   }
-  if (from.has_bulk_subscribe()) {
-    mutable_bulk_subscribe()->::dapr::proto::runtime::v1::BulkSubscribeConfig::MergeFrom(from.bulk_subscribe());
-  }
-}
-
-void TopicSubscription::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.TopicSubscription)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void TopicSubscription::CopyFrom(const TopicSubscription& from) {
@@ -5959,290 +4601,225 @@ void TopicSubscription::CopyFrom(const TopicSubscription& from) {
   MergeFrom(from);
 }
 
-bool TopicSubscription::IsInitialized() const {
+PROTOBUF_NOINLINE bool TopicSubscription::IsInitialized() const {
   return true;
 }
 
-void TopicSubscription::Swap(TopicSubscription* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TopicSubscription::InternalSwap(TopicSubscription* other) {
   using std::swap;
-  metadata_.Swap(&other->metadata_);
-  pubsub_name_.Swap(&other->pubsub_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  topic_.Swap(&other->topic_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  dead_letter_topic_.Swap(&other->dead_letter_topic_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(routes_, other->routes_);
-  swap(bulk_subscribe_, other->bulk_subscribe_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.metadata_.InternalSwap(&other->_impl_.metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.pubsub_name_, lhs_arena,
+                                       &other->_impl_.pubsub_name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.topic_, lhs_arena,
+                                       &other->_impl_.topic_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.dead_letter_topic_, lhs_arena,
+                                       &other->_impl_.dead_letter_topic_, rhs_arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_.bulk_subscribe_)
+      + sizeof(TopicSubscription::_impl_.bulk_subscribe_)
+      - PROTOBUF_FIELD_OFFSET(TopicSubscription, _impl_.routes_)>(
+          reinterpret_cast<char*>(&_impl_.routes_),
+          reinterpret_cast<char*>(&other->_impl_.routes_));
 }
 
 ::google::protobuf::Metadata TopicSubscription::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[14]);
 }
-
-
 // ===================================================================
 
-void TopicRoutes::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TopicRoutes::kRulesFieldNumber;
-const int TopicRoutes::kDefaultFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TopicRoutes::_Internal {
+ public:
+};
 
-TopicRoutes::TopicRoutes()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicRoutes.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.TopicRoutes)
+TopicRoutes::TopicRoutes(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.TopicRoutes)
 }
-TopicRoutes::TopicRoutes(const TopicRoutes& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      rules_(from.rules_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  default__.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.default_().size() > 0) {
-    default__.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.default__);
+TopicRoutes::TopicRoutes(const TopicRoutes& from) : ::google::protobuf::Message() {
+  TopicRoutes* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.rules_){from._impl_.rules_},
+      decltype(_impl_.default__){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.default__.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.default__.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_default_().empty()) {
+    _this->_impl_.default__.Set(from._internal_default_(), _this->GetArenaForAllocation());
   }
+
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.TopicRoutes)
 }
-
-void TopicRoutes::SharedCtor() {
-  default__.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void TopicRoutes::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.rules_){arena},
+      decltype(_impl_.default__){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.default__.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.default__.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 TopicRoutes::~TopicRoutes() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.TopicRoutes)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void TopicRoutes::SharedDtor() {
-  default__.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void TopicRoutes::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.rules_.~RepeatedPtrField();
+  _impl_.default__.Destroy();
 }
-
 void TopicRoutes::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* TopicRoutes::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const TopicRoutes& TopicRoutes::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicRoutes.base);
-  return *internal_default_instance();
-}
-
-
-void TopicRoutes::Clear() {
+PROTOBUF_NOINLINE void TopicRoutes::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.TopicRoutes)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  rules_.Clear();
-  default__.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
+  _internal_mutable_rules()->Clear();
+  _impl_.default__.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool TopicRoutes::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.TopicRoutes)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .dapr.proto.runtime.v1.TopicRule rules = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_rules()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string default = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_default_()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->default_().data(), static_cast<int>(this->default_().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicRoutes.default"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.TopicRoutes)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.TopicRoutes)
-  return false;
-#undef DO_
+const char* TopicRoutes::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void TopicRoutes::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.TopicRoutes)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // repeated .dapr.proto.runtime.v1.TopicRule rules = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->rules_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->rules(static_cast<int>(i)),
-      output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 49, 2> TopicRoutes::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_TopicRoutes_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string default = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(TopicRoutes, _impl_.default__)}},
+    // repeated .dapr.proto.runtime.v1.TopicRule rules = 1;
+    {::_pbi::TcParser::FastMtR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TopicRoutes, _impl_.rules_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .dapr.proto.runtime.v1.TopicRule rules = 1;
+    {PROTOBUF_FIELD_OFFSET(TopicRoutes, _impl_.rules_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string default = 2;
+    {PROTOBUF_FIELD_OFFSET(TopicRoutes, _impl_.default__), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::dapr::proto::runtime::v1::TopicRule>()},
+  }}, {{
+    "\41\0\7\0\0\0\0\0"
+    "dapr.proto.runtime.v1.TopicRoutes"
+    "default"
+  }},
+};
 
-  // string default = 2;
-  if (this->default_().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->default_().data(), static_cast<int>(this->default_().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicRoutes.default");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->default_(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.TopicRoutes)
-}
-
-::google::protobuf::uint8* TopicRoutes::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* TopicRoutes::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.TopicRoutes)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // repeated .dapr.proto.runtime.v1.TopicRule rules = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->rules_size()); i < n; i++) {
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_rules_size()); i < n; i++) {
+    const auto& repfield = this->_internal_rules().Get(i);
     target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->rules(static_cast<int>(i)), deterministic, target);
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   // string default = 2;
-  if (this->default_().size() > 0) {
+  if (!this->_internal_default_().empty()) {
+    const std::string& _s = this->_internal_default_();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->default_().data(), static_cast<int>(this->default_().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicRoutes.default");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->default_(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicRoutes.default");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.TopicRoutes)
   return target;
 }
 
-size_t TopicRoutes::ByteSizeLong() const {
+::size_t TopicRoutes::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.TopicRoutes)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // repeated .dapr.proto.runtime.v1.TopicRule rules = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->rules_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->rules(static_cast<int>(i)));
-    }
-  }
-
-  // string default = 2;
-  if (this->default_().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->default_());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void TopicRoutes::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.TopicRoutes)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TopicRoutes* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TopicRoutes>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.TopicRoutes)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.TopicRoutes)
-    MergeFrom(*source);
-  }
-}
-
-void TopicRoutes::MergeFrom(const TopicRoutes& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicRoutes)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  rules_.MergeFrom(from.rules_);
-  if (from.default_().size() > 0) {
-
-    default__.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.default__);
+  // repeated .dapr.proto.runtime.v1.TopicRule rules = 1;
+  total_size += 1UL * this->_internal_rules_size();
+  for (const auto& msg : this->_internal_rules()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
   }
+  // string default = 2;
+  if (!this->_internal_default_().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_default_());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void TopicRoutes::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.TopicRoutes)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+const ::google::protobuf::Message::ClassData TopicRoutes::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    TopicRoutes::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*TopicRoutes::GetClassData() const { return &_class_data_; }
+
+
+void TopicRoutes::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<TopicRoutes*>(&to_msg);
+  auto& from = static_cast<const TopicRoutes&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicRoutes)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_rules()->MergeFrom(from._internal_rules());
+  if (!from._internal_default_().empty()) {
+    _this->_internal_set_default_(from._internal_default_());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void TopicRoutes::CopyFrom(const TopicRoutes& from) {
@@ -6252,296 +4829,228 @@ void TopicRoutes::CopyFrom(const TopicRoutes& from) {
   MergeFrom(from);
 }
 
-bool TopicRoutes::IsInitialized() const {
+PROTOBUF_NOINLINE bool TopicRoutes::IsInitialized() const {
   return true;
 }
 
-void TopicRoutes::Swap(TopicRoutes* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TopicRoutes::InternalSwap(TopicRoutes* other) {
   using std::swap;
-  CastToBase(&rules_)->InternalSwap(CastToBase(&other->rules_));
-  default__.Swap(&other->default__, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.rules_.InternalSwap(&other->_impl_.rules_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.default__, lhs_arena,
+                                       &other->_impl_.default__, rhs_arena);
 }
 
 ::google::protobuf::Metadata TopicRoutes::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[15]);
 }
-
-
 // ===================================================================
 
-void TopicRule::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TopicRule::kMatchFieldNumber;
-const int TopicRule::kPathFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class TopicRule::_Internal {
+ public:
+};
 
-TopicRule::TopicRule()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicRule.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.TopicRule)
+TopicRule::TopicRule(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.TopicRule)
 }
-TopicRule::TopicRule(const TopicRule& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  match_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.match().size() > 0) {
-    match_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.match_);
+TopicRule::TopicRule(const TopicRule& from) : ::google::protobuf::Message() {
+  TopicRule* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.match_){},
+      decltype(_impl_.path_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.match_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.match_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_match().empty()) {
+    _this->_impl_.match_.Set(from._internal_match(), _this->GetArenaForAllocation());
   }
-  path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.path().size() > 0) {
-    path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.path_);
+  _impl_.path_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.path_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_path().empty()) {
+    _this->_impl_.path_.Set(from._internal_path(), _this->GetArenaForAllocation());
   }
+
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.TopicRule)
 }
-
-void TopicRule::SharedCtor() {
-  match_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void TopicRule::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.match_){},
+      decltype(_impl_.path_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.match_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.match_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.path_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.path_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 TopicRule::~TopicRule() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.TopicRule)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void TopicRule::SharedDtor() {
-  match_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void TopicRule::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.match_.Destroy();
+  _impl_.path_.Destroy();
 }
-
 void TopicRule::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* TopicRule::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const TopicRule& TopicRule::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_TopicRule.base);
-  return *internal_default_instance();
-}
-
-
-void TopicRule::Clear() {
+PROTOBUF_NOINLINE void TopicRule::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.TopicRule)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  match_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
+  _impl_.match_.ClearToEmpty();
+  _impl_.path_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool TopicRule::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.TopicRule)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string match = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_match()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->match().data(), static_cast<int>(this->match().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicRule.match"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string path = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_path()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->path().data(), static_cast<int>(this->path().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.TopicRule.path"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.TopicRule)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.TopicRule)
-  return false;
-#undef DO_
+const char* TopicRule::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void TopicRule::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.TopicRule)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // string match = 1;
-  if (this->match().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->match().data(), static_cast<int>(this->match().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicRule.match");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->match(), output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 49, 2> TopicRule::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_TopicRule_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string path = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(TopicRule, _impl_.path_)}},
+    // string match = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TopicRule, _impl_.match_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string match = 1;
+    {PROTOBUF_FIELD_OFFSET(TopicRule, _impl_.match_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string path = 2;
+    {PROTOBUF_FIELD_OFFSET(TopicRule, _impl_.path_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\37\5\4\0\0\0\0\0"
+    "dapr.proto.runtime.v1.TopicRule"
+    "match"
+    "path"
+  }},
+};
 
-  // string path = 2;
-  if (this->path().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->path().data(), static_cast<int>(this->path().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicRule.path");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->path(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.TopicRule)
-}
-
-::google::protobuf::uint8* TopicRule::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* TopicRule::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.TopicRule)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string match = 1;
-  if (this->match().size() > 0) {
+  if (!this->_internal_match().empty()) {
+    const std::string& _s = this->_internal_match();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->match().data(), static_cast<int>(this->match().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicRule.match");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->match(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicRule.match");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string path = 2;
-  if (this->path().size() > 0) {
+  if (!this->_internal_path().empty()) {
+    const std::string& _s = this->_internal_path();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->path().data(), static_cast<int>(this->path().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.TopicRule.path");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->path(), target);
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.TopicRule.path");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.TopicRule)
   return target;
 }
 
-size_t TopicRule::ByteSizeLong() const {
+::size_t TopicRule::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.TopicRule)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // string match = 1;
-  if (this->match().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->match());
+  if (!this->_internal_match().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_match());
   }
 
   // string path = 2;
-  if (this->path().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->path());
+  if (!this->_internal_path().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_path());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void TopicRule::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.TopicRule)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TopicRule* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TopicRule>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.TopicRule)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.TopicRule)
-    MergeFrom(*source);
-  }
-}
+const ::google::protobuf::Message::ClassData TopicRule::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    TopicRule::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*TopicRule::GetClassData() const { return &_class_data_; }
 
-void TopicRule::MergeFrom(const TopicRule& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicRule)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+
+void TopicRule::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<TopicRule*>(&to_msg);
+  auto& from = static_cast<const TopicRule&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.TopicRule)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.match().size() > 0) {
-
-    match_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.match_);
+  if (!from._internal_match().empty()) {
+    _this->_internal_set_match(from._internal_match());
   }
-  if (from.path().size() > 0) {
-
-    path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.path_);
+  if (!from._internal_path().empty()) {
+    _this->_internal_set_path(from._internal_path());
   }
-}
-
-void TopicRule::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.TopicRule)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void TopicRule::CopyFrom(const TopicRule& from) {
@@ -6551,297 +5060,216 @@ void TopicRule::CopyFrom(const TopicRule& from) {
   MergeFrom(from);
 }
 
-bool TopicRule::IsInitialized() const {
+PROTOBUF_NOINLINE bool TopicRule::IsInitialized() const {
   return true;
 }
 
-void TopicRule::Swap(TopicRule* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void TopicRule::InternalSwap(TopicRule* other) {
   using std::swap;
-  match_.Swap(&other->match_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  path_.Swap(&other->path_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.match_, lhs_arena,
+                                       &other->_impl_.match_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.path_, lhs_arena,
+                                       &other->_impl_.path_, rhs_arena);
 }
 
 ::google::protobuf::Metadata TopicRule::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[16]);
 }
-
-
 // ===================================================================
 
-void BulkSubscribeConfig::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int BulkSubscribeConfig::kEnabledFieldNumber;
-const int BulkSubscribeConfig::kMaxMessagesCountFieldNumber;
-const int BulkSubscribeConfig::kMaxAwaitDurationMsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class BulkSubscribeConfig::_Internal {
+ public:
+};
 
-BulkSubscribeConfig::BulkSubscribeConfig()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_BulkSubscribeConfig.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.BulkSubscribeConfig)
+BulkSubscribeConfig::BulkSubscribeConfig(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.BulkSubscribeConfig)
 }
 BulkSubscribeConfig::BulkSubscribeConfig(const BulkSubscribeConfig& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::memcpy(&enabled_, &from.enabled_,
-    static_cast<size_t>(reinterpret_cast<char*>(&max_await_duration_ms_) -
-    reinterpret_cast<char*>(&enabled_)) + sizeof(max_await_duration_ms_));
+    : ::google::protobuf::Message(), _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.BulkSubscribeConfig)
 }
-
-void BulkSubscribeConfig::SharedCtor() {
-  ::memset(&enabled_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&max_await_duration_ms_) -
-      reinterpret_cast<char*>(&enabled_)) + sizeof(max_await_duration_ms_));
+inline void BulkSubscribeConfig::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.enabled_){false},
+      decltype(_impl_.max_messages_count_){0},
+      decltype(_impl_.max_await_duration_ms_){0},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
 }
-
 BulkSubscribeConfig::~BulkSubscribeConfig() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.BulkSubscribeConfig)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void BulkSubscribeConfig::SharedDtor() {
+inline void BulkSubscribeConfig::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
 }
-
 void BulkSubscribeConfig::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* BulkSubscribeConfig::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const BulkSubscribeConfig& BulkSubscribeConfig::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_BulkSubscribeConfig.base);
-  return *internal_default_instance();
-}
-
-
-void BulkSubscribeConfig::Clear() {
+PROTOBUF_NOINLINE void BulkSubscribeConfig::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.BulkSubscribeConfig)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&enabled_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&max_await_duration_ms_) -
-      reinterpret_cast<char*>(&enabled_)) + sizeof(max_await_duration_ms_));
-  _internal_metadata_.Clear();
+  ::memset(&_impl_.enabled_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.max_await_duration_ms_) -
+      reinterpret_cast<char*>(&_impl_.enabled_)) + sizeof(_impl_.max_await_duration_ms_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool BulkSubscribeConfig::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.BulkSubscribeConfig)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bool enabled = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &enabled_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 max_messages_count = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &max_messages_count_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 max_await_duration_ms = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &max_await_duration_ms_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.BulkSubscribeConfig)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.BulkSubscribeConfig)
-  return false;
-#undef DO_
+const char* BulkSubscribeConfig::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void BulkSubscribeConfig::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.BulkSubscribeConfig)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // bool enabled = 1;
-  if (this->enabled() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->enabled(), output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 0, 2> BulkSubscribeConfig::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_BulkSubscribeConfig_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // bool enabled = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(BulkSubscribeConfig, _impl_.enabled_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(BulkSubscribeConfig, _impl_.enabled_)}},
+    // int32 max_messages_count = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(BulkSubscribeConfig, _impl_.max_messages_count_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(BulkSubscribeConfig, _impl_.max_messages_count_)}},
+    // int32 max_await_duration_ms = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(BulkSubscribeConfig, _impl_.max_await_duration_ms_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(BulkSubscribeConfig, _impl_.max_await_duration_ms_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bool enabled = 1;
+    {PROTOBUF_FIELD_OFFSET(BulkSubscribeConfig, _impl_.enabled_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // int32 max_messages_count = 2;
+    {PROTOBUF_FIELD_OFFSET(BulkSubscribeConfig, _impl_.max_messages_count_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // int32 max_await_duration_ms = 3;
+    {PROTOBUF_FIELD_OFFSET(BulkSubscribeConfig, _impl_.max_await_duration_ms_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
 
-  // int32 max_messages_count = 2;
-  if (this->max_messages_count() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->max_messages_count(), output);
-  }
-
-  // int32 max_await_duration_ms = 3;
-  if (this->max_await_duration_ms() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->max_await_duration_ms(), output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.BulkSubscribeConfig)
-}
-
-::google::protobuf::uint8* BulkSubscribeConfig::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* BulkSubscribeConfig::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.BulkSubscribeConfig)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // bool enabled = 1;
-  if (this->enabled() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->enabled(), target);
+  if (this->_internal_enabled() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        1, this->_internal_enabled(), target);
   }
 
   // int32 max_messages_count = 2;
-  if (this->max_messages_count() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->max_messages_count(), target);
+  if (this->_internal_max_messages_count() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<2>(
+            stream, this->_internal_max_messages_count(), target);
   }
 
   // int32 max_await_duration_ms = 3;
-  if (this->max_await_duration_ms() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->max_await_duration_ms(), target);
+  if (this->_internal_max_await_duration_ms() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<3>(
+            stream, this->_internal_max_await_duration_ms(), target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.BulkSubscribeConfig)
   return target;
 }
 
-size_t BulkSubscribeConfig::ByteSizeLong() const {
+::size_t BulkSubscribeConfig::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.BulkSubscribeConfig)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
   // bool enabled = 1;
-  if (this->enabled() != 0) {
-    total_size += 1 + 1;
+  if (this->_internal_enabled() != 0) {
+    total_size += 2;
   }
 
   // int32 max_messages_count = 2;
-  if (this->max_messages_count() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->max_messages_count());
+  if (this->_internal_max_messages_count() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_max_messages_count());
   }
 
   // int32 max_await_duration_ms = 3;
-  if (this->max_await_duration_ms() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->max_await_duration_ms());
+  if (this->_internal_max_await_duration_ms() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_max_await_duration_ms());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void BulkSubscribeConfig::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.BulkSubscribeConfig)
-  GOOGLE_DCHECK_NE(&from, this);
-  const BulkSubscribeConfig* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const BulkSubscribeConfig>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.BulkSubscribeConfig)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.BulkSubscribeConfig)
-    MergeFrom(*source);
-  }
-}
+const ::google::protobuf::Message::ClassData BulkSubscribeConfig::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    BulkSubscribeConfig::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*BulkSubscribeConfig::GetClassData() const { return &_class_data_; }
 
-void BulkSubscribeConfig::MergeFrom(const BulkSubscribeConfig& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.BulkSubscribeConfig)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+
+void BulkSubscribeConfig::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<BulkSubscribeConfig*>(&to_msg);
+  auto& from = static_cast<const BulkSubscribeConfig&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.BulkSubscribeConfig)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.enabled() != 0) {
-    set_enabled(from.enabled());
+  if (from._internal_enabled() != 0) {
+    _this->_internal_set_enabled(from._internal_enabled());
   }
-  if (from.max_messages_count() != 0) {
-    set_max_messages_count(from.max_messages_count());
+  if (from._internal_max_messages_count() != 0) {
+    _this->_internal_set_max_messages_count(from._internal_max_messages_count());
   }
-  if (from.max_await_duration_ms() != 0) {
-    set_max_await_duration_ms(from.max_await_duration_ms());
+  if (from._internal_max_await_duration_ms() != 0) {
+    _this->_internal_set_max_await_duration_ms(from._internal_max_await_duration_ms());
   }
-}
-
-void BulkSubscribeConfig::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.BulkSubscribeConfig)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void BulkSubscribeConfig::CopyFrom(const BulkSubscribeConfig& from) {
@@ -6851,233 +5279,177 @@ void BulkSubscribeConfig::CopyFrom(const BulkSubscribeConfig& from) {
   MergeFrom(from);
 }
 
-bool BulkSubscribeConfig::IsInitialized() const {
+PROTOBUF_NOINLINE bool BulkSubscribeConfig::IsInitialized() const {
   return true;
 }
 
-void BulkSubscribeConfig::Swap(BulkSubscribeConfig* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void BulkSubscribeConfig::InternalSwap(BulkSubscribeConfig* other) {
   using std::swap;
-  swap(enabled_, other->enabled_);
-  swap(max_messages_count_, other->max_messages_count_);
-  swap(max_await_duration_ms_, other->max_await_duration_ms_);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(BulkSubscribeConfig, _impl_.max_await_duration_ms_)
+      + sizeof(BulkSubscribeConfig::_impl_.max_await_duration_ms_)
+      - PROTOBUF_FIELD_OFFSET(BulkSubscribeConfig, _impl_.enabled_)>(
+          reinterpret_cast<char*>(&_impl_.enabled_),
+          reinterpret_cast<char*>(&other->_impl_.enabled_));
 }
 
 ::google::protobuf::Metadata BulkSubscribeConfig::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[17]);
 }
-
-
 // ===================================================================
 
-void ListInputBindingsResponse::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ListInputBindingsResponse::kBindingsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class ListInputBindingsResponse::_Internal {
+ public:
+};
 
-ListInputBindingsResponse::ListInputBindingsResponse()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_ListInputBindingsResponse.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.ListInputBindingsResponse)
+ListInputBindingsResponse::ListInputBindingsResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.ListInputBindingsResponse)
 }
-ListInputBindingsResponse::ListInputBindingsResponse(const ListInputBindingsResponse& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      bindings_(from.bindings_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+ListInputBindingsResponse::ListInputBindingsResponse(const ListInputBindingsResponse& from) : ::google::protobuf::Message() {
+  ListInputBindingsResponse* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.bindings_){from._impl_.bindings_},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.ListInputBindingsResponse)
 }
-
-void ListInputBindingsResponse::SharedCtor() {
+inline void ListInputBindingsResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.bindings_){arena},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
 }
-
 ListInputBindingsResponse::~ListInputBindingsResponse() {
   // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.ListInputBindingsResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-
-void ListInputBindingsResponse::SharedDtor() {
+inline void ListInputBindingsResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_bindings()->~RepeatedPtrField();
 }
-
 void ListInputBindingsResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* ListInputBindingsResponse::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+  _impl_._cached_size_.Set(size);
 }
 
-const ListInputBindingsResponse& ListInputBindingsResponse::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_ListInputBindingsResponse.base);
-  return *internal_default_instance();
-}
-
-
-void ListInputBindingsResponse::Clear() {
+PROTOBUF_NOINLINE void ListInputBindingsResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.ListInputBindingsResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  bindings_.Clear();
-  _internal_metadata_.Clear();
+  _internal_mutable_bindings()->Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-bool ListInputBindingsResponse::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.ListInputBindingsResponse)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated string bindings = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_bindings()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->bindings(this->bindings_size() - 1).data(),
-            static_cast<int>(this->bindings(this->bindings_size() - 1).length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "dapr.proto.runtime.v1.ListInputBindingsResponse.bindings"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.ListInputBindingsResponse)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.ListInputBindingsResponse)
-  return false;
-#undef DO_
+const char* ListInputBindingsResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
 }
 
-void ListInputBindingsResponse::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.ListInputBindingsResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  // repeated string bindings = 1;
-  for (int i = 0, n = this->bindings_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->bindings(i).data(), static_cast<int>(this->bindings(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.ListInputBindingsResponse.bindings");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->bindings(i), output);
-  }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 64, 2> ListInputBindingsResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_ListInputBindingsResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // repeated string bindings = 1;
+    {::_pbi::TcParser::FastUR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ListInputBindingsResponse, _impl_.bindings_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated string bindings = 1;
+    {PROTOBUF_FIELD_OFFSET(ListInputBindingsResponse, _impl_.bindings_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+  }},
+  // no aux_entries
+  {{
+    "\57\10\0\0\0\0\0\0"
+    "dapr.proto.runtime.v1.ListInputBindingsResponse"
+    "bindings"
+  }},
+};
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.ListInputBindingsResponse)
-}
-
-::google::protobuf::uint8* ListInputBindingsResponse::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
+::uint8_t* ListInputBindingsResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.ListInputBindingsResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // repeated string bindings = 1;
-  for (int i = 0, n = this->bindings_size(); i < n; i++) {
+  for (int i = 0, n = this->_internal_bindings_size(); i < n; ++i) {
+    const auto& s = this->_internal_bindings().Get(i);
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->bindings(i).data(), static_cast<int>(this->bindings(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "dapr.proto.runtime.v1.ListInputBindingsResponse.bindings");
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(1, this->bindings(i), target);
+        s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "dapr.proto.runtime.v1.ListInputBindingsResponse.bindings");
+    target = stream->WriteString(1, s, target);
   }
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.ListInputBindingsResponse)
   return target;
 }
 
-size_t ListInputBindingsResponse::ByteSizeLong() const {
+::size_t ListInputBindingsResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.ListInputBindingsResponse)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // repeated string bindings = 1;
-  total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->bindings_size());
-  for (int i = 0, n = this->bindings_size(); i < n; i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->bindings(i));
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void ListInputBindingsResponse::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.ListInputBindingsResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const ListInputBindingsResponse* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const ListInputBindingsResponse>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.ListInputBindingsResponse)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.ListInputBindingsResponse)
-    MergeFrom(*source);
-  }
-}
-
-void ListInputBindingsResponse::MergeFrom(const ListInputBindingsResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.ListInputBindingsResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  bindings_.MergeFrom(from.bindings_);
+  // repeated string bindings = 1;
+  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_bindings().size());
+  for (int i = 0, n = _internal_bindings().size(); i < n; ++i) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+        _internal_bindings().Get(i));
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ListInputBindingsResponse::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.ListInputBindingsResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
+const ::google::protobuf::Message::ClassData ListInputBindingsResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    ListInputBindingsResponse::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*ListInputBindingsResponse::GetClassData() const { return &_class_data_; }
+
+
+void ListInputBindingsResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ListInputBindingsResponse*>(&to_msg);
+  auto& from = static_cast<const ListInputBindingsResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.ListInputBindingsResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_bindings()->MergeFrom(from._internal_bindings());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ListInputBindingsResponse::CopyFrom(const ListInputBindingsResponse& from) {
@@ -7087,205 +5459,60 @@ void ListInputBindingsResponse::CopyFrom(const ListInputBindingsResponse& from) 
   MergeFrom(from);
 }
 
-bool ListInputBindingsResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool ListInputBindingsResponse::IsInitialized() const {
   return true;
 }
 
-void ListInputBindingsResponse::Swap(ListInputBindingsResponse* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void ListInputBindingsResponse::InternalSwap(ListInputBindingsResponse* other) {
   using std::swap;
-  bindings_.InternalSwap(CastToBase(&other->bindings_));
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.bindings_.InternalSwap(&other->_impl_.bindings_);
 }
 
 ::google::protobuf::Metadata ListInputBindingsResponse::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[18]);
 }
-
-
 // ===================================================================
 
-void HealthCheckResponse::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+class HealthCheckResponse::_Internal {
+ public:
+};
 
-HealthCheckResponse::HealthCheckResponse()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_HealthCheckResponse.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:dapr.proto.runtime.v1.HealthCheckResponse)
+HealthCheckResponse::HealthCheckResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  // @@protoc_insertion_point(arena_constructor:dapr.proto.runtime.v1.HealthCheckResponse)
 }
-HealthCheckResponse::HealthCheckResponse(const HealthCheckResponse& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+HealthCheckResponse::HealthCheckResponse(const HealthCheckResponse& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+  HealthCheckResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
   // @@protoc_insertion_point(copy_constructor:dapr.proto.runtime.v1.HealthCheckResponse)
 }
 
-void HealthCheckResponse::SharedCtor() {
-}
-
-HealthCheckResponse::~HealthCheckResponse() {
-  // @@protoc_insertion_point(destructor:dapr.proto.runtime.v1.HealthCheckResponse)
-  SharedDtor();
-}
-
-void HealthCheckResponse::SharedDtor() {
-}
-
-void HealthCheckResponse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* HealthCheckResponse::descriptor() {
-  ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const HealthCheckResponse& HealthCheckResponse::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::scc_info_HealthCheckResponse.base);
-  return *internal_default_instance();
-}
 
 
-void HealthCheckResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:dapr.proto.runtime.v1.HealthCheckResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
 
-  _internal_metadata_.Clear();
-}
+const ::google::protobuf::Message::ClassData HealthCheckResponse::_class_data_ = {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::google::protobuf::Message::ClassData*HealthCheckResponse::GetClassData() const { return &_class_data_; }
 
-bool HealthCheckResponse::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:dapr.proto.runtime.v1.HealthCheckResponse)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-  handle_unusual:
-    if (tag == 0) {
-      goto success;
-    }
-    DO_(::google::protobuf::internal::WireFormat::SkipField(
-          input, tag, _internal_metadata_.mutable_unknown_fields()));
-  }
-success:
-  // @@protoc_insertion_point(parse_success:dapr.proto.runtime.v1.HealthCheckResponse)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:dapr.proto.runtime.v1.HealthCheckResponse)
-  return false;
-#undef DO_
-}
 
-void HealthCheckResponse::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:dapr.proto.runtime.v1.HealthCheckResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:dapr.proto.runtime.v1.HealthCheckResponse)
-}
 
-::google::protobuf::uint8* HealthCheckResponse::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:dapr.proto.runtime.v1.HealthCheckResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:dapr.proto.runtime.v1.HealthCheckResponse)
-  return target;
-}
 
-size_t HealthCheckResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:dapr.proto.runtime.v1.HealthCheckResponse)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void HealthCheckResponse::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:dapr.proto.runtime.v1.HealthCheckResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  const HealthCheckResponse* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const HealthCheckResponse>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:dapr.proto.runtime.v1.HealthCheckResponse)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:dapr.proto.runtime.v1.HealthCheckResponse)
-    MergeFrom(*source);
-  }
-}
-
-void HealthCheckResponse::MergeFrom(const HealthCheckResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:dapr.proto.runtime.v1.HealthCheckResponse)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-}
-
-void HealthCheckResponse::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:dapr.proto.runtime.v1.HealthCheckResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void HealthCheckResponse::CopyFrom(const HealthCheckResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:dapr.proto.runtime.v1.HealthCheckResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool HealthCheckResponse::IsInitialized() const {
-  return true;
-}
-
-void HealthCheckResponse::Swap(HealthCheckResponse* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void HealthCheckResponse::InternalSwap(HealthCheckResponse* other) {
-  using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-}
 
 ::google::protobuf::Metadata HealthCheckResponse::GetMetadata() const {
-  protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto::file_level_metadata[kIndexInFileMessages];
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_getter, &descriptor_table_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto_once,
+      file_level_metadata_dapr_2fproto_2fruntime_2fv1_2fappcallback_2eproto[19]);
 }
-
-
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
 }  // namespace runtime
@@ -7293,67 +5520,7 @@ void HealthCheckResponse::InternalSwap(HealthCheckResponse* other) {
 }  // namespace dapr
 namespace google {
 namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicEventRequest* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::TopicEventRequest >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::TopicEventRequest >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicEventResponse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::TopicEventResponse >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::TopicEventResponse >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicEventCERequest* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::TopicEventCERequest >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::TopicEventCERequest >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::TopicEventBulkRequestEntry_MetadataEntry_DoNotUse >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicEventBulkRequestEntry* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::TopicEventBulkRequestEntry >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::TopicEventBulkRequestEntry >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::TopicEventBulkRequest_MetadataEntry_DoNotUse >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicEventBulkRequest* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::TopicEventBulkRequest >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::TopicEventBulkRequest >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicEventBulkResponseEntry* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::TopicEventBulkResponseEntry >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::TopicEventBulkResponseEntry >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicEventBulkResponse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::TopicEventBulkResponse >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::TopicEventBulkResponse >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::BindingEventRequest_MetadataEntry_DoNotUse >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::BindingEventRequest* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::BindingEventRequest >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::BindingEventRequest >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::BindingEventResponse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::BindingEventResponse >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::BindingEventResponse >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::ListTopicSubscriptionsResponse >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::TopicSubscription_MetadataEntry_DoNotUse >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicSubscription* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::TopicSubscription >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::TopicSubscription >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicRoutes* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::TopicRoutes >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::TopicRoutes >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::TopicRule* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::TopicRule >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::TopicRule >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::BulkSubscribeConfig* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::BulkSubscribeConfig >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::BulkSubscribeConfig >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::ListInputBindingsResponse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::ListInputBindingsResponse >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::ListInputBindingsResponse >(arena);
-}
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::dapr::proto::runtime::v1::HealthCheckResponse* Arena::CreateMaybeMessage< ::dapr::proto::runtime::v1::HealthCheckResponse >(Arena* arena) {
-  return Arena::CreateInternal< ::dapr::proto::runtime::v1::HealthCheckResponse >(arena);
-}
 }  // namespace protobuf
 }  // namespace google
-
 // @@protoc_insertion_point(global_scope)
+#include "google/protobuf/port_undef.inc"
