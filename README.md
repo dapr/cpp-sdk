@@ -1,5 +1,18 @@
 ## C++ SDK for Dapr
 
+[![License: Apache 2.0][apache-badge]][apache-url] [![Good First Issues][gfi-badge]][gfi-url] [![Discord][discord-badge]][discord-url] [![YouTube][youtube-badge]][youtube-link] [![X/Twitter][x-badge]][x-link]
+
+[apache-badge]: https://img.shields.io/github/license/dapr/cpp-sdk?style=flat&label=License&logo=github
+[apache-url]: https://github.com/dapr/cpp-sdk/blob/master/LICENSE
+[gfi-badge]: https://img.shields.io/github/issues-search/dapr/cpp-sdk?query=type%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22&label=Good%20first%20issues&style=flat&logo=github
+[gfi-url]: https://github.com/dapr/cpp-sdk/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
+[discord-badge]: https://img.shields.io/discord/778680217417809931?label=Discord&style=flat&logo=discord
+[discord-url]: https://bit.ly/dapr-discord
+[youtube-badge]: https://img.shields.io/youtube/channel/views/UCtpSQ9BLB_3EXdWAUQYwnRA?style=flat&label=YouTube%20views&logo=youtube
+[youtube-link]: https://youtube.com/@daprdev
+[x-badge]: https://img.shields.io/twitter/follow/daprdev?logo=x&style=flat
+[x-link]: https://twitter.com/daprdev
+
 Alpha quality.
 
 ### Prerequisites
