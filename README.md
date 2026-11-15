@@ -39,6 +39,7 @@ back from the workflow metadata properties.
 ```cpp
 #include <grpcpp/grpcpp.h>
 #include <google/protobuf/empty.pb.h>
+#include <string>
 
 #include "dapr/proto/runtime/v1/dapr.grpc.pb.h"
 #include "dapr/workflow_termination_reason.h"
@@ -91,7 +92,7 @@ if (status.ok()) {
 The helper writes field 4 of `TerminateWorkflowRequest`, matching the runtime
 wire contract. It also supports the older generated bindings currently checked
 into this repository by encoding field 4 as an unknown protobuf field. A null
-request is rejected; an empty reason clears the field and is treated as omitted.
+request returns `false`; an empty reason clears the field and is treated as omitted.
 
 The runtime exposes the value in
 `GetWorkflowResponse.properties["dapr.workflow.termination_reason"]`.
