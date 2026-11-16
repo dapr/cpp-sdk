@@ -34,15 +34,10 @@ libdapr.so : $(OBJ_FILES)
 	-mkdir -p ./out
 	$(CXX) -shared -Wl,-soname,libdapr.so.0 -o ./out/libdapr.0.2.0.so ./src/dapr/proto/runtime/v1/*.o ./src/dapr/proto/common/v1/*.o
 
-# Regenerate the checked-in C++ protobuf bindings after changing a .proto file.
-# The gRPC service signatures are unchanged by workflow termination reasons.
 regen_proto_files:
 	mkdir -p ./src
 	$(PROTOC) -I $(PROTOS_PATH) --cpp_out=./src/ $(PROTO_FILES)
 
-# The test intentionally supports both the checked-in, pre-change bindings
-# (where reason is encoded as an unknown protobuf field) and regenerated
-# bindings (where reason is a typed field).
 test: test_workflow_termination_reason
 
 test_workflow_termination_reason: system-check src/dapr/proto/runtime/v1/dapr.pb.o src/dapr/proto/common/v1/common.pb.o
