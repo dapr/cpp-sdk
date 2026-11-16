@@ -44,10 +44,9 @@ void TestTerminationReasonRoundTripsOnWire() {
           dapr::workflow::kTerminationReasonFieldNumber);
   if (reason_field != nullptr) {
     assert(reason_field->name() == "reason");
+    assert(decoded.GetReflection()->HasField(decoded, reason_field));
     assert(decoded.GetReflection()->GetString(decoded, reason_field) == expected);
   } else {
-    // The repository's committed generated code predates field 4. Verify the
-    // fallback still emits the exact length-delimited protobuf wire field.
     const google::protobuf::UnknownFieldSet& unknown_fields =
         decoded.GetReflection()->GetUnknownFields(decoded);
     bool found = false;
@@ -89,7 +88,7 @@ void TestSettingReasonReplacesPreviousValue() {
   }
 }
 
-void TestEmptyReasonClearsTheField() {
+void TestEmptyReasonIsPreserved() {
   TerminateWorkflowRequest request;
   assert(dapr::workflow::SetTerminationReason(&request, "first"));
   assert(dapr::workflow::SetTerminationReason(&request, ""));
@@ -98,16 +97,24 @@ void TestEmptyReasonClearsTheField() {
       request.GetDescriptor()->FindFieldByNumber(
           dapr::workflow::kTerminationReasonFieldNumber);
   if (reason_field != nullptr) {
+    assert(request.GetReflection()->HasField(request, reason_field));
     assert(request.GetReflection()->GetString(request, reason_field).empty());
   } else {
     const google::protobuf::UnknownFieldSet& unknown_fields =
         request.GetReflection()->GetUnknownFields(request);
+    int matching_fields = 0;
     for (int i = 0; i < unknown_fields.field_count(); ++i) {
-      assert(unknown_fields.field(i).number() !=
-             dapr::workflow::kTerminationReasonFieldNumber);
+      const google::protobuf::UnknownField& field = unknown_fields.field(i);
+      if (field.number() == dapr::workflow::kTerminationReasonFieldNumber) {
+        ++matching_fields;
+        assert(field.type() == google::protobuf::UnknownField::TYPE_LENGTH_DELIMITED);
+        assert(field.length_delimited().empty());
+      }
     }
+    assert(matching_fields == 1);
   }
 }
+
 
 void TestReadsReasonFromWorkflowMetadata() {
   GetWorkflowResponse response;
@@ -117,6 +124,11 @@ void TestReadsReasonFromWorkflowMetadata() {
   std::string reason;
   assert(dapr::workflow::TryGetTerminationReason(response, &reason));
   assert(reason == "cancelled by operator");
+
+  GetWorkflowResponse empty_reason;
+  (*empty_reason.mutable_properties())[dapr::workflow::kTerminationReasonProperty] = "";
+  assert(dapr::workflow::TryGetTerminationReason(empty_reason, &reason));
+  assert(reason.empty());
 
   GetWorkflowResponse without_reason;
   assert(!dapr::workflow::TryGetTerminationReason(without_reason, &reason));
@@ -129,7 +141,7 @@ void TestReadsReasonFromWorkflowMetadata() {
 int main() {
   TestTerminationReasonRoundTripsOnWire();
   TestSettingReasonReplacesPreviousValue();
-  TestEmptyReasonClearsTheField();
+  TestEmptyReasonIsPreserved();
   TestReadsReasonFromWorkflowMetadata();
   return 0;
 }
