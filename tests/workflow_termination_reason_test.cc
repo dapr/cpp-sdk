@@ -116,6 +116,23 @@ void TestEmptyReasonIsPreserved() {
 }
 
 
+void TestUnspecifiedReasonRemainsOmitted() {
+  TerminateWorkflowRequest request;
+  const google::protobuf::FieldDescriptor* reason_field =
+      request.GetDescriptor()->FindFieldByNumber(
+          dapr::workflow::kTerminationReasonFieldNumber);
+  if (reason_field != nullptr) {
+    assert(!request.GetReflection()->HasField(request, reason_field));
+  } else {
+    const google::protobuf::UnknownFieldSet& unknown_fields =
+        request.GetReflection()->GetUnknownFields(request);
+    for (int i = 0; i < unknown_fields.field_count(); ++i) {
+      assert(unknown_fields.field(i).number() !=
+             dapr::workflow::kTerminationReasonFieldNumber);
+    }
+  }
+}
+
 void TestReadsReasonFromWorkflowMetadata() {
   GetWorkflowResponse response;
   (*response.mutable_properties())[dapr::workflow::kTerminationReasonProperty] =
@@ -142,6 +159,7 @@ int main() {
   TestTerminationReasonRoundTripsOnWire();
   TestSettingReasonReplacesPreviousValue();
   TestEmptyReasonIsPreserved();
+  TestUnspecifiedReasonRemainsOmitted();
   TestReadsReasonFromWorkflowMetadata();
   return 0;
 }
