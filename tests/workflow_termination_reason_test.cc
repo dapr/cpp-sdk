@@ -135,6 +135,7 @@ void TestUnspecifiedReasonRemainsOmitted() {
 
 void TestReadsReasonFromWorkflowMetadata() {
   GetWorkflowResponse response;
+  response.set_runtime_status("TERMINATED");
   (*response.mutable_properties())[dapr::workflow::kTerminationReasonProperty] =
       "cancelled by operator";
 
@@ -143,12 +144,19 @@ void TestReadsReasonFromWorkflowMetadata() {
   assert(reason == "cancelled by operator");
 
   GetWorkflowResponse empty_reason;
+  empty_reason.set_runtime_status("TERMINATED");
   (*empty_reason.mutable_properties())[dapr::workflow::kTerminationReasonProperty] = "";
   assert(dapr::workflow::TryGetTerminationReason(empty_reason, &reason));
   assert(reason.empty());
 
   GetWorkflowResponse without_reason;
+  without_reason.set_runtime_status("TERMINATED");
   assert(!dapr::workflow::TryGetTerminationReason(without_reason, &reason));
+
+  GetWorkflowResponse running;
+  running.set_runtime_status("RUNNING");
+  (*running.mutable_properties())[dapr::workflow::kTerminationReasonProperty] = "workflow progress";
+  assert(!dapr::workflow::TryGetTerminationReason(running, &reason));
   assert(reason.empty());
   assert(!dapr::workflow::TryGetTerminationReason(response, nullptr));
 }
