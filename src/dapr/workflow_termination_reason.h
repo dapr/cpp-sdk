@@ -66,6 +66,11 @@ inline bool TryGetTerminationReason(
     return false;
   }
 
+  if (response.runtime_status() != "TERMINATED") {
+    reason->clear();
+    return false;
+  }
+
   const auto& properties = response.properties();
   const auto found = properties.find(kTerminationReasonProperty);
   if (found == properties.end()) {
