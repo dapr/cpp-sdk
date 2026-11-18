@@ -1066,6 +1066,8 @@ message TerminateWorkflowRequest {
   string instance_id = 1 [json_name = "instanceID"];
   // Name of the workflow component.
   string workflow_component = 2 [json_name = "workflowComponent"];
+  optional string app_id = 3 [json_name = "appID"];
+  optional string terminate_reason = 4 [json_name = "terminateReason"];
 }
 
 // PauseWorkflowRequest is the request for PauseWorkflowBeta1.

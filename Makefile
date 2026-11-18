@@ -28,9 +28,25 @@ vpath %.proto $(PROTOS_PATH)
 
 all: system-check libdapr.so
 
+.PHONY: all clean refresh_proto_files regen_proto_files test test_workflow_termination_reason
+
 libdapr.so : $(OBJ_FILES)
 	-mkdir -p ./out
 	$(CXX) -shared -Wl,-soname,libdapr.so.0 -o ./out/libdapr.0.2.0.so ./src/dapr/proto/runtime/v1/*.o ./src/dapr/proto/common/v1/*.o
+
+regen_proto_files:
+	mkdir -p ./src
+	$(PROTOC) -I $(PROTOS_PATH) --cpp_out=./src/ $(PROTO_FILES)
+
+test: test_workflow_termination_reason
+
+test_workflow_termination_reason: system-check src/dapr/proto/runtime/v1/dapr.pb.o src/dapr/proto/common/v1/common.pb.o
+	mkdir -p ./out
+	$(CXX) -I./src tests/workflow_termination_reason_test.cc \
+		./src/dapr/proto/runtime/v1/dapr.pb.o \
+		./src/dapr/proto/common/v1/common.pb.o \
+		-lprotobuf -pthread -o ./out/workflow_termination_reason_test
+	./out/workflow_termination_reason_test
 
 %.o: %.cc
 	$(CXX) -c -fPIC -I./src $< -o $@
