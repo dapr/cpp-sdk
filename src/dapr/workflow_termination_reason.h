@@ -26,7 +26,7 @@ namespace workflow {
 
 static const int kTerminationReasonFieldNumber = 4;
 
-static const char kTerminationReasonProperty[] = "dapr.workflow.termination_reason";
+static const char kTerminationReasonProperty[] = "dapr.workflow.custom_status";
 
 inline bool SetTerminationReason(
     dapr::proto::runtime::v1::TerminateWorkflowRequest* request,
@@ -40,7 +40,7 @@ inline bool SetTerminationReason(
       descriptor->FindFieldByNumber(kTerminationReasonFieldNumber);
 
   if (field != nullptr) {
-    if (field->name() != "reason" ||
+    if (field->name() != "terminate_reason" ||
         field->cpp_type() != google::protobuf::FieldDescriptor::CPPTYPE_STRING ||
         field->is_repeated()) {
       return false;
