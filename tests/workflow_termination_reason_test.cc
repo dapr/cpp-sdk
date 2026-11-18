@@ -43,7 +43,7 @@ void TestTerminationReasonRoundTripsOnWire() {
       decoded.GetDescriptor()->FindFieldByNumber(
           dapr::workflow::kTerminationReasonFieldNumber);
   if (reason_field != nullptr) {
-    assert(reason_field->name() == "reason");
+    assert(reason_field->name() == "terminate_reason");
     assert(decoded.GetReflection()->HasField(decoded, reason_field));
     assert(decoded.GetReflection()->GetString(decoded, reason_field) == expected);
   } else {
