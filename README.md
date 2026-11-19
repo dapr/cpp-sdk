@@ -21,6 +21,8 @@ Alternatively, you can build the image yourself from the dev container Dockerfil
 docker build -f .devcontainer/Dockerfile -t cppsdk .
 ```
 
+> Note: the dev container image is based on Debian 10 (buster), which has reached end of life. Its package repositories have moved to `archive.debian.org`, so the `apt-get` steps in the Dockerfile may fail until the base image is updated. This affects the VSCode dev container and `make all` as well.
+
 Then you can access the container's shell and execute commands in it:
 ```bash
 docker run -it -v $(pwd):/sdk cppsdk /bin/bash
