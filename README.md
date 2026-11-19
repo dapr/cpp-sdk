@@ -1,6 +1,12 @@
-## C++ SDK for Dapr
+# Dapr SDK for C++
 
-Alpha quality.
+Alpha-quality C++ client for the [Dapr](https://dapr.io) runtime: gRPC stubs generated from the Dapr API protos, with an example in [`examples/`](examples/echo_app) that shows service invocation over gRPC.
+
+- [Dapr SDK docs](https://docs.dapr.io/developing-applications/sdks/)
+- [Dapr Discord](https://bit.ly/dapr-discord)
+- License: [Apache 2.0](LICENSE)
+
+## Development
 
 ### Prerequisites
 
@@ -10,10 +16,12 @@ Alpha quality.
 2. Install [VSCode](https://code.visualstudio.com/download)
 3. Install [VSCode Remote - Container extension](https://code.visualstudio.com/docs/remote/containers)
 
-Alternatively, you can build the image yourself, based on the Dockerfile in the repository:
+Alternatively, you can build the image yourself from the dev container Dockerfile:
 ```bash
-docker build -t cppsdk .
+docker build -f .devcontainer/Dockerfile -t cppsdk .
 ```
+
+> Note: the dev container image is based on Debian 10 (buster), which has reached end of life. Its package repositories have moved to `archive.debian.org`, so the `apt-get` steps in the Dockerfile may fail until the base image is updated. This affects the VSCode dev container and `make all` as well.
 
 Then you can access the container's shell and execute commands in it:
 ```bash
